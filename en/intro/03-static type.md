@@ -72,7 +72,7 @@ The Elm compiler has type inference and can figure things out. (check it out usi
 
 However, it is best practice to always add type annotations. Type annotations improve code by helping you think about what the function should be doing, and serve as compiler-verified documentation. (You know how an out-of-date comment is worse than no comment at all? Well, type annotations never get out of date.) In addition, if you ever want to publish a third-party library, you will need type annotations.
 
-(source: [[https://github.com/elm-guides/elm-for-js/blob/master/How%20to%20Read%20a%20Type%20Annotation.md]])
+(source: [elm-for-js](https://github.com/elm-guides/elm-for-js/blob/master/How%20to%20Read%20a%20Type%20Annotation.md))
 
 
 
@@ -84,11 +84,11 @@ Adding annotations to our functions to make the typing more clear. They  specify
 
 By paying attention to Type annotations and understanding their syntax, you will write programs that are reliable, scalable, and easy to understand. When you hit tough spots while learning, don’t be shy about exploring functional programming concepts (like partial application and currying) to help unlock the bigger picture behind Elm’s design.
 
-(source: [[http://www.adamwaselnuk.com/elm/2016/05/27/understanding-the-elm-type-system.html]])
+(source: [understanding-the-elm-type-system](http://www.adamwaselnuk.com/elm/2016/05/27/understanding-the-elm-type-system.html))
 
 Any type annotation must include a `:`. The `:` means "has type". It is followed by the type of the value returned. Types always begin with a capital letter (or open paren).
 
-(source: [[https://github.com/elm-guides/elm-for-js/blob/master/How%20to%20Read%20a%20Type%20Annotation.md]])
+(source: [elm-for-js](https://github.com/elm-guides/elm-for-js/blob/master/How%20to%20Read%20a%20Type%20Annotation.md))
 
 ## Type Annotation
 
@@ -148,7 +148,7 @@ When the function accepts on or more arguments, the argument types are added bef
 
 What this says is that `greeting` is a function that accepts a String as argument and returns a String.
 
-(source: [[http://www.adamwaselnuk.com/elm/2016/05/27/understanding-the-elm-type-system.html]])
+(source: [understanding-the-elm-type-system](http://www.adamwaselnuk.com/elm/2016/05/27/understanding-the-elm-type-system.html))
 
 ### Two parameters and a return value
 
@@ -263,7 +263,7 @@ As Professor Frisby’s Mostly Adequate Guide to Functional Programming puts it:
 
 So if I have a type annotation of a -> b -> c, I can pass a into the function and it will return a function b -> c. If I pass b into that function, then it will return the value c.
 
-(adapted from: [[http://www.adamwaselnuk.com/elm/2016/05/27/understanding-the-elm-type-system.html]])
+(source: [understanding-the-elm-type-system](http://www.adamwaselnuk.com/elm/2016/05/27/understanding-the-elm-type-system.html))
 
 
 ## Type Variables
@@ -307,7 +307,7 @@ a and b are what’s known as type variables. They are placeholders for any type
 
 This situation would never happen because the type variable b is not matching. If map received a function that accepted Integers and returned Strings as its first argument, we have a guarantee that it will always return a List of Strings.
 
-(source: [[http://www.adamwaselnuk.com/elm/2016/05/27/understanding-the-elm-type-system.html]])
+(source: [understanding-the-elm-type-system](http://www.adamwaselnuk.com/elm/2016/05/27/understanding-the-elm-type-system.html))
 
 ## Type variables
 
@@ -376,7 +376,7 @@ map is a function that accepts a function and a List and returns a List
 
 Tip: Look at type annotations in the Elm docs as you learn. At first they will seem strange but you will quickly develop a feel for them and before long you will find yourself looking at the type annotations and not even looking at the details of the function!
 
-(source: [[http://www.adamwaselnuk.com/elm/2016/05/27/understanding-the-elm-type-system.html]])
+(source: [understanding-the-elm-type-system](http://www.adamwaselnuk.com/elm/2016/05/27/understanding-the-elm-type-system.html))
 
 ## Parameterised types
 
@@ -510,7 +510,6 @@ True : Bool
 # ------
 
 # Believe the type
-----------------
 
 Previously we mentioned that Elm has a static type system. The type
 of every expression is known at compile time, which leads to safer code.

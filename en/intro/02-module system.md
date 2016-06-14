@@ -99,47 +99,41 @@ import Html exposing (..)                 -- div, span, h1, h2, etc.
 
 This imports the _Html_ module and allows unqualified references to all functions in the module. All node types, `div`, `span`, or `h1` can be used on their own.
 
-
 #### exposed imports
+
+Yet another option is to explicitly list what is being exposed under unqualified references. 
 
 ```elm
 import String exposing(toUpper,toLower)
 import Html exposing (div, span, h1, h2)
 ```
 
-When a list of values 
+For String, access to `toUpper` and `toLower` is direct. All the module-scoped values like are still available, but they must be qualified (`String.repeat` or `Html.text`). 
 
-imports the _String_ module, and allows unqualified references to _toUpper_ and _toLower_, and qualified references to other functions in the module.
+You can expose multiple values and types from a module by separating them with commas inside the parentheses. The order doesn't matter, but typically the types are listed before the values.
 
-(source: ???)
 
-The alternative to a qualified import is an **exposed** import, because of the keyword `exposing` (whose length should serve as a deterrent to using it!). But it's usually okay if you list what you're exposing, for example:
+#### When to use qualified, when to use exposed?
+
+Keep in mind that the language forces you to type the long `exposing` keyword to discourage you from overusing it. 
+
+Conflict occur when names are not unique across modules. For instance, for many collection modules, names are deliberately consistent across data structures. For example, the Array, Set, and Dict modules all expose an `empty` value, so the module names help you tell them apart.
 
 ```elm
 import Dict exposing (Dict)
 import Html exposing (div, span, h1, h2)
 ```
 
-Other programs might import from the _Dict_ module.
-
-```elm
-import Dict exposing (Dict)
-```
-
-The `Dict` in parentheses refers to the type, not the module. All the module-scoped values like `Dict.insert` are still available. You can expose multiple values and types from a module by separating them with commas inside the parentheses. You can find more details in [this guide](Modules, Exports, and Imports.md), but this practice in general is discouraged. (This is why the language forces you to type the long `exposing` keyword.)
+The `Dict` in parentheses refers to the type, not the module. It's very common for modules to define types of the same name as the module itself. It avoids the need to say `Dict.Dict` in you type annotations. 
 
 
-In the first case, the `Dict` in parentheses is a type, not the module. It's very common for modules to define types of the same name as the module itself. It avoids the need to say `Dict.Dict` in you type annotations. In the second case, the functions being exposed have distinctive names, and are going to be used frequently.
 
-In both cases, the module name is also available to be use qualified. So you can still use `Dict.insert` or `Html.text`. When you have a list of exposed imports, the order doesn't matter, but typically the types are listed before the values.
+In the second case, the functions being exposed have distinctive names, and are going to be used frequently.
+
 
 (source: [elm-for-js](https://github.com/elm-guides/elm-for-js/blob/master/Modules,%20Exports,%20and%20Imports.md))
 
-#### When to use qualified, when to use exposed?
 
-Use qualifed for collections, for many collection modules, names are not unique across modules. In fact, they are deliberately consistent. For example, the Array, Set, and Dict modules all expose an `empty` value, so the module names help you tell them apart.
-
-(source: [elm-for-js](https://github.com/elm-guides/elm-for-js/blob/master/Modules,%20Exports,%20and%20Imports.md))
 
 #### dump import
 

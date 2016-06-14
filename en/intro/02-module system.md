@@ -79,9 +79,7 @@ import Html exposing (Html)
 
 ### import declaration variants
 
-The import declarations specify where a piece of code came from.
-
-(source: [learnyouanelm](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/02-starting-out.md))
+The import declarations specify where a piece of code came from and, optionally, the list of values and types that are directly exposed.
 
 #### qualified import
 

@@ -94,7 +94,7 @@ You are then required to always specify (qualify) the module name to access anyt
 #### unqualified imports
 
 ```elm
-import Html exposing (..)                 -- div, h1, h2, etc.
+import Html exposing (..)                 -- div, span, h1, h2, etc.
 ```
 
 This imports the _Html_ module and allows unqualified references to all functions in the module. All node types, `div` or `h1` can be used on their own.
@@ -102,20 +102,16 @@ This imports the _Html_ module and allows unqualified references to all function
 
 #### exposed imports
 
-
 ```elm
--- unqualified imports
-import Mymodule exposing (..)                 -- Error, Stuff
-import Mymodule exposing ( Error )            -- Error
-import Mymodule exposing ( Error(..) )        -- Error, Forbidden, Timeout
-import Mymodule exposing ( Error(Forbidden) ) -- Error, Forbidden
+import String exposing(toUpper,toLower)
+import Html exposing (div, span, h1, h2)
 ```
 
-`import String exposing(toUpper,toLower)`imports the _String_ module, and allows unqualified references to _toUpper_ and _toLower_, and qualified references to other functions in the module.
+When a list of values 
 
+imports the _String_ module, and allows unqualified references to _toUpper_ and _toLower_, and qualified references to other functions in the module.
 
 (source: ???)
-
 
 The alternative to a qualified import is an **exposed** import, because of the keyword `exposing` (whose length should serve as a deterrent to using it!). But it's usually okay if you list what you're exposing, for example:
 

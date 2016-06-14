@@ -92,7 +92,6 @@ import String
 
 This is sometimes called a **qualified** import because it only allows qualified references to functions in the module. They force you to always specify the module name to access anything from the module, such as `String.toUpper` or `String.repeat`.
 
-
 #### exposed import
 
 ```elm

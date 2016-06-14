@@ -73,14 +73,11 @@ Elm gives access to a number of values and types by default. At the time of writ
 
 Outside of these, you need to explicitly import from other modules to add useful functionality into your program. For instance, all web applications must import from the _Html_ module. 
 
-(source: [elm-for-js](https://github.com/elm-guides/elm-for-js/blob/master/Modules,%20Exports,%20and%20Imports.md))
+```elm
+import Html exposing (Html)
+```
 
-
-
-(source: [elm-for-js](https://github.com/elm-guides/elm-for-js/blob/master/Modules,%20Exports,%20and%20Imports.md))
-
-
-### import declaration
+### import declaration variants
 
 The import declarations specify where a piece of code came from.
 

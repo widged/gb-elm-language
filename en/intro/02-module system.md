@@ -69,9 +69,7 @@ The private `Coin` type is visible in the definition of the public `Model` type.
 
 ## Imports
 
-You can import from other modules to add useful functionality into your program.
-
-Many functions are in modules that must be imported, such as the _Html_ or _Dict_ modules.
+You can import from other modules to add useful functionality into your program. All web applications will import from the _Html_ module. Other programs might import from the _Dict_ module.
 
 ```elm
 import Dict exposing (Dict)

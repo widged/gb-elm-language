@@ -90,14 +90,7 @@ import String
 -- String.toUpper, String.repeat
 ```
 
-This is referred to as a qualified import because it only allows qualified references to functions in the module. Prefixing with the module name is required to access any type or value in the module, such as String.toUpper.
-
-
-
-
-This gives you access to everything in the [Dict library](http://package.elm-lang.org/packages/elm-lang/core/latest/Dict) by prefacing it with the module name and a dot. This is sometimes called a **qualified** import. So if you want to use `Dict.insert`, this import statement is sufficient.
-
-Qualified imports are the preferred way to import values from other modules, because you can always tell where something came from by the module name right in front of it. Conversely, it makes it easy to tell what is defined in *this* module.
+This is sometimes called a **qualified** import because it only allows qualified references to functions in the module. They force you to always specify the module name to access anything from the module, such as String.toUpper.
 
 Additionally, for many collection modules, names are not unique across modules. In fact, they are deliberately consistent. For example, the Array, Set, and Dict modules all expose an `empty` value, so the module names help you tell them apart.
 

@@ -71,13 +71,12 @@ The private `Coin` type is visible in the definition of the public `Model` type.
 
 Elm also imports some values and types by default. The full list is [here](http://package.elm-lang.org/packages/elm-lang/core/latest/#default-imports), but the most important thing to know is that all of [Basics](http://package.elm-lang.org/packages/elm-lang/core/latest/Basics) is imported exposed. The List, Maybe, and Signal modules and types are also available to you without an explicit import.
 
-Outside of these, you need to explicitly import from other modules to add useful functionality into your program. All web applications will import from the _Html_ module. Other programs might import from the _Dict_ module.
+(source: [elm-for-js](https://github.com/elm-guides/elm-for-js/blob/master/Modules,%20Exports,%20and%20Imports.md))
 
-```elm
-import Dict exposing (Dict)
-```
+Outside of these, you need to explicitly import from other modules to add useful functionality into your program. All web applications will import from the _Html_ module. 
 
-The `Dict` in parentheses refers to the type, not the module. All the module-scoped values like `Dict.insert` are still available. You can expose multiple values and types from a module by separating them with commas inside the parentheses. You can find more details in [this guide](Modules, Exports, and Imports.md), but this practice in general is discouraged. (This is why the language forces you to type the long `exposing` keyword.)
+(source: [elm-for-js](https://github.com/elm-guides/elm-for-js/blob/master/Modules,%20Exports,%20and%20Imports.md))
+
 
 
 (source: [elm-for-js](https://github.com/elm-guides/elm-for-js/blob/master/Modules,%20Exports,%20and%20Imports.md))
@@ -137,6 +136,15 @@ The alternative to a qualified import is an **exposed** import, because of the k
 import Dict exposing (Dict)
 import Html exposing (div, span, h1, h2)
 ```
+
+Other programs might import from the _Dict_ module.
+
+```elm
+import Dict exposing (Dict)
+```
+
+The `Dict` in parentheses refers to the type, not the module. All the module-scoped values like `Dict.insert` are still available. You can expose multiple values and types from a module by separating them with commas inside the parentheses. You can find more details in [this guide](Modules, Exports, and Imports.md), but this practice in general is discouraged. (This is why the language forces you to type the long `exposing` keyword.)
+
 
 In the first case, the `Dict` in parentheses is a type, not the module. It's very common for modules to define types of the same name as the module itself. It avoids the need to say `Dict.Dict` in you type annotations. In the second case, the functions being exposed have distinctive names, and are going to be used frequently.
 

@@ -122,11 +122,14 @@ Two usages are common.
 ```elm
 import Dict exposing (Dict)
 import Html exposing (div, span, h1, h2)
+import Json.Encode exposing (object2, (:=))
 ```
 
 In the first case, the `Dict` module exposes the `Dict` type value in the module (it is very common for modules to define types of the same name as the module itself). It avoids the need to say `Dict.Dict` in you type annotations. 
 
 In the second case, the functions being exposed have distinctive names, and are going to be used frequently.
+
+In the third case, an infix operator is exposed. All infix operators must be imported exposed. Note that infix operators need to be surrounded by extra parentheses. The language does not have syntax for qualified infix operators. Because of this, all infix ops in core are imported exposed by default. Specifically, all of the arithmetic operators are in [Basics](http://package.elm-lang.org/packages/elm-lang/core/latest/Basics), and the cons `(::)` operator of the List module.
 
 Any other usage is best avoided. Take the annoyance of having to type such a long word as exposing as a warning to not overuse it. 
 
@@ -135,9 +138,7 @@ Never expose an entire module unless you're really sure about it. When there are
 
 #### Special cases
 
-Infix operators must be imported exposed, for example as `import Json.Encode exposing (object2, (:=))`. Note that infix operators need to be surrounded by extra parentheses. The language does not have syntax for qualified infix operators. The good news is that, with the exception of the previous example, all infix ops in core are imported exposed by default.
 
-Specifically, all of the arithmetic operators are in [Basics](http://package.elm-lang.org/packages/elm-lang/core/latest/Basics), which is imported exposed automatically. (It's worth becoming familiar with everything in that module.) List cons, `(::)`, is imported along with the `List` type.
 
 (source: [elm-for-js](https://github.com/elm-guides/elm-for-js/blob/master/Modules,%20Exports,%20and%20Imports.md))
 

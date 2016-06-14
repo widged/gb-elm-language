@@ -81,7 +81,7 @@ import Html exposing (Html)
 
 The import declarations specify where a piece of code came from and, optionally, the list of values and types that are directly exposed.
 
-#### qualified import
+#### qualified imports
 
 The simplest way to import a module is with what is sometimes called a **qualified** import. 
 
@@ -91,7 +91,17 @@ import String       -- String.toUpper, String.repeat
 
 You are then required to always specify (qualify) the module name to access anything from the module, such as `String.toUpper` or `String.repeat`.
 
-#### exposed import
+#### unqualified imports
+
+```elm
+import Html exposing (..)                 -- div, h1, h2, etc.
+```
+
+This imports the _Html_ module and allows unqualified references to all functions in the module. All node types, `div` or `h1` can be used on their own.
+
+
+#### exposed imports
+
 
 ```elm
 -- unqualified imports
@@ -103,7 +113,6 @@ import Mymodule exposing ( Error(Forbidden) ) -- Error, Forbidden
 
 `import String exposing(toUpper,toLower)`imports the _String_ module, and allows unqualified references to _toUpper_ and _toLower_, and qualified references to other functions in the module.
 
-`import String exposing(..)` imports the _String_ module and allows unqualified references to all functions in the module.
 
 (source: ???)
 

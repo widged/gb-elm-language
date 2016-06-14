@@ -83,14 +83,13 @@ The import declarations specify where a piece of code came from and, optionally,
 
 #### qualified import
 
-The simplest way to import a module is with:
+The simplest way to import a module is with what is sometimes called a **qualified** import. 
 
 ```elm
-import String
--- String.toUpper, String.repeat
+import String       -- String.toUpper, String.repeat
 ```
 
-This is sometimes called a **qualified** import because it only allows qualified references to functions in the module. They force you to always specify the module name to access anything from the module, such as `String.toUpper` or `String.repeat`.
+You are then required to always specify (qualify) the module name to access anything from the module, such as `String.toUpper` or `String.repeat`.
 
 #### exposed import
 

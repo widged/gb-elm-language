@@ -69,9 +69,8 @@ The private `Coin` type is visible in the definition of the public `Model` type.
 
 ## Imports
 
-Elm also imports some values and types by default. The full list is [here](http://package.elm-lang.org/packages/elm-lang/core/latest/#default-imports), but the most important thing to know is that all of [Basics](http://package.elm-lang.org/packages/elm-lang/core/latest/Basics) is imported exposed. The List, Maybe, and Signal modules and types are also available to you without an explicit import.
+Elm gives access to a number of values and types by default. At the time of writing, it includes [Basics](http://package.elm-lang.org/packages/elm-lang/core/latest/Basics), Debug, List, Maybe and Result, Program, Cmd, and Sub. You can check the full list of [default imports](http://package.elm-lang.org/packages/elm-lang/core/latest/#default-imports), on the elm-lang website. 
 
-(source: [elm-for-js](https://github.com/elm-guides/elm-for-js/blob/master/Modules,%20Exports,%20and%20Imports.md))
 
 Outside of these, you need to explicitly import from other modules to add useful functionality into your program. All web applications will import from the _Html_ module. 
 

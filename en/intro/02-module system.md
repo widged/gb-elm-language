@@ -117,10 +117,6 @@ You can expose multiple values and types from a module by separating them with c
 
 #### When to use exposed?
 
-Keep in mind that the language forces you to type the long `exposing` keyword to discourage you from overusing it. 
-
-Conflict occur when names are not unique across modules. For instance, for many collection modules, names are deliberately consistent across data structures. For example, the Array, Set, and Dict modules all expose an `empty` value, so the module names help you tell them apart.
-
 Two usages are common. 
 
 ```elm
@@ -132,24 +128,16 @@ In the first case, the `Dict` module exposes the `Dict` type value in the module
 
 In the second case, the functions being exposed have distinctive names, and are going to be used frequently.
 
-The real reason exposed imports are considered an antipattern is because they can be combined with `(..)` to dump the entire module into the current one. When there are multiple such imports, it becomes impossible to see where something came from, and the odds of a name collision is much higher.
+Any other usage is best avoided. Take the annoyance of having to type such a long word as exposing as a warning to not overuse it. 
 
-```elm
--- Antipatten!
-import Dict exposing (..)
-```
+Never expose an entire module unless you're really sure about it. When there are multiple `(..)` imports, it becomes impossible to see where something came from, and the odds of a name collision, across modules, is much higher. For instance, for many collection modules, names are deliberately consistent across data structures. For example, the Array, Set, and Dict modules all expose an `empty` value or an `insert` method. The compiler will stop you in truly ambiguous cases. Even in the absence of name collision, the module names serves as a constant reminder of what collection we are using.
 
-`Dict.insert` will now be available as `insert`. This can easily be confused with other insert operations, although the compiler will stop you in truly ambiguous cases. So don't expose an entire module unless you're really sure about it.
-
-Regardless, exposing happens when you import. This makes it different from exporting, which happens when modules are defined. Many people and even Elm's tooling conflate the two, but if you're being technical they are distinct.
 
 #### Special cases
 
 Infix operators must be imported exposed, for example as `import Json.Encode exposing (object2, (:=))`. Note that infix operators need to be surrounded by extra parentheses. The language does not have syntax for qualified infix operators. The good news is that, with the exception of the previous example, all infix ops in core are imported exposed by default.
 
-Specifically, all of the arithmetic operators are in
-[Basics](http://package.elm-lang.org/packages/elm-lang/core/latest/Basics), which is imported exposed automatically.
-(It's worth becoming familiar with everything in that module.) List cons, `(::)`, is imported along with the `List` type, as are `Maybe` and its tags, `Just` and `Nothing`.
+Specifically, all of the arithmetic operators are in [Basics](http://package.elm-lang.org/packages/elm-lang/core/latest/Basics), which is imported exposed automatically. (It's worth becoming familiar with everything in that module.) List cons, `(::)`, is imported along with the `List` type.
 
 (source: [elm-for-js](https://github.com/elm-guides/elm-for-js/blob/master/Modules,%20Exports,%20and%20Imports.md))
 
@@ -259,6 +247,9 @@ age person =
 (source: [elm-for-js](https://github.com/elm-guides/elm-for-js/blob/master/Modules,%20Exports,%20and%20Imports.md))
 
 ## Export
+
+Exposing happens when you import. This makes it different from exporting, which happens when modules are defined. Many people and even Elm's tooling conflate the two, but if you're being technical they are distinct.
+
 
 ```elm
 -- Defining a module, exports everything by default

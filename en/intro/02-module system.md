@@ -135,7 +135,6 @@ For any other usage, take the annoyance of having to type such a long word as ex
 
 Never expose an entire module unless you're really sure about it. When there are multiple `(..)` imports, it becomes impossible to see where something came from, and the odds of a name collision, across modules, is much higher. For instance, for many collection modules, names are deliberately consistent across data structures. For example, the Array, Set, and Dict modules all expose an `empty` value or an `insert` method. The compiler will stop you in truly ambiguous cases. Even in the absence of name collision, the module names serves as a constant reminder of what collection we are using.  (adapted from: [elm-for-js](https://github.com/elm-guides/elm-for-js/blob/master/Modules,%20Exports,%20and%20Imports.md))
 
-
 #### Renaming an import
 
 When importing a module, you can rename it like so:
@@ -148,7 +147,6 @@ import Graphics.Element as Elem exposing (Element, show)
 ```elm
 import String as Str                -- Str.toUpper, Str.repeat
 ```
-
 
 As you can see, renaming and exposing can be used together. If you do though, `as Alternative` needs to come before `exposing (the, functions)`.
 

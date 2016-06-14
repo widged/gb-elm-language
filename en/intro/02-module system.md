@@ -2,7 +2,7 @@
 
 # Module System
 
-An Elm program is organized into a collection of modules. Technically speaking, a module is really just one big declaration that groups functionalities that, by some criterion, belong together. 
+An Elm program is organized into a collection of modules. Modules help group functionalities that, by some criterion, belong together. 
 
 **Packages** (or **libraries**) that are published to the [package registry](http://package.elm-lang.org/) are all organized into modules and you can import from them to add useful functionality into your program.
 

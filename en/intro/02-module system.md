@@ -97,7 +97,7 @@ You are then required to always specify (qualify) the module name to access anyt
 import Html exposing (..)                 -- div, span, h1, h2, etc.
 ```
 
-This imports the _Html_ module and allows unqualified references to all functions in the module. All node types, `div` or `h1` can be used on their own.
+This imports the _Html_ module and allows unqualified references to all functions in the module. All node types, `div`, `span`, or `h1` can be used on their own.
 
 
 #### exposed imports

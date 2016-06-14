@@ -9,14 +9,13 @@ Static typing means that the actual source code (the text file) of your Elm prog
 
 These errors at compile time provide a high level of confidence that your program will work as expected.
 
-(source: [[http://www.adamwaselnuk.com/elm/2016/05/27/understanding-the-elm-type-system.html]])
+(source: [understanding-the-elm-type-system](http://www.adamwaselnuk.com/elm/2016/05/27/understanding-the-elm-type-system.html))
 
 ### Strong / Static typing
 
 Getting started with static typing can be difficult. Everything seems to go a little bit slower and take a little more effort before you see results. But don’t worry about it! You will find that Elm has a very approachable syntax for working with types and that using them will improve the reliability and clarity of your progams.
 
-(source: [[http://www.adamwaselnuk.com/elm/2016/05/27/understanding-the-elm-type-system.html]])
-
+(source: [understanding-the-elm-type-system](http://www.adamwaselnuk.com/elm/2016/05/27/understanding-the-elm-type-system.html))
 
 ```elm
 add : Int -> Int -> Int
@@ -26,11 +25,11 @@ add x y =
 
 Having a type system minimizes the amount of time you will spend debugging them and increases your confidence that your customers will never see them.
 
-(source: [[http://www.adamwaselnuk.com/elm/2016/05/27/understanding-the-elm-type-system.html]])
+(source: [understanding-the-elm-type-system](http://www.adamwaselnuk.com/elm/2016/05/27/understanding-the-elm-type-system.html))
 
 Because Elm has strong, static type system, virtually all type errors are caught by the compiler before the program is ever run in a browser. This is why Elm can boast that it has “no runtime exceptions”.
 
-(source: [[http://www.adamwaselnuk.com/elm/2016/05/27/understanding-the-elm-type-system.html]])
+(source: [understanding-the-elm-type-system](http://www.adamwaselnuk.com/elm/2016/05/27/understanding-the-elm-type-system.html))
 
 
 ## Types

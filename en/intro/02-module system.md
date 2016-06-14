@@ -91,7 +91,9 @@ import String       -- String.toUpper, String.repeat
 
 You are then required to always specify (qualify) the module name to access anything from the module, such as `String.toUpper` or `String.repeat`.
 
-#### unqualified imports
+#### dump import
+
+When `exposing (..)` is used, it has for effect to dump the entire module into the current one.  All values from the module can be accessed directly. 
 
 ```elm
 import Html exposing (..)                 -- div, span, h1, h2, etc.
@@ -113,29 +115,22 @@ For String, access to `toUpper` and `toLower` is direct. All the module-scoped v
 You can expose multiple values and types from a module by separating them with commas inside the parentheses. The order doesn't matter, but typically the types are listed before the values.
 
 
-#### When to use qualified, when to use exposed?
+#### When to use exposed?
 
 Keep in mind that the language forces you to type the long `exposing` keyword to discourage you from overusing it. 
 
 Conflict occur when names are not unique across modules. For instance, for many collection modules, names are deliberately consistent across data structures. For example, the Array, Set, and Dict modules all expose an `empty` value, so the module names help you tell them apart.
+
+Two usages are common. 
 
 ```elm
 import Dict exposing (Dict)
 import Html exposing (div, span, h1, h2)
 ```
 
-The `Dict` in parentheses refers to the type, not the module. It's very common for modules to define types of the same name as the module itself. It avoids the need to say `Dict.Dict` in you type annotations. 
-
-
+In the first case, the `Dict` module exposes the `Dict` type value in the module (it is very common for modules to define types of the same name as the module itself). It avoids the need to say `Dict.Dict` in you type annotations. 
 
 In the second case, the functions being exposed have distinctive names, and are going to be used frequently.
-
-
-(source: [elm-for-js](https://github.com/elm-guides/elm-for-js/blob/master/Modules,%20Exports,%20and%20Imports.md))
-
-
-
-#### dump import
 
 The real reason exposed imports are considered an antipattern is because they can be combined with `(..)` to dump the entire module into the current one. When there are multiple such imports, it becomes impossible to see where something came from, and the odds of a name collision is much higher.
 
@@ -147,8 +142,6 @@ import Dict exposing (..)
 `Dict.insert` will now be available as `insert`. This can easily be confused with other insert operations, although the compiler will stop you in truly ambiguous cases. So don't expose an entire module unless you're really sure about it.
 
 Regardless, exposing happens when you import. This makes it different from exporting, which happens when modules are defined. Many people and even Elm's tooling conflate the two, but if you're being technical they are distinct.
-
-(source: [elm-for-js](https://github.com/elm-guides/elm-for-js/blob/master/Modules,%20Exports,%20and%20Imports.md))
 
 #### Special cases
 

@@ -131,7 +131,7 @@ In the second case, the functions being exposed have distinctive names, and are 
 
 In the third case, an infix operator is exposed. All infix operators must be imported exposed. Note that infix operators need to be surrounded by extra parentheses. The language does not have syntax for qualified infix operators. Because of this, all infix ops in core are imported exposed by default. Specifically, all of the arithmetic operators in [Basics](http://package.elm-lang.org/packages/elm-lang/core/latest/Basics)  and the cons `(::)` operator of the List module.
 
-Any other usage is best avoided. Take the annoyance of having to type such a long word as exposing as a warning to not overuse it. 
+For any other usage, take the annoyance of having to type such a long word as exposing as a warning to not overuse it. 
 
 Never expose an entire module unless you're really sure about it. When there are multiple `(..)` imports, it becomes impossible to see where something came from, and the odds of a name collision, across modules, is much higher. For instance, for many collection modules, names are deliberately consistent across data structures. For example, the Array, Set, and Dict modules all expose an `empty` value or an `insert` method. The compiler will stop you in truly ambiguous cases. Even in the absence of name collision, the module names serves as a constant reminder of what collection we are using.
 

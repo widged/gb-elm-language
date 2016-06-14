@@ -2,7 +2,8 @@
 
 # Module System
 
-An Elm program is organized into a collection of modules. Modules help group functionalities that, by some criterion, belong together. For instance, the **Packages** (or **libraries**) that are published to the [package registry](http://package.elm-lang.org/) are all organized into modules and you can import from them to add useful functionality into your program.
+An Elm program is organized into a collection of modules. Modules help group functionalities that, by some criterion, belong together. For instance, the **Packages** (or **libraries**) that are published to the [package registry](http://package.elm-lang.org/) are all organized into modules.
+
 
 ## Module file
 
@@ -67,6 +68,8 @@ The private `Coin` type is visible in the definition of the public `Model` type.
 (source: [elm-for-js](https://github.com/elm-guides/elm-for-js/blob/master/Modules,%20Exports,%20and%20Imports.md))
 
 ## Imports
+
+You can import from other modules to add useful functionality into your program.
 
 Many functions are in modules that must be imported, such as the _Html_ or _Dict_ modules.
 

@@ -83,20 +83,17 @@ The import declarations specify where a piece of code came from and, optionally,
 
 #### qualified import
 
-```elm
--- qualified imports
-import String                       -- String.toUpper, String.repeat
-import String as Str                -- Str.toUpper, Str.repeat
-```
-
-`import String` imports the _String_ module, and allows qualified references to functions in the module, such as String.toUpper.
-
-
-The most common way to import a module is also the simplest:
+The simplest way to import a module is with:
 
 ```elm
-import Dict
+import String
+-- String.toUpper, String.repeat
 ```
+
+This is referred to as a qualified import because it only allows qualified references to functions in the module. Prefixing with the module name is required to access any type or value in the module, such as String.toUpper.
+
+
+
 
 This gives you access to everything in the [Dict library](http://package.elm-lang.org/packages/elm-lang/core/latest/Dict) by prefacing it with the module name and a dot. This is sometimes called a **qualified** import. So if you want to use `Dict.insert`, this import statement is sufficient.
 
@@ -178,6 +175,11 @@ When importing a module, you can rename it like so:
 import Json.Decode as Decode
 import Graphics.Element as Elem exposing (Element, show)
 ```
+
+```elm
+import String as Str                -- Str.toUpper, Str.repeat
+```
+
 
 As you can see, renaming and exposing can be used together. If you do though, `as Alternative` needs to come before `exposing (the, functions)`.
 

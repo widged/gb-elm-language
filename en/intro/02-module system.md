@@ -160,8 +160,9 @@ When you're listing all of your imports, it's helpful to group them in a sensibl
 
 (source: [elm-for-js](https://github.com/elm-guides/elm-for-js/blob/master/Modules,%20Exports,%20and%20Imports.md))
 
+#### importing union types
 
-
+See [Union Type](../type/08-union type.md)
 
 
 ## Export

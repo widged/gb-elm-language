@@ -85,7 +85,7 @@ The `Dict` in parentheses refers to the type, not the module. All the module-sco
 
 ### import declaration
 
-Next, come the import declarations. They  specify where a piece of code came from.
+The import declarations specify where a piece of code came from.
 
 (source: [learnyouanelm](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/02-starting-out.md))
 

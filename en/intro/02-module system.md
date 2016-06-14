@@ -90,11 +90,8 @@ import String
 -- String.toUpper, String.repeat
 ```
 
-This is sometimes called a **qualified** import because it only allows qualified references to functions in the module. They force you to always specify the module name to access anything from the module, such as String.toUpper.
+This is sometimes called a **qualified** import because it only allows qualified references to functions in the module. They force you to always specify the module name to access anything from the module, such as `String.toUpper` or `String.repeat`.
 
-Additionally, for many collection modules, names are not unique across modules. In fact, they are deliberately consistent. For example, the Array, Set, and Dict modules all expose an `empty` value, so the module names help you tell them apart.
-
-(source: [elm-for-js](https://github.com/elm-guides/elm-for-js/blob/master/Modules,%20Exports,%20and%20Imports.md))
 
 #### exposed import
 
@@ -132,6 +129,12 @@ The `Dict` in parentheses refers to the type, not the module. All the module-sco
 In the first case, the `Dict` in parentheses is a type, not the module. It's very common for modules to define types of the same name as the module itself. It avoids the need to say `Dict.Dict` in you type annotations. In the second case, the functions being exposed have distinctive names, and are going to be used frequently.
 
 In both cases, the module name is also available to be use qualified. So you can still use `Dict.insert` or `Html.text`. When you have a list of exposed imports, the order doesn't matter, but typically the types are listed before the values.
+
+(source: [elm-for-js](https://github.com/elm-guides/elm-for-js/blob/master/Modules,%20Exports,%20and%20Imports.md))
+
+#### When to use qualified, when to use exposed?
+
+Use qualifed for collections, for many collection modules, names are not unique across modules. In fact, they are deliberately consistent. For example, the Array, Set, and Dict modules all expose an `empty` value, so the module names help you tell them apart.
 
 (source: [elm-for-js](https://github.com/elm-guides/elm-for-js/blob/master/Modules,%20Exports,%20and%20Imports.md))
 

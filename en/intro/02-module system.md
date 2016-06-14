@@ -82,7 +82,7 @@ Elm also imports some values and types by default. The full list is [here](http:
 (source: [elm-for-js](https://github.com/elm-guides/elm-for-js/blob/master/Modules,%20Exports,%20and%20Imports.md))
 
 
-### import declaration 
+### import declaration
 
 Next, come the import declarations. They  specify where a piece of code came from.
 

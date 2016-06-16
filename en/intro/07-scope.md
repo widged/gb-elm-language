@@ -33,8 +33,6 @@ radToDeg rad =
     in conversionFactor * rad
 ```
 
-(source: [elm-for-js](https://github.com/elm-guides/elm-for-js/blob/master/Scope.md) and [learnyouanelm-04](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/04-syntax-in-functions.md))
-
 They are particularly useful for naming the results of more complicated expressions. For instance, this is how we could define a function that gives us a cylinder's surface area based on its height and radius:
 
 ```elm
@@ -76,6 +74,9 @@ toPrint = 4 * (let a = 9 in a + 1) + 2
 
 You can even write type annotations. However, you can't define new types.
 
-(source: [elm-for-js](https://github.com/elm-guides/elm-for-js/blob/master/Scope.md) and [learnyouanelm-04](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/04-syntax-in-functions.md))
+# Links
+
+* [elm-for-js](https://github.com/elm-guides/elm-for-js/blob/master/Scope.md) 
+* [learnyouanelm-04](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/04-syntax-in-functions.md)
 
 

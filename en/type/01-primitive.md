@@ -19,19 +19,7 @@ True : Bool
 --------------------------------------------------
 ## Booleans
 
-`&&`,`||`, `not`
 
-(source: ???)
-
-~~~~ {.Elm:hs name="code"}
-not True -- False
-not False -- True
-1 == 1 -- True
-1 /= 1 -- False
-1 < 10 -- True
-~~~~
-
-(source: ???)
 
 ### Bool
 

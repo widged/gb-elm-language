@@ -222,7 +222,15 @@ in
 
 We can evaluate expressions with pattern matching. Pattern matching consists of specifying patterns to which some data should conform and then checking to see if it does and deconstructing the data according to those patterns. 
 
-------
+
+### on a Tuple
+
+```elm
+toPrint = (let (a,b,c) = (1,2,3) in a+b+c) * 100
+600
+```
+
+(source: [learnyouanelm-04](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/04-syntax-in-functions.md))
 
 Pattern matching can also be used in the declared parameters of functions, and on tuples. What if we wanted to make a function that takes two vectors in a 2D space (that are in the form of pairs) and adds them together? To add together two vectors, we add their x components separately and then their y components separately. Here's how we would have done it if we didn't know about pattern matching:
 
@@ -257,6 +265,24 @@ third (_, _, z) = z
 
 As a reminder, the \_ means that we really don't care what that part is,
 so we just write a \_.
+
+(source: [learnyouanelm-04](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/04-syntax-in-functions.md))
+
+
+### on a List
+
+```elm
+case aList of
+  [] -> "matches the empty list"
+  [x]-> "matches a list of exactly one item, " ++ toString x
+  x::xs -> "matches a list of at least one item whose head is " ++ toString x
+```
+
+Pattern matches go in order. If we put [x] last, it would never match because
+x::xs also matches (xs would be the empty list). Matches do not "fall through".
+The compiler will alert you to missing or extra cases.
+
+----
 
 Lists themselves can also be used in pattern matching. You can match with the empty list [] or any pattern that involves :: and the empty list. But since [1,2,3] is just syntactic sugar for 1::2::3::[], you can also use the former pattern. A pattern like x::xs will bind the head of the list to x and the rest of it to xs, even if there's only one element so xs ends up being an empty list.
 
@@ -332,30 +358,6 @@ One more thing — you can't use ++ in pattern matches. If you tried to pattern 
 *Note:* Not only can we call functions as infix with backticks, we can also define them using backticks. Sometimes it's easier to read that way.
 
 (source: [learnyouanelm-04](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/04-syntax-in-functions.md))
-
-# Pattern matching
-
-### on a Tuple
-
-```elm
-toPrint = (let (a,b,c) = (1,2,3) in a+b+c) * 100
-600
-```
-
-(source: [learnyouanelm-04](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/04-syntax-in-functions.md))
-
-### on a List
-
-```elm
-case aList of
-  [] -> "matches the empty list"
-  [x]-> "matches a list of exactly one item, " ++ toString x
-  x::xs -> "matches a list of at least one item whose head is " ++ toString x
-```
-
-Pattern matches go in order. If we put [x] last, it would never match because
-x::xs also matches (xs would be the empty list). Matches do not "fall through".
-The compiler will alert you to missing or extra cases.
 
 ### on a Maybe
 

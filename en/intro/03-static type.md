@@ -65,7 +65,7 @@ Constrained types
 
 ## Type inference
 
-Elm, like most ML dialects, has type inference. The compiler will infer the type of every value in your program.
+Elm, like most ML dialects, has type inference. The compiler will automatically infer the type of every value in your program.
 
 ```bash
 $ elm repl
@@ -136,7 +136,7 @@ The key to understanding type annotation in Elm is to acknowledge that at the he
 
 A special case is currying. A function can be called with a single argument and return a function that takes the remaining arguments. With that in mind, a type annotation like `repeatString: Int -> String -> String` can be understood as taking a first argument (`Int`) and returning a curried function that takes the remaining arguments (`String`). When all arguments have been taken, the result is returned (`String`). 
 
-### Collections: Collection type and value type
+### Collections need two things, collection type and value type
 
 With collections like List, tuples, records, annotations take a slightly different form. They specify both the type of the collection and the type of value held in the collection. 
 
@@ -163,19 +163,50 @@ startPosition =
 
 ## Type generalisation with type variables
 
-Elm allows you to easily write very general functions if they don't use any specific behavior of the types in them. Functions that have type variables are called *polymorphic functions*. 
+Functions don't necessarily need to be aware of the type of values held in a collection to computer an answer. Take `List.length`. It doesn't really matter whether the values inside the list are ll strings, numbers, or complex records. What we are after is the number of items in the list.
 
-For instance, if you use the REPL to check the type signature of different List functions, you will see that many are followed by a lowercase letter rather than a specific value type. 
+Type variables help with this. Check the `List.length` signature using the REPL.
 
 ```elm
-$elm repl
+$ elm repl
 > List.length
 <function> : List a -> Int
 ```
 
-The lower case letter `a` is a type variable. That means that `a` can be of any type. It doesn't really matter if it is a list of strings, a list of numbers, or a list of complex records. What we are after is the length of that list, represented as a `Int`.
+The lower case letter `a` is a type variable. That means that all values in the list must be of the same type, but that type can be left unspecified. The function returns the length of the list, represented as a `Int`.
 
-Although type variables can have names longer than one character, the convention is to use a, b, c, d …
+```elm
+$ elm repl
+> List.take
+<function> : Int -> List a -> List a
+List.take 2 [1,2,3,4] -- [1,2]
+List.take 2 ["a","b","c"] -- ["a","b"]
+```
+
+A given type variable can appear multiple times in the annotation. It then means that whatever type `a` holds, `a` must always refer to that exact same type. In the case of `List.take`, if the initial List had values of type `Int`, then the resulting list will have values of type `Int`.
+
+For type variables, the convention is to use single letters starting at the beginning of the alphabet, `a, b, c, d`. However, (almost) any lowercase string will work. Sometimes, another letter or a descriptive word, can help better capture the intent. For example, `Dict k v` reminds us that the types variables are the keys and values.
+
+Some functions require the use of different type variables. If both `a` and `b` are introduced, this means that the function works for any types, provided that all occurrences of `a` resolve to the same type and all occurrences of `b` resolve to the same type.
+
+```elm
+$ elm repl
+> List.unzip -- Unzip decomposes a list of tuples into a tuple of lists.
+<function> : List ( a, b ) -> ( List a, List b )
+List.unzip [(0, True), (17, False), (1337, True)] -- ([0,17,1337], [True,False,True])
+```
+
+Though it is rare for functions to have more than 2 type variables, but not impossible. 
+
+```elm
+$ elm repl
+> List.map5
+<function:map5>
+    : (a -> b -> c -> d -> e -> f)
+      -> List a -> List b -> List c -> List d -> List e -> List f
+```
+
+------
 
 
 If you look at the List library,  [List.map](http://package.elm-lang.org/packages/elm-lang/core/latest/List#map) is defined as.
@@ -184,11 +215,11 @@ If you look at the List library,  [List.map](http://package.elm-lang.org/package
 List.map : (a -> b) -> List a -> List b
 ```
 
-It has lowercase type names, which are *type variables*. This means that the function works for any types `a` and `b`, provided that all occurrences of `a` resolve to the same type and all occurrences of `b` resolve to the same type. `List a` shows that a list can only hold one type, but you get to pick what that is. Then `List.map` can traverse a list and apply a function to it, without knowing what's in the list. Only the function applied to each element needs to know what type those elements are.
+Then `List.map` can traverse a list and apply a function to it, without knowing what's in the list. Only the function applied to each element needs to know what type those elements are.
 
-By convention, type variables are single letters starting at the beginning of the alphabet, although (almost) any lowercase string will work. Occasionally it's helpful to use another letter or a descriptive word, especially if you have more than one type variable. For example, `Dict k v` reminds us that the types variables are the keys and values.
 
-It's possible for a type to have any number of type variables, but more than two is rare.
+
+
 
 ```elm
 show 4 == 5 -- False
@@ -564,3 +595,6 @@ like this.
 
 
 (source: [[http://www.adamwaselnuk.com/elm/2016/05/27/understanding-the-elm-type-system.html]])
+
+
+Elm allows you to easily write very general functions if they don't use any specific behavior of the types in them. Functions that have type variables are called *polymorphic functions*. 

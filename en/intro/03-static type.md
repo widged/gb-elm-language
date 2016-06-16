@@ -256,6 +256,23 @@ If one of these types appears multiple times in a type annotation, all occurrenc
 
 (source: [elm-for-js](https://github.com/elm-guides/elm-for-js/blob/master/How%20to%20Read%20a%20Type%20Annotation.md) and [learnyouanelm-03](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/03-types.md))
 
+----
+
+### Numbers
+
+* Arithmetic expressions: `+`,`-`, `*`, `/` (result is always a float), `//` (integer division), `%` (mod), parentheses
+* Comparators: `<`, `<=`, `==`, `!=`, `>=`, `>`
+
+Every number literal without a decimal point can be either an Int or a Float.
+
+```elm
+33 / 2 -- 16.5 with floating point division
+33 // 2 -- 16 with integer division
+```
+
+(source: ???)
+
+
 
 ## Grouping
 

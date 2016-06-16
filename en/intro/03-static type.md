@@ -63,7 +63,7 @@ Constrained types
 
 ## Type inference
 
-Elm, like most ML dialects, has type inference. The compiler will automatically infer the type of every value in your program. If we write a number, we don't have to tell Elm it's a number. It can *infer* that on its own.
+We don't have to explicitly write out the types of our functions and expressions to get things done. Elm, like most ML dialects, has type inference. The compiler will automatically infer the type of every value in your program. If we write a number, we don't have to tell Elm it's a number. It can *infer* that on its own.
 
 ```bash
 $ elm repl
@@ -73,10 +73,7 @@ $ elm repl
 
 Both `2` and `2.3` are identified as numbers. The answer is a `Float`. 
 
-
 ## Type annotations
-
-// We don't have to explicitly write out the types of our functions and expressions to get things done
 
 Though it is not mandatory, it is best practice to always write explicit type declarations. The annotation is a form of documentation, which is verified by the compiler. They provide clear information as to how many arguments a function takes, what their types are, what order to pass them, and what the return type is. In the early stages of a program, type annotations help you think about what the function should be doing. In the long run, they improve the reliability, clarity, and scalability of your programs.
 
@@ -87,12 +84,7 @@ add x y = x + y
 
 Any type annotation must include a `:` and the type of the value returned. The `:` reads as "has type of".. Types always begin with a capital letter (or open parenthesis). Note. Whenever a capital letter is followed by a dot, it's a module, not a type. `String.length` means the `length` function in the `String` module.
 
-With functions that accept arguments, the argument types are added before the result value type. Each argument type is followed by a `->` that can be read as “returns”. Think of the rightmost type as the type of the return value, and the others as arguments. The pattern is then `function name : 1st arg type -> 2nd arg type -> return type`
-
----------
-
-The parameters are separated with `->` and there's no special distinction between the parameters and the return type. The return type is the last item in the declaration and the parameters are the first three. Later on we'll see why they're all just separated with `->` instead of having some more explicit distinction between the return types and the parameters.
-
+With functions that accept arguments, the argument types are added before the result value type. Each argument type is followed by a `->` that can be read as “returns”. The return type is the last item in the declaration, and the others as arguments. The pattern is then `function name : 1st arg type -> 2nd arg type -> return type`. Later on we'll see why they're all just separated with `->` instead of having some more explicit distinction between the return types and the parameters.
 
 ### Basics
 
@@ -139,15 +131,13 @@ round : Float -> Int
 Use elm-repl to examine the types of some expressions. We'll do that by typing expressions into elm-repl. After each valid expression, the repl tells us its type.
 
 If you want to give your function a type declaration but are unsure as to what it should be, you can always just write the function without it and then check it in elm-repl. Functions are expressions too, so it works on them without a problem. To write a multi-line expression in elm-repl, add a backslash to the end of each line you want to continue on the line below,
-like this.
+like this. (source: [learnyouanelm-03](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/03-types.md))
 
 ```elm
 > addThree x y z = \
 |     x + y + z
 <function> : number -> number -> number -> number
 ```
-(source: [learnyouanelm-03](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/03-types.md))
-
 
 ### -> "goes to" curried function
 
@@ -247,7 +237,6 @@ doubleMe x =
     x + x
 ```
 
-
 ## Grouping
 
 Here is an example of a more complicated type annotation:
@@ -320,20 +309,15 @@ map: (a -> b) -> List a -> List b
 
 ### A simple example
 
-When we declare a type, the left had side of the equals sign says
-how it's used; the right hand side says how it's defined.
+When we declare a type, the left had side of the equals sign says how it's used; the right hand side says how it's defined.
 
-The following `MiscHolder` can hold any type of value. It's defined as an
-unknown type `a` tagged with the `MiscHolder` tag (its right hand side),
-but when we use it we must use both the `MiscHolder` tag and the
-specific type that's in use at the time.
+The following `MiscHolder` can hold any type of value. It's defined as an unknown type `a` tagged with the `MiscHolder` tag (its right hand side), but when we use it we must use both the `MiscHolder` tag and the specific type that's in use at the time.
 
 ```elm
 type MiscHolder a = MiscHolder a
 ```
 
-Here's how we use it to define some values, each with its own
-type declaration.
+Here's how we use it to define some values, each with its own type declaration.
 
 ```elm
 stringInABox : MiscHolder String
@@ -348,9 +332,7 @@ floatInABox = MiscHolder 45.1
 
 ### When to use parentheses
 
-Since `MiscHolder` has only one additional type, when we use it to
-hold a List of Strings we have to put the `List String` in parentheses,
-otherwise the compiler will report an error.
+Since `MiscHolder` has only one additional type, when we use it to hold a List of Strings we have to put the `List String` in parentheses, otherwise the compiler will report an error.
 
 ```elm
 listOfStringsInABox : MiscHolder (List String)
@@ -362,11 +344,7 @@ listOfStringsInABox = MiscHolder ["Once", "upon", "a", "time"]
 
 ### A more involved example
 
-Let's define a type for something that's been weighed. We need
-to capture the thing itself, the weight as a floating point number,
-and the weighing units (expressed as a String). When we use `Weighed`
-in a type declaration in future we need to use its name and
-the type of thing that's been weighed.
+Let's define a type for something that's been weighed. We need to capture the thing itself, the weight as a floating point number, and the weighing units (expressed as a String). When we use `Weighed` in a type declaration in future we need to use its name and the type of thing that's been weighed.
 
 First, some type definitions to get us started.
 
@@ -381,10 +359,7 @@ Now the main type definition.
 type Weighed a = Weighed a Float String
 ```
 
-Notice that the thing being weighed (which has unspecified type `a`)
-has to have its type exposed on the left hand side of the equals
-sign. Then when we declare the type of a `Weighed` thing we need to
-specify the thing's type, too (a `Car` or an `AnimalPart`).
+Notice that the thing being weighed (which has unspecified type `a`) has to have its type exposed on the left hand side of the equals sign. Then when we declare the type of a `Weighed` thing we need to specify the thing's type, too (a `Car` or an `AnimalPart`).
 
 Now let's see some simple use...
 
@@ -399,8 +374,7 @@ featherWeighed : Weighed AnimalPart
 featherWeighed = Weighed feather 8.5 "g"
 ```
 
-We can do it without the interim values, too, but if so we
-have to use parentheses...
+We can do it without the interim values, too, but if so we have to use parentheses...
 
 ```elm
 volvoWeighed2 : Weighed Car
@@ -410,9 +384,7 @@ featherWeighed2 : Weighed AnimalPart
 featherWeighed2 = Weighed (AnimalPart "Ostrich feather") 8.5 "g"
 ```
 
-If we were to put the code above into
-[an Elm module called ParameterisedTypes](ParameterisedTypes.elm)
-then here's how we might explore it in the Elm REPL:
+If we were to put the code above into [an Elm module called ParameterisedTypes](ParameterisedTypes.elm) then here's how we might explore it in the Elm REPL:
 
 ```
 > import ParameterisedTypes exposing (..)

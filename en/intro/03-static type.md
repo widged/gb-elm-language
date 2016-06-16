@@ -1,7 +1,7 @@
 **Elm 0.17**, **shareable** 
 
 
-# Strong / Static type system
+## Strong / Static type system
 
 A static type system means that the type of every expression is known at compile time, allowing the compiler to reason about the program before compiling it. It helps prevent any kind of error related to data types and provides high level of confidence that your program will work as expected.
 
@@ -35,7 +35,7 @@ problem may actually be in how the left and right arguments interact.
 
 What Elm is telling us is that `+` expects its left and right side to be numbers. The value `"three"` is not a number.
 
-## Types
+### Types
 
 A type is a kind of label that every expression has. It tells us in which category of things that expression fits. Here is a quick overview of types available by default in any Elm program. They are described each in greater details in the type section. 
 
@@ -62,7 +62,7 @@ Constrained types
 * comparable: `3 > 2 -- True : Bool`
 * appendable: `"hello" ++ " elm" -- "hello elm" : String`
 
-## Type inference
+### Type inference
 
 We don't have to explicitly write out the types of our functions and expressions to get things done. Elm, like most ML dialects, has type inference. The compiler will automatically infer the type of every value in your program. If we write a number, we don't have to tell Elm it's a number. It can *infer* that on its own.
 
@@ -74,7 +74,7 @@ $ elm repl
 
 Both `2` and `2.3` are identified as numbers. The answer is a `Float`. 
 
-## Type annotations
+### Type annotations
 
 Though it is not mandatory, it is best practice to always write explicit type declarations. The annotation is a form of documentation, which is verified by the compiler. They provide clear information as to how many arguments a function takes, what their types are, what order to pass them, and what the return type is. In the early stages of a program, type annotations help you think about what the function should be doing. In the long run, they improve the reliability, clarity, and scalability of your programs.
 
@@ -87,7 +87,7 @@ Any type annotation must include a `:` and the type of the value returned. The `
 
 With functions that accept arguments, the argument types are added before the result value type. Each argument type is followed by a `->` that can be read as “returns”. The return type is the last item in the declaration, and the others as arguments. The pattern is then `function name : 1st arg type -> 2nd arg type -> return type`. Later on we'll see why they're all just separated with `->` instead of having some more explicit distinction between the return types and the parameters.
 
-### Basics
+#### Basics
 
 ```elm
 answer : Int
@@ -120,7 +120,7 @@ mult : Int -> Int -> Int
 mult x y = x * y
 ```
 
-### Getting acquainted
+#### Getting acquainted
 
 A good way to familiarize yourself with type annotations is to browse through official or user contributed packages and check the annotations. This will help you develop a feel for them.
 
@@ -140,7 +140,7 @@ like this. (source: [learnyouanelm-03](https://github.com/learnyouanelm/learnyou
 <function> : number -> number -> number -> number
 ```
 
-### -> "goes to" curried function
+#### -> "goes to" curried function
 
 The key to understanding type annotation in Elm is to acknowledge that at the heart of any functional programming language, we have functions that make and return functions. 
 
@@ -148,7 +148,7 @@ A special case is currying. A function can be called with a single argument and 
 
 // type a-goes-to-b, goes to list of a, goes to list of b
 
-### Parameterised types
+#### Parametrised types
 
 With collections like lists, tuples, records, annotations take a slightly different form. They specify both the type of the collection and the type of value held in the collection. 
 
@@ -175,7 +175,7 @@ startPosition =
     }    
 ```
 
-## Type variables
+### Type variables
 
 Functions don't necessarily need to be aware of the type of values held in a collection to computer an answer. Take `List.length`. It doesn't really matter whether the values inside the list are ll strings, numbers, or complex records. What we are after is the number of items in the list.
 
@@ -240,7 +240,7 @@ doubleMe x =
     x + x
 ```
 
-# Constrained Type variables
+### Constrained Type variables
 
 Elm has three special type variables that indicate that the value needs to one of a few different types, but not just any type: `number`, `comparable`, and `appendable`.
 
@@ -256,9 +256,7 @@ If one of these types appears multiple times in a type annotation, all occurrenc
 
 (source: [elm-for-js](https://github.com/elm-guides/elm-for-js/blob/master/How%20to%20Read%20a%20Type%20Annotation.md) and [learnyouanelm-03](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/03-types.md))
 
-----
-
-### Numbers
+#### Numbers
 
 * Arithmetic expressions: `+`,`-`, `*`, `/` (result is always a float), `//` (integer division), `%` (mod), parentheses
 * Comparators: `<`, `<=`, `==`, `!=`, `>=`, `>`
@@ -273,7 +271,7 @@ Every number literal without a decimal point can be either an Int or a Float.
 (source: ???)
 
 
-## Grouping
+### Grouping
 
 The example given for `List.map5` highlight yet another pattern, grouping. 
 
@@ -285,7 +283,7 @@ $ elm repl
 
 `List.map` is a function that takes a function that converts a value of type `a` to a value of type `b`, then take a list of values of type `a`, and returns a list of values of type `b`. Type variables are used `(a -> b)` as the map function doesn't need to know what is in the list. It traverses the list and an apply a function to each value in the list, resulting in a new list. Only the function applied to each element needs to know what type those elements are. 
 
-# Further Reading
+## Further Reading
 
 - Types chapter in the Elm guide by Elm lang org
 - Professor Frisby's Mostly Adequate Guide to Functional Programming: Chapter 4 - Currying by Brian Lonsdorf (dr boolean)

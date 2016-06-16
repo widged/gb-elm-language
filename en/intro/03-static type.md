@@ -40,7 +40,10 @@ problem may actually be in how the left and right arguments interact.
 Here is a quick overview of types available by default in any Elm program. They are described each in greater details in the type section. 
 
 Primitives:
-* Strings: `"hello"`. 
+* Int: `2` 
+* Float: `2.3`
+* Bool: `True`
+* Strings: `"hello"`
 * Chars: `'a'`
 * Named Functions: `isNegative n = n < 0`, `avg x y = (x+y)/2`
 * Anonymous functions:`(\ x y -> (x + y) / 2)`
@@ -59,9 +62,10 @@ Constrained types
 * comparable: `3 > 2 -- True : Bool`
 * appendable: `"hello" ++ " elm" -- "hello elm" : String`
 
+
 ## Type inference
 
-Elm, like most ML dialects, automatically infers most types.
+Elm, like most ML dialects, has type inference. The compiler will infer the type of every value in your program.
 
 ```bash
 $ elm repl
@@ -73,23 +77,14 @@ Both `2` and `2.3` as identified as numbers. A Float is required to represent th
 
 ## Type annotations
 
-Though it is not mandatory, it is best practice to always add type annotations. Type annotations improve code by helping you think about what the function should be doing, and serve as compiler-verified documentation. They provide clear documentation on the function's return type, the number of arguments, the types of arguments, what order to pass them. (adapted from [elm-for-js](https://github.com/elm-guides/elm-for-js/blob/master/How%20to%20Read%20a%20Type%20Annotation.md)). In the long run, they improve the reliability, clarity, and scalability of your programs. (adapted from [understanding-the-elm-type-system](http://www.adamwaselnuk.com/elm/2016/05/27/understanding-the-elm-type-system.html))
+Though it is not mandatory, it is best practice to always add type annotations. Type annotations are for you, the programmer. Type annotations improve code by helping you think about what the function should be doing, and serve as compiler-verified documentation. They provide clear documentation as to ow many arguments a function takes, what their types are, what order to pass them, and what the return type is. In the long run, they improve the reliability, clarity, and scalability of your programs.
 
 ```elm
 add : Int -> Int -> Int
-add x y =
-  x + y
+add x y = x + y
 ```
 
-Any type annotation must include a `:`. The `:` means "has type". It is followed by the type of the arguments returned (if any) and the type of the value returned. Types always begin with a capital letter (or open paren). (source: [elm-for-js](https://github.com/elm-guides/elm-for-js/blob/master/How%20to%20Read%20a%20Type%20Annotation.md))
-
-```elm
--- function name : 1st arg type -> 2nd arg type -> return type
-fnc : Int -> List -> Int
-```
-
-This reads as function `fnc` that takes an Int value, takes a List, and returns an Int. 
-
+Any type annotation must include a `:`. The `:` means "has type". It is followed by the type of the arguments returned (if any) and the type of the value returned. Types always begin with a capital letter (or open parenthesis). (source: [elm-for-js](https://github.com/elm-guides/elm-for-js/blob/master/How%20to%20Read%20a%20Type%20Annotation.md))
 
 #### No parameters. Just return value
 
@@ -98,67 +93,33 @@ answer : Int
 answer = 42
 ```
 
-You can read "answer has type Int; answer equals forty-two". (source: [elm-for-js](https://github.com/elm-guides/elm-for-js/blob/master/How%20to%20Read%20a%20Type%20Annotation.md))
+You can read "answer has type Int; answer equals forty-two". (source: [elm-for-js](https://github.com/elm-guides/elm-for-js/blob/master/How%20to%20Read%20a%20Type%20Annotation.md)))
 
-#### One parameter and a return value
+#### Parameters and a return value
 
-When the function accepts on or more arguments, the argument types are added before the result value type and each followed by a `->` that can be read as “returns”.
+When the function accepts on or more arguments, the argument types are added before the result value type and each followed by a `->` that can be read as “returns”. The pattern is then `function name : 1st arg type -> 2nd arg type -> return type`
 
-    greeting : String -> String
+```elm
+greeting : String -> String
+```
 
-Here, `greeting` is a function that accepts a String as argument and returns a String. (source: [understanding-the-elm-type-system](http://www.adamwaselnuk.com/elm/2016/05/27/understanding-the-elm-type-system.html))
-
-### Two parameters and a return value
-
-When the function accepts multiple arguments, they are all added as a succession of `{argument} ->`:
+This tells us that `greeting` is a function that accepts a String as argument and returns a String. (source: [understanding-the-elm-type-system](http://www.adamwaselnuk.com/elm/2016/05/27/understanding-the-elm-type-system.html))
 
     connectWords : String -> String -> String
     connectWords firstWord secondWord =
       firstWord ++ secondWord
 
-Here, `connectWords` is a function that accepts two strings and returns a string. If we look at the function we see that it indeed takes two parameters, firstWord and secondWord, and concatenates them. (source: [](http://www.adamwaselnuk.com/elm/2016/05/27/understanding-the-elm-type-system.html))
+This says that `connectWords` is a function that accepts two strings and returns a string. If we look at the function we see that it indeed takes two parameters, firstWord and secondWord, and concatenates them. (source: [understanding-the-elm-type-system](http://www.adamwaselnuk.com/elm/2016/05/27/understanding-the-elm-type-system.html))
 
-### -- extras
+#### Collections
 
-#### Types and Type Annotations
-
-Type annotations aren't for the compiler (it has type inference and can figure things out) but for you, the programmer.
-
-The annotation tells you how many arguments a function takes, what their types are, what order to pass them, and what the return type is. This information is not repeated elsewhere.
-
-Once you know how to read an annotation, it's fairly easy to write them. Doing so is is optional, but highly encouraged. Type annotations improve code by helping you think about what the function should be doing, and serve as compiler-verified documentation. (You know how an out-of-date comment is worse than no comment at all? Well, type annotations never get out of date.) In addition, if you ever want to publish a third-party library, you will need type annotations.
-
-
-(source: ???)
-
-##### Definitions
-
-The first thing to know is that : means "has type".
-
-~~~~ {.Elm:hs name="code"}
-answer : Int
-answer = 42
-~~~~
-
-You can read "answer has type `Int`; answer equals forty-two".
-
-Common primitive types include `Int` , `Float` , `Bool` , and `String` . You can also pair up types into tuples, for example (`Int`, `Bool`) . This expands to arbitrarily many elements, i.e. (`Int`, `Float`, `Int`) is a 3-tuple with first element `Int` , second `Float` , third `Int` .
+You can also pair up types into tuples, for example (`Int`, `Bool`) . This expands to arbitrarily many elements, i.e. (`Int`, `Float`, `Int`) is a 3-tuple with first element `Int` , second `Float` , third `Int` .
 
 ~~~~ {.Elm:hs name="code"}
 myTuple : (String, Int, Bool)
 myTuple = ("the answer", 42, True)
 ~~~~
 
-The compiler will infer the type of every value in your program.
-Types always begin with a capital letter (or open paren).
-Some common types, which you might see in Elm's REPL.
-
-~~~~ {.Elm:hs name="code"}
-5 : Int
-6.7 : Float
-"hello" : String
-True : Bool
-~~~~
 
 There's one special type with only one value of that type. Both the type and value are read as "unit" and written as () . Unit is often used as a placeholder value, since if we know the type, we can anticipate the value.
 

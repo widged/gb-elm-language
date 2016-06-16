@@ -3,23 +3,14 @@
 
 # Strong / Static type system
 
-The goal of a type system is to prevent any kind of error related to data types. For example, if you pass an integer to a function that expects an array, your program may behave in an unexpected way.
+The goal of a type system is to prevent any kind of error related to data types. This provides high level of confidence that your program will work as expected.
 
-Static typing means that the actual source code (the text file) of your Elm program is verified by a compiler. The compiler looks for type related errors and, if it finds one, it tells you loud and clear that there is a problem and refuses to build the program.
-
-These errors at compile time provide a high level of confidence that your program will work as expected.
+Static typing means that the actual source code (the text file) of your Elm program is verified by a compiler. The compiler looks for type related errors and, if it finds one, it tells you loud and clear that there is a problem and refuses to build the program. All errors must be fixed before the program can run. This is why Elm is said to have “no runtime exceptions”.
 
 (adapted from [understanding-the-elm-type-system](http://www.adamwaselnuk.com/elm/2016/05/27/understanding-the-elm-type-system.html))
 
-Because Elm has strong, static type system, virtually all type errors are caught by the compiler before the program is ever run in a browser. This is why Elm can boast that it has “no runtime exceptions”.
-
-(source: [understanding-the-elm-type-system](http://www.adamwaselnuk.com/elm/2016/05/27/understanding-the-elm-type-system.html))
-
-
 ```elm
-add : Int -> Int -> Int
-add x y =
-  x + y
+2 + "three"
 ```
 
 
@@ -70,6 +61,12 @@ However, it is best practice to always add type annotations. Type annotations im
 
 
 ## Type annotations
+
+```elm
+add : Int -> Int -> Int
+add x y =
+  x + y
+```
 
 Getting started with static typing can be difficult. Everything seems to go a little bit slower and take a little more effort before you see results. But don’t worry about it! You will find that Elm has a very approachable syntax for working with types and that using them will improve the reliability and clarity of your progams.
 

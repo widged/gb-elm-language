@@ -77,35 +77,23 @@ Both `2` and `2.3` as identified as numbers. A Float is required to represent th
 
 ## Type annotations
 
-Though it is not mandatory, it is best practice to always add type annotations. Type annotations are for you, the programmer. Type annotations improve code by helping you think about what the function should be doing, and serve as compiler-verified documentation. They provide clear documentation as to ow many arguments a function takes, what their types are, what order to pass them, and what the return type is. In the long run, they improve the reliability, clarity, and scalability of your programs.
+Though it is not mandatory, it is best practice to always add type annotations. The annotation is a form of documentation, which is verified by the compiler. They provide clear information as to how many arguments a function takes, what their types are, what order to pass them, and what the return type is. In the early stages of a program, type annotations help you think about what the function should be doing. In the long run, they improve the reliability, clarity, and scalability of your programs.
 
 ```elm
 add : Int -> Int -> Int
 add x y = x + y
 ```
 
-Any type annotation must include a `:` and the type of the value returned. The `:` means "has type". 
+Any type annotation must include a `:` and the type of the value returned. The `:` means "has type". Types always begin with a capital letter (or open parenthesis).
 
-With functions that accept arguments,  the argument types are added before the result value type. Each argument type is followed by a `->` that can be read as “returns”. Think of the rightmost type as the type of the return value, and the others as arguments. The pattern is then `function name : 1st arg type -> 2nd arg type -> return type`
-
-Types always begin with a capital letter (or open parenthesis). (source: [elm-for-js](https://github.com/elm-guides/elm-for-js/blob/master/How%20to%20Read%20a%20Type%20Annotation.md))
-
-
-
-
-
-#### No parameters. Just return value
+With functions that accept arguments, the argument types are added before the result value type. Each argument type is followed by a `->` that can be read as “returns”. Think of the rightmost type as the type of the return value, and the others as arguments. The pattern is then `function name : 1st arg type -> 2nd arg type -> return type`
 
 ```elm
 answer : Int
 answer = 42
 ```
 
-You can read "answer has type Int; answer equals forty-two". (source: [elm-for-js](https://github.com/elm-guides/elm-for-js/blob/master/How%20to%20Read%20a%20Type%20Annotation.md)))
-
-#### Parameters and a return value
-
-
+This reads as `answer` has type Int; answer equals "forty-two". (source: [elm-for-js](https://github.com/elm-guides/elm-for-js/blob/master/How%20to%20Read%20a%20Type%20Annotation.md)))
 
 ```elm
 greeting : String -> String
@@ -118,6 +106,16 @@ This tells us that `greeting` is a function that accepts a String as argument an
       firstWord ++ secondWord
 
 This says that `connectWords` is a function that accepts two strings and returns a string. If we look at the function we see that it indeed takes two parameters, firstWord and secondWord, and concatenates them. (source: [understanding-the-elm-type-system](http://www.adamwaselnuk.com/elm/2016/05/27/understanding-the-elm-type-system.html))
+
+#### Getting acquainted
+
+A good way to familiarize yourself with type annotations is to browser through the packages 
+
+~~~~ {.Elm:hs name="code"}
+not : Bool -> Bool
+round : Float -> Int
+~~~~
+
 
 #### Collections
 
@@ -170,13 +168,6 @@ coordinates =
 
 
 
-~~~~ {.Elm:hs name="code"}
-not : Bool -> Bool
-round : Float -> Int
-~~~~
-
-When you define a value, it's good practice to write its type above it.
-The annotation is a form of documentation, which is verified by the compiler.
 ~~~~ {.Elm:hs name="code"}
 double : Int -> Int
 double x = x * 2

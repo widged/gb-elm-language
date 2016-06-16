@@ -16,18 +16,9 @@ True : Bool
 ["welcome", "to", "elm"] : List String
 ```
 
---------------------------------------------------
-## Booleans
-
-
-
 ### Bool
 
 `Bool` is a boolean type. It can have only two values: `True` and `False`.
-
-(source: ???)
-
-### Booleans
 
 ```elm
 > True
@@ -36,11 +27,7 @@ True : Bool
 False : Bool
 ```
 
-(source: [learnyouanelm](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/02-starting-out.md))
-
-
---------------------------------------------------
-## Numbers
+### Numbers
 
 * Arithmetic expressions: `+`,`-`, `*`, `/` (result is always a float), `//` (integer division), `%` (mod), parentheses
 * Comparators: `<`, `<=`, `==`, `!=`, `>=`, `>`

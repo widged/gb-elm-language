@@ -77,8 +77,6 @@ Outside of these, you need to explicitly import from other modules to add useful
 import Html exposing (Html)
 ```
 
-### import declaration variants
-
 The import declarations specify where a piece of code came from and, optionally, the list of values and types that are directly exposed.
 
 #### qualified imports

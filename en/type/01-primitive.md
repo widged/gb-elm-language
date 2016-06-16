@@ -27,21 +27,6 @@ True : Bool
 False : Bool
 ```
 
-### Numbers
-
-* Arithmetic expressions: `+`,`-`, `*`, `/` (result is always a float), `//` (integer division), `%` (mod), parentheses
-* Comparators: `<`, `<=`, `==`, `!=`, `>=`, `>`
-
-### Numbers
-
-Every number literal without a decimal point can be either an Int or a Float.
-
-~~~~ {.Elm:hs name="code"}
-33 / 2 -- 16.5 with floating point division
-33 // 2 -- 16 with integer division
-~~~~
-
-(source: ???)
 
 ## Int
 

@@ -3,11 +3,10 @@
 
 # Strong / Static type system
 
-The goal of a type system is to prevent any kind of error related to data types. This provides high level of confidence that your program will work as expected.
+A static type system means that the type of every expression is known at compile time, allowing the compiler to reason about the program before compiling it. It helps prevent any kind of error related to data types and provides high level of confidence that your program will work as expected.
 
-Static typing means that the actual source code (the text file) of your Elm program is verified by a compiler. The compiler looks for type related errors and, if it finds one, it tells you loud and clear that there is a problem and refuses to build the program. All errors must be fixed before the program can run. This is why Elm is said to have “no runtime exceptions”.
+The Elm program is verified by a compiler. The compiler looks for type related errors. If you write a program where you try to divide a boolean type with some number, the compiler informs that there is a problem and refuses to build the program. All errors must be fixed before the program can run. This is why Elm is said to have “no runtime exceptions”.
 
-(adapted from [understanding-the-elm-type-system](http://www.adamwaselnuk.com/elm/2016/05/27/understanding-the-elm-type-system.html))
 
 ```elm
 $ elm repl
@@ -37,7 +36,7 @@ problem may actually be in how the left and right arguments interact.
 
 ## Types
 
-Here is a quick overview of types available by default in any Elm program. They are described each in greater details in the type section. 
+A type is a kind of label that every expression has. It tells us in which category of things that expression fits. Here is a quick overview of types available by default in any Elm program. They are described each in greater details in the type section. 
 
 Primitives:
 * Int: `2` 
@@ -63,43 +62,8 @@ Constrained types
 * appendable: `"hello" ++ " elm" -- "hello elm" : String`
 
 
-## Type inference
-
-Elm, like most ML dialects, has type inference. The compiler will automatically infer the type of every value in your program.
-
-```bash
-$ elm repl
-> 2 + 2.3
-4.3 : Float
-```
-
-Both `2` and `2.3` as identified as numbers. A Float is required to represent the answer. 
-
 ------
 
-Previously we mentioned that Elm has a static type system. The type
-of every expression is known at compile time, which leads to safer code.
-If you write a program where you try to divide a boolean type with some
-number, it won't even compile. That's good because it's better to catch
-such errors at compile time instead of having your program crash.
-Everything in Elm has a type, so the compiler can reason quite a lot
-about your program before compiling it.
-
-Unlike Java or Pascal, Elm has type inference. If we write a number,
-we don't have to tell Elm it's a number. It can *infer* that on its
-own, so we don't have to explicitly write out the types of our functions
-and expressions to get things done. We covered some of the basics of
-Elm with only a very superficial glance at types. However,
-understanding the type system is a very important part of learning
-Elm.
-
-A type is a kind of label that every expression has. It tells us in
-which category of things that expression fits. The expression `True` is a
-boolean, `"hello"` is a string, etc.
-
-Now we'll use elm-repl to examine the types of some expressions. We'll do
-that by typing expressions into elm-repl. After each valid expression, the
-repl tells us its type. Let's give it a whirl.
 
 TODO: Add a section on elm-repl, or come up with a different way to accomplish
 this in the online editor. Maybe type holes?
@@ -133,7 +97,23 @@ whereas an expression such as `('a','b','c')` would have the type of
 
 (source: [learnyouanelm-03](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/03-types.md))
 
+
+## Type inference
+
+Elm, like most ML dialects, has type inference. The compiler will automatically infer the type of every value in your program. If we write a number, we don't have to tell Elm it's a number. It can *infer* that on its own.
+
+```bash
+$ elm repl
+> 2 + 2.3
+4.3 : Float
+```
+
+Both `2` and `2.3` as identified as numbers. A Float is required to represent the answer. 
+
+
 ## Type annotations
+
+// We don't have to explicitly write out the types of our functions and expressions to get things done
 
 Though it is not mandatory, it is best practice to always add type annotations. The annotation is a form of documentation, which is verified by the compiler. They provide clear information as to how many arguments a function takes, what their types are, what order to pass them, and what the return type is. In the early stages of a program, type annotations help you think about what the function should be doing. In the long run, they improve the reliability, clarity, and scalability of your programs.
 
@@ -239,6 +219,9 @@ A good way to familiarize yourself with type annotations is to browse through of
 not : Bool -> Bool
 round : Float -> Int
 ```
+
+Use elm-repl to examine the types of some expressions. We'll do that by typing expressions into elm-repl. After each valid expression, the repl tells us its type.
+
 
 ### -> "goes to" curried function
 

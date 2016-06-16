@@ -125,14 +125,7 @@ in
 
 # Pattern matching
 
-Pattern match are very useful for quickly dismantling a tuple into components and binding them to names and such.
 
-```elm
-toPrint = (let (a,b,c) = (1,2,3) in a+b+c) * 100
-600
-```
-
-(source: [learnyouanelm-04](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/04-syntax-in-functions.md))
 ------
 This chapter will cover some of Elm's cool syntactic constructs and we'll start with pattern matching. Pattern matching consists of specifying patterns to which some data should conform and then checking to see if it does and deconstructing the data according to those patterns.
 
@@ -344,6 +337,15 @@ One more thing — you can't use ++ in pattern matches. If you tried to pattern 
 
 # Pattern matching
 
+### on a Tuple
+
+```elm
+toPrint = (let (a,b,c) = (1,2,3) in a+b+c) * 100
+600
+```
+
+(source: [learnyouanelm-04](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/04-syntax-in-functions.md))
+
 ### on a List
 
 ```elm
@@ -369,8 +371,7 @@ case List.head aList of
 
 ```elm
 -- Requires the argument with x and y fields
-multiply {x,y} =
-    x * y
+multiply {x,y} = x * y
 ```
 
 # Eager execution by default

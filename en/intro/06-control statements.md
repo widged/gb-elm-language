@@ -344,7 +344,7 @@ One more thing — you can't use ++ in pattern matches. If you tried to pattern 
 
 # Pattern matching
 
-Use case statements to pattern match on different possibilities.
+### on a List
 
 ```elm
 case aList of
@@ -357,7 +357,7 @@ Pattern matches go in order. If we put [x] last, it would never match because
 x::xs also matches (xs would be the empty list). Matches do not "fall through".
 The compiler will alert you to missing or extra cases.
 
-Pattern match on a Maybe.
+### on a Maybe
 
 ```elm
 case List.head aList of
@@ -365,9 +365,7 @@ case List.head aList of
   Nothing -> "The list was empty."
 ```
 
-(source: ???)
-
-# Pattern matching on record fields
+### on record fields
 
 ```elm
 -- Requires the argument with x and y fields
@@ -375,9 +373,7 @@ multiply {x,y} =
     x * y
 ```
 
-(source: [learnyouanelm](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/02-starting-out.md))
-
-# Eager by default
+# Eager execution by default
 
 Elm syntax is very similar to Haskell. There is one important difference to keep in mind. Elm is *eager*, unlike Haskell, which is lazy. That means, in Elm, if you call a function, the arguments are fully evaluated before they are passed to the function. Most programming languages are like this, so you won't likely need to think about this very much.
 

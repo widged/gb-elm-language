@@ -2,18 +2,7 @@
 
 # Primitive types
 
-Common primitive types include `Int`, `Float`, `Bool`, and `String`. You can also pair up types into tuples, for example
-`(Int, Bool)`. This expands to arbitrarily many elements, i.e. `(Int, Float, Int)` is a 3-tuple with first element `Int`,
-second `Float`, third `Int`.
-
-```elm
-myTuple : (String, Int, Bool)
-myTuple = ("the answer", 42, True)
-```
-
-(source: [[https://github.com/elm-guides/elm-for-js/blob/master/How%20to%20Read%20a%20Type%20Annotation.md]])
-
-## Literals
+Primitive types are built into the language. They include `Int`, `Float`, `Bool`, and `String`. 
 
 The types of literals are built into the language.
 

@@ -1,8 +1,8 @@
 **Elm 0.17**, **shareable** 
 
-# Scope
+## Scope
 
-## Variable definitions
+### Variable definitions
 
 **Scope** refers to what is defined, and where. 
 
@@ -74,7 +74,7 @@ toPrint = 4 * (let a = 9 in a + 1) + 2
 
 You can even write type annotations. However, you can't define new types.
 
-# Links
+### Further Reading
 
 * [elm-for-js](https://github.com/elm-guides/elm-for-js/blob/master/Scope.md) 
 * [learnyouanelm-04](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/04-syntax-in-functions.md)

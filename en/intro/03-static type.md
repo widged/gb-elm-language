@@ -37,19 +37,19 @@ problem may actually be in how the left and right arguments interact.
 
 ## Types
 
-Elm has types for primitives:
+Here is a quick overview of Elm types. They are described each in greater details in the type section. 
+
+Primitives:
 * Strings: `"hello"`. 
 * Chars: `'a'`
 * Named Functions: `isNegative n = n < 0`, `avg x y = (x+y)/2`
 * Anonymous functions:`(\ x y -> (x + y) / 2)`
 
-Basic types for collections:
+Collections:
 * Lists (all elements must have the same type): `["one","two","three"]`
 * Tuples (fixed number of values, any mix of types): `("Dave",True) `
 * Records (key-value pairs): `{x = 0,y = 10}`
-* [Array](http://package.elm-lang.org/packages/elm-lang/core/3.0.0/Array)
-* [Dict](http://package.elm-lang.org/packages/elm-lang/core/3.0.0/Dict)
-* [Set](http://package.elm-lang.org/packages/elm-lang/core/3.0.0/Set)
+* [Array](http://package.elm-lang.org/packages/elm-lang/core/3.0.0/Array), [Dict](http://package.elm-lang.org/packages/elm-lang/core/3.0.0/Dict) and [Set](http://package.elm-lang.org/packages/elm-lang/core/3.0.0/Set).
 
 Special types
 * Aliases: `type alias Point={x=0,y=0}`

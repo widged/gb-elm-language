@@ -124,12 +124,13 @@ mult x y = x * y
 
 #### Getting acquainted
 
-A good way to familiarize yourself with type annotations is to browser through official or user contributed packages and check the annotations. 
+A good way to familiarize yourself with type annotations is to browse through official or user contributed packages and check the annotations. This will help you develop a feel for them.
 
-~~~~ {.Elm:hs name="code"}
+
+```elm
 not : Bool -> Bool
 round : Float -> Int
-~~~~
+```
 
 
 #### Collections
@@ -320,11 +321,6 @@ map is a function that accepts a function and a List and returns a List
 
 
 
-## Tips
-
-Tip: Look at type annotations in the Elm docs as you learn. At first they will seem strange but you will quickly develop a feel for them and before long you will find yourself looking at the type annotations and not even looking at the details of the function!
-
-(source: [understanding-the-elm-type-system](http://www.adamwaselnuk.com/elm/2016/05/27/understanding-the-elm-type-system.html))
 
 ## Parameterised types
 

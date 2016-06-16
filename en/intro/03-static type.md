@@ -1,4 +1,4 @@
-**Elm 0.??**, **copied, please ignore** 
+**Elm 0.17**, **shareable** 
 
 
 # Strong / Static type system

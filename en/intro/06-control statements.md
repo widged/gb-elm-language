@@ -70,66 +70,7 @@ update state =
 
 (source: [learnyouanelm](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/02-starting-out.md))
 
-## Let-in
-
-Let bindings let you bind to variables anywhere and are expressions themselves, so they are very useful for naming the results of more complicated expressions. Just like any construct in Elm that is used to bind values to names, let bindings can be used for pattern matching. Let's see them in action! This is how we could define a function that gives us a cylinder's surface area based on its height and radius:
-
-```elm
-cylinder : Float -> Float -> Float
-cylinder r h =
-    let
-        sideArea = 2 * pi * r * h
-        topArea = pi * r ^2
-    in  
-        sideArea + 2 * topArea
-```
-
-The form is let \<bindings\> in \<expression\>. The names that you define in the *let* part are accessible to the expression after the *in* part. Notice that the names are also aligned in a single column.
-
-Let bindings are expressions themselves. Remember when we did the if statement and it was explained that an if then else statement is an expression? That means you can cram it in almost anywhere.
-
-
-```elm
-toPrint = [if 5 > 3 then "Woo" else "Boo", if 'a' > 'b' then "Foo" else "Bar"]
-["Woo", "Bar"]
-toPrint = 4 * (if 10 > 5 then 10 else 0) + 2
-42
-```
-
-You can also do that with let bindings.
-
-```elm
-toPrint = 4 * (let a = 9 in a + 1) + 2
-42
-```
-
-They can also be used to introduce functions in a local scope:
-
-```elm
-$ elm repl
-> toPrint = let square x = x * x in [ square 5, square 3, square 2]
-[25,9,4] : List number
-```
-
-(source: [learnyouanelm-04](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/04-syntax-in-functions.md))
-
-They can help simplify complex expressions
-```elm
-let
-  activeUsers = List.filter (\u -> u.state /= 1) model.users
-in
-  { model | user = activeUsers}
-```
-
-(source: [learnyouanelm](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/02-starting-out.md))
-
-# Pattern matching
-
-Pattern matching consists of specifying patterns to which some data should conform and then checking to see if it does and deconstructing the data according to those patterns.
-
-(source: [learnyouanelm-04](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/04-syntax-in-functions.md))
-
-We can evaluate expressions with pattern matching. This leads to really neat code that's simple and readable. You can pattern match on any data type — numbers, characters, lists, tuples, etc. Let's make a really trivial function that checks if the number we supplied to it is a seven or not.
+Let's make a really trivial function that checks if the number we supplied to it is a seven or not.
 
 ```elm
 lucky : number -> String
@@ -221,6 +162,67 @@ case expression of
 ```
 
 expression is matched against the patterns. The pattern matching action is the same as expected: the first pattern that matches the expression is used. If it falls through the whole case expression and no suitable pattern is found, a compilation error occurs.
+
+(source: [learnyouanelm-04](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/04-syntax-in-functions.md))
+
+## Let-in
+
+Let bindings let you bind to variables anywhere and are expressions themselves, so they are very useful for naming the results of more complicated expressions. Just like any construct in Elm that is used to bind values to names, let bindings can be used for pattern matching. Let's see them in action! This is how we could define a function that gives us a cylinder's surface area based on its height and radius:
+
+```elm
+cylinder : Float -> Float -> Float
+cylinder r h =
+    let
+        sideArea = 2 * pi * r * h
+        topArea = pi * r ^2
+    in  
+        sideArea + 2 * topArea
+```
+
+The form is let \<bindings\> in \<expression\>. The names that you define in the *let* part are accessible to the expression after the *in* part. Notice that the names are also aligned in a single column.
+
+Let bindings are expressions themselves. Remember when we did the if statement and it was explained that an if then else statement is an expression? That means you can cram it in almost anywhere.
+
+
+```elm
+toPrint = [if 5 > 3 then "Woo" else "Boo", if 'a' > 'b' then "Foo" else "Bar"]
+["Woo", "Bar"]
+toPrint = 4 * (if 10 > 5 then 10 else 0) + 2
+42
+```
+
+You can also do that with let bindings.
+
+```elm
+toPrint = 4 * (let a = 9 in a + 1) + 2
+42
+```
+
+They can also be used to introduce functions in a local scope:
+
+```elm
+$ elm repl
+> toPrint = let square x = x * x in [ square 5, square 3, square 2]
+[25,9,4] : List number
+```
+
+(source: [learnyouanelm-04](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/04-syntax-in-functions.md))
+
+They can help simplify complex expressions
+```elm
+let
+  activeUsers = List.filter (\u -> u.state /= 1) model.users
+in
+  { model | user = activeUsers}
+```
+
+(source: [learnyouanelm](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/02-starting-out.md))
+
+# Pattern matching
+
+We can evaluate expressions with pattern matching. Pattern matching consists of specifying patterns to which some data should conform and then checking to see if it does and deconstructing the data according to those patterns. 
+
+------
 
 Pattern matching can also be used in the declared parameters of functions, and on tuples. What if we wanted to make a function that takes two vectors in a 2D space (that are in the form of pairs) and adds them together? To add together two vectors, we add their x components separately and then their y components separately. Here's how we would have done it if we didn't know about pattern matching:
 

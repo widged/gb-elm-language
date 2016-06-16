@@ -121,7 +121,6 @@ mult : Int -> Int -> Int
 mult x y = x * y
 ```
 
-
 #### Getting acquainted
 
 A good way to familiarize yourself with type annotations is to browse through official or user contributed packages and check the annotations. This will help you develop a feel for them.
@@ -137,28 +136,37 @@ The key to understanding type annotation in Elm is to acknowledge that at the he
 
 A special case is currying. A function can be called with a single argument and return a function that takes the remaining arguments. With that in mind, a type annotation like `repeatString: Int -> String -> String` can be understood as taking a first argument (`Int`) and returning a curried function that takes the remaining arguments (`String`). When all arguments have been taken, the result is returned (`String`). 
 
+#### Annotations for collections
 
-#### Collections
+With collections like List, tuples, records, annotations take a slightly different form. They specify both the type of the collection and the type of value held in the collection. 
 
-You can also pair up types into tuples, for example (`Int`, `Bool`) . This expands to arbitrarily many elements, i.e. (`Int`, `Float`, `Int`) is a 3-tuple with first element `Int` , second `Float` , third `Int` .
+List:
+```elm
+flagColors: List String
+flagColors: ["Black", "Yellow", "Red"]
+```
 
-~~~~ {.Elm:hs name="code"}
+Tuple:
+```elm
 myTuple : (String, Int, Bool)
 myTuple = ("the answer", 42, True)
-~~~~
+```
 
 
+#### Collections
 
 
 
 
 ## Type Variables
 
-If you look at the List library, this isn't actually how [List.map](http://package.elm-lang.org/packages/elm-lang/core/latest/List#map) is defined. Instead, it has lowercase type names, which are *type variables*:
+If you look at how [List.map](http://package.elm-lang.org/packages/elm-lang/core/latest/List#map) is defined, 
 
 ```elm
 List.map : (a -> b) -> List a -> List b
 ```
+
+which are *type variables*:
 
 This means that the function works for any types `a` and `b`, as long as we've fixed their values, which usually happens by passing arguments whose types we know. So we could give it a `(Float -> Int)` and a `List Float`, or we could give a `(String -> Action)` and a `List String`, and so on. (This use of "variable" is closer to algebra than JavaScript, in that it's something you or the compiler find based on constraints, not explicitly set to whatever you need it to be.)
 

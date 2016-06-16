@@ -1,13 +1,5 @@
 **Elm 0.??**, **copied, please ignore** 
 
-# main
-
-Elm automatically calls a main function for us, so we need to define it. And in that main function, we do our program’s output.
-
-
-
-
-
 
 
 
@@ -135,51 +127,7 @@ something you defined.
 
 
 
-# Pipes
 
-Nifty syntax feature every language should have
-
-```haskell
-(height 24 (italic (fromString "Hello World!")))
-```
-
-Becomes
-
-```haskell
-fromString "Hello World!"
-|> italic
-|> height 24
-```
-
-(source: [elm-functionalkats-tutorial](https://github.com/micktwomey/elm-functionalkats-tutorial))
-
-```elm
-import Html exposing (text)
-
-type Value = Jack | Queen | King | Ace | Num Int
-type Suit = Club | Diamond | Spade | Heart
-
-printSuit suit = toString suit
-
-main =
-  Spade
-    |> printSuit
-    |> text
-```
-
-The |> operator chains function calls. In the above line I get Spade, call printSuit with it as a parameter, then get the result of that computation and call the function text with it. It shows "Spade" in the output screen, so it works! :)
-
-(Source: ???)
-
-The result of a function can be piped to the next function, using the |>operator, for example,
-
-```elm
-message++" "
-|> String.toUpper
-|> String.repeat times |> String.trimRight |> Html.text
-```
-
-(Source: ???)
 
 
 ## Recursion

@@ -175,7 +175,7 @@ startPosition =
     }    
 ```
 
-### Type variables
+#### Type variables
 
 Functions don't necessarily need to be aware of the type of values held in a collection to computer an answer. Take `List.length`. It doesn't really matter whether the values inside the list are ll strings, numbers, or complex records. What we are after is the number of items in the list.
 
@@ -240,7 +240,7 @@ doubleMe x =
     x + x
 ```
 
-### Constrained Type variables
+#### Constrained Type variables
 
 Elm has three special type variables that indicate that the value needs to one of a few different types, but not just any type: `number`, `comparable`, and `appendable`.
 
@@ -256,7 +256,7 @@ If one of these types appears multiple times in a type annotation, all occurrenc
 
 (source: [elm-for-js](https://github.com/elm-guides/elm-for-js/blob/master/How%20to%20Read%20a%20Type%20Annotation.md) and [learnyouanelm-03](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/03-types.md))
 
-#### Numbers
+##### Numbers
 
 * Arithmetic expressions: `+`,`-`, `*`, `/` (result is always a float), `//` (integer division), `%` (mod), parentheses
 * Comparators: `<`, `<=`, `==`, `!=`, `>=`, `>`
@@ -283,7 +283,7 @@ $ elm repl
 
 `List.map` is a function that takes a function that converts a value of type `a` to a value of type `b`, then take a list of values of type `a`, and returns a list of values of type `b`. Type variables are used `(a -> b)` as the map function doesn't need to know what is in the list. It traverses the list and an apply a function to each value in the list, resulting in a new list. Only the function applied to each element needs to know what type those elements are. 
 
-## Further Reading
+### Further Reading
 
 - Types chapter in the Elm guide by Elm lang org
 - Professor Frisby's Mostly Adequate Guide to Functional Programming: Chapter 4 - Currying by Brian Lonsdorf (dr boolean)

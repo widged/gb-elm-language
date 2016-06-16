@@ -11,6 +11,17 @@ myTuple = ("the answer", 42, True)
 
 (source: [elm-for-js](https://github.com/elm-guides/elm-for-js/blob/master/How%20to%20Read%20a%20Type%20Annotation.md))
 
+-------
+
+Tuples are types but they are dependent on their length as well as the
+types of their components, so there is theoretically an infinite number
+of tuple types, which is too many to cover in this tutorial. Note that
+the empty tuple `()` is also a type which can only have a single value: `()`.
+This value is read as `"unit"` and is the common way to denote an empty
+value with no specific meaning.
+
+(source: [learnyouanelm-03](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/03-types.md))
+
 ---------
 
 (,), (,,), (,,,), etc.

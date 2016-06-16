@@ -148,9 +148,9 @@ A special case is currying. A function can be called with a single argument and 
 
 // type a-goes-to-b, goes to list of a, goes to list of b
 
-### Collections are parameterised types
+### Parameterised types
 
-With collections like List, tuples, records, annotations take a slightly different form. They specify both the type of the collection and the type of value held in the collection. 
+With collections like lists, tuples, records, annotations take a slightly different form. They specify both the type of the collection and the type of value held in the collection. 
 
 List:
 ```elm
@@ -175,7 +175,7 @@ startPosition =
     }    
 ```
 
-## Type generalisation with type variables
+## Type variables
 
 Functions don't necessarily need to be aware of the type of values held in a collection to computer an answer. Take `List.length`. It doesn't really matter whether the values inside the list are ll strings, numbers, or complex records. What we are after is the number of items in the list.
 
@@ -240,7 +240,7 @@ doubleMe x =
     x + x
 ```
 
-# Constrained Types
+# Constrained Type variables
 
 Elm has three special type variables that indicate that the value needs to one of a few different types, but not just any type: `number`, `comparable`, and `appendable`.
 

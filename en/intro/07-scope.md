@@ -45,7 +45,7 @@ cylinder r h =
         sideArea + 2 * topArea
 ```
 
-or 
+Or 
 
 ```elm
 distanceFrom (originX, originY) (x, y) =
@@ -54,7 +54,7 @@ distanceFrom (originX, originY) (x, y) =
     in sqrt (dx^2 + dy^2)
 ```
 
-or
+Or
 
 ```elm
 let

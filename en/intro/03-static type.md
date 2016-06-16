@@ -237,11 +237,35 @@ show "Hello" ++ "!" -- "Hello!"
 
 (source: [learnyouanelm-03](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/03-types.md))
 
-Note. `List` is called a *type constructor*. However, It can't really exist on its own.
 
-(source: [learnyouanelm-03](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/03-types.md))
 
-## Type Variables
+
+## Grouping
+
+Here is an example of a more complicated type annotation:
+
+    map : (a -> b) -> List a -> List b
+
+There are two things that stand out in this example: the use of parentheses, and the values a and b. The parentheses work the same way they work in math. In other words, they provide an order of operations for the compiler. What that means is that (a -> b) can be thought of as a complete function which accepts a value of type a and returns a value of type b. With that grouping we can read this type annotation as:
+
+map is a function that accepts a function and a List and returns a List
+
+(source: [[http://www.adamwaselnuk.com/elm/2016/05/27/understanding-the-elm-type-system.html]])
+
+
+Function arguments are passed in parentheses.
+
+Lowercase types are type variables: they can be any type, as long as each call is consistent.
+~~~~ {.Elm:hs name="code"}
+List.map : (a -> b) -> List a -> List b
+~~~~
+
+Things get interesting with multiple arrows.
+
+
+"List dot map has type a-goes-to-b, goes to list of a, goes to list of b."
+
+(source: ???)
 
 We could give it a `(Float -> Int)` and a `List Float`, or we could give a `(String -> Action)` and a `List String`, and so on. (This use of "variable" is closer to algebra than JavaScript, in that it's something you or the compiler find based on constraints, not explicitly set to whatever you need it to be.)
 
@@ -275,48 +299,6 @@ map: (a -> b) -> List a -> List b
 ```
 
 (source: [learnyouanelm](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/02-starting-out.md))
-
-
-
-
-
-#### Types for Functions
-
-Function arguments are passed in parentheses.
-
-Lowercase types are type variables: they can be any type, as long as each call is consistent.
-~~~~ {.Elm:hs name="code"}
-List.map : (a -> b) -> List a -> List b
-~~~~
-
-Things get interesting with multiple arrows.
-
-
-"List dot map has type a-goes-to-b, goes to list of a, goes to list of b."
-
-(source: ???)
-
-
-
-
-
-
-
-
-## Grouping
-
-Here is an example of a more complicated type annotation:
-
-    map : (a -> b) -> List a -> List b
-
-There are two things that stand out in this example: the use of parentheses, and the values a and b. The parentheses work the same way they work in math. In other words, they provide an order of operations for the compiler. What that means is that (a -> b) can be thought of as a complete function which accepts a value of type a and returns a value of type b. With that grouping we can read this type annotation as:
-
-map is a function that accepts a function and a List and returns a List
-
-(source: [[http://www.adamwaselnuk.com/elm/2016/05/27/understanding-the-elm-type-system.html]])
-
-
-
 
 ## Parameterised types
 

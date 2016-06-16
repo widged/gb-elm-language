@@ -10,7 +10,28 @@ Static typing means that the actual source code (the text file) of your Elm prog
 (adapted from [understanding-the-elm-type-system](http://www.adamwaselnuk.com/elm/2016/05/27/understanding-the-elm-type-system.html))
 
 ```elm
-2 + "three"
+$ elm repl
+> 2 + "three"
+-- TYPE MISMATCH --------------------------------------------- repl-temp-000.elm
+
+The right argument of (+) is causing a type mismatch.
+
+3|   2 + "three"
+         ^^^^^^^
+(+) is expecting the right argument to be a:
+
+    number
+
+But the right argument is:
+
+    String
+
+Hint: To append strings in Elm, you need to use the (++) operator, not (+).
+<http://package.elm-lang.org/packages/elm-lang/core/latest/Basics#++>
+
+Hint: I always figure out the type of the left argument first and if it is
+acceptable on its own, I assume it is "correct" in subsequent checks. So the
+problem may actually be in how the left and right arguments interact.
 ```
 
 

@@ -48,7 +48,7 @@ Primitives:
 * Anonymous functions:`(\ x y -> (x + y) / 2)`
 
 Collections:
-* Lists (all elements must have the same type): `["one","two","three"]`
+* Lists (all elements must have the same type): `[1, 2] or ["one","two","three"]`
 * Tuples (fixed number of values, any mix of types): `("Dave",True) `
 * Records (key-value pairs): `{x = 0,y = 10}`
 
@@ -63,23 +63,6 @@ Constrained types
 
 
 ------
-
-
-TODO: Add a section on elm-repl, or come up with a different way to accomplish
-this in the online editor. Maybe type holes?
-
-```elm
-> 'a'
-'a' : Char
-> True
-True : Bool
-> [1, 2]
-[1,2] : List number
-> (True, 'a')
-(True, 'a') : ( Bool, Char )
-> 4 == 5
-False : Bool
-```
 
 Here we see that typing an expression prints
 out the value of that expression followed by `:` and its type.

@@ -4,8 +4,6 @@
 
 Primitive types are built into the language. They include `Int`, `Float`, `Bool`, and `String`. 
 
-The types of literals are built into the language.
-
 ```elm
 True : Bool
 
@@ -17,9 +15,6 @@ True : Bool
 
 ["welcome", "to", "elm"] : List String
 ```
-
-(source: [elm-for-js](https://github.com/elm-guides/elm-for-js/blob/master/Scope.md) and [learnyouanelm](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/02-starting-out.md))
-
 
 --------------------------------------------------
 ## Booleans

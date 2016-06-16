@@ -10,7 +10,6 @@
      * [Control Statement](intro/06-control statements.md)
      * [Scope](intro/07-scope.md)
      * [Recursion](intro/08-recursion.md)
-     * [Eager by default](intro/09-eager by default.md)
   * Types
      * [Primitive](type/01-primitive.md)
      * [Constrained Types](type/02-constrained type.md)

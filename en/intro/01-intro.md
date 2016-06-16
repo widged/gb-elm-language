@@ -1,7 +1,9 @@
 
 **Elm 0.17**
 
-### How Elm Works
+# Introduction
+
+## How Elm Works
 
 
 * Functional language (functions as value)

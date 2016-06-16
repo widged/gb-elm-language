@@ -185,6 +185,18 @@ List.take 2 ["a","b","c"] -- ["a","b"]
 
 A given type variable can appear multiple times in the annotation. It then means that whatever type `a` holds, `a` must always refer to that exact same type. In the case of `List.take`, if the initial List had values of type `Int`, then the resulting list will have values of type `Int`.
 
+Another example is the `fst` function thatreturns the first element of a tuple.
+
+```elm
+$ elm repl
+> fst
+<function> : ( a, b ) -> a
+> fst ("Marc", 21) -- "Marc"
+> fst ("John", "Doe") -- "Marc"
+```
+
+We see that `fst` takes a pair expressed as a tuple. `( a, b )` tell us that the value type for the first element can differ from the value type of the second (it doesn't have to be different; it can). The function returns a value that is of the same type as the first element.  Note that just because `a` and `b` are different type variables, they don't have to be different types. It just states that the first component's type and the return value's type are the same. 
+
 For type variables, the convention is to use single letters starting at the beginning of the alphabet, `a, b, c, d`. However, (almost) any lowercase string will work. Sometimes, another letter or a descriptive word, can help better capture the intent. For example, `Dict k v` reminds us that the types variables are the keys and values.
 
 Some functions require the use of different type variables. If both `a` and `b` are introduced, this means that the function works for any types, provided that all occurrences of `a` resolve to the same type and all occurrences of `b` resolve to the same type.
@@ -196,7 +208,7 @@ $ elm repl
 List.unzip [(0, True), (17, False), (1337, True)] -- ([0,17,1337], [True,False,True])
 ```
 
-Though it is rare for functions to have more than 2 type variables, but not impossible. 
+It is rare for functions to have more than 2 type variables. It however is not impossible. 
 
 ```elm
 $ elm repl
@@ -218,21 +230,10 @@ List.map : (a -> b) -> List a -> List b
 Then `List.map` can traverse a list and apply a function to it, without knowing what's in the list. Only the function applied to each element needs to know what type those elements are.
 
 
-
-
-
 ```elm
 show 4 == 5 -- False
 show "Hello" ++ "!" -- "Hello!"
 ```
-Remember `fst`? It returns the first component of a pair. Let's examine its type.
-
-```elm
-repl> fst
-<function> : ( a, b ) -> a
-```
-
-We see that `fst` takes a tuple which contains two types and returns an element which is of the same type as the pair's first component. That's why we can use `fst` on a pair that contains any two types. Note that just because `a` and `b` are different type variables, they don't have to be different types. It just states that the first component's type and the return value's type are the same.
 
 (source: [learnyouanelm-03](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/03-types.md))
 
@@ -242,23 +243,9 @@ Note. `List` is called a *type constructor*. However, It can't really exist on i
 
 ## Type Variables
 
-If you look at how [List.map](http://package.elm-lang.org/packages/elm-lang/core/latest/List#map) is defined, 
-
-```elm
-List.map : (a -> b) -> List a -> List b
-```
-
-which are *type variables*:
-
 This means that the function works for any types `a` and `b`, as long as we've fixed their values, which usually happens by passing arguments whose types we know. So we could give it a `(Float -> Int)` and a `List Float`, or we could give a `(String -> Action)` and a `List String`, and so on. (This use of "variable" is closer to algebra than JavaScript, in that it's something you or the compiler find based on constraints, not explicitly set to whatever you need it to be.)
 
-By convention, type variables are single letters starting at the beginning of the alphabet, although (almost) any lowercase string will work. Occasionally it's helpful to use another letter or a descriptive word, especially if you have more than one type variable. For example, `Dict k v` reminds us that the types variables are the keys and values. It's possible for a type to have any number of type variables, but more than two is rare.
 
-Type variables let us write generic code, like lists and other containers that can hold any type of value. Each particular container can only hold one type, but you get to pick what that is.  Then `List.map` can traverse a list and apply a function to it, without knowing what's in the list. Only the function applied to each element needs to know what type those elements are.
-
-If `List a` is a list of any type, what is just `List`? Technically it's called a *type constructor*, but the better answer is that it's not really anything. It can't really exist on its own. The best way to think of it is that `List a` is the base type, and sometimes the type variable `a` gets replaced with a real type.
-
-(source: [elm-for-js](https://github.com/elm-guides/elm-for-js/blob/master/How%20to%20Read%20a%20Type%20Annotation.md))
 
 
 a and b are what’s known as type variables. They are placeholders for any type. So in this example, a function that accepts a value of type a really means a function that accepts a value of any type. The important thing is that type a stays the same and type b stays the same. Here are some possiblities for the map function:

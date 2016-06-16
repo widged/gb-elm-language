@@ -59,7 +59,12 @@ $ elm repl
 > 5 /= 5 -- False
 > 5 /= 4 -- True
 > "hello" == "hello" -- True
+1 < 10 -- True
 ```
+
+
+(source: ???)
+
 
 ## Logical
 

@@ -1,7 +1,6 @@
 
 **Elm 0.17**
 
-# Introduction
 
 ## How Elm Works
 

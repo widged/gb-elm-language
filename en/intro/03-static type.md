@@ -240,6 +240,23 @@ doubleMe x =
     x + x
 ```
 
+# Constrained Types
+
+Elm has three special type variables that indicate that the value needs to one of a few different types, but not just any type: `number`, `comparable`, and `appendable`.
+
+A `number` is any type that supports basic arithmetic (except division, which is handled separately for each type). These are `Int` or `Float`.
+
+A `comparable` represents types that can be compared or ordered, like 1 == 1 or 1 < 2. This can be `String`, `Char`, `Int`, `Float`, `Time`, or a `List` or `tuple` containing only comparable values. Surprisingly enough, comparables can be compared with operations like `(>)`. Elm's dictionaries and sets are implemented as binary search trees, so the keys or elements must be comparable. 
+
+An `appendable` represents items that can be appended to each other with the `++` operator. These can be `string`, `text` (i.e. with typesetting information), or a `list` (containing any type). 
+
+To use any of these types, just use their name in an annotation instead of a specific type or type variable.
+
+If one of these types appears multiple times in a type annotation, all occurrences must resolve to the same type. You can allow them to be different by sticking something on to the end of the type, like `appendable2` or similar. For example, if you enter `(4, 2)` into the Elm REPL, it will infer the type `(number, number')`. The apostrophe indicates that the second number need not be the same type as the first.
+
+(source: [elm-for-js](https://github.com/elm-guides/elm-for-js/blob/master/How%20to%20Read%20a%20Type%20Annotation.md) and [learnyouanelm-03](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/03-types.md))
+
+
 ## Grouping
 
 The example given for `List.map5` highlight yet another pattern, grouping. 

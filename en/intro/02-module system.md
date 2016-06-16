@@ -1,11 +1,11 @@
 **Elm 0.17**, **shareable** 
 
-# Module System
+## Module System
 
 An Elm program is organized into a collection of modules. Modules help group functionalities that, by some criterion, belong together. For instance, the **Packages** (or **libraries**) that are published to the [package registry](http://package.elm-lang.org/) are all organized into modules.
 
 
-## Module file
+### Module file
 
 The simplest syntax to declare a module is
 
@@ -18,7 +18,7 @@ A module is stored into a file whose name must begin with a capital letter and e
 When files are within nested folders, the module contain dots. For example `Json.Encode`, which is in file `Json/Encode.elm`. Folders may be nested as deep as you like, but don't overdo it. 
 
 
-## Module shape
+### Module shape
 
 ```elm
 module Calculator exposing (..)
@@ -29,7 +29,7 @@ sum : Int -> Int -> Int
 init x y  = x + y
 ```
 
-### module declaration 
+#### module declaration 
 
 A module declaration begins with the keyword `module`, followed by the module name, the word `exposing` and the list of exported values between parentheses. 
 
@@ -67,7 +67,7 @@ The private `Coin` type is visible in the definition of the public `Model` type.
 
 (source: [elm-for-js](https://github.com/elm-guides/elm-for-js/blob/master/Modules,%20Exports,%20and%20Imports.md))
 
-## Imports
+### Imports
 
 Elm gives access to a number of values and types by default. At the time of writing, it includes [Basics](http://package.elm-lang.org/packages/elm-lang/core/latest/Basics), Debug, List, Maybe and Result, Program, Cmd, and Sub. You can check the full list of [default imports](http://package.elm-lang.org/packages/elm-lang/core/latest/#default-imports), on the elm-lang website. 
 
@@ -163,7 +163,7 @@ When you're listing all of your imports, it's helpful to group them in a sensibl
 See [Union Type](../type/08-union type.md)
 
 
-## Export
+### Export
 
 Exposing happens when you import. This makes it different from exporting, which happens when modules are defined. Many people and even Elm's tooling conflate the two, but if you're being technical they are distinct.
 

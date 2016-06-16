@@ -4,35 +4,6 @@
 
 Elm automatically calls a main function for us, so we need to define it. And in that main function, we do our program’s output.
 
-# Comments
-
-`--` begins a single line comment.
-`{- and -}` enclose a multiline comment; these can be nested.
-
-(source: ???)
-
-```elm
--- Single line comment
-
-{-
-Multi-line comment  
--}
-```
-
-Comments for package [documentation](#documentation)
-
-(source: [learnyouanelm](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/02-starting-out.md))
-
-### Comments
-
-~~~~ {.Elm:hs name="code"}
-Single line comments start with two dashes.
-{- Multiline comments can be enclosed in a block like this.
-{- They can be nested. -}
--}
-~~~~
-
-(source: [learnyouanelm](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/02-starting-out.md))
 
 
 

@@ -161,7 +161,7 @@ startPosition =
     }    
 ```
 
-## Generalisation with type variables
+## Type generalisation with type variables
 
 Elm allows you to easily write very general functions if they don't use any specific behavior of the types in them. Functions that have type variables are called *polymorphic functions*. 
 
@@ -173,17 +173,10 @@ $elm repl
 <function> : List a -> Int
 ```
 
-The lower case letter `a` is a type variable. That means that `a` can be of any type. It doesn't really matter if it is a list of strings, a list of numbers, or a list of complex records. What we are after is the length of that list, represented as an `Int`.
+The lower case letter `a` is a type variable. That means that `a` can be of any type. It doesn't really matter if it is a list of strings, a list of numbers, or a list of complex records. What we are after is the length of that list, represented as a `Int`.
 
+Although type variables can have names longer than one character, the convention is to use a, b, c, d …
 
-
-
-Hmmm! What is this `a`? Is it a type? Remember that we previously stated that types are written in capital case, so it can't exactly be a type. Because it's not in capital case it's actually a *type variable*. That means that `a` can be of any type. This is much like generics in other languages, only in Elm it's much more powerful because it 
-
-Although type variables can have names longer than one character, we usually give them names of a, b, c, d …
-
-
-(source: [learnyouanelm-03](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/03-types.md))
 
 If you look at the List library,  [List.map](http://package.elm-lang.org/packages/elm-lang/core/latest/List#map) is defined as.
 

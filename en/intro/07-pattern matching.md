@@ -1,3 +1,5 @@
+**Elm 0.17**, **shareable** 
+
 # Pattern matching
 
 This chapter will cover some of Elm's cool syntactic constructs and we'll start with pattern matching. Pattern matching consists of specifying patterns to which some data should conform and then checking to see if it does and deconstructing the data according to those patterns.

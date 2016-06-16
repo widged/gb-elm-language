@@ -101,15 +101,22 @@ greeting : String -> String
 
 This tells us that `greeting` is a function that accepts a String as argument and returns a String. (source: [understanding-the-elm-type-system](http://www.adamwaselnuk.com/elm/2016/05/27/understanding-the-elm-type-system.html))
 
-    connectWords : String -> String -> String
-    connectWords firstWord secondWord =
-      firstWord ++ secondWord
+```elm
+double : Int -> Int
+double x = x * 2
+```
+
+```elm
+connectWords : String -> String -> String
+connectWords firstWord secondWord =
+  firstWord ++ secondWord
+```
 
 This says that `connectWords` is a function that accepts two strings and returns a string. If we look at the function we see that it indeed takes two parameters, firstWord and secondWord, and concatenates them. (source: [understanding-the-elm-type-system](http://www.adamwaselnuk.com/elm/2016/05/27/understanding-the-elm-type-system.html))
 
 #### Getting acquainted
 
-A good way to familiarize yourself with type annotations is to browser through the packages 
+A good way to familiarize yourself with type annotations is to browser through official or user contributed packages and check the annotations. 
 
 ~~~~ {.Elm:hs name="code"}
 not : Bool -> Bool
@@ -166,12 +173,6 @@ coordinates =
 
 #### Types for Functions
 
-
-
-~~~~ {.Elm:hs name="code"}
-double : Int -> Int
-double x = x * 2
-~~~~
 
 Things get interesting with multiple arrows. "mult has type `Int` goes to `Int` goes to `Int`."
 

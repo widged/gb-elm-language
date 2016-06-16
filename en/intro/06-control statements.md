@@ -39,17 +39,11 @@ The condition must evaluate to True or False.
 - TYPE MISMATCH --
 ```
 
-
 ## Case-of statements
-
-
-
 
 Case tries to match the value of type against patterns defined after the `of` keyword
 ```elm
-type User
-    = Activated
-    | Deleted
+type User = Activated | Deleted
 
 update state =
   case state of
@@ -60,6 +54,7 @@ update state =
 ```
 
 In case of passing tags with additional properties, parameters are passed along with type checking
+
 ```elm
 type User
     = Activated Int
@@ -71,9 +66,6 @@ update state =
       -- do something with value
     Deleted values ->
       -- do something with values
-
-update ( Activated 1 )
-update ( Deleted (0, "gone") )
 ```
 
 (source: [learnyouanelm](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/02-starting-out.md))

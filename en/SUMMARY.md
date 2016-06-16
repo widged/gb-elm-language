@@ -9,7 +9,6 @@
      * [Basic Operators](intro/05-basic operators.md)
      * [Control Statement](intro/06-control statements.md)
      * [Scope](intro/07-scope.md)
-     * [Recursion](intro/08-recursion.md)
   * Types
      * [Primitive](type/01-primitive.md)
      * [Function](type/02-function.md)
@@ -21,6 +20,9 @@
      * [Maybe and Result](type/09-maybe and result.md)
      * [Unit Type](type/10-unit type.md)
      * [Type Constructor](type/11-type constructor.md)
+  * Thinking Functionally
+     * [intro](thinking functionally/01-intro.md)
+     * [Recursion](thinking functionally/02-recursion.md)
   * Data Structures
     * [Ordered Array](data-structure/01-array.md)
     * [Set](data-structure/02-set.md)

@@ -2,7 +2,6 @@
 
 The REPL will print the value of the variable after show to the screen to the right. We'll use this to get a feel for Elm's syntax, and to see the result of some basic computations.
 
-
 Here's some simple arithmetic.
 
 ```elm

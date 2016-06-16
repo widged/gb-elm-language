@@ -249,7 +249,7 @@ $ elm repl
 <function> : (a -> b) -> List a -> List b
 ```
 
-`List.map` is a function that takes a function that converts a value of type `a` to a value of type `b`, then take a list of values of type `a`, and returns a list of values of type `b`. It traverses the list and an apply a function to each value in the list, resulting in a new list. As the map function doesn't need to know what is in the list, `(a -> b)` is used. Only the function applied to each element needs to know what type those elements are. 
+`List.map` is a function that takes a function that converts a value of type `a` to a value of type `b`, then take a list of values of type `a`, and returns a list of values of type `b`. Type variables are used `(a -> b)` as the map function doesn't need to know what is in the list. It traverses the list and an apply a function to each value in the list, resulting in a new list. Only the function applied to each element needs to know what type those elements are. 
 
 # Further Reading
 

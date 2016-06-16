@@ -163,6 +163,8 @@ startPosition =
 
 ## Type generalisation with type variables
 
+So in this example, a function that accepts a value of type a really means a function that accepts a value of any type. The important thing is that type a stays the same and type b stays the same. Here are some possiblities for the map function:
+----
 Functions don't necessarily need to be aware of the type of values held in a collection to computer an answer. Take `List.length`. It doesn't really matter whether the values inside the list are ll strings, numbers, or complex records. What we are after is the number of items in the list.
 
 Type variables help with this. Check the `List.length` signature using the REPL.
@@ -173,7 +175,7 @@ $ elm repl
 <function> : List a -> Int
 ```
 
-The lower case letter `a` is a type variable. That means that all values in the list must be of the same type, but that type can be left unspecified. The function returns the length of the list, represented as a `Int`.
+The lower case letter `a` is what is known as a type variable. It is a placeholder for a specific type that is left unspecified. The function will accept values of any type. The only requirement is that all values in the list have the same type. The function returns the length of the list, represented as a `Int`.
 
 ```elm
 $ elm repl
@@ -243,12 +245,10 @@ Note. `List` is called a *type constructor*. However, It can't really exist on i
 
 ## Type Variables
 
-This means that the function works for any types `a` and `b`, as long as we've fixed their values, which usually happens by passing arguments whose types we know. So we could give it a `(Float -> Int)` and a `List Float`, or we could give a `(String -> Action)` and a `List String`, and so on. (This use of "variable" is closer to algebra than JavaScript, in that it's something you or the compiler find based on constraints, not explicitly set to whatever you need it to be.)
+We could give it a `(Float -> Int)` and a `List Float`, or we could give a `(String -> Action)` and a `List String`, and so on. (This use of "variable" is closer to algebra than JavaScript, in that it's something you or the compiler find based on constraints, not explicitly set to whatever you need it to be.)
 
 
 
-
-a and b are what’s known as type variables. They are placeholders for any type. So in this example, a function that accepts a value of type a really means a function that accepts a value of any type. The important thing is that type a stays the same and type b stays the same. Here are some possiblities for the map function:
 
     -- accepts:
     -- a function which accepts an Int and returns a String

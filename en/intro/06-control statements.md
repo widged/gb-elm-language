@@ -14,15 +14,16 @@ pattern -> expression
 
 If statements always have an else, and the branches must be the same type.
 
-``elm
+```elm
 if powerLevel > 9000 then
-"WHOA!" else
-"meh"
+  "WHOA!" 
+else
+  "meh"
 ```
 
-If statements can be chained.
+If statements can be chained. All the branches of an if need to match so that no matter which one we take, we get back the same type of value overall.
 
-``elm
+```elm
 if n < 0 then
   "n is negative"
 else if n > 0 then
@@ -31,32 +32,13 @@ else
   "n is zero"
 ```
 
-(source: ???)
+The condition must evaluate to True or False. 
 
-All the branches of an if need to match so that no matter which one we take, we get back the same type of value overall.
-```elm
-if a < 1 then
-    "It's zero"
-else
-    "Non-zero"
-
--- Multi-line.
-if y > 0 then
-    "Greater"   
-else if x /= 0 then
-    "Not equals"
-else
-    "silence"
-```    
-
-Elm does not have the notion of “truthiness”.<br/>
-The condition must evaluate to True or False, and nothing else.
 ```elm
 > if 1 then "nope" else "nope again"
 - TYPE MISMATCH --
 ```
 
-(source: [learnyouanelm](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/02-starting-out.md))
 
 ## Case-of statements
 
@@ -72,6 +54,7 @@ case aList of
 Pattern matches go in order. If we put [x] last, it would never match because
 x::xs also matches (xs would be the empty list). Matches do not "fall through".
 The compiler will alert you to missing or extra cases.
+
 Pattern match on a Maybe.
 
 ```elm

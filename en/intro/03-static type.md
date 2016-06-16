@@ -75,6 +75,64 @@ $ elm repl
 
 Both `2` and `2.3` as identified as numbers. A Float is required to represent the answer. 
 
+------
+
+Previously we mentioned that Elm has a static type system. The type
+of every expression is known at compile time, which leads to safer code.
+If you write a program where you try to divide a boolean type with some
+number, it won't even compile. That's good because it's better to catch
+such errors at compile time instead of having your program crash.
+Everything in Elm has a type, so the compiler can reason quite a lot
+about your program before compiling it.
+
+Unlike Java or Pascal, Elm has type inference. If we write a number,
+we don't have to tell Elm it's a number. It can *infer* that on its
+own, so we don't have to explicitly write out the types of our functions
+and expressions to get things done. We covered some of the basics of
+Elm with only a very superficial glance at types. However,
+understanding the type system is a very important part of learning
+Elm.
+
+A type is a kind of label that every expression has. It tells us in
+which category of things that expression fits. The expression `True` is a
+boolean, `"hello"` is a string, etc.
+
+Now we'll use elm-repl to examine the types of some expressions. We'll do
+that by typing expressions into elm-repl. After each valid expression, the
+repl tells us its type. Let's give it a whirl.
+
+TODO: Add a section on elm-repl, or come up with a different way to accomplish
+this in the online editor. Maybe type holes?
+
+```elm
+> 'a'
+'a' : Char
+> True
+True : Bool
+> [1, 2]
+[1,2] : List number
+> (True, 'a')
+(True, 'a') : ( Bool, Char )
+> 4 == 5
+False : Bool
+```
+
+Here we see that typing an expression prints
+out the value of that expression followed by `:` and its type.
+`:` is read as "has type of". Explicit types are always denoted with the
+first letter in capital case. `'a'`, as it would seem, has a type of `Char`.
+It's not hard to conclude that it stands for *character*. `True` is of a
+`Bool` type. That makes sense. Examining the type of
+`[1, 2]` yields a `List number`. The lowercase `n` in the type of number indicates
+a built-in type variable. We'll get to type variables later in this chapter.
+A number can be either an `Int` or a `Float`, and will concretely become one or
+the other depending on how it's used. Unlike lists, each tuple length has
+its own type. So the expression of `(True, 'a')` has a type of `( Bool, Char )`,
+whereas an expression such as `('a','b','c')` would have the type of
+`( Char, Char, Char )`. `4 == 5` will always return `False`, so its type is `Bool`.
+
+(source: [learnyouanelm-03](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/03-types.md))
+
 ## Type annotations
 
 Though it is not mandatory, it is best practice to always add type annotations. The annotation is a form of documentation, which is verified by the compiler. They provide clear information as to how many arguments a function takes, what their types are, what order to pass them, and what the return type is. In the early stages of a program, type annotations help you think about what the function should be doing. In the long run, they improve the reliability, clarity, and scalability of your programs.
@@ -405,59 +463,7 @@ True : Bool
 
 # Believe the type
 
-Previously we mentioned that Elm has a static type system. The type
-of every expression is known at compile time, which leads to safer code.
-If you write a program where you try to divide a boolean type with some
-number, it won't even compile. That's good because it's better to catch
-such errors at compile time instead of having your program crash.
-Everything in Elm has a type, so the compiler can reason quite a lot
-about your program before compiling it.
 
-Unlike Java or Pascal, Elm has type inference. If we write a number,
-we don't have to tell Elm it's a number. It can *infer* that on its
-own, so we don't have to explicitly write out the types of our functions
-and expressions to get things done. We covered some of the basics of
-Elm with only a very superficial glance at types. However,
-understanding the type system is a very important part of learning
-Elm.
-
-A type is a kind of label that every expression has. It tells us in
-which category of things that expression fits. The expression `True` is a
-boolean, `"hello"` is a string, etc.
-
-Now we'll use elm-repl to examine the types of some expressions. We'll do
-that by typing expressions into elm-repl. After each valid expression, the
-repl tells us its type. Let's give it a whirl.
-
-TODO: Add a section on elm-repl, or come up with a different way to accomplish
-this in the online editor. Maybe type holes?
-
-```elm
-> 'a'
-'a' : Char
-> True
-True : Bool
-> [1, 2]
-[1,2] : List number
-> (True, 'a')
-(True, 'a') : ( Bool, Char )
-> 4 == 5
-False : Bool
-```
-
-Here we see that typing an expression prints
-out the value of that expression followed by `:` and its type.
-`:` is read as "has type of". Explicit types are always denoted with the
-first letter in capital case. `'a'`, as it would seem, has a type of `Char`.
-It's not hard to conclude that it stands for *character*. `True` is of a
-`Bool` type. That makes sense. Examining the type of
-`[1, 2]` yields a `List number`. The lowercase `n` in the type of number indicates
-a built-in type variable. We'll get to type variables later in this chapter.
-A number can be either an `Int` or a `Float`, and will concretely become one or
-the other depending on how it's used. Unlike lists, each tuple length has
-its own type. So the expression of `(True, 'a')` has a type of `( Bool, Char )`,
-whereas an expression such as `('a','b','c')` would have the type of
-`( Char, Char, Char )`. `4 == 5` will always return `False`, so its type is `Bool`.
 
 Functions also have types. When writing our own functions, we can choose
 to give them an explicit type declaration. This is generally considered

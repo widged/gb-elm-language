@@ -146,6 +146,58 @@ Any type annotation must include a `:` and the type of the value returned. The `
 
 With functions that accept arguments, the argument types are added before the result value type. Each argument type is followed by a `->` that can be read as “returns”. Think of the rightmost type as the type of the return value, and the others as arguments. The pattern is then `function name : 1st arg type -> 2nd arg type -> return type`
 
+---------
+
+Functions also have types. When writing our own functions, we can choose
+to give them an explicit type declaration. This is generally considered
+to be good practice. From here on, we'll give all the functions that we
+make type declarations. Remember the first function we made previously
+that doubles a number? Here's how it looks like with a type declaration.
+
+```elm
+doubleMe : number -> number
+doubleMe x =
+    x + x
+```
+(source: [learnyouanelm-03](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/03-types.md))
+
+
+`doubleMe` has a type of `number -> number`, meaning that it maps
+from a number to a number. That's because it takes one number as a
+parameter and returns another as a result.
+We didn't have to give this function a type declaration because
+the compiler can infer by itself that it's a function from a number to a
+number but we did anyway. But how do we write out the type of a function
+that takes several parameters? Here's a simple function that takes three
+integers and adds them together:
+
+```elm
+addThree : Int -> Int -> Int -> Int
+addThree x y z =
+    x + y + z
+```
+
+The parameters are separated with `->` and there's no special distinction
+between the parameters and the return type. The return type is the last
+item in the declaration and the parameters are the first three. Later on
+we'll see why they're all just separated with `->` instead of having some
+more explicit distinction between the return types and the parameters
+like `Int, Int, Int -> Int` or something.
+
+If you want to give your function a type declaration but are unsure as
+to what it should be, you can always just write the function without it
+and then check it in elm-repl. Functions are expressions too, so it works on
+them without a problem. To write a multi-line expression in elm-repl, add a
+backslash to the end of each line you want to continue on the line below,
+like this.
+
+```elm
+> addThree x y z = \
+|     x + y + z
+<function> : number -> number -> number -> number
+```
+(source: [learnyouanelm-03](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/03-types.md))
+
 ### Basics
 
 ```elm
@@ -458,64 +510,6 @@ True : Bool
 ```
 
 (source: [elm-explained](https://github.com/niksilver/elm-explained))
-
-# ------
-
-# Believe the type
-
-
-
-Functions also have types. When writing our own functions, we can choose
-to give them an explicit type declaration. This is generally considered
-to be good practice. From here on, we'll give all the functions that we
-make type declarations. Remember the first function we made previously
-that doubles a number? Here's how it looks like with a type declaration.
-
-```elm
-doubleMe : number -> number
-doubleMe x =
-    x + x
-```
-(source: [learnyouanelm-03](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/03-types.md))
-
-
-`doubleMe` has a type of `number -> number`, meaning that it maps
-from a number to a number. That's because it takes one number as a
-parameter and returns another as a result.
-We didn't have to give this function a type declaration because
-the compiler can infer by itself that it's a function from a number to a
-number but we did anyway. But how do we write out the type of a function
-that takes several parameters? Here's a simple function that takes three
-integers and adds them together:
-
-```elm
-addThree : Int -> Int -> Int -> Int
-addThree x y z =
-    x + y + z
-```
-
-The parameters are separated with `->` and there's no special distinction
-between the parameters and the return type. The return type is the last
-item in the declaration and the parameters are the first three. Later on
-we'll see why they're all just separated with `->` instead of having some
-more explicit distinction between the return types and the parameters
-like `Int, Int, Int -> Int` or something.
-
-If you want to give your function a type declaration but are unsure as
-to what it should be, you can always just write the function without it
-and then check it in elm-repl. Functions are expressions too, so it works on
-them without a problem. To write a multi-line expression in elm-repl, add a
-backslash to the end of each line you want to continue on the line below,
-like this.
-
-```elm
-> addThree x y z = \
-|     x + y + z
-<function> : number -> number -> number -> number
-```
-(source: [learnyouanelm-03](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/03-types.md))
-
-
 
 
 

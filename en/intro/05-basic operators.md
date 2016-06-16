@@ -1,10 +1,10 @@
 **Elm 0.17**, **shareable** 
 
-# Operators
+## Operators
 
 Elm operators are _functions_. For instance, `*` is a function that takes two numbers and multiplies them. As you've seen, we call it by sandwiching it between them. This is what we call an *infix* function. You can learn more about these in the chapter on [functions](../type/03-function.md).
 
-## Arithmetic
+### Arithmetic
 
 |Operator|Description|Type hint|
 |--------|-----------|----------|
@@ -39,7 +39,7 @@ $ elm repl
 > 50 * (100 - 4999) -- -244950
 ```
 
-## Comparison
+### Comparison
 
 |Operator|Description|Type hint|
 |--------|-----------|----------|
@@ -62,11 +62,7 @@ $ elm repl
 1 < 10 -- True
 ```
 
-
-(source: ???)
-
-
-## Logical
+### Logical
 
 |Operator|Description|Type hint|
 |--------|-----------|----------|
@@ -86,7 +82,7 @@ $ elm repl
 > not (True && True) -- False
 ```
 
-## Function Composition
+### Function Composition
 
 |Operator|Description|Type hint|
 |--------|-----------|----------|
@@ -97,7 +93,7 @@ $ elm repl
 
 (source: [learnyouanelm](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/02-starting-out.md))
 
-### Pipes
+#### Pipes
 
 The |> operator chains function calls. It pipes the result of a computation to the next function. 
 
@@ -111,7 +107,7 @@ $ elm repl
 Easier to read than 
 `String.trimRight (String.repeat 2 (String.toUpper ("hello " ++ "elm! ")))`
 
-## Other
+### Other
 
 |Operator|Description|Type hints|
 |--------|-----------|----------|
@@ -120,3 +116,5 @@ Easier to read than
 |`as`|keyword that creates aliases for values `(x, y) as t == t = (x, y)`|`a -> a`|
 
 (source: [learnyouanelm](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/02-starting-out.md))
+
+### Further Reading

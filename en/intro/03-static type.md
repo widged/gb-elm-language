@@ -173,7 +173,7 @@ $ elm repl
 <function> : List a -> Int
 ```
 
-The lower case letter `a` is what is known as a type variable. It is a placeholder for a specific type that is left unspecified. The function will accept values of any type. The only requirement is that all values in the list have the same type. The function returns the length of the list, represented as a `Int`.
+The lower case letter `a` is what is known as a type variable. It is a placeholder for a specific type that is left unspecified. The only requirement is that all values in the list have the same type. It can be any type. The function returns the length of the list, represented as a `Int`.
 
 ```elm
 $ elm repl

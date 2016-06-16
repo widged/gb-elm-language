@@ -131,6 +131,12 @@ not : Bool -> Bool
 round : Float -> Int
 ```
 
+#### `->` curried function
+
+The key to understanding type annotation in Elm is to acknowledge that at the heart of any functional programming language, we have functions that make and return functions. 
+
+A special case is currying. A function can be called with a single argument and return a function that takes the remaining arguments. With that in mind, a type annotation like `repeatString: Int -> String -> String` can be understood as taking a first argument (`Int`) and returning a curried function that takes the remaining arguments (`String`). When all arguments have been taken, the result is returned (`String`). 
+
 
 #### Collections
 
@@ -144,20 +150,6 @@ myTuple = ("the answer", 42, True)
 
 
 
-## Understand partial function application
-
-Functional programming concepts (like partial application and currying) help unlock the bigger picture behind Elm’s design. (source: [understanding-the-elm-type-system](http://www.adamwaselnuk.com/elm/2016/05/27/understanding-the-elm-type-system.html))
-
-
-The key to understanding type annotation in Elm is to realize that every function is curried by default.
-
-    connectWords : String -> String -> String
-
-As Professor Frisby’s Mostly Adequate Guide to Functional Programming puts it: “You can call a function with fewer arguments than it expects. It returns a function that takes the remaining arguments.”
-
-So if I have a type annotation of a -> b -> c, I can pass a into the function and it will return a function b -> c. If I pass b into that function, then it will return the value c.
-
-(source: [understanding-the-elm-type-system](http://www.adamwaselnuk.com/elm/2016/05/27/understanding-the-elm-type-system.html))
 
 
 ## Type Variables

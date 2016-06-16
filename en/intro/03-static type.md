@@ -55,12 +55,13 @@ Special types
 * Union type: `type Msg = Decrement | Increment`
 
 constrained types
-* number: `Int, Float`
-* Union type: `type Msg = Decrement | Increment`
+* number: `2 + 2.3 -- 4.3 : Float`
+* comparable: `3 > 2 -- True : Bool`
+* appendable: `"hello" ++ " elm" -- "hello elm" : String`
 
 ## Type inference
 
-The Elm compiler has type inference and can figure things out. 
+Elm, like most ML dialects, automatically infers most types.
 
 ```bash
 $ elm repl
@@ -68,9 +69,16 @@ $ elm repl
 4.3 : Float
 ```
 
+Both `2` and `2.3` as identified as numbers. The answer is given as Float.
+
 ## Type annotations
 
-However, it is best practice to always add type annotations. Type annotations improve code by helping you think about what the function should be doing, and serve as compiler-verified documentation. (You know how an out-of-date comment is worse than no comment at all? Well, type annotations never get out of date.) In addition, if you ever want to publish a third-party library, you will need type annotations.
+Though it is not mandatory, it is best practice to add type annotations to make the typing more clear. 
+
+Type annotations specify how many arguments a function takes, what their types are, what order to pass them, and what the return type is. (adapted from [elm-for-js](https://github.com/elm-guides/elm-for-js/blob/master/How%20to%20Read%20a%20Type%20Annotation.md))
+
+Though it is not mandatory, it is best practice to always add type annotations. Type annotations improve code by helping you think about what the function should be doing, and serve as compiler-verified documentation. They provide clear documentation as to the function's return type, the number of arguments, the types of arguments, or errors it may pass.
+
 
 (source: [elm-for-js](https://github.com/elm-guides/elm-for-js/blob/master/How%20to%20Read%20a%20Type%20Annotation.md))
 
@@ -85,9 +93,6 @@ Getting started with static typing can be difficult. Everything seems to go a li
 
 (source: [understanding-the-elm-type-system](http://www.adamwaselnuk.com/elm/2016/05/27/understanding-the-elm-type-system.html))
 
-Adding annotations to our functions to make the typing more clear. They  specify how many arguments a function takes, what their types are, what order to pass them, and what the return type is.
-
-(source: [[https://github.com/elm-guides/elm-for-js/blob/master/How%20to%20Read%20a%20Type%20Annotation.md]])
 
 By paying attention to Type annotations and understanding their syntax, you will write programs that are reliable, scalable, and easy to understand. When you hit tough spots while learning, don’t be shy about exploring functional programming concepts (like partial application and currying) to help unlock the bigger picture behind Elm’s design.
 
@@ -99,7 +104,6 @@ Any type annotation must include a `:`. The `:` means "has type". It is followed
 
 ## Type Annotation
 
-Elm, like most ML dialects, automatically infers most types.
 
 ```elm
 -- function name : 1st arg type -> 2nd arg type -> return type

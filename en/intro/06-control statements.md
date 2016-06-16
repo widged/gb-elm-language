@@ -125,7 +125,7 @@ in
 
 # Pattern matching
 
-Like we said before, you can pattern match with *let* bindings. They're very useful for quickly dismantling a tuple into components and binding them to names and such.
+Pattern match are very useful for quickly dismantling a tuple into components and binding them to names and such.
 
 ```elm
 toPrint = (let (a,b,c) = (1,2,3) in a+b+c) * 100

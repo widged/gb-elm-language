@@ -84,7 +84,7 @@ add : Int -> Int -> Int
 add x y = x + y
 ```
 
-Any type annotation must include a `:` and the type of the value returned. The `:` means "has type". Types always begin with a capital letter (or open parenthesis).
+Any type annotation must include a `:` and the type of the value returned. The `:` means "has type". Types always begin with a capital letter (or open parenthesis). Note. Whenever a capital letter is followed by a dot, it's a module, not a type. `String.length` means the `length` function in the `String` module.
 
 With functions that accept arguments, the argument types are added before the result value type. Each argument type is followed by a `->` that can be read as “returns”. Think of the rightmost type as the type of the return value, and the others as arguments. The pattern is then `function name : 1st arg type -> 2nd arg type -> return type`
 
@@ -114,6 +114,12 @@ connectWords firstWord secondWord =
 
 This says that `connectWords` is a function that accepts two strings and returns a string. If we look at the function we see that it indeed takes two parameters, firstWord and secondWord, and concatenates them. (source: [understanding-the-elm-type-system](http://www.adamwaselnuk.com/elm/2016/05/27/understanding-the-elm-type-system.html))
 
+```elm
+mult : Int -> Int -> Int
+mult x y = x * y
+```
+
+
 #### Getting acquainted
 
 A good way to familiarize yourself with type annotations is to browser through official or user contributed packages and check the annotations. 
@@ -133,12 +139,9 @@ myTuple : (String, Int, Bool)
 myTuple = ("the answer", 42, True)
 ~~~~
 
-
 There's one special type with only one value of that type. Both the type and value are read as "unit" and written as () . Unit is often used as a placeholder value, since if we know the type, we can anticipate the value.
 
-Note. Whenever a capital letter is followed by a dot, it's a module, not a type. `String.length` means the `length` function in the `String` module.
 
-(source: ???)
 
 ----
 
@@ -174,12 +177,6 @@ coordinates =
 #### Types for Functions
 
 
-Things get interesting with multiple arrows. "mult has type `Int` goes to `Int` goes to `Int`."
-
-~~~~ {.Elm:hs name="code"}
-mult : Int -> Int -> Int
-mult x y = x * y
-~~~~
 
 Function arguments are passed in parentheses.
 

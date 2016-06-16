@@ -35,41 +35,29 @@ problem may actually be in how the left and right arguments interact.
 ```
 
 
-
-
 ## Types
 
-Elm has:
-* Strings: `"hello"`. Strings are _not_ lists of characters.
+Elm has types for primitives:
+* Strings: `"hello"`. 
 * Chars: `'a'`
 * Named Functions: `isNegative n = n < 0`, `avg x y = (x+y)/2`
 * Anonymous functions:`(\ x y -> (x + y) / 2)`
-* Aliases: `type alias Point={x=0,y=0}`
 
-(source: ???)
-
-### Collections
+Basic types for collections:
 * Lists (all elements must have the same type): `["one","two","three"]`
 * Tuples (fixed number of values, any mix of types): `("Dave",True) `
 * Records (key-value pairs): `{x = 0,y = 10}`
+* [Array](http://package.elm-lang.org/packages/elm-lang/core/3.0.0/Array)
+* [Dict](http://package.elm-lang.org/packages/elm-lang/core/3.0.0/Dict)
+* [Set](http://package.elm-lang.org/packages/elm-lang/core/3.0.0/Set)
 
-(source: ???)
+Special types
+* Aliases: `type alias Point={x=0,y=0}`
+* Union type: `type Msg = Decrement | Increment`
 
-* Core library also has:
-  * [Array](http://package.elm-lang.org/packages/elm-lang/core/3.0.0/Array)
-  * [Dict](http://package.elm-lang.org/packages/elm-lang/core/3.0.0/Dict)
-  * [Set](http://package.elm-lang.org/packages/elm-lang/core/3.0.0/Set)
-
-(source: [learnyouanelm](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/02-starting-out.md))
-
-
-Core library also has:
- * [Array](http://package.elm-lang.org/packages/elm-lang/core/3.0.0/Array)
- * [Dict](http://package.elm-lang.org/packages/elm-lang/core/3.0.0/Dict)
- * [Set](http://package.elm-lang.org/packages/elm-lang/core/3.0.0/Set)
+Custom types defined in official or community contributed packages.
 
 (source: [learnyouanelm](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/02-starting-out.md))
-
 
 ## Type inference
 

@@ -84,7 +84,15 @@ add : Int -> Int -> Int
 add x y = x + y
 ```
 
-Any type annotation must include a `:`. The `:` means "has type". It is followed by the type of the arguments returned (if any) and the type of the value returned. Types always begin with a capital letter (or open parenthesis). (source: [elm-for-js](https://github.com/elm-guides/elm-for-js/blob/master/How%20to%20Read%20a%20Type%20Annotation.md))
+Any type annotation must include a `:` and the return type. The `:` means "has type". 
+
+With functions that accept arguments,  the argument types are added before the result value type. Each argument type is followed by a `->` that can be read as “returns”. Think of the rightmost type as the type of the return value, and the others as arguments. The pattern is then `function name : 1st arg type -> 2nd arg type -> return type`
+
+Types always begin with a capital letter (or open parenthesis). (source: [elm-for-js](https://github.com/elm-guides/elm-for-js/blob/master/How%20to%20Read%20a%20Type%20Annotation.md))
+
+
+
+
 
 #### No parameters. Just return value
 
@@ -97,7 +105,7 @@ You can read "answer has type Int; answer equals forty-two". (source: [elm-for-j
 
 #### Parameters and a return value
 
-When the function accepts on or more arguments, the argument types are added before the result value type and each followed by a `->` that can be read as “returns”. The pattern is then `function name : 1st arg type -> 2nd arg type -> return type`
+
 
 ```elm
 greeting : String -> String
@@ -137,6 +145,7 @@ map: (a -> b) -> List a -> List b
 
 (source: [learnyouanelm](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/02-starting-out.md))
 
+
 Pattern matching on record fields
 ```elm
 -- Requires the argument with x and y fields
@@ -159,9 +168,6 @@ coordinates =
 
 #### Types for Functions
 
-Functions have types too. -> is used to separate the arguments and return value in the types of functions. It reads as "goes to". So for example, String.length : String -> Int is pronounced "string-dot-length has type String goes to Int".
-
-Think of the rightmost type as the type of the return value, and the others as arguments.
 
 
 ~~~~ {.Elm:hs name="code"}

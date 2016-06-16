@@ -58,13 +58,15 @@ Special types
 
 The Elm compiler has type inference and can figure things out. (check it out using the REPL)
 
-However, it is best practice to always add type annotations. Type annotations improve code by helping you think about what the function should be doing, and serve as compiler-verified documentation. (You know how an out-of-date comment is worse than no comment at all? Well, type annotations never get out of date.) In addition, if you ever want to publish a third-party library, you will need type annotations.
-
-(source: [elm-for-js](https://github.com/elm-guides/elm-for-js/blob/master/How%20to%20Read%20a%20Type%20Annotation.md))
 
 
 
 ## Type annotations
+
+However, it is best practice to always add type annotations. Type annotations improve code by helping you think about what the function should be doing, and serve as compiler-verified documentation. (You know how an out-of-date comment is worse than no comment at all? Well, type annotations never get out of date.) In addition, if you ever want to publish a third-party library, you will need type annotations.
+
+(source: [elm-for-js](https://github.com/elm-guides/elm-for-js/blob/master/How%20to%20Read%20a%20Type%20Annotation.md))
+
 
 ```elm
 add : Int -> Int -> Int

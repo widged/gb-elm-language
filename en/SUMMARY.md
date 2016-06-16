@@ -6,9 +6,10 @@
      * [Module System, Imports, Exports](intro/02-module system.md)
      * [Static Types](intro/03-static type.md)
      * [Comments](intro/04-comments.md)
-     * [Basic Operators](intro/04-basic operators.md)
-     * [Control Statement](intro/05-control statements.md)
-     * [Pattern Matching](07-pattern matching.md)
+     * [Basic Operators](intro/05-basic operators.md)
+     * [Control Statement](intro/06-control statements.md)
+     * [Pattern Matching](intro/07-pattern matching.md)
+     * 
   * Types
      * [Primitive](type/01-primitive.md)
      * [Constrained Types](type/02-constrained type.md)

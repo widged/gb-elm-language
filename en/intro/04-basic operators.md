@@ -51,11 +51,12 @@ $ elm repl
 (source: [learnyouanelm](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/02-starting-out.md))
 
 ```elm
-5 == 5 -- True
-1 == 0 -- False
-5 /= 5 -- False
-5 /= 4 -- True
-"hello" == "hello" -- True
+$ elm repl
+> 5 == 5 -- True
+> 1 == 0 -- False
+> 5 /= 5 -- False
+> 5 /= 4 -- True
+> "hello" == "hello" -- True
 ```
 
 ## Logical
@@ -70,11 +71,12 @@ $ elm repl
 (source: [learnyouanelm](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/02-starting-out.md))
 
 ```elm
-True && False -- False
-True && True -- True
-False || True -- True
-not False -- True
-not (True && True) -- False
+$ elm repl
+> True && False -- False
+> True && True -- True
+> False || True -- True
+> not False -- True
+> not (True && True) -- False
 ```
 
 ## Function Composition
@@ -87,6 +89,20 @@ not (True && True) -- False
 |`>>`|same as before except arguments first applied to the function from the left side|`(a -> b) -> (b -> c) -> a -> c`
 
 (source: [learnyouanelm](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/02-starting-out.md))
+
+### Pipes
+
+The |> operator chains function calls. It pipes the result of a computation to the next function. 
+
+```elm
+$ elm repl
+> import String
+> "hello " ++ "elm! " |> String.toUpper |> String.repeat 2 |> String.trimRight
+"HELLO ELM! HELLO ELM!" : String
+```
+
+Easier to read than 
+`String.trimRight (String.repeat 2 (String.toUpper ("hello " ++ "elm! ")))`
 
 ## Other
 

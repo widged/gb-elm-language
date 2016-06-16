@@ -88,6 +88,8 @@ Any type annotation must include a `:` and the type of the value returned. The `
 
 With functions that accept arguments, the argument types are added before the result value type. Each argument type is followed by a `->` that can be read as “returns”. Think of the rightmost type as the type of the return value, and the others as arguments. The pattern is then `function name : 1st arg type -> 2nd arg type -> return type`
 
+#### Simple patterns
+
 ```elm
 answer : Int
 answer = 42

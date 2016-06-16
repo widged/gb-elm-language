@@ -1,15 +1,16 @@
 # Summary
 
 * Elm Language
-  * Intro
+  * [Intro](intro/cover.md)
      * [Introduction](intro/01-intro.md)
      * [Module System, Imports, Exports](intro/02-module system.md)
      * [Static Types](intro/03-static type.md)
-     * [Comments](intro/04-comments.md)
-     * [Basic Operators](intro/05-basic operators.md)
-     * [Control Statement](intro/06-control statements.md)
-     * [Scope](intro/07-scope.md)
-  * Types
+   * [Program Flow](program-flow/cover.md)
+     * [Comments](program-flow/01-comments.md)
+     * [Basic Operators](program-flow/02-basic operators.md)
+     * [Control Statement](program-flow/03-control statements.md)
+     * [Scope](program-flow/04-scope.md)
+  * [Types](type/cover.md)
      * [Primitive](type/01-primitive.md)
      * [Function](type/02-function.md)
      * [List](type/03-list.md)
@@ -20,10 +21,10 @@
      * [Maybe and Result](type/09-maybe and result.md)
      * [Unit Type](type/10-unit type.md)
      * [Type Constructor](type/11-type constructor.md)
-  * Thinking Functionally
+  * [Thinking Functionally](thinking functionally/cover.md)
      * [intro](thinking functionally/01-intro.md)
      * [Recursion](thinking functionally/02-recursion.md)
-  * Data Structures
+  * [Data Structures](data-structures/cover.md)
     * [Ordered Array](data-structure/01-array.md)
     * [Set](data-structure/02-set.md)
     * [Dict](data-structure/03-dict.md)

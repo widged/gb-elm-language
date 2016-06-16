@@ -1,4 +1,4 @@
-**Elm 0.??**, **copied, please ignore** 
+**Elm 0.17**, **shareable** 
 
 # Scope
 
@@ -47,6 +47,16 @@ cylinder r h =
         sideArea + 2 * topArea
 ```
 
+or 
+
+```elm
+distanceFrom (originX, originY) (x, y) =
+    let dx = x - originX
+        dy = y - originY
+    in sqrt (dx^2 + dy^2)
+```
+
+or
 
 ```elm
 let
@@ -54,7 +64,6 @@ let
 in
   { model | user = activeUsers}
 ```
-(source: [learnyouanelm](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/02-starting-out.md))
 
 After the `let`, you can place as many definitions as you like. The names that you define in the *let* part are accessible to both the let and in part. Notice that the names are also aligned in a single column.
 
@@ -64,20 +73,8 @@ Let bindings are expressions themselves. That means you can cram it in almost an
 toPrint = 4 * (let a = 9 in a + 1) + 2
 42
 ```
-(source: [learnyouanelm-04](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/04-syntax-in-functions.md))
 
-
-
-
-```elm
-distanceFrom (originX, originY) (x, y) =
-    let dx = x - originX
-        dy = y - originY
-    in sqrt (dx^2 + dy^2)
-```
-
-
-You can even write type annotations, although you can't define new types.
+You can even write type annotations. However, you can't define new types.
 
 (source: [elm-for-js](https://github.com/elm-guides/elm-for-js/blob/master/Scope.md) and [learnyouanelm-04](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/04-syntax-in-functions.md))
 

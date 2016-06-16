@@ -27,46 +27,24 @@ True : Bool
 False : Bool
 ```
 
-
 ## Int
 
-`Int` stands for integer. It's used for whole numbers. `7` can be an `Int` but
-`7.2` cannot. `Int` is bounded, which means that it has a minimum and a
-maximum value. The maximum possible value of `Int` is
-`2147483647` and the `minimum` is `-2147483648`.
+`Int` stands for integer. It's used for whole numbers. `7` can be an `Int` but `7.2` cannot. `Int` is bounded, which means that it has a minimum and a maximum value. The maximum possible value of `Int` is `2147483647` and the `minimum` is `-2147483648`.
 
 ## Float
 
-`Float` is a floating point with the same properties as JavaScript floats.
+`Float` is a floating point.
 
 ```elm
 circumference : Float -> Float
 circumference r =
     2 * pi * r
-```
-
-```elm
 toPrint = circumference 4.0
 25.132742
 ```
 
 (source: ???)
 
-## Numbers
-
-Numeric types are `number` and `Float`, `number` represents both `Int` and `Float`:
-```elm
-> 1
-1 : number
-> 2.0
-2 : Float
-> truncate 0.1
-0 : Int
-> truncate 1
-1 : Int
-```
-
-(source: [learnyouanelm](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/02-starting-out.md))
 
 
 --------------------------------------------------

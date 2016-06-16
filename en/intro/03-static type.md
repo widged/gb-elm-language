@@ -88,7 +88,7 @@ Any type annotation must include a `:` and the type of the value returned. The `
 
 With functions that accept arguments, the argument types are added before the result value type. Each argument type is followed by a `->` that can be read as “returns”. Think of the rightmost type as the type of the return value, and the others as arguments. The pattern is then `function name : 1st arg type -> 2nd arg type -> return type`
 
-#### Simple patterns
+### Basics
 
 ```elm
 answer : Int
@@ -121,7 +121,7 @@ mult : Int -> Int -> Int
 mult x y = x * y
 ```
 
-#### Getting acquainted
+### Getting acquainted
 
 A good way to familiarize yourself with type annotations is to browse through official or user contributed packages and check the annotations. This will help you develop a feel for them.
 
@@ -130,13 +130,13 @@ not : Bool -> Bool
 round : Float -> Int
 ```
 
-#### `->` "goes to" curried function
+### -> "goes to" curried function
 
 The key to understanding type annotation in Elm is to acknowledge that at the heart of any functional programming language, we have functions that make and return functions. 
 
 A special case is currying. A function can be called with a single argument and return a function that takes the remaining arguments. With that in mind, a type annotation like `repeatString: Int -> String -> String` can be understood as taking a first argument (`Int`) and returning a curried function that takes the remaining arguments (`String`). When all arguments have been taken, the result is returned (`String`). 
 
-#### Annotations for collections
+### Collections: Collection type and value type
 
 With collections like List, tuples, records, annotations take a slightly different form. They specify both the type of the collection and the type of value held in the collection. 
 
@@ -148,15 +148,73 @@ flagColors: ["Black", "Yellow", "Red"]
 
 Tuple:
 ```elm
-myTuple : (String, Int, Bool)
-myTuple = ("the answer", 42, True)
+answerToEverything : (String, Int, Bool)
+answerToEverything = ("the answer", 42, True)
 ```
 
+Record:
+```elm
+startPosition : { x : Float, y : Float }
+startPosition =
+    { x = 0,
+      y = 0
+    }    
+```
 
-#### Collections
+## Generalisation with type variables
+
+Elm allows you to easily write very general functions if they don't use any specific behavior of the types in them. Functions that have type variables are called *polymorphic functions*. 
+
+For instance, if you use the REPL to check the type signature of different List functions, you will see that many are followed by a lowercase letter rather than a specific value type. 
+
+```elm
+$elm repl
+> List.length
+<function> : List a -> Int
+```
+
+The lower case letter `a` is a type variable. That means that `a` can be of any type. It doesn't really matter if it is a list of strings, a list of numbers, or a list of complex records. What we are after is the length of that list, represented as an `Int`.
 
 
 
+
+Hmmm! What is this `a`? Is it a type? Remember that we previously stated that types are written in capital case, so it can't exactly be a type. Because it's not in capital case it's actually a *type variable*. That means that `a` can be of any type. This is much like generics in other languages, only in Elm it's much more powerful because it 
+
+Although type variables can have names longer than one character, we usually give them names of a, b, c, d …
+
+
+(source: [learnyouanelm-03](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/03-types.md))
+
+If you look at the List library,  [List.map](http://package.elm-lang.org/packages/elm-lang/core/latest/List#map) is defined as.
+
+```elm
+List.map : (a -> b) -> List a -> List b
+```
+
+It has lowercase type names, which are *type variables*. This means that the function works for any types `a` and `b`, provided that all occurrences of `a` resolve to the same type and all occurrences of `b` resolve to the same type. `List a` shows that a list can only hold one type, but you get to pick what that is. Then `List.map` can traverse a list and apply a function to it, without knowing what's in the list. Only the function applied to each element needs to know what type those elements are.
+
+By convention, type variables are single letters starting at the beginning of the alphabet, although (almost) any lowercase string will work. Occasionally it's helpful to use another letter or a descriptive word, especially if you have more than one type variable. For example, `Dict k v` reminds us that the types variables are the keys and values.
+
+It's possible for a type to have any number of type variables, but more than two is rare.
+
+```elm
+show 4 == 5 -- False
+show "Hello" ++ "!" -- "Hello!"
+```
+Remember `fst`? It returns the first component of a pair. Let's examine its type.
+
+```elm
+repl> fst
+<function> : ( a, b ) -> a
+```
+
+We see that `fst` takes a tuple which contains two types and returns an element which is of the same type as the pair's first component. That's why we can use `fst` on a pair that contains any two types. Note that just because `a` and `b` are different type variables, they don't have to be different types. It just states that the first component's type and the return value's type are the same.
+
+(source: [learnyouanelm-03](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/03-types.md))
+
+Note. `List` is called a *type constructor*. However, It can't really exist on its own.
+
+(source: [learnyouanelm-03](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/03-types.md))
 
 ## Type Variables
 
@@ -176,7 +234,7 @@ Type variables let us write generic code, like lists and other containers that c
 
 If `List a` is a list of any type, what is just `List`? Technically it's called a *type constructor*, but the better answer is that it's not really anything. It can't really exist on its own. The best way to think of it is that `List a` is the base type, and sometimes the type variable `a` gets replaced with a real type.
 
-(source: [[https://github.com/elm-guides/elm-for-js/blob/master/How%20to%20Read%20a%20Type%20Annotation.md]])
+(source: [elm-for-js](https://github.com/elm-guides/elm-for-js/blob/master/How%20to%20Read%20a%20Type%20Annotation.md))
 
 
 a and b are what’s known as type variables. They are placeholders for any type. So in this example, a function that accepts a value of type a really means a function that accepts a value of any type. The important thing is that type a stays the same and type b stays the same. Here are some possiblities for the map function:
@@ -225,16 +283,6 @@ multiply {x,y} =
 
 (source: [learnyouanelm](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/02-starting-out.md))
 
-Annotating records
-```elm
-coordinates : { x : Float, y : Float }
-coordinates =
-    { x = 0,
-      y = 0
-    }    
-```
-
-(source: [learnyouanelm](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/02-starting-out.md))
 
 #### Types for Functions
 
@@ -255,52 +303,7 @@ Things get interesting with multiple arrows.
 
 
 
-## Type variables
 
-What do you think is the type of the List `length` function? Because `length` takes a list of any type and returns either `Just` the first element or `Nothing`, so what could it be? Let's check!
-
-```elm
-repl> List.length
-<function> : List a -> Int
-```
-
-Hmmm! What is this `a`? Is it a type? Remember that we previously stated that types are written in capital case, so it can't exactly be a type. Because it's not in capital case it's actually a *type variable*. That means that `a` can be of any type. This is much like generics in other languages, only in Elm it's much more powerful because it allows us to easily write very general functions if they don't use any specific behavior of the types in them. Functions that have type variables are called *polymorphic functions*. The type declaration of `length` states that it takes a list of any type and returns an `Int` representing the length of that list.
-
-Although type variables can have names longer than one character, we usually give them names of a, b, c, d …
-
-
-(source: [learnyouanelm-03](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/03-types.md))
-
-If you look at the List library,  [List.map](http://package.elm-lang.org/packages/elm-lang/core/latest/List#map) is defined as.
-
-```elm
-List.map : (a -> b) -> List a -> List b
-```
-
-It has lowercase type names, which are *type variables*. This means that the function works for any types `a` and `b`, provided that all occurrences of `a` resolve to the same type and all occurrences of `b` resolve to the same type. `List a` shows that a list can only hold one type, but you get to pick what that is. Then `List.map` can traverse a list and apply a function to it, without knowing what's in the list. Only the function applied to each element needs to know what type those elements are.
-
-By convention, type variables are single letters starting at the beginning of the alphabet, although (almost) any lowercase string will work. Occasionally it's helpful to use another letter or a descriptive word, especially if you have more than one type variable. For example, `Dict k v` reminds us that the types variables are the keys and values.
-
-It's possible for a type to have any number of type variables, but more than two is rare.
-
-```elm
-show 4 == 5 -- False
-show "Hello" ++ "!" -- "Hello!"
-```
-Remember `fst`? It returns the first component of a pair. Let's examine its type.
-
-```elm
-repl> fst
-<function> : ( a, b ) -> a
-```
-
-We see that `fst` takes a tuple which contains two types and returns an element which is of the same type as the pair's first component. That's why we can use `fst` on a pair that contains any two types. Note that just because `a` and `b` are different type variables, they don't have to be different types. It just states that the first component's type and the return value's type are the same.
-
-(source: [learnyouanelm-03](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/03-types.md))
-
-Note. `List` is called a *type constructor*. However, It can't really exist on its own.
-
-(source: [learnyouanelm-03](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/03-types.md))
 
 
 

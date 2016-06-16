@@ -2,7 +2,6 @@
 
 
 
-
 # Scope
 
 ## Variable definitions

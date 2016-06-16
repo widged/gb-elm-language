@@ -71,9 +71,7 @@ charName c =
         'c' -> "Cecil"
 ```
 
-the compiler will notice that we haven't accounted for all possibilites,
-either by specifying a pattern for every possible value of c, or by
-including a wildcard that matches on every value. It will say:
+the compiler will notice that we haven't accounted for all possibilites, either by specifying a pattern for every possible value of c, or by including a wildcard that matches on every value. It will say:
 
 ```
 This `case` does not have branches for all possibilities.
@@ -89,11 +87,7 @@ You need to account for the following values:
 Add a branch to cover this pattern!
 ```
 
-It complains that we have missing patterns, and rightfully so.
-When making patterns, we should always include a catch-all pattern so
-that our program doesn't crash if we get some unexpected input. Features
-like this are why Elm can all but guarantee no runtime errors in
-your code.
+It complains that we have missing patterns, and rightfully so. When making patterns, we should always include a catch-all pattern so that our program doesn't crash if we get some unexpected input. Features like this are why Elm can all but guarantee no runtime errors in your code.
 
 As you can see, the syntax for case expressions is pretty simple:
 

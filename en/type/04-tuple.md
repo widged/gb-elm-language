@@ -2,6 +2,17 @@
 
 # Operations on tuples
 
+You can also pair up types into tuples, for example `(Int, Bool)`. This expands to arbitrarily many elements, i.e. `(Int, Float, Int)` is a 3-tuple with first element `Int`, second `Float`, third `Int`.
+
+```elm
+myTuple : (String, Int, Bool)
+myTuple = ("the answer", 42, True)
+```
+
+(source: [elm-for-js](https://github.com/elm-guides/elm-for-js/blob/master/How%20to%20Read%20a%20Type%20Annotation.md))
+
+---------
+
 (,), (,,), (,,,), etc.
 Functions that construct tuples from arguments.
 

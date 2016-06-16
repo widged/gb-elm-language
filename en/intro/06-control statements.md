@@ -42,28 +42,7 @@ The condition must evaluate to True or False.
 
 ## Case-of statements
 
-Use case statements to pattern match on different possibilities.
 
-```elm
-case aList of
-  [] -> "matches the empty list"
-  [x]-> "matches a list of exactly one item, " ++ toString x
-  x::xs -> "matches a list of at least one item whose head is " ++ toString x
-```
-
-Pattern matches go in order. If we put [x] last, it would never match because
-x::xs also matches (xs would be the empty list). Matches do not "fall through".
-The compiler will alert you to missing or extra cases.
-
-Pattern match on a Maybe.
-
-```elm
-case List.head aList of
-  Just x -> "The head is " ++ toString x
-  Nothing -> "The list was empty."
-```
-
-(source: ???)
 
 
 Case tries to match the value of type against patterns defined after the `of` keyword
@@ -377,6 +356,31 @@ One more thing — you can't use ++ in pattern matches. If you tried to pattern 
 *Note:* Not only can we call functions as infix with backticks, we can also define them using backticks. Sometimes it's easier to read that way.
 
 (source: [learnyouanelm-04](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/04-syntax-in-functions.md))
+
+# Pattern matching
+
+Use case statements to pattern match on different possibilities.
+
+```elm
+case aList of
+  [] -> "matches the empty list"
+  [x]-> "matches a list of exactly one item, " ++ toString x
+  x::xs -> "matches a list of at least one item whose head is " ++ toString x
+```
+
+Pattern matches go in order. If we put [x] last, it would never match because
+x::xs also matches (xs would be the empty list). Matches do not "fall through".
+The compiler will alert you to missing or extra cases.
+
+Pattern match on a Maybe.
+
+```elm
+case List.head aList of
+  Just x -> "The head is " ++ toString x
+  Nothing -> "The list was empty."
+```
+
+(source: ???)
 
 # Pattern matching
 

@@ -1,8 +1,8 @@
 **Elm 0.17**, **shareable** 
 
-# Control statements
+## Control statements
 
-## If statements
+### If statements
 
 ```elm
 if condition then value_if_True else value_if_False
@@ -39,7 +39,7 @@ The condition must evaluate to True or False.
 - TYPE MISMATCH --
 ```
 
-## Case-of statements
+### Case-of statements
 
 Case tries to match the value of type against patterns defined after the `of` keyword
 ```elm
@@ -166,12 +166,12 @@ expression is matched against the patterns. The pattern matching action is the s
 (source: [learnyouanelm-04](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/04-syntax-in-functions.md))
 
 
-# Pattern matching
+### Pattern matching
 
 We can evaluate expressions with pattern matching. Pattern matching consists of specifying patterns to which some data should conform and then checking to see if it does and deconstructing the data according to those patterns. 
 
 
-### on a Tuple
+#### on a Tuple
 
 ```elm
 toPrint = (let (a,b,c) = (1,2,3) in a+b+c) * 100
@@ -217,7 +217,7 @@ so we just write a \_.
 (source: [learnyouanelm-04](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/04-syntax-in-functions.md))
 
 
-### on a List
+#### on a List
 
 ```elm
 case aList of
@@ -307,7 +307,7 @@ One more thing — you can't use ++ in pattern matches. If you tried to pattern 
 
 (source: [learnyouanelm-04](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/04-syntax-in-functions.md))
 
-### on a Maybe
+#### on a Maybe
 
 ```elm
 case List.head aList of
@@ -315,18 +315,18 @@ case List.head aList of
   Nothing -> "The list was empty."
 ```
 
-### on record fields
+#### on record fields
 
 ```elm
 -- Requires the argument with x and y fields
 multiply {x,y} = x * y
 ```
 
-# Eager execution by default
+### Eager execution by default
 
 Elm syntax is very similar to Haskell. There is one important difference to keep in mind. Elm is *eager*, unlike Haskell, which is lazy. That means, in Elm, if you call a function, the arguments are fully evaluated before they are passed to the function. Most programming languages are like this, so you won't likely need to think about this very much. (source: [learnyouanelm](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/01-introduction.md))
 
-# Links
+### Further Reading
 
 * [elm-lang style guide](http://elm-lang.org/docs/style-guide)
 * [elm style guide @NodeRedInk](https://github.com/NoRedInk/elm-style-guide)

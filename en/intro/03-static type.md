@@ -250,16 +250,10 @@ We could give it a `(Float -> Int)` and a `List Float`, or we could give a `(Str
 
     -- accepts:
     -- a function which accepts an Int and returns a String
-    -- a List of Integers
-    -- returns:
-    -- a List of Strings
     map : (Int -> String) -> List Int -> List String
 
     -- accepts:
     -- a function which accepts a String and returns a Bool
-    -- a List of Strings
-    -- returns:
-    -- a List of Booleans
     map : (String -> Bool) -> List String -> List Bool
     Here is an example that would violate the type annotation (think of it as the contract) for the map function:
 
@@ -283,14 +277,7 @@ map: (a -> b) -> List a -> List b
 (source: [learnyouanelm](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/02-starting-out.md))
 
 
-Pattern matching on record fields
-```elm
--- Requires the argument with x and y fields
-multiply {x,y} =
-    x * y
-```
 
-(source: [learnyouanelm](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/02-starting-out.md))
 
 
 #### Types for Functions

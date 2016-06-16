@@ -88,6 +88,7 @@ The form is let \<bindings\> in \<expression\>. The names that you define in the
 
 Let bindings are expressions themselves. Remember when we did the if statement and it was explained that an if then else statement is an expression? That means you can cram it in almost anywhere.
 
+
 ```elm
 toPrint = [if 5 > 3 then "Woo" else "Boo", if 'a' > 'b' then "Foo" else "Bar"]
 ["Woo", "Bar"]
@@ -105,29 +106,14 @@ toPrint = 4 * (let a = 9 in a + 1) + 2
 They can also be used to introduce functions in a local scope:
 
 ```elm
-toPrint = [let square x = x * x in (square 5, square 3, square 2)]
-[(25,9,4)]
-```
-
-Like we said before, you can pattern match with *let* bindings. They're very useful for quickly dismantling a tuple into components and binding them to names and such.
-
-```elm
-toPrint = (let (a,b,c) = (1,2,3) in a+b+c) * 100
-600
+$ elm repl
+> toPrint = let square x = x * x in [ square 5, square 3, square 2]
+[25,9,4] : List number
 ```
 
 (source: [learnyouanelm-04](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/04-syntax-in-functions.md))
 
-`let` allows you to define intermediate values.
-```elm
-let
-  x = 3 * 8
-  y = 4 ^ 2
-in
-  x + y
-```
-
-`let` helps simplify complex expressions
+They can help simplify complex expressions
 ```elm
 let
   activeUsers = List.filter (\u -> u.state /= 1) model.users
@@ -139,6 +125,15 @@ in
 
 # Pattern matching
 
+Like we said before, you can pattern match with *let* bindings. They're very useful for quickly dismantling a tuple into components and binding them to names and such.
+
+```elm
+toPrint = (let (a,b,c) = (1,2,3) in a+b+c) * 100
+600
+```
+
+(source: [learnyouanelm-04](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/04-syntax-in-functions.md))
+------
 This chapter will cover some of Elm's cool syntactic constructs and we'll start with pattern matching. Pattern matching consists of specifying patterns to which some data should conform and then checking to see if it does and deconstructing the data according to those patterns.
 
 (source: [learnyouanelm-04](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/04-syntax-in-functions.md))

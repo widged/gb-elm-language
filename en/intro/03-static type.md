@@ -93,21 +93,6 @@ With functions that accept arguments, the argument types are added before the re
 
 The parameters are separated with `->` and there's no special distinction between the parameters and the return type. The return type is the last item in the declaration and the parameters are the first three. Later on we'll see why they're all just separated with `->` instead of having some more explicit distinction between the return types and the parameters.
 
-------
-
-If you want to give your function a type declaration but are unsure as
-to what it should be, you can always just write the function without it
-and then check it in elm-repl. Functions are expressions too, so it works on
-them without a problem. To write a multi-line expression in elm-repl, add a
-backslash to the end of each line you want to continue on the line below,
-like this.
-
-```elm
-> addThree x y z = \
-|     x + y + z
-<function> : number -> number -> number -> number
-```
-(source: [learnyouanelm-03](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/03-types.md))
 
 ### Basics
 
@@ -152,6 +137,16 @@ round : Float -> Int
 ```
 
 Use elm-repl to examine the types of some expressions. We'll do that by typing expressions into elm-repl. After each valid expression, the repl tells us its type.
+
+If you want to give your function a type declaration but are unsure as to what it should be, you can always just write the function without it and then check it in elm-repl. Functions are expressions too, so it works on them without a problem. To write a multi-line expression in elm-repl, add a backslash to the end of each line you want to continue on the line below,
+like this.
+
+```elm
+> addThree x y z = \
+|     x + y + z
+<function> : number -> number -> number -> number
+```
+(source: [learnyouanelm-03](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/03-types.md))
 
 
 ### -> "goes to" curried function

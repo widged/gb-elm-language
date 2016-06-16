@@ -3,7 +3,6 @@
 `--` begins a single line comment.
 `{- and -}` enclose a multiline comment; these can be nested.
 
-
 ```elm
 -- Single line comments start with two dashes.
 {-

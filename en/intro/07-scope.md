@@ -4,27 +4,20 @@
 
 ## Variable definitions
 
-In Elm as in JavaScript, **scope** refers to what is defined, and where. It is the answer to the question, "where did
-this thing come from?", which you will ask constantly when reading examples or someone else's code. Scope also can tell
+In Elm as in JavaScript, **scope** refers to what is defined, and where. It is the answer to the question, "where did this thing come from?", which you will ask constantly when reading examples or someone else's code. Scope also can tell
 you why something *isn't* available, what code defines similar values, and where you can find documentation.
 
-Scope in Elm is often simpler than in other languages because ordinary values do not change over time. Not counting
-syntax (e.g. `if`, `->`, and brackets), pretty much everything in Elm is either a literal, something you imported, or
-something you defined.
+Scope in Elm is often simpler than in other languages because ordinary values do not change over time. Not counting syntax (e.g. `if`, `->`, and brackets), pretty much everything in Elm is either a literal, something you imported, or something you defined.
 
-(source: [[https://github.com/elm-guides/elm-for-js/blob/master/Scope.md]])
+(source: [elm-for-js](https://github.com/elm-guides/elm-for-js/blob/master/Scope.md))
 
 ### Top-Level Definitions
-
-The following code is valid Elm and JS:
 
 ```elm
 answer = 42
 ```
 
-Elm is immutable, so it can't vary. Therefore, having it global (at least to the module) is harmless.
-
-(source: [[https://github.com/elm-guides/elm-for-js/blob/master/Scope.md]])
+Elm is immutable, the variable cannot be set to another value in another part of the file. 
 
 
 ### Local Definitions

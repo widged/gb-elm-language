@@ -144,7 +144,6 @@ myTuple = ("the answer", 42, True)
 
 
 
-----
 ## Understand partial function application
 
 Functional programming concepts (like partial application and currying) help unlock the bigger picture behind Elm’s design. (source: [understanding-the-elm-type-system](http://www.adamwaselnuk.com/elm/2016/05/27/understanding-the-elm-type-system.html))

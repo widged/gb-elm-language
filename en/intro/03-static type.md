@@ -126,7 +126,6 @@ mult x y = x * y
 
 A good way to familiarize yourself with type annotations is to browse through official or user contributed packages and check the annotations. This will help you develop a feel for them.
 
-
 ```elm
 not : Bool -> Bool
 round : Float -> Int
@@ -142,7 +141,6 @@ myTuple : (String, Int, Bool)
 myTuple = ("the answer", 42, True)
 ~~~~
 
-There's one special type with only one value of that type. Both the type and value are read as "unit" and written as () . Unit is often used as a placeholder value, since if we know the type, we can anticipate the value.
 
 
 

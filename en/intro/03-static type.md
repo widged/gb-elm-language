@@ -49,7 +49,6 @@ Collections:
 * Lists (all elements must have the same type): `["one","two","three"]`
 * Tuples (fixed number of values, any mix of types): `("Dave",True) `
 * Records (key-value pairs): `{x = 0,y = 10}`
-* [Array](http://package.elm-lang.org/packages/elm-lang/core/3.0.0/Array), [Dict](http://package.elm-lang.org/packages/elm-lang/core/3.0.0/Dict), and [Set](http://package.elm-lang.org/packages/elm-lang/core/3.0.0/Set).
 
 Special types
 * Aliases: `type alias Point={x=0,y=0}`

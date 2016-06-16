@@ -252,3 +252,7 @@ show snd ("Wow", False) -- False
 *Note:* these functions operate only on pairs. They won't work on triples, 4-tuples, 5-tuples, etc. We'll go over extracting data from tuples in different ways a bit later.
 
 (source: [learnyouanelm](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/02-starting-out.md))
+
+----
+
+You can also pair up types into tuples, for example (`Int`, `Bool`) . This expands to arbitrarily many elements, i.e. (`Int`, `Float`, `Int`) is a 3-tuple with first element `Int` , second `Float` , third `Int` .

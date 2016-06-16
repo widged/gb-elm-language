@@ -1,6 +1,6 @@
 # Operators
 
-Elm operators are _functions_.
+Elm operators are _functions_. For instance, `*` is a function that takes two numbers and multiplies them. As you've seen, we call it by sandwiching it between them. This is what we call an *infix* function. You can learn more about these in the chapter on [functions](../type/03-function.md).
 
 ## Overview
 

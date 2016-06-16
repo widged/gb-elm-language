@@ -145,6 +145,8 @@ The key to understanding type annotation in Elm is to acknowledge that at the he
 
 A special case is currying. A function can be called with a single argument and return a function that takes the remaining arguments. With that in mind, a type annotation like `repeatString: Int -> String -> String` can be understood as taking a first argument (`Int`) and returning a curried function that takes the remaining arguments (`String`). When all arguments have been taken, the result is returned (`String`). 
 
+// type a-goes-to-b, goes to list of a, goes to list of b
+
 ### Collections are parameterised types
 
 With collections like List, tuples, records, annotations take a slightly different form. They specify both the type of the collection and the type of value held in the collection. 
@@ -239,75 +241,19 @@ doubleMe x =
 
 ## Grouping
 
-Here is an example of a more complicated type annotation:
-
-    map : (a -> b) -> List a -> List b
-
-There are two things that stand out in this example: the use of parentheses, and the values a and b. The parentheses work the same way they work in math. In other words, they provide an order of operations for the compiler. What that means is that (a -> b) can be thought of as a complete function which accepts a value of type a and returns a value of type b. With that grouping we can read this type annotation as:
-
-map is a function that accepts a function and a List and returns a List
-
-(source: [[http://www.adamwaselnuk.com/elm/2016/05/27/understanding-the-elm-type-system.html]])
-
-
-Function arguments are passed in parentheses.
-
-Lowercase types are type variables: they can be any type, as long as each call is consistent.
-~~~~ {.Elm:hs name="code"}
-List.map : (a -> b) -> List a -> List b
-~~~~
-
-Things get interesting with multiple arrows.
-
-
-"List dot map has type a-goes-to-b, goes to list of a, goes to list of b."
-
-(source: ???)
-
-If you look at the List library,  [List.map](http://package.elm-lang.org/packages/elm-lang/core/latest/List#map) is defined as.
+The example given for `List.map5` highlight yet another pattern, grouping. 
 
 ```elm
-List.map : (a -> b) -> List a -> List b
+$ elm repl
+> List.map
+<function> : (a -> b) -> List a -> List b
 ```
 
-Then `List.map` can traverse a list and apply a function to it, without knowing what's in the list. Only the function applied to each element needs to know what type those elements are.
+`List.map` is a function that accepts a function, and a List and returns a List. It traverses a list of values  an apply a function to convert each value to a new value. As the map function doesn't need to know what is in the list, `(a -> b)` is used. Only the function applied to each element needs to know what type those elements are. 
 
-(source: ???)
+// Given a function that converts a value of type `a` to a value of type `b`, and a list of values of type `a`, it returns a list of values of type `b`
 
-We could give it a `(Float -> Int)` and a `List Float`, or we could give a `(String -> Action)` and a `List String`, and so on. (This use of "variable" is closer to algebra than JavaScript, in that it's something you or the compiler find based on constraints, not explicitly set to whatever you need it to be.)
-
-
-
-
-    -- accepts:
-    -- a function which accepts an Int and returns a String
-    map : (Int -> String) -> List Int -> List String
-
-    -- accepts:
-    -- a function which accepts a String and returns a Bool
-    map : (String -> Bool) -> List String -> List Bool
-    Here is an example that would violate the type annotation (think of it as the contract) for the map function:
-
-    -- map : (a -> b) -> List a -> List b
-    map : (Int -> String) -> List Int -> List Int
-
-This situation would never happen because the type variable b is not matching. If map received a function that accepted Integers and returned Strings as its first argument, we have a guarantee that it will always return a List of Strings.
-
-(source: [understanding-the-elm-type-system](http://www.adamwaselnuk.com/elm/2016/05/27/understanding-the-elm-type-system.html))
-
-
-Example below is read as function that takes an __a__ value and returns a __b__ value, list of __a__ values returns a list of __b__ values
-
-```elm
-map: (a -> b) -> List a -> List b
-```
-
-(source: [learnyouanelm](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/02-starting-out.md))
-
-
-
-
-### A simple example
+### Misc
 
 When we declare a type, the left had side of the equals sign says how it's used; the right hand side says how it's defined.
 

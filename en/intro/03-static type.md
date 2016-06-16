@@ -54,12 +54,19 @@ Special types
 * Aliases: `type alias Point={x=0,y=0}`
 * Union type: `type Msg = Decrement | Increment`
 
+constrained types
+* number: `Int, Float`
+* Union type: `type Msg = Decrement | Increment`
+
 ## Type inference
 
 The Elm compiler has type inference and can figure things out. 
 
-(check it out using the REPL)
-
+```bash
+$ elm repl
+> 2 + 2.3
+4.3 : Float
+```
 
 ## Type annotations
 

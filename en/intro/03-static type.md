@@ -163,8 +163,6 @@ startPosition =
 
 ## Type generalisation with type variables
 
-So in this example, a function that accepts a value of type a really means a function that accepts a value of any type. The important thing is that type a stays the same and type b stays the same. Here are some possiblities for the map function:
-----
 Functions don't necessarily need to be aware of the type of values held in a collection to computer an answer. Take `List.length`. It doesn't really matter whether the values inside the list are ll strings, numbers, or complex records. What we are after is the number of items in the list.
 
 Type variables help with this. Check the `List.length` signature using the REPL.

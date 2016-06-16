@@ -218,27 +218,6 @@ $ elm repl
       -> List a -> List b -> List c -> List d -> List e -> List f
 ```
 
-------
-
-
-If you look at the List library,  [List.map](http://package.elm-lang.org/packages/elm-lang/core/latest/List#map) is defined as.
-
-```elm
-List.map : (a -> b) -> List a -> List b
-```
-
-Then `List.map` can traverse a list and apply a function to it, without knowing what's in the list. Only the function applied to each element needs to know what type those elements are.
-
-
-```elm
-show 4 == 5 -- False
-show "Hello" ++ "!" -- "Hello!"
-```
-
-(source: [learnyouanelm-03](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/03-types.md))
-
-
-
 
 ## Grouping
 
@@ -264,6 +243,16 @@ Things get interesting with multiple arrows.
 
 
 "List dot map has type a-goes-to-b, goes to list of a, goes to list of b."
+
+(source: ???)
+
+If you look at the List library,  [List.map](http://package.elm-lang.org/packages/elm-lang/core/latest/List#map) is defined as.
+
+```elm
+List.map : (a -> b) -> List a -> List b
+```
+
+Then `List.map` can traverse a list and apply a function to it, without knowing what's in the list. Only the function applied to each element needs to know what type those elements are.
 
 (source: ???)
 

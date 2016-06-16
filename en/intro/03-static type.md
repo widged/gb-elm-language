@@ -54,7 +54,7 @@ Special types
 * Aliases: `type alias Point={x=0,y=0}`
 * Union type: `type Msg = Decrement | Increment`
 
-constrained types
+Constrained types
 * number: `2 + 2.3 -- 4.3 : Float`
 * comparable: `3 > 2 -- True : Bool`
 * appendable: `"hello" ++ " elm" -- "hello elm" : String`
@@ -69,19 +69,11 @@ $ elm repl
 4.3 : Float
 ```
 
-Both `2` and `2.3` as identified as numbers. The answer is given as Float.
+Both `2` and `2.3` as identified as numbers. A Float is required to represent the answer. 
 
 ## Type annotations
 
-Though it is not mandatory, it is best practice to add type annotations to make the typing more clear. 
-
-Type annotations specify how many arguments a function takes, what their types are, what order to pass them, and what the return type is. (adapted from [elm-for-js](https://github.com/elm-guides/elm-for-js/blob/master/How%20to%20Read%20a%20Type%20Annotation.md))
-
-Though it is not mandatory, it is best practice to always add type annotations. Type annotations improve code by helping you think about what the function should be doing, and serve as compiler-verified documentation. They provide clear documentation as to the function's return type, the number of arguments, the types of arguments, or errors it may pass.
-
-
-(source: [elm-for-js](https://github.com/elm-guides/elm-for-js/blob/master/How%20to%20Read%20a%20Type%20Annotation.md))
-
+Though it is not mandatory, it is best practice to always add type annotations. Type annotations improve code by helping you think about what the function should be doing, and serve as compiler-verified documentation. They provide clear documentation on the function's return type, the number of arguments, the types of arguments, what order to pass them. (adapted from [elm-for-js](https://github.com/elm-guides/elm-for-js/blob/master/How%20to%20Read%20a%20Type%20Annotation.md)). In the long run, they improve the reliability, clarity, and scalability of your programs. (adapted from [understanding-the-elm-type-system](http://www.adamwaselnuk.com/elm/2016/05/27/understanding-the-elm-type-system.html))
 
 ```elm
 add : Int -> Int -> Int
@@ -89,88 +81,42 @@ add x y =
   x + y
 ```
 
-Getting started with static typing can be difficult. Everything seems to go a little bit slower and take a little more effort before you see results. But don’t worry about it! You will find that Elm has a very approachable syntax for working with types and that using them will improve the reliability and clarity of your progams.
-
-(source: [understanding-the-elm-type-system](http://www.adamwaselnuk.com/elm/2016/05/27/understanding-the-elm-type-system.html))
-
-
-By paying attention to Type annotations and understanding their syntax, you will write programs that are reliable, scalable, and easy to understand. When you hit tough spots while learning, don’t be shy about exploring functional programming concepts (like partial application and currying) to help unlock the bigger picture behind Elm’s design.
-
-(source: [understanding-the-elm-type-system](http://www.adamwaselnuk.com/elm/2016/05/27/understanding-the-elm-type-system.html))
-
-Any type annotation must include a `:`. The `:` means "has type". It is followed by the type of the value returned. Types always begin with a capital letter (or open paren).
-
-(source: [elm-for-js](https://github.com/elm-guides/elm-for-js/blob/master/How%20to%20Read%20a%20Type%20Annotation.md))
-
-## Type Annotation
-
+Any type annotation must include a `:`. The `:` means "has type". It is followed by the type of the arguments returned (if any) and the type of the value returned. Types always begin with a capital letter (or open paren). (source: [elm-for-js](https://github.com/elm-guides/elm-for-js/blob/master/How%20to%20Read%20a%20Type%20Annotation.md))
 
 ```elm
 -- function name : 1st arg type -> 2nd arg type -> return type
 fnc : Int -> List -> Int
 ```
-Example below is read as function that takes an __a__ value and returns a __b__ value, list of __a__ values returns a list of __b__ values
 
-```elm
-map: (a -> b) -> List a -> List b
-```
-
-(source: [learnyouanelm](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/02-starting-out.md))
-
-Pattern matching on record fields
-```elm
--- Requires the argument with x and y fields
-multiply {x,y} =
-    x * y
-```
-
-(source: [learnyouanelm](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/02-starting-out.md))
-
-Annotating records
-```elm
-coordinates : { x : Float, y : Float }
-coordinates =
-    { x = 0,
-      y = 0
-    }    
-```
-
-(source: [learnyouanelm](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/02-starting-out.md))
+This reads as function `fnc` that takes an Int value, takes a List, and returns an Int. 
 
 
-### No parameters. Just return value
+#### No parameters. Just return value
 
 ```elm
 answer : Int
 answer = 42
 ```
 
-You can read "answer has type Int; answer equals forty-two".
+You can read "answer has type Int; answer equals forty-two". (source: [elm-for-js](https://github.com/elm-guides/elm-for-js/blob/master/How%20to%20Read%20a%20Type%20Annotation.md))
 
-(source: [[https://github.com/elm-guides/elm-for-js/blob/master/How%20to%20Read%20a%20Type%20Annotation.md]])
+#### One parameter and a return value
 
-
-### One parameter and a return value
-
-
-When the function accepts on or more arguments, the argument types are added before the result value type and each followed by a `->` that can be read as “returns”. For instance, for a single argument, we would have:
+When the function accepts on or more arguments, the argument types are added before the result value type and each followed by a `->` that can be read as “returns”.
 
     greeting : String -> String
 
-What this says is that `greeting` is a function that accepts a String as argument and returns a String.
-
-(source: [understanding-the-elm-type-system](http://www.adamwaselnuk.com/elm/2016/05/27/understanding-the-elm-type-system.html))
+Here, `greeting` is a function that accepts a String as argument and returns a String. (source: [understanding-the-elm-type-system](http://www.adamwaselnuk.com/elm/2016/05/27/understanding-the-elm-type-system.html))
 
 ### Two parameters and a return value
 
-
-When the function accepts multiple arguments, they are all added as a succession of `{Type} ->`:
+When the function accepts multiple arguments, they are all added as a succession of `{argument} ->`:
 
     connectWords : String -> String -> String
     connectWords firstWord secondWord =
       firstWord ++ secondWord
 
-Here, connectWords is a function that accepts two strings and returns a string. If we look at the function we see that it indeed takes two parameters, firstWord and secondWord, and concatenates them.
+Here, `connectWords` is a function that accepts two strings and returns a string. If we look at the function we see that it indeed takes two parameters, firstWord and secondWord, and concatenates them.
 
 (source: [[http://www.adamwaselnuk.com/elm/2016/05/27/understanding-the-elm-type-system.html]])
 
@@ -222,6 +168,35 @@ Note. Whenever a capital letter is followed by a dot, it's a module, not a type.
 
 (source: ???)
 
+----
+
+Example below is read as function that takes an __a__ value and returns a __b__ value, list of __a__ values returns a list of __b__ values
+
+```elm
+map: (a -> b) -> List a -> List b
+```
+
+(source: [learnyouanelm](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/02-starting-out.md))
+
+Pattern matching on record fields
+```elm
+-- Requires the argument with x and y fields
+multiply {x,y} =
+    x * y
+```
+
+(source: [learnyouanelm](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/02-starting-out.md))
+
+Annotating records
+```elm
+coordinates : { x : Float, y : Float }
+coordinates =
+    { x = 0,
+      y = 0
+    }    
+```
+
+(source: [learnyouanelm](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/02-starting-out.md))
 
 #### Types for Functions
 
@@ -265,6 +240,9 @@ Things get interesting with multiple arrows.
 
 
 ## Understand partial function application
+
+Functional programming concepts (like partial application and currying) help unlock the bigger picture behind Elm’s design. (source: [understanding-the-elm-type-system](http://www.adamwaselnuk.com/elm/2016/05/27/understanding-the-elm-type-system.html))
+
 
 The key to understanding type annotation in Elm is to realize that every function is curried by default.
 

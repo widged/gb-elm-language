@@ -1,4 +1,4 @@
-**Elm 0.??**, **copied, please ignore** 
+**Elm 0.17**, **shareable** 
 
 # Primitive types
 
@@ -16,6 +16,7 @@ True : Bool
 ["welcome", "to", "elm"] : List String
 ```
 
+--------------------------------------------------
 ## Boolean Types
 
 ### Bool
@@ -29,6 +30,7 @@ True : Bool
 False : Bool
 ```
 
+--------------------------------------------------
 ## Numeric Types
 
 Numeric types are `Int` and `Float`. 
@@ -61,19 +63,25 @@ toPrint = circumference 4.0
 
 (source: ???)
 
-
 --------------------------------------------------
 ## Text Strings
 
 String types are `Char` and `String`
 
 ```elm
+$ elm repl
 > 'a'
 'a' : Char
 > "Hello"
 "Hello" : String
+> 'ab'
+-- SYNTAX PROBLEM --
 ```
 
+```elm
+"This is a string because it uses double quotes."
+'a' -- characters in single quotes
+```
 
 ### Char
 
@@ -83,21 +91,13 @@ String types are `Char` and `String`
 
 `String` represents a string. It's denoted by double or triple quotes and can contain many characters. Strings are _not_ lists of characters.
 
-
 Triple quoted strings are string literals that can span across multiple lines, with line breaks and whitespace being preserved in the string.
 
-(source: [learnyouanelm-03](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/03-types.md))
-
-
-
-
-
-## Operations on strings
-
-
 ```elm
-"This is a string because it uses double quotes."
-'a' -- characters in single quotes
+"""
+Hello
+World
+"""
 ```
 
 Strings can be appended with `++`.
@@ -106,23 +106,9 @@ Strings can be appended with `++`.
 "Hello " ++ "world!" -- "Hello world!"
 ```
 
+# Links
 
+* [learnyouanelm-03](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/03-types.md)
+* [learnyouanelm](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/02-starting-out.md)
 
-Multi-line string
-```elm
-"""
-Hello
-World
-"""
-```
-
-Single quotes are for `char` only
-```elm
-> 'ab'
--- SYNTAX PROBLEM --
-> "ab"
-"ab" : String
-```
-
-(source: [learnyouanelm](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/02-starting-out.md))
 

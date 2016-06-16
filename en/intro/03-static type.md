@@ -130,7 +130,7 @@ not : Bool -> Bool
 round : Float -> Int
 ```
 
-#### `->` curried function
+#### `->` "goes to" curried function
 
 The key to understanding type annotation in Elm is to acknowledge that at the heart of any functional programming language, we have functions that make and return functions. 
 

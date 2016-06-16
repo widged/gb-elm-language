@@ -146,55 +146,6 @@ There's one special type with only one value of that type. Both the type and val
 
 
 ----
-
-Example below is read as function that takes an __a__ value and returns a __b__ value, list of __a__ values returns a list of __b__ values
-
-```elm
-map: (a -> b) -> List a -> List b
-```
-
-(source: [learnyouanelm](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/02-starting-out.md))
-
-
-Pattern matching on record fields
-```elm
--- Requires the argument with x and y fields
-multiply {x,y} =
-    x * y
-```
-
-(source: [learnyouanelm](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/02-starting-out.md))
-
-Annotating records
-```elm
-coordinates : { x : Float, y : Float }
-coordinates =
-    { x = 0,
-      y = 0
-    }    
-```
-
-(source: [learnyouanelm](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/02-starting-out.md))
-
-#### Types for Functions
-
-
-
-Function arguments are passed in parentheses.
-
-Lowercase types are type variables: they can be any type, as long as each call is consistent.
-~~~~ {.Elm:hs name="code"}
-List.map : (a -> b) -> List a -> List b
-~~~~
-
-Things get interesting with multiple arrows.
-
-
-"List dot map has type a-goes-to-b, goes to list of a, goes to list of b."
-
-(source: ???)
-
-
 ## Understand partial function application
 
 Functional programming concepts (like partial application and currying) help unlock the bigger picture behind Elm’s design. (source: [understanding-the-elm-type-system](http://www.adamwaselnuk.com/elm/2016/05/27/understanding-the-elm-type-system.html))
@@ -253,6 +204,58 @@ a and b are what’s known as type variables. They are placeholders for any type
 This situation would never happen because the type variable b is not matching. If map received a function that accepted Integers and returned Strings as its first argument, we have a guarantee that it will always return a List of Strings.
 
 (source: [understanding-the-elm-type-system](http://www.adamwaselnuk.com/elm/2016/05/27/understanding-the-elm-type-system.html))
+
+
+## More complicated patterns
+
+
+Example below is read as function that takes an __a__ value and returns a __b__ value, list of __a__ values returns a list of __b__ values
+
+```elm
+map: (a -> b) -> List a -> List b
+```
+
+(source: [learnyouanelm](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/02-starting-out.md))
+
+
+Pattern matching on record fields
+```elm
+-- Requires the argument with x and y fields
+multiply {x,y} =
+    x * y
+```
+
+(source: [learnyouanelm](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/02-starting-out.md))
+
+Annotating records
+```elm
+coordinates : { x : Float, y : Float }
+coordinates =
+    { x = 0,
+      y = 0
+    }    
+```
+
+(source: [learnyouanelm](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/02-starting-out.md))
+
+#### Types for Functions
+
+Function arguments are passed in parentheses.
+
+Lowercase types are type variables: they can be any type, as long as each call is consistent.
+~~~~ {.Elm:hs name="code"}
+List.map : (a -> b) -> List a -> List b
+~~~~
+
+Things get interesting with multiple arrows.
+
+
+"List dot map has type a-goes-to-b, goes to list of a, goes to list of b."
+
+(source: ???)
+
+
+
 
 ## Type variables
 

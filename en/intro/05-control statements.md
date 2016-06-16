@@ -184,3 +184,8 @@ toPrint = (let (a,b,c) = (1,2,3) in a+b+c) * 100
 ```
 
 (source: [learnyouanelm-04](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/04-syntax-in-functions.md))
+
+# Links
+
+* [elm-lang style guide](http://elm-lang.org/docs/style-guide)
+* [elm style guide @NodeRedInk](https://github.com/NoRedInk/elm-style-guide)

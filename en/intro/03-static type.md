@@ -1,7 +1,7 @@
 **Elm 0.??**, **copied, please ignore** 
 
 
-# Static typing
+# Strong / Static type system
 
 The goal of a type system is to prevent any kind of error related to data types. For example, if you pass an integer to a function that expects an array, your program may behave in an unexpected way.
 
@@ -9,13 +9,12 @@ Static typing means that the actual source code (the text file) of your Elm prog
 
 These errors at compile time provide a high level of confidence that your program will work as expected.
 
-(source: [understanding-the-elm-type-system](http://www.adamwaselnuk.com/elm/2016/05/27/understanding-the-elm-type-system.html))
+(adapted from [understanding-the-elm-type-system](http://www.adamwaselnuk.com/elm/2016/05/27/understanding-the-elm-type-system.html))
 
-### Strong / Static typing
-
-Getting started with static typing can be difficult. Everything seems to go a little bit slower and take a little more effort before you see results. But don’t worry about it! You will find that Elm has a very approachable syntax for working with types and that using them will improve the reliability and clarity of your progams.
+Because Elm has strong, static type system, virtually all type errors are caught by the compiler before the program is ever run in a browser. This is why Elm can boast that it has “no runtime exceptions”.
 
 (source: [understanding-the-elm-type-system](http://www.adamwaselnuk.com/elm/2016/05/27/understanding-the-elm-type-system.html))
+
 
 ```elm
 add : Int -> Int -> Int
@@ -23,13 +22,7 @@ add x y =
   x + y
 ```
 
-Having a type system minimizes the amount of time you will spend debugging them and increases your confidence that your customers will never see them.
 
-(source: [understanding-the-elm-type-system](http://www.adamwaselnuk.com/elm/2016/05/27/understanding-the-elm-type-system.html))
-
-Because Elm has strong, static type system, virtually all type errors are caught by the compiler before the program is ever run in a browser. This is why Elm can boast that it has “no runtime exceptions”.
-
-(source: [understanding-the-elm-type-system](http://www.adamwaselnuk.com/elm/2016/05/27/understanding-the-elm-type-system.html))
 
 
 ## Types
@@ -77,6 +70,10 @@ However, it is best practice to always add type annotations. Type annotations im
 
 
 ## Type annotations
+
+Getting started with static typing can be difficult. Everything seems to go a little bit slower and take a little more effort before you see results. But don’t worry about it! You will find that Elm has a very approachable syntax for working with types and that using them will improve the reliability and clarity of your progams.
+
+(source: [understanding-the-elm-type-system](http://www.adamwaselnuk.com/elm/2016/05/27/understanding-the-elm-type-system.html))
 
 Adding annotations to our functions to make the typing more clear. They  specify how many arguments a function takes, what their types are, what order to pass them, and what the return type is.
 

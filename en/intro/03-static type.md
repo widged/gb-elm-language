@@ -61,26 +61,6 @@ Constrained types
 * comparable: `3 > 2 -- True : Bool`
 * appendable: `"hello" ++ " elm" -- "hello elm" : String`
 
-
-------
-
-Here we see that typing an expression prints
-out the value of that expression followed by `:` and its type.
-`:` is read as "has type of". Explicit types are always denoted with the
-first letter in capital case. `'a'`, as it would seem, has a type of `Char`.
-It's not hard to conclude that it stands for *character*. `True` is of a
-`Bool` type. That makes sense. Examining the type of
-`[1, 2]` yields a `List number`. The lowercase `n` in the type of number indicates
-a built-in type variable. We'll get to type variables later in this chapter.
-A number can be either an `Int` or a `Float`, and will concretely become one or
-the other depending on how it's used. Unlike lists, each tuple length has
-its own type. So the expression of `(True, 'a')` has a type of `( Bool, Char )`,
-whereas an expression such as `('a','b','c')` would have the type of
-`( Char, Char, Char )`. `4 == 5` will always return `False`, so its type is `Bool`.
-
-(source: [learnyouanelm-03](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/03-types.md))
-
-
 ## Type inference
 
 Elm, like most ML dialects, has type inference. The compiler will automatically infer the type of every value in your program. If we write a number, we don't have to tell Elm it's a number. It can *infer* that on its own.
@@ -109,6 +89,12 @@ Any type annotation must include a `:` and the type of the value returned. The `
 
 With functions that accept arguments, the argument types are added before the result value type. Each argument type is followed by a `->` that can be read as “returns”. Think of the rightmost type as the type of the return value, and the others as arguments. The pattern is then `function name : 1st arg type -> 2nd arg type -> return type`
 
+------
+
+Here we see that typing an expression prints out the value of that expression followed by `:` and its type. `:` is read as "has type of". Explicit types are always denoted with the first letter in capital case. `'a'`, as it would seem, has a type of `Char`. It's not hard to conclude that it stands for *character*. `True` is of a `Bool` type. That makes sense. Examining the type of `[1, 2]` yields a `List number`. The lowercase `n` in the type of number indicates a built-in type variable. We'll get to type variables later in this chapter.
+A number can be either an `Int` or a `Float`, and will concretely become one or the other depending on how it's used. Unlike lists, each tuple length has its own type. So the expression of `(True, 'a')` has a type of `( Bool, Char )`, whereas an expression such as `('a','b','c')` would have the type of `( Char, Char, Char )`. `4 == 5` will always return `False`, so its type is `Bool`.
+
+(source: [learnyouanelm-03](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/03-types.md))
 ---------
 
 Functions also have types. When writing our own functions, we can choose

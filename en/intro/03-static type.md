@@ -136,14 +136,16 @@ The key to understanding type annotation in Elm is to acknowledge that at the he
 
 A special case is currying. A function can be called with a single argument and return a function that takes the remaining arguments. With that in mind, a type annotation like `repeatString: Int -> String -> String` can be understood as taking a first argument (`Int`) and returning a curried function that takes the remaining arguments (`String`). When all arguments have been taken, the result is returned (`String`). 
 
-### Collections need two things, collection type and value type
+### Collections are parameterised types
 
 With collections like List, tuples, records, annotations take a slightly different form. They specify both the type of the collection and the type of value held in the collection. 
 
 List:
 ```elm
 flagColors: List String
-flagColors: ["Black", "Yellow", "Red"]
+flagColors = ["Black", "Yellow", "Red"]
+diceFaces : List Int
+diceFaces = [1,2,3,4,5,6]
 ```
 
 Tuple:
@@ -286,23 +288,7 @@ map: (a -> b) -> List a -> List b
 
 (source: [learnyouanelm](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/02-starting-out.md))
 
-## Parameterised types
 
-### Lists are parameterised types
-
-Here is a list of strings, and a list of ints.
-Notice their type declarations.
-
-```elm
-list1 : List String
-list1 = [ "Eenie", "Meenie", "Miney", "Mo" ]
-
-list2 : List Int
-list2 = [ 10, 9, 8, 7 ]
-```
-
-
-(source: [elm-explained](https://github.com/niksilver/elm-explained))
 
 
 ### A simple example

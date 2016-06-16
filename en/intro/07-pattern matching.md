@@ -209,3 +209,14 @@ One more thing — you can't use ++ in pattern matches. If you tried to pattern 
 *Note:* Not only can we call functions as infix with backticks, we can also define them using backticks. Sometimes it's easier to read that way.
 
 (source: [learnyouanelm-04](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/04-syntax-in-functions.md))
+
+# Pattern matching
+
+Pattern matching on record fields
+```elm
+-- Requires the argument with x and y fields
+multiply {x,y} =
+    x * y
+```
+
+(source: [learnyouanelm](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/02-starting-out.md))

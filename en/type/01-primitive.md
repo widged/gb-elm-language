@@ -16,6 +16,8 @@ True : Bool
 ["welcome", "to", "elm"] : List String
 ```
 
+## Boolean Types
+
 ### Bool
 
 `Bool` is a boolean type. It can have only two values: `True` and `False`.
@@ -26,6 +28,20 @@ True : Bool
 > False
 False : Bool
 ```
+
+## Numeric Types
+
+Numeric types are `Int` and `Float`. 
+
+```elm
+> 2.0
+2 : Float
+> truncate 0.1
+0 : Int
+> truncate 1
+1 : Int
+```
+(source: [learnyouanelm](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/02-starting-out.md))
 
 ## Int
 
@@ -46,60 +62,10 @@ toPrint = circumference 4.0
 (source: ???)
 
 
-
 --------------------------------------------------
-## Strings
+## Text Strings
 
-
-## Char
-
-`Char` represents a character. It's denoted by single quotes.
-
-## String
-
-`String` represents a string. It's denoted by double or triple quotes and
-can contain many characters. Triple quoted strings are string literals
-that can span across multiple lines, with line breaks and whitespace
-being preserved in the string.
-
-Tuples are types but they are dependent on their length as well as the
-types of their components, so there is theoretically an infinite number
-of tuple types, which is too many to cover in this tutorial. Note that
-the empty tuple `()` is also a type which can only have a single value: `()`.
-This value is read as `"unit"` and is the common way to denote an empty
-value with no specific meaning.
-
-(source: [learnyouanelm-03](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/03-types.md))
-
-
-## Operations on strings
-
-* Strings: `"hello"`. Strings are _not_ lists of characters.
-* Chars: `'a'`
-
-`++` is string concatenation
-
-(source: ???)
-
-
-### Strings and characters
-
-~~~~ {.Elm:hs name="code"}
-"This is a string because it uses double quotes."
-'a' -- characters in single quotes
-~~~~
-
-Strings can be appended.
-
-~~~~ {.Elm:hs name="code"}
-"Hello " ++ "world!" -- "Hello world!"
-~~~~
-
-(source: ???)
-
-### Strings
-
-String types are `char` and `String`
+String types are `Char` and `String`
 
 ```elm
 > 'a'
@@ -107,6 +73,40 @@ String types are `char` and `String`
 > "Hello"
 "Hello" : String
 ```
+
+
+### Char
+
+`Char` represents a character. It's denoted by single quotes `'a'`.
+
+### String
+
+`String` represents a string. It's denoted by double or triple quotes and can contain many characters. Strings are _not_ lists of characters.
+
+
+Triple quoted strings are string literals that can span across multiple lines, with line breaks and whitespace being preserved in the string.
+
+(source: [learnyouanelm-03](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/03-types.md))
+
+
+
+
+
+## Operations on strings
+
+
+```elm
+"This is a string because it uses double quotes."
+'a' -- characters in single quotes
+```
+
+Strings can be appended with `++`.
+
+```elm
+"Hello " ++ "world!" -- "Hello world!"
+```
+
+
 
 Multi-line string
 ```elm
@@ -125,3 +125,4 @@ Single quotes are for `char` only
 ```
 
 (source: [learnyouanelm](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/02-starting-out.md))
+

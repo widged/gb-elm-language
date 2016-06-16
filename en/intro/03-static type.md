@@ -273,7 +273,6 @@ Every number literal without a decimal point can be either an Int or a Float.
 (source: ???)
 
 
-
 ## Grouping
 
 The example given for `List.map5` highlight yet another pattern, grouping. 

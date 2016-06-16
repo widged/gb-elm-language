@@ -72,27 +72,6 @@ update state =
 
 ## Let-in
 
-`let` allows you to define intermediate values.
-```elm
-let
-  x = 3 * 8
-  y = 4 ^ 2
-in
-  x + y
-```
-
-`let` helps simplify complex expressions
-```elm
-let
-  activeUsers = List.filter (\u -> u.state /= 1) model.users
-in
-  { model | user = activeUsers}
-```
-
-(source: [learnyouanelm](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/02-starting-out.md))
-
-## Let it be
-
 Let bindings let you bind to variables anywhere and are expressions themselves, so they are very useful for naming the results of more complicated expressions. Just like any construct in Elm that is used to bind values to names, let bindings can be used for pattern matching. Let's see them in action! This is how we could define a function that gives us a cylinder's surface area based on its height and radius:
 
 ```elm
@@ -138,6 +117,25 @@ toPrint = (let (a,b,c) = (1,2,3) in a+b+c) * 100
 ```
 
 (source: [learnyouanelm-04](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/04-syntax-in-functions.md))
+
+`let` allows you to define intermediate values.
+```elm
+let
+  x = 3 * 8
+  y = 4 ^ 2
+in
+  x + y
+```
+
+`let` helps simplify complex expressions
+```elm
+let
+  activeUsers = List.filter (\u -> u.state /= 1) model.users
+in
+  { model | user = activeUsers}
+```
+
+(source: [learnyouanelm](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/02-starting-out.md))
 
 # Pattern matching
 

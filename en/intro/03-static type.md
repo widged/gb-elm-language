@@ -33,6 +33,7 @@ acceptable on its own, I assume it is "correct" in subsequent checks. So the
 problem may actually be in how the left and right arguments interact.
 ```
 
+What Elm is telling us is that `+` expects its left and right side to be numbers. The value `"three"` is not a number.
 
 ## Types
 

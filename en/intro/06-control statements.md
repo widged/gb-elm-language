@@ -367,9 +367,8 @@ case List.head aList of
 
 (source: ???)
 
-# Pattern matching
+# Pattern matching on record fields
 
-Pattern matching on record fields
 ```elm
 -- Requires the argument with x and y fields
 multiply {x,y} =

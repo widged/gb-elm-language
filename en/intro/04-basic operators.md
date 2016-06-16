@@ -1,25 +1,94 @@
-# basic arithmetic
+# Operators
 
-The REPL will print the value of the variable after show to the screen to the right. We'll use this to get a feel for Elm's syntax, and to see the result of some basic computations.
+Elm operators are _functions_.
 
-Here's some simple arithmetic.
+## Overview
 
-```elm
-2 + 15 -- 17
-8 - 1 -- 7
-49 * 100 -- 4900
-1892 - 1472 -- 420
-5 / 2 -- 2.5
-5 ^ 2 -- 25 (exponent)
+### Arithmetic
+|Operator|Description|Type hint|
+|--------|-----------|----------|
+|`+`|addition|`number -> number -> number`
+|`-`|subtraction|`number -> number -> number`
+|`*`|multiplication|`number -> number -> number`
+|`/`|floating point division|`Float -> Float -> Float`
+|`//`|integer division, discard the reminder|`Int -> Int -> Int`
+|`^`|exponentiation|`number -> number -> number`
+|`%`|modulo|`Int -> Int -> Int`
+
+(source: [learnyouanelm](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/02-starting-out.md))
+
+For instance, you can type any of these in the elm REPL. 
+
+```bash
+$ elm repl
+> 2 + 15 -- 17
+> 8 - 1 -- 7
+> 49 * 100 -- 4900
+> 1892 - 1472 -- 420
+> 5 / 2 -- 2.5
+> 5 ^ 2 -- 25 (exponent)
 ```
 
-This is pretty self-explanatory. We can also use several operators on one line and all the usual precedence rules are obeyed. We can use parentheses to make the precedence explicit or to change it.
+We can also use several operators on one line and all the usual precedence rules are obeyed. We can use parentheses to make the precedence explicit or to change it.
 
-```elm
-(50 * 100) - 4999 -- 1
-50 * 100 - 4999 -- 1
-50 * (100 - 4999) -- -244950
+```bash
+$ elm repl
+> (50 * 100) - 4999 -- 1
+> 50 * 100 - 4999 -- 1
+> 50 * (100 - 4999) -- -244950
 ```
+
+### Bitwise
+|Operator|Description|Type hint|
+|--------|-----------|----------|
+|`and`|bitwise AND|`Int -> Int -> Int`
+|`or`|bitwise OR|`Int -> Int -> Int`
+|`xor`|biwise XOR|`Int -> Int -> Int`
+
+(source: [learnyouanelm](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/02-starting-out.md))
+
+### Comparison
+|Operator|Description|Type hint|
+|--------|-----------|----------|
+|`==`|equal|`comparable -> comparable -> Bool`
+|`/=`|not equal|`comparable -> comparable -> Bool`
+|`<`|less than|`comparable -> comparable -> Bool`
+|`<=`|less than or equal|`comparable -> comparable -> Bool`
+|`>`|greater than|`comparable -> comparable -> Bool`
+|`>=`|greater than or equal|`comparable -> comparable -> Bool`
+
+(source: [learnyouanelm](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/02-starting-out.md))
+
+### Logical
+|Operator|Description|Type hint|
+|--------|-----------|----------|
+|`&&`|logical and|`Bool -> Bool -> Bool`
+|`||`|logical or|`Bool -> Bool -> Bool`
+|`not`|logical not|`Bool`
+
+(source: [learnyouanelm](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/02-starting-out.md))
+
+### Function Composition
+|Operator|Description|Type hint|
+|--------|-----------|----------|
+|`<|`|backward (pipe) function application `f <| x == f x`|`(a -> b) -> a -> b`
+|`|>`|forward (pipe) function application `x |> f == f x`|`a -> (a -> b) -> b`
+|`<<`|composes functions into one, arguments first applied to the function from the right side|`(b -> c) -> (a -> b) -> a -> c`
+|`>>`|same as before except arguments first applied to the function from the left side|`(a -> b) -> (b -> c) -> a -> c`
+
+(source: [learnyouanelm](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/02-starting-out.md))
+
+### Other
+|Operator|Description|Type hints|
+|--------|-----------|----------|
+|`++`|put appendable things together|`appendable -> appendable -> appendable`|
+|`::`|add an element to the front of a list|`a -> List a -> List a`|
+|`as`|keyword that creates aliases for values `(x, y) as t == t = (x, y)`|`a -> a`|
+
+(source: [learnyouanelm](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/02-starting-out.md))
+
+## basic arithmetic
+
 
 Boolean algebra is also pretty straightforward. As you probably know, `&&` means a boolean *and*, `||` means a boolean *or*. `not` negates a `True` or a `False`.
 
@@ -65,67 +134,3 @@ You may not have known it but we've been using functions now all along. For inst
 
 
 
-# Operators
-In a nutshell Elm operators are _functions_.
-
-#### Arithmetic
-|Operator|Description|Type hint|
-|--------|-----------|----------|
-|`+`|addition|`number -> number -> number`
-|`-`|subtraction|`number -> number -> number`
-|`*`|multiplication|`number -> number -> number`
-|`/`|floating point division|`Float -> Float -> Float`
-|`//`|integer division, discard the reminder|`Int -> Int -> Int`
-|`^`|exponentiation|`number -> number -> number`
-|`%`|modulo|`Int -> Int -> Int`
-
-(source: [learnyouanelm](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/02-starting-out.md))
-
-#### Bitwise
-|Operator|Description|Type hint|
-|--------|-----------|----------|
-|`and`|bitwise AND|`Int -> Int -> Int`
-|`or`|bitwise OR|`Int -> Int -> Int`
-|`xor`|biwise XOR|`Int -> Int -> Int`
-
-(source: [learnyouanelm](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/02-starting-out.md))
-
-#### Comparison
-|Operator|Description|Type hint|
-|--------|-----------|----------|
-|`==`|equal|`comparable -> comparable -> Bool`
-|`/=`|not equal|`comparable -> comparable -> Bool`
-|`<`|less than|`comparable -> comparable -> Bool`
-|`<=`|less than or equal|`comparable -> comparable -> Bool`
-|`>`|greater than|`comparable -> comparable -> Bool`
-|`>=`|greater than or equal|`comparable -> comparable -> Bool`
-
-(source: [learnyouanelm](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/02-starting-out.md))
-
-#### Logical
-|Operator|Description|Type hint|
-|--------|-----------|----------|
-|`&&`|logical and|`Bool -> Bool -> Bool`
-|`||`|logical or|`Bool -> Bool -> Bool`
-|`not`|logical not|`Bool`
-
-(source: [learnyouanelm](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/02-starting-out.md))
-
-#### Function Composition
-|Operator|Description|Type hint|
-|--------|-----------|----------|
-|`<|`|backward (pipe) function application `f <| x == f x`|`(a -> b) -> a -> b`
-|`|>`|forward (pipe) function application `x |> f == f x`|`a -> (a -> b) -> b`
-|`<<`|composes functions into one, arguments first applied to the function from the right side|`(b -> c) -> (a -> b) -> a -> c`
-|`>>`|same as before except arguments first applied to the function from the left side|`(a -> b) -> (b -> c) -> a -> c`
-
-(source: [learnyouanelm](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/02-starting-out.md))
-
-#### Other
-|Operator|Description|Type hints|
-|--------|-----------|----------|
-|`++`|put appendable things together|`appendable -> appendable -> appendable`|
-|`::`|add an element to the front of a list|`a -> List a -> List a`|
-|`as`|keyword that creates aliases for values `(x, y) as t == t = (x, y)`|`a -> a`|
-
-(source: [learnyouanelm](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/02-starting-out.md))

@@ -2,9 +2,8 @@
 
 Elm operators are _functions_. For instance, `*` is a function that takes two numbers and multiplies them. As you've seen, we call it by sandwiching it between them. This is what we call an *infix* function. You can learn more about these in the chapter on [functions](../type/03-function.md).
 
-## Overview
+## Arithmetic
 
-### Arithmetic
 |Operator|Description|Type hint|
 |--------|-----------|----------|
 |`+`|addition|`number -> number -> number`
@@ -38,7 +37,8 @@ $ elm repl
 > 50 * (100 - 4999) -- -244950
 ```
 
-### Comparison
+## Comparison
+
 |Operator|Description|Type hint|
 |--------|-----------|----------|
 |`==`|equal|`comparable -> comparable -> Bool`
@@ -58,8 +58,8 @@ $ elm repl
 "hello" == "hello" -- True
 ```
 
+## Logical
 
-### Logical
 |Operator|Description|Type hint|
 |--------|-----------|----------|
 |`&&`|logical and|`Bool -> Bool -> Bool`
@@ -77,7 +77,8 @@ not False -- True
 not (True && True) -- False
 ```
 
-### Function Composition
+## Function Composition
+
 |Operator|Description|Type hint|
 |--------|-----------|----------|
 |`<|`|backward (pipe) function application `f <| x == f x`|`(a -> b) -> a -> b`
@@ -87,7 +88,8 @@ not (True && True) -- False
 
 (source: [learnyouanelm](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/02-starting-out.md))
 
-### Other
+## Other
+
 |Operator|Description|Type hints|
 |--------|-----------|----------|
 |`++`|put appendable things together|`appendable -> appendable -> appendable`|
@@ -95,8 +97,3 @@ not (True && True) -- False
 |`as`|keyword that creates aliases for values `(x, y) as t == t = (x, y)`|`a -> a`|
 
 (source: [learnyouanelm](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/02-starting-out.md))
-
-
-
-
-

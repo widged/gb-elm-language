@@ -54,10 +54,6 @@ Special types
 * Aliases: `type alias Point={x=0,y=0}`
 * Union type: `type Msg = Decrement | Increment`
 
-Custom types defined in official or community contributed packages.
-
-(source: [learnyouanelm](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/02-starting-out.md))
-
 ## Type inference
 
 The Elm compiler has type inference and can figure things out. (check it out using the REPL)

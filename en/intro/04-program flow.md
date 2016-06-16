@@ -13,16 +13,7 @@ Elm syntax is very similar to Haskell. There is one important difference to keep
 
 (source: [learnyouanelm](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/01-introduction.md))
 
-# Pattern matching
 
-Pattern matching on record fields
-```elm
--- Requires the argument with x and y fields
-multiply {x,y} =
-    x * y
-```
-
-(source: [learnyouanelm](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/02-starting-out.md))
 
 # Links
 

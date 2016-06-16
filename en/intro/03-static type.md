@@ -278,9 +278,6 @@ This situation would never happen because the type variable b is not matching. I
 (source: [understanding-the-elm-type-system](http://www.adamwaselnuk.com/elm/2016/05/27/understanding-the-elm-type-system.html))
 
 
-## More complicated patterns
-
-
 Example below is read as function that takes an __a__ value and returns a __b__ value, list of __a__ values returns a list of __b__ values
 
 ```elm

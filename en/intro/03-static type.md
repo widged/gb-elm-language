@@ -56,9 +56,9 @@ Special types
 
 ## Type inference
 
-The Elm compiler has type inference and can figure things out. (check it out using the REPL)
+The Elm compiler has type inference and can figure things out. 
 
-
+(check it out using the REPL)
 
 
 ## Type annotations

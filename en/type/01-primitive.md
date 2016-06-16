@@ -2,7 +2,7 @@
 
 # Primitive types
 
-Primitive types are built into the language. They include `Int`, `Float`, `Bool`, and `String`. 
+Primitive types are built into the language. They include `Bool`, `Int`, `Float`, `Char`, and `String`. 
 
 ```elm
 True : Bool
@@ -43,7 +43,6 @@ Numeric types are `Int` and `Float`.
 > truncate 1
 1 : Int
 ```
-(source: [learnyouanelm](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/02-starting-out.md))
 
 ## Int
 
@@ -60,9 +59,6 @@ circumference r =
 toPrint = circumference 4.0
 25.132742
 ```
-
-(source: ???)
-
 --------------------------------------------------
 ## Text Strings
 
@@ -110,5 +106,6 @@ Strings can be appended with `++`.
 
 * [learnyouanelm-03](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/03-types.md)
 * [learnyouanelm](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/02-starting-out.md)
+
 
 

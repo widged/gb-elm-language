@@ -74,6 +74,13 @@ $ elm repl
 
 Both `2` and `2.3` are identified as numbers. The answer is a `Float`. 
 
+A number literal without a decimal point can be treated as an Int or a Float in different operations.
+
+```elm
+33 / 2 -- 16.5 with floating point division
+33 // 2 -- 16 with integer division
+```
+
 ### Type annotations
 
 Though it is not mandatory, it is best practice to always write explicit type declarations. The annotation is a form of documentation, which is verified by the compiler. They provide clear information as to how many arguments a function takes, what their types are, what order to pass them, and what the return type is. In the early stages of a program, type annotations help you think about what the function should be doing. In the long run, they improve the reliability, clarity, and scalability of your programs.
@@ -222,10 +229,6 @@ $ elm repl
 
 The function `fst` takes a pair expressed as a tuple and returns a value that is of the same type as the first element. The tuple is expressed as `( a, b )` because the value type for the first element can differ from the value type of the second. Two variable names`a` and `b` are introduced because the first and second values can be of different type variables. However, they don't have to be different types. The return value's type is the same as the one of the first element in the tuple. 
 
-However, (almost) any lowercase string will work. Sometimes, another letter or a descriptive word, can help better capture the intent. For example, `Dict k v` reminds us that the types variables are the keys and values.
-
-
-
 It is rare for functions to have more than 2 type variables. It however is not impossible. 
 
 ```elm
@@ -236,7 +239,14 @@ $ elm repl
       -> List a -> List b -> List c -> List d -> List e -> List f
 ```
 
-// number, comparable, appendable are special types of type variables
+Though the convention is to use `a,b,c,d`, (almost) any lowercase string will work. Sometimes, another letter or a descriptive word, can help better capture the intent. For example, `Dict k v` reminds us that the types variables are the keys and values.
+
+
+#### Constrained Type variables
+
+Elm has three special types of type variables: `number`, `comparable`, and `appendable`.
+
+A `number` is any type that supports basic arithmetic (except division, which is handled separately for each type). These are `Int` or `Float`.
 
 ```elm
 doubleMe : number -> number
@@ -244,13 +254,12 @@ doubleMe x =
     x + x
 ```
 
-#### Constrained Type variables
-
-Elm has three special type variables that indicate that the value needs to one of a few different types, but not just any type: `number`, `comparable`, and `appendable`.
-
-A `number` is any type that supports basic arithmetic (except division, which is handled separately for each type). These are `Int` or `Float`.
+* Arithmetic expressions: `+`,`-`, `*`, `/` (result is always a float), `//` (integer division), `%` (mod), parentheses
 
 A `comparable` represents types that can be compared or ordered, like 1 == 1 or 1 < 2. This can be `String`, `Char`, `Int`, `Float`, `Time`, or a `List` or `tuple` containing only comparable values. Surprisingly enough, comparables can be compared with operations like `(>)`. Elm's dictionaries and sets are implemented as binary search trees, so the keys or elements must be comparable. 
+
+* Comparators: `<`, `<=`, `==`, `!=`, `>=`, `>`
+
 
 An `appendable` represents items that can be appended to each other with the `++` operator. These can be `string`, `text` (i.e. with typesetting information), or a `list` (containing any type). 
 
@@ -260,24 +269,11 @@ If one of these types appears multiple times in a type annotation, all occurrenc
 
 (source: [elm-for-js](https://github.com/elm-guides/elm-for-js/blob/master/How%20to%20Read%20a%20Type%20Annotation.md) and [learnyouanelm-03](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/03-types.md))
 
-##### Numbers
-
-* Arithmetic expressions: `+`,`-`, `*`, `/` (result is always a float), `//` (integer division), `%` (mod), parentheses
-* Comparators: `<`, `<=`, `==`, `!=`, `>=`, `>`
-
-Every number literal without a decimal point can be either an Int or a Float.
-
-```elm
-33 / 2 -- 16.5 with floating point division
-33 // 2 -- 16 with integer division
-```
-
-(source: ???)
 
 
 ### Grouping
 
-The example given for `List.map5` highlight yet another pattern, grouping. 
+The example given for `List.map5` highlight yet another pattern, grouping. It shows in all variants of `List.map`.
 
 ```elm
 $ elm repl

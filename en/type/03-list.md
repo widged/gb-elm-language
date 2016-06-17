@@ -1,8 +1,8 @@
 **Elm 0.??**, **copied, please ignore** 
 
-# List
+## List
 
-## Operations on lists
+### Operations on lists
 
 import List exposing (..)
 
@@ -63,7 +63,7 @@ import List exposing (..)
     Same as map but the function is also applied to the index of each element (starting at zero).
 
 
-## LIST SUPPORT
+### LIST SUPPORT
 
 ```
 -- Here are four things that are equivalent in elm
@@ -157,7 +157,7 @@ Ways to create a list
 (source: [learnyouanelm](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/02-starting-out.md))
 
 
-## Destructuring
+### Destructuring
 
 Compare to tuple, List almost do not support destructuring. One of the case is used to find the first element of a list by utilizing the cons operator, ie ::w
 
@@ -203,7 +203,7 @@ listFn list =
 (source: [comment on yang-wei gist](https://gist.github.com/yang-wei/4f563fbf81ff843e8b1e))
 
 
-## Square Brackets and What’s Inside Them
+### Square Brackets and What’s Inside Them
 
 In Elm, [] signifies an empty list. Lists are just linked lists (ordered collections where each node of the collection points to the subsequent node, if there is one), where all the values must be same type. You get head and tail, just like you’d expect.
 
@@ -541,7 +541,6 @@ look at more list functions [later](modules#data-list).
 (source: [learnyouanelm](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/02-starting-out.md))
 
 ### Texas ranges
-------------
 
 What if we want a list
 of all numbers between 1 and 20? Sure, we could just type them all out

@@ -95,7 +95,7 @@ $ elm repl
 
 ### Operator Precedence
 
-Function application (calling a function by putting a space after it and then typing out the parameters) has the highest precedence of them all. What that means for us is that these two statements are equivalent.
+Function application (calling a function by putting a space after it and then typing out the parameters) has the highest precedence. These two statements are equivalent.
 
 ```elm
 $ elm repl

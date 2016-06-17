@@ -293,18 +293,12 @@ format parseTree state =
 
 
 
-
-
-
 ### Extensible record types
 
 #### Defining extensible records
 
-We can define a record type that has *at least* the given fields.
-Here we define aliases for two record types.
-Type `JustXY` has just the fields `x` and `y`. It is an ordinary record type.
-Type `IncXY` has at least the fields `x` and `y`.
-It is an extensible record type.
+We can define a record type that has *at least* the given fields. Here we define aliases for two record types. Type `JustXY` has just the fields `x` and `y`. It is an ordinary record type.
+Type `IncXY` has at least the fields `x` and `y`. It is an extensible record type.
 
 ```elm
 type alias JustXY  =     { x : Float, y : Float }

@@ -176,3 +176,16 @@ case List.head aList of
   Just x -> "The head is " ++ toString x
   Nothing -> "The list was empty."
 ```
+
+### _ 
+
+In many functional languages, _ is a wildcard match: it will match anything but importantly (and contrary to Python or Javascript for instance) it will not create a binding. Which means you can match to multiple _ in a single pattern.
+
+```elm
+let
+  (a,b,_) = myTuple
+in
+  a ++ b
+-- "AB" : String
+```
+(source: [yang-wei gist](https://gist.github.com/yang-wei/4f563fbf81ff843e8b1e))

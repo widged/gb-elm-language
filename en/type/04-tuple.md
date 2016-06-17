@@ -181,7 +181,7 @@ So suppose we wanted to refer to author Neil Gaiman in this text: we might say `
 
 ### Tuples
 
-In some ways, tuples are like lists — they are a way to store several values into a single value. However, there are a few fundamental differences. A list of numbers is a list of numbers. That's its type and it doesn't matter if it has only one number in it or a million numbers. Tuples, however, are used when you know exactly how many values you want to combine and its type depends on how many components it has and the types of the components. They are denoted with parentheses and their components are separated by commas.
+Tuples, however, are used when you know exactly how many values you want to combine and its type depends on how many components it has and the types of the components. They are denoted with parentheses and their components are separated by commas.
 
 Another key difference is that they don't have to be homogenous. Unlike a list, a tuple can contain a combination of several types.
 

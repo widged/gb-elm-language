@@ -24,7 +24,7 @@ The 1st and 2nd elements are different types of values.
 
 Functions that operate on lists live in the List module. Use `List.functionName` to access them. 
 
-Note. strings are similar to lists but cannot be treated as Lists of characters. 
+Note. strings are not Lists of characters, though they are similar with Lists.
 
 ### Creating Lists
 

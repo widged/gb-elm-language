@@ -68,6 +68,16 @@ Beware of creating data structures with record accessors. Because all a list's e
 
 (source: [elm-for-js](https://github.com/elm-guides/elm-for-js/blob/master/Scope.md))
 
+----
+Record accessors. Uniquely these functions are defined by a pattern, rather than being listed somewhere. For example, `.name : { b | name : a } -> a`, which basically means `.name` takes any record with a `name` field and extracts its value. You can use any record field name you like.
+
+Beware of creating data structures with record accessors. Because all a list's elements must have the same type, each record accessor must extract a value of the same type, which is usually not what you want.
+
+```elm
+[.name, .number] : List ({ b | name : a, number : a } -> a)
+```
+
+(source: [learnyouanelm-03](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/03-types.md))
 -----
 
 Access a field with a dot and the field name.
@@ -141,23 +151,7 @@ If I define `type alias Point2D = {x : Float, y : Float}`, then like any type al
 
 (source: [elm-for-js](https://github.com/elm-guides/elm-for-js/blob/master/Scope.md))
 
-### Records
 
-
-
-
-
-#### .accessors
-
-Record accessors. Uniquely these functions are defined by a pattern, rather than being listed somewhere. For example, `.name : { b | name : a } -> a`, which basically means `.name` takes any record with a `name` field and extracts its value. You can use any record field name you like.
-
-Beware of creating data structures with record accessors. Because all a list's elements must have the same type, each record accessor must extract a value of the same type, which is usually not what you want.
-
-```elm
-[.name, .number] : List ({ b | name : a, number : a } -> a)
-```
-
-(source: [learnyouanelm-03](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/03-types.md))
 
 
 

@@ -2,72 +2,26 @@
 
 ## List
 
-### Operations on lists
+### Holds values of the same type
 
-import List exposing (..)
+Every element in a list must have the same type.
 
-    (::) : a -> List a -> List a. "Cons" (add) an element to a list.
-    head : List a -> a
-    Return the first element of a list.
-    tail : List a -> List a
-    Return the remainder of a list after the head.
-    member : a -> List a -> Bool Tests whether a value is in a list.
-    take : Int -> List a -> List a Returns the first n elements of a list.
-    drop : Int -> List a -> List a
-    Returns the list with the first n elements removed.
-    isEmpty : List a -> Bool Tests if a list is empty.
-    length : List a -> Int Returns the length of a list.
-    reverse : List a -> List a Reverses a list.
-    append : List a -> List a -> List a Appends two lists.
-    concat : List (List a) -> List a Combine a list of lists into a single list.
-    intersperse : a -> List a -> List a Put an element between all elements of a list.
-    map : (a -> b) -> List a -> List b
-    Applies a function to each element of a list, returning a list of results.
-    filter : (a -> Bool) -> List a -> List a Applies a predicate to each element of a list, retaining those that satisfy the predicate.
-    foldl : (a -> b -> b) -> b -> L Li is st t a -> b Reduce a list from the left. Specifically, takes a binary functionfab->b, an initial valueb, and a list ofa, producing a single b.
-    foldl1 : (a -> a -> a) -> L Li is st t a -> a Reduce a non-empty list from the left.
-    foldr : (a -> b -> b) -> b -> L Li is st t a -> b Reduce a list from the right.
-    foldr1 : (a -> b -> b) -> b -> L Li is st t a -> b Reduce a non-empty list from the right.
-    scanl : (a -> b -> b) -> b -> L Li is st t a -> List b
-    Reduce a list from the left, building up all of the intermediate results into a list.
-    scanl1 : (a -> b -> b) -> b -> List a -> List b
-    Reduce a non-empty list from the left, building up all of the intermediate results into a list.
-    map2 : (a -> b -> result) -> List a -> List b -> List result
-    Combine two lists, element-wise, with the given function. The functions map3, map4, and map5also exist. zip
-    Not currently in Elm; use map2 (,).
-    unzip : List (a, b) -> (List a, List b)
-    Given a list of tuples, returns a tuple of lists.
-    partition : (a -> Bool) -> List a -> (List a, List a)
-    Returns a tuple of the elements that satisfy the predicate and those that fail the predicate.
-    all : (a -> Bool) -> List a -> Bool
-    Tests whether all elements satisfy the predicate.
-    any : (a -> Bool) -> List a -> Bool
-    Tests whether any element satisfies the predicate.
-    sum : List number -> number Returns the sum of the list elements.
-    product : List number -> number Returns the product of the list elements.
-    maximum : List comparable -> Maybe comparable
-    Returns the largest value in the list.
-    minimum : List comparable -> Maybe comparable
-    Returns the smallest value in the list.
-    sort : List comparable -> List comparable
-    Sorts from lowest to highest.
-    sortBy : (a -> comparable) -> List a -> List a
-    Sorts by a property of the list elements, such as a field of a record.
-    sortWith : (a -> a -> Order) -> List a -> List a
-    Sorts according to the supplies function.
-    filterMap : (a -> Maybe b) -> List a -> List b
-    Apply a function to a list and keep only the ones that succeed in returning a value.
-    concatMap : (a -> List b) -> List a -> List b
-    Map a function onto a list and flatten the results ("flatmap" in some languages).
-    indexedMap : (Int -> a -> b) -> List a -> List b
-    Same as map but the function is also applied to the index of each element (starting at zero).
-
-
-### LIST SUPPORT
-
+```elm
+$ elm repl
+> ["the", "quick", "brown", "fox"]
+["the","quick","brown","fox"] : List String
+> [1, 2, 3, 4, 5]
+[1,2,3,4,5] : List number
+> [1, "2", 3, 4, 5]
+-- TYPE MISMATCH --------------------------------------------- repl-temp-000.elm
+The 1st and 2nd elements are different types of values.
 ```
--- Here are four things that are equivalent in elm
 
+### List Building
+
+A list can be built in many different ways. 
+
+```elm
 numbers : List Int
 numbers = [ 1,2,3,4 ]
 
@@ -79,8 +33,11 @@ numbers = 1 :: [ 2,3,4 ]
 
 numbers : List Int
 numbers = 1 :: 2 :: 3 :: 4 :: []
+```
 
---
+### List Manipulation
+
+```elm
 length : List a -> Int
 length list =
   case list of
@@ -95,12 +52,6 @@ length list =
 
 ### Lists
 
-Every element in a list must have the same type.
-
-~~~~ {.Elm:hs name="code"}
-["the", "quick", "brown", "fox"]
-[1, 2, 3, 4, 5]
-~~~~
 
 The second example can also be written with two dots.
 
@@ -558,3 +509,65 @@ enumeration sequences manually is stupid.
 show [1..20] -- [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]
 ```
 (source: [learnyouanelm](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/02-starting-out.md))
+
+### Operations on lists
+
+import List exposing (..)
+
+```
+(::) : a -> List a -> List a. "Cons" (add) an element to a list.
+head : List a -> a
+Return the first element of a list.
+tail : List a -> List a
+Return the remainder of a list after the head.
+member : a -> List a -> Bool Tests whether a value is in a list.
+take : Int -> List a -> List a Returns the first n elements of a list.
+drop : Int -> List a -> List a
+Returns the list with the first n elements removed.
+isEmpty : List a -> Bool Tests if a list is empty.
+length : List a -> Int Returns the length of a list.
+reverse : List a -> List a Reverses a list.
+append : List a -> List a -> List a Appends two lists.
+concat : List (List a) -> List a Combine a list of lists into a single list.
+intersperse : a -> List a -> List a Put an element between all elements of a list.
+map : (a -> b) -> List a -> List b
+Applies a function to each element of a list, returning a list of results.
+filter : (a -> Bool) -> List a -> List a Applies a predicate to each element of a list, retaining those that satisfy the predicate.
+foldl : (a -> b -> b) -> b -> L Li is st t a -> b Reduce a list from the left. Specifically, takes a binary functionfab->b, an initial valueb, and a list ofa, producing a single b.
+foldl1 : (a -> a -> a) -> L Li is st t a -> a Reduce a non-empty list from the left.
+foldr : (a -> b -> b) -> b -> L Li is st t a -> b Reduce a list from the right.
+foldr1 : (a -> b -> b) -> b -> L Li is st t a -> b Reduce a non-empty list from the right.
+scanl : (a -> b -> b) -> b -> L Li is st t a -> List b
+Reduce a list from the left, building up all of the intermediate results into a list.
+scanl1 : (a -> b -> b) -> b -> List a -> List b
+Reduce a non-empty list from the left, building up all of the intermediate results into a list.
+map2 : (a -> b -> result) -> List a -> List b -> List result
+Combine two lists, element-wise, with the given function. The functions map3, map4, and map5also exist. zip
+Not currently in Elm; use map2 (,).
+unzip : List (a, b) -> (List a, List b)
+Given a list of tuples, returns a tuple of lists.
+partition : (a -> Bool) -> List a -> (List a, List a)
+Returns a tuple of the elements that satisfy the predicate and those that fail the predicate.
+all : (a -> Bool) -> List a -> Bool
+Tests whether all elements satisfy the predicate.
+any : (a -> Bool) -> List a -> Bool
+Tests whether any element satisfies the predicate.
+sum : List number -> number Returns the sum of the list elements.
+product : List number -> number Returns the product of the list elements.
+maximum : List comparable -> Maybe comparable
+Returns the largest value in the list.
+minimum : List comparable -> Maybe comparable
+Returns the smallest value in the list.
+sort : List comparable -> List comparable
+Sorts from lowest to highest.
+sortBy : (a -> comparable) -> List a -> List a
+Sorts by a property of the list elements, such as a field of a record.
+sortWith : (a -> a -> Order) -> List a -> List a
+Sorts according to the supplies function.
+filterMap : (a -> Maybe b) -> List a -> List b
+Apply a function to a list and keep only the ones that succeed in returning a value.
+concatMap : (a -> List b) -> List a -> List b
+Map a function onto a list and flatten the results ("flatmap" in some languages).
+indexedMap : (Int -> a -> b) -> List a -> List b
+Same as map but the function is also applied to the index of each element (starting at zero).
+```

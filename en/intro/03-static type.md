@@ -5,8 +5,7 @@
 
 A static type system means that the type of every expression is known at compile time, allowing the compiler to reason about the program before compiling it. It helps prevent any kind of error related to data types and provides high level of confidence that your program will work as expected.
 
-The Elm program is verified by a compiler. The compiler looks for type related errors. If you write a program where you try to divide a boolean type with some number, the compiler informs that there is a problem and refuses to build the program. All errors must be fixed before the program can run. This is why Elm is said to have “no runtime exceptions”.
-
+If you write a program where you try to divide a boolean type with some number, the compiler informs that there is a problem and refuses to build the program. This is why Elm is said to have “no runtime exceptions”. All errors must be fixed before the program can run. 
 
 ```elm
 $ elm repl
@@ -37,7 +36,7 @@ What Elm is telling us is that `+` expects its left and right side to be numbers
 
 ### Types
 
-A type is a kind of label that every expression has. It tells us in which category of things that expression fits. Here is a quick overview of types available by default in any Elm program. They are described each in greater details in the type section. 
+A type is a kind of label that every expression has. It tells us in which category of things that expression fits. Here is a quick overview of types available by default in any Elm program. They are described each in greater details in the [type section](../type/cover.md). 
 
 Primitives:
 * Int: `2` 
@@ -56,6 +55,7 @@ Collections:
 Special types
 * Aliases: `type alias Point={x=0,y=0}`
 * Union type: `type Msg = Decrement | Increment`
+* Unit type: `()`
 
 Constrained types
 * number: `2 + 2.3 -- 4.3 : Float`
@@ -177,7 +177,7 @@ startPosition =
 
 #### Type variables
 
-Functions don't necessarily need to be aware of the type of values held in a collection to computer an answer. Take `List.length`. It doesn't really matter whether the values inside the list are ll strings, numbers, or complex records. What we are after is the number of items in the list.
+Functions don't necessarily need to be aware of the type of values held in a collection to computer an answer. Take `List.length`. It doesn't really matter whether the values inside the list are all strings, numbers, or complex records. What we are after is the number of items in the list.
 
 Type variables help with this. Check the `List.length` signature using the REPL.
 
@@ -187,7 +187,7 @@ $ elm repl
 <function> : List a -> Int
 ```
 
-The lower case letter `a` is what is known as a type variable. It is a placeholder for a specific type that is left unspecified. The only requirement is that all values in the list have the same type. It can be any type. The function returns the length of the list, represented as a `Int`.
+The lower case letter `a` is what is known as a type variable. It is a placeholder for a specific type that is left unspecified. The only requirement for running `List.length` is that all values in the list have the same type. It can be any type. The function returns the length of the list, represented as a `Int`.
 
 ```elm
 $ elm repl

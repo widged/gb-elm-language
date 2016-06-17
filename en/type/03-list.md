@@ -81,7 +81,7 @@ List.head [] -- Nothing
 
 ### Destructuring
 
-Compare to tuple, List almost do not support destructuring. One of the case is used to find the first element of a list by utilizing the cons operator, ie ::w
+List have limited support for destructuring. One of the case is used to find the first element of a list by utilizing the cons operator, ie ::w
 
 ```elm
 myList = ["a", "b", "c"]

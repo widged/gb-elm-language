@@ -33,6 +33,7 @@ A list can be built in many different ways.
 $ elm repl
 > [1,2,3,4]
 > [1..4] -- Texas range
+> [1,2] ++ [3,4]
 > 1 :: [2,3,4]
 > 1 :: 2 :: 3 :: 4 :: []
 [1,2,3,4] : List number
@@ -40,9 +41,9 @@ $ elm repl
 
 (source: [learnyouanelm](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/02-starting-out.md))
 
+#### Texas ranges
 
-### Manipulating Lists
-
+Ranges are a way of making lists that are sequences of numbers. To make a list containing numbers from 1 to 20, you just write `[1..20]`. That is the equivalent of writing `[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]`.
 
 #### merge two lists
 
@@ -70,6 +71,9 @@ $ elm repl
 ```
 
 Notice that `::` takes an element to the left and a list to the right. 
+
+### Manipulating Lists
+
 
 #### head and tail
 
@@ -147,30 +151,6 @@ length list =
         1 + length rest
 ```
 
-### -----
-
-
-
-### Texas ranges
-
-`[1..5]`
-
-What if we want a list
-of all numbers between 1 and 20? Sure, we could just type them all out
-but obviously that's not a solution for gentlemen who demand excellence
-from their programming languages. Instead, we'll use ranges. Ranges are
-a way of making lists that are sequences of numbers.
-
-To make a list containing all the natural numbers from 1 to 20, you just
-write `[1..20]`. That is the equivalent of writing
-`[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]` and there's no
-difference between writing one or the other except that writing out long
-enumeration sequences manually is stupid.
-
-```elm
-show [1..20] -- [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]
-```
-(source: [learnyouanelm](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/02-starting-out.md))
 
 ### Operations on lists
 

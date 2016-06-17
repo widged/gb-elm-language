@@ -113,6 +113,7 @@ show snd ("Wow", False) -- False
 *Note:* these functions operate only on pairs. They won't work on triples, 4-tuples, 5-tuples, etc. We'll go over extracting data from tuples in different ways a bit later.
 
 (source: [learnyouanelm](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/02-starting-out.md))
+
 #### comparison
 
 Tuples are comparable.

@@ -61,6 +61,35 @@ The type of `posA` does not have a name, though.
 
 To create a record, you can write out the desired key-value pairs: { name = "Wuthering Heights", author = "Bronte", readByMe = True }. (Note that notation here may be backwards from what you expect. Type signatures, in Elm, use a colon. Assignment uses an equals sign)
 
+#### Record type alias (Naming record types)
+
+If I define `type alias Point2D = {x : Float, y : Float}`, then like any type alias `Point2D` becomes a valid type to use in annotations. But because we're aliasing a record, we also gain a *record constructor*, `Point2D : Float -> Float -> Point2D`. For example, `origin = Point2D 0 0` becomes legal, and this is actual Elm code, not an annotation. `Point2D` is both a type and a function.
+
+(source: [elm-for-js](https://github.com/elm-guides/elm-for-js/blob/master/Scope.md))
+
+---
+
+We can name a record type by tagging it - like this:
+
+```elm
+type Positioned = Positioned { x : Float, y : Float }
+
+posB : Positioned
+posB = Positioned { x = 7.7, y = 5.2 }
+```
+
+However, this isn't anything new. This is just tagging a record type in the same way we might tag an Int type, like this:
+
+```elm
+type Aged = Aged Int
+
+century = Aged 100
+```
+
+By the way, `posA` and `posB` do not have the same type. `posA` is of type `{ x : Float, y : Float }` while `posB` is of type `Positioned`.
+
+
+(source: [elm-explained](https://github.com/niksilver/elm-explained))
 
 ### Operations on records
 
@@ -263,35 +292,7 @@ format parseTree state =
 (source: [comment on yang-wei gist](https://gist.github.com/yang-wei/4f563fbf81ff843e8b1e))
 
 
-### Record type alias
 
-If I define `type alias Point2D = {x : Float, y : Float}`, then like any type alias `Point2D` becomes a valid type to use in annotations. But because we're aliasing a record, we also gain a *record constructor*, `Point2D : Float -> Float -> Point2D`. For example, `origin = Point2D 0 0` becomes legal, and this is actual Elm code, not an annotation. `Point2D` is both a type and a function.
-
-(source: [elm-for-js](https://github.com/elm-guides/elm-for-js/blob/master/Scope.md))
-
-### Naming record types
-
-We can name a record type by tagging it - like this:
-
-```elm
-type Positioned = Positioned { x : Float, y : Float }
-
-posB : Positioned
-posB = Positioned { x = 7.7, y = 5.2 }
-```
-
-However, this isn't anything new. This is just tagging a record type in the same way we might tag an Int type, like this:
-
-```elm
-type Aged = Aged Int
-
-century = Aged 100
-```
-
-By the way, `posA` and `posB` do not have the same type. `posA` is of type `{ x : Float, y : Float }` while `posB` is of type `Positioned`.
-
-
-(source: [elm-explained](https://github.com/niksilver/elm-explained))
 
 
 

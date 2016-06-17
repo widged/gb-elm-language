@@ -1,8 +1,8 @@
 **Elm 0.??**, **copied, please ignore** 
 
-# Sets
+## Sets
 
-## What are sets, and when should you use them?
+### What are sets, and when should you use them?
 
 Elm’s sets are a very valuable data structure, and one that’s worth knowing well. All the basic functionality of sets will be familiar from middle and high school math (also, college level, if you took Analysis or Real Analysis or Abstract Algebra or Logic or Philosophy). A set is a collection of unique items; in Elm, these items must be comparables (ints, floats, chars, strings, lists, or tuples) and of the same type.
 
@@ -10,7 +10,7 @@ So when might it make sense to use a set? Whenever you find yourself doing a lot
 
 In deciding to use a set rather than another data structure, there’s one other important consideration: are the elements of your collection comparable? Sets can only contain comparable values. So our collection of sweet library books? Not going to work as a set.
 
-## Using a Set
+### Using a Set
 
 Suppose that our LibraryEntrys had unique ids. We could store a string id in a set.
 
@@ -39,7 +39,7 @@ Now, checking to see if a book (a LibraryEntry with, say, id "10") is checked ou
 
 (source: [Data Structures in Elm @NoRedInk](http://tech.noredink.com/post/140646140878/data-structures-in-elm))
 
-## Implementation
+### Implementation
 
 Sets are actually just a wrapper around Elm’s Dicts, which are implemented with a red black tree. Be aware that as a result of this implementation, == is not reliable (with Sets or Dicts). The order in which elements are added to a RB-tree impacts the form the tree takes, which makes equality a sticky concept.
 

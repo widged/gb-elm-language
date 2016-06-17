@@ -260,9 +260,6 @@ then this is what it looks like in the Elm REPL:
 
 ## -- 2 sort --
 
-
-
-
 ### Naming record types
 
 We can name a record type by tagging it - like this:

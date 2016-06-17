@@ -28,7 +28,7 @@ In tuples, the meaning of the fields comes from their order.
 fst : (a, b) -> a. Returns the first element.
 snd : (a, b) -> b. Returns the second element.
 
-To access the values of a Tuple, we are given a couple of helpers. fst (1,0) gives us the first value, 1, and snd (1,0) gives us the second value, 0. So, using aPoint from above, I might have x = fst aPoint and y = snd aPoint.
+To access the values of a Tuple, we are given a couple of helpers. fst (1,0) gives us the first value, 1, and snd (1,0) gives us the second value, 0.
 
 
 #### comparison

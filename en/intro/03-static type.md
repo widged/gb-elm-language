@@ -162,7 +162,6 @@ repeatString: Int -> String -> String
 // type a-goes-to-b, goes to list of a, goes to list of b
 
 ----
-
 `->` is used to separate the arguments and return value in the types of functions. It's pronounced "goes to". So for example, `String.length : String -> Int` is pronounced "string-dot-length has type String goes to Int". You just read left to right, like an English sentence.
 
 What's really going on is that the type annotation is telling you about *partial application*: you can give a function only some of its arguments, and get a function as a result. You can always get the new function's type annotation by covering up part of the left side of the original function's annotation.
@@ -172,7 +171,6 @@ update : Action -> Model -> Model
 -- implied parentheses in the annotation.
 update' : Action -> (Model -> Model)
 ```
-
 (source: [elm-for-js](https://github.com/elm-guides/elm-for-js/blob/master/How%20to%20Read%20a%20Type%20Annotation.md))
 
 

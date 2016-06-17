@@ -102,7 +102,7 @@ You can also define types at the top level, like `type alias Model = Int`.
 
 (source: [[https://github.com/elm-guides/elm-for-js/blob/master/Scope.md]])
 
-# Function Declaration
+## Function Declaration
 
     add : Int -> Int -> Int
     add x y =
@@ -119,7 +119,7 @@ You can also define types at the top level, like `type alias Model = Int`.
 (source: ???)
 
 
-# AUTOMATIC FUNCTION CURRYING
+## AUTOMATIC FUNCTION CURRYING
 
     concat : String -> String -> String
     concat a b = a ++ b
@@ -131,7 +131,7 @@ You can also define types at the top level, like `type alias Model = Int`.
 (source: ???)
 
 
-# Applying functions
+## Applying functions
 
 First, some functions that will be useful to us. (These can be found in
 [module ApplyingFunctions](ApplyingFunctions.elm).)
@@ -152,7 +152,7 @@ isEven x =
 
 (source: [elm-explained](https://github.com/niksilver/elm-explained))
 
-## "Applied to..."
+### "Applied to..."
 
 The `<|` operator can be read as "applied to...".
 We can read the code here as "increment applied to 17":
@@ -171,7 +171,7 @@ res2 = concat4 "Once" "Upon" "A" <| "Time"
 (source: [elm-explained](https://github.com/niksilver/elm-explained))
 
 
-## "Applying..."
+### "Applying..."
 
 The `|>` operator can be read as "applying...".
 We can read the code below as "17 applying increment".
@@ -189,7 +189,7 @@ res4 = "Time" |> concat4 "Once" "Upon" "A"
 
 (source: [elm-explained](https://github.com/niksilver/elm-explained))
 
-## Composition with "composed with..."
+### Composition with "composed with..."
 
 The `<<` operator can be read "composed with...".
 It composes functions right to left. Although that might not
@@ -210,7 +210,7 @@ res7 = fun5 64    -- False, because the square root of 64 is even
 (source: [elm-explained](https://github.com/niksilver/elm-explained))
 
 
-## Composition with "and then..."
+### Composition with "and then..."
 
 The `>>` operator can be read "and then...".
 It composes functions left to right. It looks intuitive but
@@ -227,9 +227,9 @@ res10 = fun8 64    -- False, because the square root of 64 is even
 
 (source: [elm-explained](https://github.com/niksilver/elm-explained))
 
-# Defining functions
+## Defining functions
 
-## Named functions
+### Named functions
 
 We can define a function simply by naming it:
 
@@ -253,7 +253,7 @@ True : Bool
 (source: [elm-explained](https://github.com/niksilver/elm-explained))
 
 
-## Anonymous functions
+### Anonymous functions
 
 `\arg1 arg2 -> expression` is Elm's syntax for anonymous functions. The backslash is traditionally pronounced
 *lambda*, after the Greek letter used by programming language theorists, but you're welcome to say *function* if that
@@ -312,7 +312,7 @@ Here it is in use:
 (source: [elm-explained](https://github.com/niksilver/elm-explained))
 
 
-## Simple type tags (constructors) are functions, too
+### Simple type tags (constructors) are functions, too
 
 If we've defined a type with a tag then the tag (the constructor)
 is a function, too.
@@ -459,14 +459,14 @@ of that field. Here's what we can do in the Elm REPL:
 
 (source: [elm-explained](https://github.com/niksilver/elm-explained))
 
-# Links
+## Further Reading
 
 * [learnyouanelm, higher order functions -- from learnyouanhaskell](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/06-higher-order-functions.md)
 * [learnyouanelm, functionally solving problems](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/10-functionally-solving-problems.md)
 * [learnyouanelm - Functors, Applicative Functors and Monoids](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/11-functors-applicative-functors-and-monoids.md)
 
 
-# -- 2 sort --
+## -- 2 sort --
 
 ### Functions
 

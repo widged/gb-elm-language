@@ -285,6 +285,22 @@ This type annotation requires that we pass a record to the function that contain
 It is  possible to write functions that work on records as long as they have the right fields, ignoring any other fields.
 
 (source: [learnyouanelm-03](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/03-types.md))
+---
+When we create functions consuming Records, they can be as general or as specific as we please. I can write a getName function that takes any Record with a name field, or I can write a displayHeader function that requires name, author, publishDate, editDate, yourFirstBorn, and maybe a list of related titles too, just because.
+
+```elm
+getSentenceForLibraryEntry : LibraryEntry -> String
+getSentenceForLibraryEntry {name, author} = -- note that Elm gives us clean desctructuring
+    author ++ " wrote " ++ name ++ "."
+
+
+getSentenceForLibraryEntry : LibraryEntry -> String
+getSentenceForLibraryEntry libraryEntry =
+    libraryEntry.author ++ " wrote " ++ libraryEntry.name ++ "."
+```
+
+(source: [Data Structures in Elm @NoRedInk](http://tech.noredink.com/post/140646140878/data-structures-in-elm))
+
 
 #### Pattern matching / destructuring
 
@@ -467,20 +483,6 @@ If we put all the code above into [an Elm module called ExtensibleRecordTypes](E
 ## -- 2 sort --
 
 
-When we create functions consuming Records, they can be as general or as specific as we please. I can write a getName function that takes any Record with a name field, or I can write a displayHeader function that requires name, author, publishDate, editDate, yourFirstBorn, and maybe a list of related titles too, just because.
-
-```elm
-getSentenceForLibraryEntry : LibraryEntry -> String
-getSentenceForLibraryEntry {name, author} = -- note that Elm gives us clean desctructuring
-    author ++ " wrote " ++ name ++ "."
-
-
-getSentenceForLibraryEntry : LibraryEntry -> String
-getSentenceForLibraryEntry libraryEntry =
-    libraryEntry.author ++ " wrote " ++ libraryEntry.name ++ "."
-```
-
-(source: [Data Structures in Elm @NoRedInk](http://tech.noredink.com/post/140646140878/data-structures-in-elm))
 
 
 ## Type aliases for records act as multi-parameter functions

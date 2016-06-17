@@ -20,7 +20,8 @@ listLength aList =
   case aList of
     [] -> 0
     x::xs -> 1 + listLength xs
-    
+```
+
 ------
 
 We mentioned recursion briefly in the previous chapter. In this chapter, we'll take a closer look at recursion, why it's important to Elm and how we can work out very concise and elegant solutions to problems by thinking recursively.

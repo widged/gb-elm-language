@@ -57,6 +57,10 @@ The type of `posA` does not have a name, though.
 
 (source: [elm-explained](https://github.com/niksilver/elm-explained))
 
+### Creating
+
+To create a record, you can write out the desired key-value pairs: { name = "Wuthering Heights", author = "Bronte", readByMe = True }. (Note that notation here may be backwards from what you expect. Type signatures, in Elm, use a colon. Assignment uses an equals sign)
+
 
 ### Operations on records
 
@@ -371,9 +375,6 @@ If we put all the code above into [an Elm module called ExtensibleRecordTypes](E
 
 ## What are Records and How Do We Make One
 
-
-
-To create a record, you can write out the desired key-value pairs: { name = "Wuthering Heights", author = "Bronte", readByMe = True }. (Note that notation here may be backwards from what you expect. Type signatures, in Elm, use a colon. Assignment uses an equals sign)
 
 If we are planning to create more than one record with the same fields on it, we may want to create a type alias that will describe the shape of these records.
 

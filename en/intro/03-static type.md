@@ -187,7 +187,7 @@ $ elm repl
 <function> : List a -> Int
 ```
 
-The lower case letter `a` is what is known as a type variable. It is a placeholder for a specific type that is left unspecified. The only requirement for running `List.length` is that all values in the list have the same type. It can be any type. The function returns the length of the list, represented as a `Int`.
+The lower case letter `a` is what is known as a type variable. It is a placeholder for a specific type that is left unspecified. The only requirement for running `List.length` is a List with values of the same type. It can be any type. The function returns the length of the list, represented as a `Int`.
 
 ```elm
 $ elm repl
@@ -199,7 +199,18 @@ List.take 2 ["a","b","c"] -- ["a","b"]
 
 A given type variable can appear multiple times in the annotation. It then means that whatever type `a` holds, `a` must always refer to that exact same type. In the case of `List.take`, if the initial List had values of type `Int`, then the resulting list will have values of type `Int`.
 
-Another example is the `fst` function thatreturns the first element of a tuple.
+Some functions can accept, as arguments, values of different types. The convention is to use single letters starting at the beginning of the alphabet, `a, b, c, d`, to mark each new value type. An example is the `List.unzip` function, which decomposes a list of tuples into a tuple of lists.
+
+```elm
+$ elm repl
+> List.unzip
+<function> : List ( a, b ) -> ( List a, List b )
+List.unzip [(0, True), (17, False), (1337, True)] -- ([0,17,1337], [True,False,True])
+```
+
+Here both `a` and `b` are introduced, to specify that the function works for any types, provided that all occurrences of `a` resolve to the same type and all occurrences of `b` resolve to the same type. 
+
+Another example is the `fst` function that returns the first element of a tuple.
 
 ```elm
 $ elm repl
@@ -209,18 +220,11 @@ $ elm repl
 > fst ("John", "Doe") -- "Marc"
 ```
 
-We see that `fst` takes a pair expressed as a tuple. `( a, b )` tell us that the value type for the first element can differ from the value type of the second (it doesn't have to be different; it can). The function returns a value that is of the same type as the first element.  Note that just because `a` and `b` are different type variables, they don't have to be different types. It just states that the first component's type and the return value's type are the same. 
+The function `fst` takes a pair expressed as a tuple and returns a value that is of the same type as the first element. The tuple is expressed as `( a, b )` because the value type for the first element can differ from the value type of the second. Two variable names`a` and `b` are introduced because the first and second values can be of different type variables. However, they don't have to be different types. The return value's type is the same as the one of the first element in the tuple. 
 
-For type variables, the convention is to use single letters starting at the beginning of the alphabet, `a, b, c, d`. However, (almost) any lowercase string will work. Sometimes, another letter or a descriptive word, can help better capture the intent. For example, `Dict k v` reminds us that the types variables are the keys and values.
+However, (almost) any lowercase string will work. Sometimes, another letter or a descriptive word, can help better capture the intent. For example, `Dict k v` reminds us that the types variables are the keys and values.
 
-Some functions require the use of different type variables. If both `a` and `b` are introduced, this means that the function works for any types, provided that all occurrences of `a` resolve to the same type and all occurrences of `b` resolve to the same type.
 
-```elm
-$ elm repl
-> List.unzip -- Unzip decomposes a list of tuples into a tuple of lists.
-<function> : List ( a, b ) -> ( List a, List b )
-List.unzip [(0, True), (17, False), (1337, True)] -- ([0,17,1337], [True,False,True])
-```
 
 It is rare for functions to have more than 2 type variables. It however is not impossible. 
 

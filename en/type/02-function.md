@@ -3,11 +3,29 @@
 
 ## Functions
 
+Elm's syntax for functions is very minimal, relying only on white space to mark parameters. 
+
+```elm
+$ elm repl
+> multiply a b = a*b
+```
+
+We apply (call) a function by passing arguments separated by space
+
+```elm
+$ elm repl
+> multiply 7 6 -- 42
+```
+
 * Functions: `isNegative n = n < 0`
 * Named functions: `avgxy = (x+y)/2`
 * Anonymous functions:`(\ x y -> (x + y) / 2)`
 
-### Named functions
+### Declaring functions
+
+Define a function with its name, arguments, an equals sign, and the body.
+
+#### named functions
 
 We can define a function by naming it:
 
@@ -24,7 +42,7 @@ isEven x = (x % 2 == 0)
 
 To call a function, give its name and its parameters, separated by spaces, for example,
 
-### Anonymous functions
+#### anonymous functions
 
 Anonymous functions are defined with  `\arg1 arg2 -> expression`. The backslash is traditionally pronounced *lambda*, after the Greek letter used by programming language theorists, but you're welcome to say *function* if that helps you. It's usual not to have a space after the backslash, but we can.
 
@@ -38,7 +56,7 @@ $ elm repl
 [2,4] : List Int   
 ```
 
-### Named vs anonymous
+#### named vs anonymous
 
 Declaring a named function, and assigning an anonymous function to a named variable behave identically. We can define an anonymous function and then give it a name after.
 
@@ -54,40 +72,11 @@ $ elm repl
 "elmo" : String
 ```
 
-### Everything is a function
-
-* [Type constructors or types tags](11-type constructors)
-* [Type aliases for records act as multi-parameter functions](05-record.md)
 
 
-
-## Further Reading
-
-* [learnyouanelm, higher order functions -- from learnyouanhaskell](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/06-higher-order-functions.md)
-* [learnyouanelm, functionally solving problems](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/10-functionally-solving-problems.md)
-* [learnyouanelm - Functors, Applicative Functors and Monoids](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/11-functors-applicative-functors-and-monoids.md)
+### Applying (calling) a function
 
 
-## -- 2 sort --
-
-### Functions
-
-Elm's syntax for functions is very minimal, relying mostly on whitespace
-rather than parentheses and curly brackets. There is no "return" keyword.
-Define a function with its name, arguments, an equals sign, and the body.
-~~~~ {.Elm:hs name="code"}
-multiply a b =
-  a*b
-~~~~
-
-(source: ???)
-
-Apply (call) a function by passing it arguments (no commas necessary).
-~~~~ {.Elm:hs name="code"}
-multiply 7 6 -- 42
-~~~~
-
-(source: ???)
 
 Partially apply a function by passing only some of its arguments.
 Then give that function a new name.
@@ -459,3 +448,16 @@ roundMap = specialMap round
 Even though `roundMap` doesn't take any arguments explicitly to the left of the equals, applying `specialMap` returns a function thanks to currying. We could also write `roundMap xs = specialMap round xs`; it's really a matter of style.
 
 (source: [elm-for-js](https://github.com/elm-guides/elm-for-js/blob/master/How%20to%20Read%20a%20Type%20Annotation.md))
+
+### Everything is a function
+
+* [Type constructors or types tags](11-type constructors)
+* [Type aliases for records act as multi-parameter functions](05-record.md)
+
+
+
+## Further Reading
+
+* [learnyouanelm, higher order functions -- from learnyouanhaskell](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/06-higher-order-functions.md)
+* [learnyouanelm, functionally solving problems](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/10-functionally-solving-problems.md)
+* [learnyouanelm - Functors, Applicative Functors and Monoids](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/11-functors-applicative-functors-and-monoids.md)

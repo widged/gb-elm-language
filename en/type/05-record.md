@@ -169,7 +169,30 @@ It is  possible to write functions that work on records as long as they have the
 If I define `type alias Point2D = {x : Float, y : Float}`, then like any type alias `Point2D` becomes a valid type to use in annotations. But because we're aliasing a record, we also gain a *record constructor*, `Point2D : Float -> Float -> Point2D`. For example, `origin = Point2D 0 0` becomes legal, and this is actual Elm code, not an annotation. `Point2D` is both a type and a function.
 
 (source: [elm-for-js](https://github.com/elm-guides/elm-for-js/blob/master/Scope.md))
+----
+### Naming record types
 
+We can name a record type by tagging it - like this:
+
+```elm
+type Positioned = Positioned { x : Float, y : Float }
+
+posB : Positioned
+posB = Positioned { x = 7.7, y = 5.2 }
+```
+
+However, this isn't anything new. This is just tagging a record type in the same way we might tag an Int type, like this:
+
+```elm
+type Aged = Aged Int
+
+century = Aged 100
+```
+
+By the way, `posA` and `posB` do not have the same type. `posA` is of type `{ x : Float, y : Float }` while `posB` is of type `Positioned`.
+
+
+(source: [elm-explained](https://github.com/niksilver/elm-explained))
 
 # --- 2 sort ---
 
@@ -260,32 +283,7 @@ then this is what it looks like in the Elm REPL:
 
 ## -- 2 sort --
 
-### Naming record types
 
-We can name a record type by tagging it - like this:
-
-```elm
-type Positioned = Positioned { x : Float, y : Float }
-
-posB : Positioned
-posB = Positioned { x = 7.7, y = 5.2 }
-```
-
-However, this isn't anything new. This is just tagging a record type in the same way we might tag an Int type, like this:
-
-```elm
-type Aged = Aged Int
-
-century = Aged 100
-```
-
-By the way, `posA` and `posB` do not have the same type.
-`posA` is of type `{ x : Float, y : Float }`
-while
-`posB` is of type `Positioned`.
-
-
-(source: [elm-explained](https://github.com/niksilver/elm-explained))
 
 ### Destructuring
 

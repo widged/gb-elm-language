@@ -33,6 +33,11 @@ Tuples can be used to represent a wide variety of data. For instance, if we want
 
 (,), (,,), (,,,), etc.
 
+It doesn't make sense to have a tuple of size one. It would then store the value it contains and as such would have no benefit.
+
+(source: [learnyouanelm](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/02-starting-out.md))
+
+
 ### Creating tuples
 
 There’s more than one way to create a tuple.
@@ -63,8 +68,11 @@ You can also pair up types into tuples, for example `(Int, Bool)`. This expands 
 myTuple : (String, Int, Bool)
 myTuple = ("the answer", 42, True)
 ```
-
 (source: [elm-for-js](https://github.com/elm-guides/elm-for-js/blob/master/How%20to%20Read%20a%20Type%20Annotation.md))
+
+Because each different size of tuple is its own type, you cannot really write general functions for tuples. You have to write functions for that target a given length. For, instance, to append an element to a tuple, you'd have to write a function for appending to a pair, one function for appending to a triple, one function for appending to a 4-tuple, etc.
+
+(source: [learnyouanelm](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/02-starting-out.md))
 
 
 #### fst and snd
@@ -82,6 +90,29 @@ Access the elements of a pair with the first and second functions. (This is a sh
 fst ("elm", 42) -- "elm"
 snd ("elm", 42) -- 42
 ```
+
+---
+
+
+Two useful functions that operate on pairs:
+
+`fst` takes a pair and returns its first component.
+
+```elm
+show fst (8,11) -- 8
+show fst ("Wow", False) -- "Wow"
+```
+
+`snd` takes a pair and returns its second component. Surprise!
+
+```elm
+show snd (8,11) -- 11
+show snd ("Wow", False) -- False
+```
+
+*Note:* these functions operate only on pairs. They won't work on triples, 4-tuples, 5-tuples, etc. We'll go over extracting data from tuples in different ways a bit later.
+
+(source: [learnyouanelm](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/02-starting-out.md))
 #### comparison
 
 Tuples are comparable.
@@ -196,31 +227,6 @@ So suppose we wanted to refer to author Neil Gaiman in this text: we might say `
 
 
 
- Tuples are much more rigid because each different size of tuple is its own type, so you can't write a general function to append an element to a tuple — you'd have to write a function for appending to a pair, one function for appending to a triple, one function for appending to a 4-tuple, etc.
-
-While there are singleton lists, there's no such thing as a singleton tuple. It doesn't really make much sense when you think about it. A singleton tuple would just be the value it contains and as such would have no benefit to us.
-
-(source: [learnyouanelm](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/02-starting-out.md))
-
-Two useful functions that operate on pairs:
-
-`fst` takes a pair and returns its first component.
-
-```elm
-show fst (8,11) -- 8
-show fst ("Wow", False) -- "Wow"
-```
-
-`snd` takes a pair and returns its second component. Surprise!
-
-```elm
-show snd (8,11) -- 11
-show snd ("Wow", False) -- False
-```
-
-*Note:* these functions operate only on pairs. They won't work on triples, 4-tuples, 5-tuples, etc. We'll go over extracting data from tuples in different ways a bit later.
-
-(source: [learnyouanelm](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/02-starting-out.md))
 
 ----
 

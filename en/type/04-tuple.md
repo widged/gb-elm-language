@@ -23,10 +23,13 @@ myTuple = ("the answer", 42, True)
 
 #### fst and snd
 
-Functions that construct tuples from arguments.
+In tuples, the meaning of the fields comes from their order. 
 
 fst : (a, b) -> a. Returns the first element.
 snd : (a, b) -> b. Returns the second element.
+
+To access the values of a Tuple, we are given a couple of helpers. fst (1,0) gives us the first value, 1, and snd (1,0) gives us the second value, 0. So, using aPoint from above, I might have x = fst aPoint and y = snd aPoint.
+
 
 #### comparison
 
@@ -38,12 +41,9 @@ Pattern matching in `case` expressions can be used on tuples. Beyond that, Elm h
 
 ### The Basics of Tuples
 
-In tuples, the meaning of the fields comes from their order. 
 
+Tuples are denoted with () and contain comma-separated values. 
 
-
-Tuples are denoted with () and contain comma-separated values. So writing the coordinate (1,0) in an Elm Tuple just looks like (1,0).
-To access the values of a Tuple, we are given a couple of helpers. fst (1,0) gives us the first value, 1, and snd (1,0) gives us the second value, 0. So, using aPoint from above, I might have x = fst aPoint and y = snd aPoint.
 
 There’s more than one way to create a tuple.
 

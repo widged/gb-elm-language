@@ -58,12 +58,11 @@ The type of `posA` does not have a name, though.
 
 ### Operations on records
 
-#### Accessors 
+#### Accessing
 
 Use record.keyor .key record to access the fields of a record. 
 
 ----
-
 Uniquely these functions are defined by a pattern, rather than being listed somewhere. For example, `.name : { b | name : a } -> a`, which basically means `.name` takes any record with a `name` field and extracts its value. You can use any record field name you like.
 
 Beware of creating data structures with record accessors. Because all a list's elements must have the same type, each record accessor must extract a value of the same type, which is usually not what you want.
@@ -72,9 +71,7 @@ Beware of creating data structures with record accessors. Because all a list's e
 ```
 
 (source: [elm-for-js](https://github.com/elm-guides/elm-for-js/blob/master/Scope.md) and [learnyouanelm-03](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/03-types.md))
-
 -----
-
 Access a field with a dot and the field name.
 
 ```elm
@@ -85,6 +82,14 @@ Or with an accessor fuction, which is a dot and the field name on its own.
 
 ```elm
 .y { x = 3, y = 7 } -- 7
+```
+----
+Accessing records
+```elm
+> myRecord.style
+"Blue" : String
+> .style myRecord
+"Blue" : String
 ```
 
 
@@ -108,6 +113,16 @@ Update multiple fields at once, using the current values.
 ```
 
 (source: ???)
+---
+Records are immutable. Updating records returns a new record
+```elm
+> updatedRecord = { myRecord | style = "Red", number = 10, isCool = False }
+> myRecord.style
+"Blue" : String
+> updatedRecord.style
+"Red" : String
+```
+
 
 #### Specifying only some fields
 
@@ -151,25 +166,8 @@ If I define `type alias Point2D = {x : Float, y : Float}`, then like any type al
 
 #### Records
 
-Records are immutable. ,
 
 
-Accessing records
-```elm
-> myRecord.style
-"Blue" : String
-> .style myRecord
-"Blue" : String
-```
-
-Updating records returns a new record
-```elm
-> updatedRecord = { myRecord | style = "Red", number = 10, isCool = False }
-> myRecord.style
-"Blue" : String
-> updatedRecord.style
-"Red" : String
-```
 
 
 Destructuring

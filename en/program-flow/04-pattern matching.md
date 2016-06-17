@@ -6,6 +6,7 @@ We can evaluate expressions with pattern matching. Pattern matching consists of 
 ### on a Tuple
 
 ```elm
+sum (a, b) = a + b
 toPrint = (let (a,b,c) = (1,2,3) in a+b+c) * 100
 600
 ```

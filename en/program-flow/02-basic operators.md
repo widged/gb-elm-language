@@ -93,4 +93,14 @@ $ elm repl
 
 (source: [learnyouanelm](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/02-starting-out.md))
 
+### Operator Precedence
+
+Function application (calling a function by putting a space after it and then typing out the parameters) has the highest precedence of them all. What that means for us is that these two statements are equivalent.
+
+```elm
+$ elm repl
+> identity 9 + max 5 4 + 1 -- 15
+> (identity 9) + (max 5 4) + 1 -- 15
+```
+
 ### Further Reading

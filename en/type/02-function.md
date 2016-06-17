@@ -88,25 +88,6 @@ $ elm repl
 "elmo" : String
 ```
 
-## -- 2 sort
-
-
-Now we're going to make a function that multiplies a number by 2 but only if that number is smaller than or equal to 100 because numbers bigger than 100 are big enough as it is!
-
-```elm
-doubleSmallNumber x = if x > 100 then x else x*2
-```
-
-(source: [learnyouanelm](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/02-starting-out.md))
-
-Right here we introduced Elm's if statement. You're probably familiar with if statements from other languages. The else part is mandatory. An if statement will always return something. This makes it an *expression*. 
-
-If we wanted to add one to every number that's produced in our previous function, we could have written its body like this.
-
-```elm
-doubleSmallNumber' x = (if x > 100 then x else x*2) + 1
-```
-
 ### Naming conventions
 
 #### function'

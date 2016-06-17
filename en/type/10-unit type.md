@@ -8,3 +8,10 @@ Note that the empty tuple `()` is also a type which can only have a single value
 
 (source: [learnyouanelm-03](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/03-types.md))
 
+The empty tuple, or "unit", is sometimes used as a placeholder. It is the only value of its type, also called "Unit".
+
+```elm
+()
+```
+
+

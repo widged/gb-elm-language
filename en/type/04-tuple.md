@@ -1,6 +1,8 @@
 **Elm 0.??**, **copied, please ignore** 
 
-# Operations on tuples
+## Tuples
+
+### Operations on tuples
 
 You can also pair up types into tuples, for example `(Int, Bool)`. This expands to arbitrarily many elements, i.e. `(Int, Float, Int)` is a 3-tuple with first element `Int`, second `Float`, third `Int`.
 
@@ -36,7 +38,7 @@ Pattern matching in `case` expressions can be used on tuples. Beyond that, Elm h
 
 (source: ???)
 
-## The Basics of Tuples
+### The Basics of Tuples
 
 Tuples are similar to records, except that rather than having named fields, the meaning of the fields comes from their order. Plus, Tuples are comparable (which, for our purposes, is most relevant when talking about Sets and Dicts, so we’re going to leave it for now).
 Let’s talk middle school math for a hot second. Suppose I want to graph some points on to the XY plane. I could create a point without Tuples:
@@ -114,17 +116,15 @@ Also possible, put as many commas as you'll have values inside a tuple
 (source: [learnyouanelm](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/02-starting-out.md))
 
 
-## Destructuring
+### Destructuring
 ```elm
 (x, y) = (1, 2)
 > x
 1 : number
 ```
-
 (source: [learnyouanelm](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/02-starting-out.md))
 
-
-## Destructuring
+----------
 
 ```elm
 myTuple = ("A", "B", "C")

@@ -10,6 +10,13 @@ Tuples are denoted with () and contain comma-separated values. Every element in 
 
 Tuples are types but they are dependent on their length as well as the types of their components. (source: [learnyouanelm-03](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/03-types.md))
 
+The type of a tuple records the number of components and each of their types.
+
+```elm
+> (1, "2", True)
+(1,"2",True) : ( number, String, Bool )
+```
+
 
 (,), (,,), (,,,), etc.
 
@@ -23,6 +30,15 @@ yeOldeBasicCoord = (1, 0, 2)
 -- We can also use a prefix operator, `,`, to construct the tuple.
 yeFahncyCoord = (,,) 1 0 2
 ```
+
+
+Also possible, put as many commas as you'll have values inside a tuple
+
+```elm
+> (,,,) 1 True 'a' []
+(1,True,'a',[]) : ( number, Bool, Char, List a )
+```
+
 
 (source: [Data Structures in Elm @NoRedInk](http://tech.noredink.com/post/140646140878/data-structures-in-elm))
 
@@ -66,21 +82,6 @@ Pattern matching in `case` expressions can be used on tuples. Beyond that, Elm h
 
 ### Tuples
 
-Tuples package two or more expressions into a single expression.
-
-The type of a tuple records the number of components and each of their types.
-
-```elm
-> (1, "2", True)
-(1,"2",True) : ( number, String, Bool )
-```
-
-Also possible, put as many commas as you'll have values inside a tuple
-
-```elm
-> (,,,) 1 True 'a' []
-(1,True,'a',[]) : ( number, Bool, Char, List a )
-```
 
 (source: [learnyouanelm](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/02-starting-out.md))
 

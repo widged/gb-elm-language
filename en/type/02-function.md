@@ -3,27 +3,27 @@
 
 ## Functions
 
-Elm's syntax for functions is very minimal, relying only on white space to mark parameters. 
+Elm's syntax for functions is very minimal, a name, soe arguments, an equals sign, and the body.
 
 ```elm
 $ elm repl
 > multiply a b = a*b
+> isNegative n = n < 0
 ```
 
-We apply (call) a function by passing arguments separated by space
+To call a function, give its name and its parameters, separated by spaces.
 
 ```elm
 $ elm repl
 > multiply 7 6 -- 42
 ```
 
-* Functions: `isNegative n = n < 0`
-* Named functions: `avgxy = (x+y)/2`
-* Anonymous functions:`(\ x y -> (x + y) / 2)`
 
 ### Declaring functions
 
-Define a function with its name, arguments, an equals sign, and the body.
+Functions can be declared in two ways.
+* Named functions: `avgxy = (x+y)/2`
+* Anonymous functions:`(\x y -> (x + y) / 2)`
 
 #### named functions
 
@@ -39,8 +39,6 @@ increment a = a + 1
 isEven : Int -> Bool
 isEven x = (x % 2 == 0)
 ```
-
-To call a function, give its name and its parameters, separated by spaces, for example,
 
 #### anonymous functions
 
@@ -77,15 +75,6 @@ $ elm repl
 ### Applying (calling) a function
 
 
-
-Partially apply a function by passing only some of its arguments.
-Then give that function a new name.
-~~~~ {.Elm:hs name="code"}
-double =
-  multiply 2
-~~~~
-
-(source: ???)
 
 Constants are similar, except there are no arguments.
 ~~~~ {.Elm:hs name="code"}
@@ -417,7 +406,10 @@ res10 = fun8 64    -- False, because the square root of 64 is even
 
 (source: [elm-explained](https://github.com/niksilver/elm-explained))
 
-### Currying
+
+### Higher Order Functions
+
+#### Currying
 
     concat : String -> String -> String
     concat a b = a ++ b
@@ -425,7 +417,17 @@ res10 = fun8 64    -- False, because the square root of 64 is even
     listItem : String -> String
     listItem = concat "-> "
 
-### Higher Order Functions
+
+#### partial application
+
+Partially apply a function by passing only some of its arguments. Then give that function a new name.
+
+```elm
+double = multiply 2
+```
+
+
+#### other
 
 Like JavaScript, functions can take other functions as arguments. (We've already seen how currying lets them return functions.)
 

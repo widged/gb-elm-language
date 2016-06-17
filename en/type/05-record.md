@@ -2,7 +2,7 @@
 
 ## Records 
 
-Records are written with brackets. They hold values in name fields. 
+Records are written with brackets. A `record` is a collection of key/value pairs (name fields).
 
 ```elm
 {name=value,...,name=value}
@@ -165,8 +165,7 @@ Beware of creating data structures with record accessors. Because all a list's e
 
 #### Records
 
-Records are immutable. A `record` is a collection of key/value pairs,
-similar to objects in JavaScript or dictionary in Python
+Records are immutable. ,
 
 ```elm
 myRecord =

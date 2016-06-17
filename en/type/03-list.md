@@ -147,90 +147,9 @@ length list =
         1 + length rest
 ```
 
-#### TODO section on Maybe?
+### -----
 
 
-
-`length` takes a list and returns its length, obviously.
-
-```elm
-show List.length [5,4,3,2,1] -- 5
-```
-
-`isEmpty` checks if a list is empty. If it is, it returns `True`, otherwise it
-returns `False`. Use this function instead of `xs == []` (if you have a list
-called `xs`).
-
-```elm
-show List.isEmpty [1,2,3] -- False
-show List.isEmpty [] -- True
-```
-
-`reverse` reverses a list.
-
-```elm
-show List.reverse [5,4,3,2,1] -- [1,2,3,4,5]
-```
-
-`take` takes a number and a list. It extracts that many elements from the
-beginning of the list. Watch.
-
-```elm
-show List.take 3 [5,4,3,2,1] -- [5,4,3]
-show List.take 1 [3,9,3] -- [3]
-show List.take 5 [1,2] -- [1,2]
-show List.take 0 [6,6,6] -- []
-```
-
-See how if we try to take more elements than there are in the list, it
-just returns the list. If we try to take 0 elements, we get an empty
-list.
-
-`drop` works in a similar way, only it drops the number of elements from
-the beginning of a list.
-
-```elm
-show List.drop 3 [8,4,2,1,5,6] -- [1,5,6]
-show List.drop 0 [1,2,3,4] -- [1,2,3,4]
-show List.drop 100 [1,2,3,4] -- []
-```
-
-`maximum` takes a list of stuff that can be put in some kind of order and
-returns the biggest element.
-
-`minimum` returns the smallest.
-
-```elm
-show List.minimum [8,4,2,1,5,6] -- Just 1
-show List.maximum [1,9,2,3,4] -- Just 9
-show List.maximum [] -- Nothing
-```
-
-What is the largest element of an empty list? There's no value we could
-return that would make sense, so we use `Just` and `Nothing` here.
-
-`sum` takes a list of numbers and returns their sum.
-
-`product` takes a list of numbers and returns their product.
-
-```elm
-show List.sum [5,2,1,6,3,2,5,7] -- 31
-show List.product [6,2,1,2] -- 24
-show List.product [1,2,5,6,7,9,2,0] -- 0
-```
-
-`member` takes a thing and a list of things and tells us if that thing is a
-member of the list.
-
-```elm
-show List.member 4 [3,4,5,6] -- True
-show List.member 10 [3,4,5,6] -- False
-```
-
-Those were a few basic functions that operate on lists. We'll take a
-look at more list functions [later](modules#data-list).
-
-(source: [learnyouanelm](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/02-starting-out.md))
 
 ### Texas ranges
 
@@ -261,6 +180,87 @@ You can concat, append, or intersperse. Or partition or unzip or pretty much wha
 
 `import List exposing (..)`
 
+
+`length` takes a list and returns its length, obviously.
+
+```elm
+> List.length [5,4,3,2,1] -- 5
+```
+
+`isEmpty` checks if a list is empty. If it is, it returns `True`, otherwise it
+returns `False`. Use this function instead of `xs == []` (if you have a list
+called `xs`).
+
+```elm
+> List.isEmpty [1,2,3] -- False
+> List.isEmpty [] -- True
+```
+
+`reverse` reverses a list.
+
+```elm
+> List.reverse [5,4,3,2,1] -- [1,2,3,4,5]
+```
+
+`take` takes a number and a list. It extracts that many elements from the
+beginning of the list. Watch.
+
+```elm
+> List.take 3 [5,4,3,2,1] -- [5,4,3]
+> List.take 1 [3,9,3] -- [3]
+> List.take 5 [1,2] -- [1,2]
+> List.take 0 [6,6,6] -- []
+```
+
+See how if we try to take more elements than there are in the list, it
+just returns the list. If we try to take 0 elements, we get an empty
+list.
+
+`drop` works in a similar way, only it drops the number of elements from
+the beginning of a list.
+
+```elm
+> List.drop 3 [8,4,2,1,5,6] -- [1,5,6]
+> List.drop 0 [1,2,3,4] -- [1,2,3,4]
+> List.drop 100 [1,2,3,4] -- []
+```
+
+`maximum` takes a list of stuff that can be put in some kind of order and
+returns the biggest element.
+
+`minimum` returns the smallest.
+
+```elm
+> List.minimum [8,4,2,1,5,6] -- Just 1
+> List.maximum [1,9,2,3,4] -- Just 9
+> List.maximum [] -- Nothing
+```
+
+What is the largest element of an empty list? There's no value we could
+return that would make sense, so we use `Just` and `Nothing` here.
+
+`sum` takes a list of numbers and returns their sum.
+
+`product` takes a list of numbers and returns their product.
+
+```elm
+> List.sum [5,2,1,6,3,2,5,7] -- 31
+> List.product [6,2,1,2] -- 24
+> List.product [1,2,5,6,7,9,2,0] -- 0
+```
+
+`member` takes a thing and a list of things and tells us if that thing is a
+member of the list.
+
+```elm
+> List.member 4 [3,4,5,6] -- True
+> List.member 10 [3,4,5,6] -- False
+```
+
+Those were a few basic functions that operate on lists. We'll take a
+look at more list functions [later](modules#data-list).
+
+(source: [learnyouanelm](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/02-starting-out.md))
 
 ```
 (::) : a -> List a -> List a. "Cons" (add) an element to a list.

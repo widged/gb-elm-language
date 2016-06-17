@@ -82,30 +82,6 @@ $ elm repl
 > not (True && True) -- False
 ```
 
-### Function Composition
-
-|Operator|Description|Type hint|
-|--------|-----------|----------|
-|`<|`|backward (pipe) function application `f <| x == f x`|`(a -> b) -> a -> b`
-|`|>`|forward (pipe) function application `x |> f == f x`|`a -> (a -> b) -> b`
-|`<<`|composes functions into one, arguments first applied to the function from the right side|`(b -> c) -> (a -> b) -> a -> c`
-|`>>`|same as before except arguments first applied to the function from the left side|`(a -> b) -> (b -> c) -> a -> c`
-
-(source: [learnyouanelm](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/02-starting-out.md))
-
-#### Pipes
-
-The |> operator chains function calls. It pipes the result of a computation to the next function. 
-
-```elm
-$ elm repl
-> import String
-> "hello " ++ "elm! " |> String.toUpper |> String.repeat 2 |> String.trimRight
-"HELLO ELM! HELLO ELM!" : String
-```
-
-Easier to read than 
-`String.trimRight (String.repeat 2 (String.toUpper ("hello " ++ "elm! ")))`
 
 ### Other
 

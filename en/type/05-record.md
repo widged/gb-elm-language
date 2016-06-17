@@ -438,6 +438,7 @@ The removal of the extensibility of records also meant the end to scoped labels 
 
 `wutheringHeightsWithISBN : LibraryEntryWithISBN wutheringHeightsWithISBN = { name = “Wuthering Heights” , author = “Bronte” , readByMe = True , isbn = “1853260010” }
 ```
+### Polymorphis
 
 Records in Elm remain polymorphic, meaning they can be comprised of fields with all sorts of different types. While I’ve only used Strings and Bools in the library example above, records can hold any values. The following is reasonable, for instance:
 

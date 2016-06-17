@@ -156,9 +156,9 @@ A special case is currying. A function takes a single argument and returns a fun
 `repeatString: Int -> String -> String
 -- takeQty qty = (\ text fn -> fn(qty))
 -- takeText txt = takeQty text String.repeat
+```
 
 // type a-goes-to-b, goes to list of a, goes to list of b
-
 
 #### Parametrised types
 

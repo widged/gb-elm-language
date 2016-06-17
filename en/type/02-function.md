@@ -16,11 +16,11 @@ To call a function, give its name and its parameters, separated by spaces.
 
 ```elm
 $ elm repl
-> min 9 10 -- min takes 2 numbers and returns the smallest (minimum)
+> min 9 10 -- min takes 2 numbers and returns the smallest one (minimum)
 9 : number
 > min 3.4 3.2
 3.2 : Float
-> max 100 101 -- min takes 2 numbers and returns the greatest (maximum)
+> max 100 101 -- min takes 2 numbers and returns the greatest one (maximum)
 101 : number
 > multiply a b = a*b
 > multiply 7 6

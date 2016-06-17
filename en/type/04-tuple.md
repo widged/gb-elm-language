@@ -2,7 +2,7 @@
 
 ## Tuples
 
-Tuples are denoted with () and their values are separated by commas. The length is fixed. Tuples they don't have to be *homogenous*. Unlike a list, a tuple can contain a combination of several types.
+Tuples are denoted with () and their values are separated by commas. They are used when you know in advance how many components some piece of data should have. The length is fixed. Tuples they don't have to be *homogenous*. Unlike a list, a tuple can contain a combination of several types.
 
 ```elm
 ("elm", 42)
@@ -27,7 +27,6 @@ yeOldeBasicCoord = (1, 0, 2)
 -- We can also use a prefix operator, `,`, to construct the tuple.
 yeFahncyCoord = (,,) 1 0 2
 ```
-
 
 Also possible, put as many commas as you'll have values inside a tuple
 
@@ -179,25 +178,20 @@ So suppose we wanted to refer to author Neil Gaiman in this text: we might say `
 ### Tuples
 
 
+For instance, a tuple of size two (also called a pair) can be used to store x,y coordinates of a point. 
 
-Think about how we'd represent a two-dimensional vector in Elm. One way would be to use a list. That would kind of work. So what if we wanted to put a couple of vectors in a list to represent points of a shape on a two-dimensional plane? We could do something like `[[1,2],[8,11],[4,5]]`. The problem with that method is that we could also do stuff like `[[1,2],[8,11,5],[4,5]]`, which Elm has no problem with since it's still a list of lists with numbers but it kind of doesn't make sense. But a tuple of size two (also called a pair) is its own type, which means that a list can't have a couple of pairs in it and then a triple (a tuple of size three), so let's use that instead. Instead of surrounding the vectors with square brackets, we use parentheses: `[(1,2),(8,11),(4,5)]`. What if we tried to make a shape like `[(1,2),(8,11,5),(4,5)]`? Well, we'd get this error:
+```elm
+$ elm repl
+> [(1,2),(8,11),(4,5)]
+[(1,2),(8,11),(4,5)] : List ( number, number' )
+> [(1,2),(8,11,5),(4,5)]
+-- TYPE MISMATCH --------------------------------------------- repl-temp-000.elm
+The 1st and 2nd elements are different types of values.
+```
 
-    The 2nd element of this list is an unexpected type of value.
-    3| show [(1,2),(8,11,5),(4,5)]
+Tuples can be used to represent a wide variety of data. For instance, if we wanted to represent someone's name and age in Elm, we could use a triple: `("Christopher", "Walken", 55)`. 
 
-    All elements should be the same type of value so that we can iterate over the
-    list without running into unexpected values.
-
-    As I infer the type of values flowing through your program, I see a conflict
-    between these two types:
-
-        \_Tuple2
-        (number)
-
-
-It's telling us that we tried to use a pair and a triple in the same list, which is not supposed to happen. You also couldn't make a list like `[(1,2),("One",2)]` because the first element of the list is a pair of numbers and the second element is a pair consisting of a string and a number. Tuples can also be used to represent a wide variety of data. For instance, if we wanted to represent someone's name and age in Elm, we could use a triple: `("Christopher", "Walken", 55)`. As seen in this example, tuples can also contain lists or strings.
-
-Use tuples when you know in advance how many components some piece of data should have. Tuples are much more rigid because each different size of tuple is its own type, so you can't write a general function to append an element to a tuple — you'd have to write a function for appending to a pair, one function for appending to a triple, one function for appending to a 4-tuple, etc.
+ Tuples are much more rigid because each different size of tuple is its own type, so you can't write a general function to append an element to a tuple — you'd have to write a function for appending to a pair, one function for appending to a triple, one function for appending to a 4-tuple, etc.
 
 While there are singleton lists, there's no such thing as a singleton tuple. It doesn't really make much sense when you think about it. A singleton tuple would just be the value it contains and as such would have no benefit to us.
 

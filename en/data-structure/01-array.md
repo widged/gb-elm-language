@@ -1,6 +1,6 @@
 **Elm 0.??**, **copied, please ignore** 
 
-# Arrays
+## Arrays
 
 Arrays are ordered collections, where each item in the collection must be of the same type. In Elm, [] doesn’t correspond to arrays ([] is an empty list, discussed above). To create an empty array, use Array.empty.
 
@@ -85,6 +85,6 @@ As cool as the math behind arrays is, and as familiar as they might seem, we ten
 
 (source: [Data Structures in Elm @NoRedInk](http://tech.noredink.com/post/140646140878/data-structures-in-elm))
 
-## Links
+### Further Reading
 
 * [Elm 0.12.1 -- Fast, Immutable Arrays](http://elm-lang.org/blog/announce/0.12.1)

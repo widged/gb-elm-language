@@ -75,13 +75,7 @@ Notice that `::` takes an element to the left and a list to the right.
 
 Lists are just linked lists (ordered collections where each node of the collection points to the subsequent node, if there is one), where all the values must be same type. You get head and tail, just like you’d expect. (source: [Data Structures in Elm @NoRedInk](http://tech.noredink.com/post/140646140878/data-structures-in-elm))
 
-`head` takes a list and returns its head. The head of a list is basically its first element. `tail` takes a list and returns its tail. In other words, it chops off a list's head. 
-
-
-`head` or `tail` have `Maybe` as return value. 
-
-
-`head` gives you a Maybe with the value of the first element. `tail` gives you the rest of the List. (source: [Data Structures in Elm @NoRedInk](http://tech.noredink.com/post/140646140878/data-structures-in-elm))
+`head` takes a list and returns the first element. `tail` gives you the rest of the List (the list with the head chopped off).
 
 The head and tail of a list are returned as a Maybe. Instead of checking every value to see if it's null, you deal with missing values explicitly. It `head` or `tail` value of an empty list is `Nothing`. It is Just a value for non empty lists.
 
@@ -96,9 +90,6 @@ Nothing : Maybe.Maybe a
 > List.tail []
 Nothing : Maybe.Maybe (List a)
 ```
-
-
-
 
 #### Destructuring
 
@@ -158,22 +149,6 @@ length list =
 
 #### TODO section on Maybe?
 
-`head` takes a list and returns its head. The head of a list is basically its first element. `tail` takes a list and returns its tail. In other words, it chops off a list's head. The head or tail of an empty list is `Nothing`.
-
-```elm
-$ elm repl
-> List.head [5,4,3,2,1]
-Just 5 : Maybe.Maybe number
-> List.tail [5,4,3,2,1]
-Just [4,3,2,1] : Maybe.Maybe (List number)
-> List.head []
-Nothing : Maybe.Maybe a
-> List.tail []
-Nothing : Maybe.Maybe (List a)
-```
-
-
-What is `Nothing`? And why did `Listhead` return `Just 5` before? Think of `Nothing` as a way to indicate when there's no correct value to return, and `Just` as a way to show that we could return a value in a place where `Nothing` could have also been returned.
 
 
 `length` takes a list and returns its length, obviously.

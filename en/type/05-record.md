@@ -56,6 +56,21 @@ Beware of creating data structures with record accessors. Because all a list's e
 
 (source: [elm-for-js](https://github.com/elm-guides/elm-for-js/blob/master/Scope.md))
 
+-----
+
+Access a field with a dot and the field name.
+
+~~~~ {.Elm:hs name="code"}
+{ x = 3, y = 7 }.x -- 3
+~~~~
+
+Or with an accessor fuction, which is a dot and the field name on its own.
+
+~~~~ {.Elm:hs name="code"}
+.y { x = 3, y = 7 } -- 7
+~~~~
+
+
 #### Immutable modification
 
 To copy a record but with some fields different, use
@@ -103,19 +118,6 @@ If I define `type alias Point2D = {x : Float, y : Float}`, then like any type al
 
 ### Records
 
-
-
-Access a field with a dot and the field name.
-
-~~~~ {.Elm:hs name="code"}
-{ x = 3, y = 7 }.x -- 3
-~~~~
-
-Or with an accessor fuction, which is a dot and the field name on its own.
-
-~~~~ {.Elm:hs name="code"}
-.y { x = 3, y = 7 } -- 7
-~~~~
 
 Update the fields of a record. (It must have the fields already.)
 

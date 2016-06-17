@@ -155,9 +155,9 @@ Exact values of comparables can be used to match when destructuring (also works 
 (source: [yang-wei gist](https://gist.github.com/yang-wei/4f563fbf81ff843e8b1e))
 
 
-### Destructuring Tuples
+-----
 
-Wait–but now there are three values in the tuple… So far we’ve only seen fst and snd for accessing the values in a tuple. Elm’s destructuring is quite powerful, and we can use it to access any value in a tuple. We can write our own function for accessing the third value in a tuple, if we want:
+We can write our own function for accessing the third value in a tuple, if we want:
 
 ```elm
 {- "_" here is used to indicate that we don't use the first two values from the tuple. -}

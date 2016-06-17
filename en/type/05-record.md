@@ -56,6 +56,48 @@ posA = { x = 2.1, y = 8.8 }
 The type of `posA` does not have a name, though.
 
 (source: [elm-explained](https://github.com/niksilver/elm-explained))
+---
+#### No Extensibility
+
+The first iteration of the Elm record was based heavily on (‘Extensible records with scoped labels’ by Daan Leijen), and many features of the Elm record reflect Leijen’s work. The paper is well worth a read for those interested in modeling data. However, the paper’s titular descriptors–“extensible”, “with scoped labels”–no longer apply to Elm records.
+
+Extensibility (which was paired with restrictability) of a record value meant that a record could have fields added to it and removed from it: e.g., { wutheringHeights - name } == { author = Bronte, readByMe = True }. In practice, developers did not find this feature useful, and extensibility of record values was removed.
+
+The removal of the extensibility of records also meant the end to scoped labels (labels of the same name pointing to different values on the same record, e.g.
+```elm
+{ diaspora + name | name {- This type alias uses "a" to say that a LibraryEntry is any record with name, author, and readByMe fields. -} type alias LibraryEntry a = { a | name : String , author : String , readByMe : Bool }`
+
+`{- This type alias says that it is a LibraryEntry with exactly one more property–isbn. -} type alias LibraryEntryWithISBN = LibraryEntry { isbn : String }`
+
+`wutheringHeightsWithISBN : LibraryEntryWithISBN wutheringHeightsWithISBN = { name = “Wuthering Heights” , author = “Bronte” , readByMe = True , isbn = “1853260010” }
+```
+#### Polymorphism
+
+Records in Elm remain polymorphic, meaning they can be comprised of fields with all sorts of different types. While I’ve only used Strings and Bools in the library example above, records can hold any values. The following is reasonable, for instance:
+
+```elm
+type alias Widget entry =
+    { text : entry -> Html
+    , attributes : entry -> Html
+    , getState : entry -> Bool
+    }
+```
+
+#### Field order doesn't matter
+
+Records are also transitive with respect to their fields. That is, defining:
+
+```elm
+oneBeforeTwo = { one = 1 , two = 2 }
+twoBeforeOne = { two = 2 , one = 1 }
+```    
+
+We will find that oneBeforeTwo and twoBeforeOne are equal, even though the fields are declared in different orders. If, though, in twoBeforeOne our field values were strings instead of numbers, we’d find that the compiler would not let us make the comparison at all: we’d be causing a type mismatch.
+
+This is because Records in Elm are structurally typed: the use of records is dependent on the type of their contents. We can’t just compare Records with each other because they’re both Records–we can compare Records if all their fields have the same types.
+
+(source: [Data Structures in Elm @NoRedInk](http://tech.noredink.com/post/140646140878/data-structures-in-elm))
+
 
 ### Creating
 
@@ -424,49 +466,6 @@ If we put all the code above into [an Elm module called ExtensibleRecordTypes](E
 
 ## -- 2 sort --
 
-### No Extensibility
-
-The first iteration of the Elm record was based heavily on (‘Extensible records with scoped labels’ by Daan Leijen), and many features of the Elm record reflect Leijen’s work. The paper is well worth a read for those interested in modeling data. However, the paper’s titular descriptors–“extensible”, “with scoped labels”–no longer apply to Elm records.
-
-Extensibility (which was paired with restrictability) of a record value meant that a record could have fields added to it and removed from it: e.g., { wutheringHeights - name } == { author = Bronte, readByMe = True }. In practice, developers did not find this feature useful, and extensibility of record values was removed.
-
-The removal of the extensibility of records also meant the end to scoped labels (labels of the same name pointing to different values on the same record, e.g.
-```elm
-{ diaspora + name | name {- This type alias uses "a" to say that a LibraryEntry is any record with name, author, and readByMe fields. -} type alias LibraryEntry a = { a | name : String , author : String , readByMe : Bool }`
-
-`{- This type alias says that it is a LibraryEntry with exactly one more property–isbn. -} type alias LibraryEntryWithISBN = LibraryEntry { isbn : String }`
-
-`wutheringHeightsWithISBN : LibraryEntryWithISBN wutheringHeightsWithISBN = { name = “Wuthering Heights” , author = “Bronte” , readByMe = True , isbn = “1853260010” }
-```
-### Polymorphism
-
-Records in Elm remain polymorphic, meaning they can be comprised of fields with all sorts of different types. While I’ve only used Strings and Bools in the library example above, records can hold any values. The following is reasonable, for instance:
-
-```elm
-type alias Widget entry =
-    { text : entry -> Html
-    , attributes : entry -> Html
-    , getState : entry -> Bool
-    }
-```
-
-Records are also transitive with respect to their fields. That is, defining:
-
-```elm
-oneBeforeTwo =
-    { one = 1
-    , two = 2
-    }
-
-twoBeforeOne =
-    { two = 2
-    , one = 1
-    }
-```    
-
-We will find that oneBeforeTwo and twoBeforeOne are equal, even though the fields are declared in different orders. If, though, in twoBeforeOne our field values were strings instead of numbers, we’d find that the compiler would not let us make the comparison at all: we’d be causing a type mismatch.
-
-This is because Records in Elm are structurally typed: the use of records is dependent on the type of their contents. We can’t just compare Records with each other because they’re both Records–we can compare Records if all their fields have the same types.
 
 When we create functions consuming Records, they can be as general or as specific as we please. I can write a getName function that takes any Record with a name field, or I can write a displayHeader function that requires name, author, publishDate, editDate, yourFirstBorn, and maybe a list of related titles too, just because.
 

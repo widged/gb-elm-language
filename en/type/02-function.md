@@ -28,76 +28,7 @@ add a b = a + b
 add = \a b -> a + b
 ```
 
-### "Applied to..."
 
-The `<|` operator can be read as "applied to...". We can read the code here as "increment applied to 17":
-
-```elm
-res1 = increment <| 17    -- res1 is 18
-```
-
-Since spaces bind tightest of all, the right hand argument of `<|` is effectively appended at the end. So `res2` is "OnceUponATime"
-
-```elm
-res2 = concat4 "Once" "Upon" "A" <| "Time"
-```
-
-(source: [elm-explained](https://github.com/niksilver/elm-explained))
-
-
-### "Applying..."
-
-The `|>` operator can be read as "applying...". We can read the code below as "17 applying increment".
-
-```elm
-res3 = 17 |> increment    -- res3 is also 18
-```
-
-Again, as spaces bind tightest of all the left hand argument of `|>` is effectively appended at the end. So `res4` is also "OnceUponATime"
-
-```elm
-res4 = "Time" |> concat4 "Once" "Upon" "A"
-```
-
-(source: [elm-explained](https://github.com/niksilver/elm-explained))
-
-### Composition with "composed with..."
-
-The `<<` operator can be read "composed with...".
-It composes functions right to left. Although that might not
-seem useful it reads very well, as demonstrated here:
-
-```elm
-fun5 : Float -> Bool
-fun5 = not << isEven << sqrt
-```
-
-Now `fun5` is a function that does `not(isEven(sqrt(...)))`.
-
-```elm
-res6 = fun5 81    -- True, because the square root of 81 is indeed not even
-res7 = fun5 64    -- False, because the square root of 64 is even
-```
-
-(source: [elm-explained](https://github.com/niksilver/elm-explained))
-
-
-### Composition with "and then..."
-
-The `>>` operator can be read "and then...".
-It composes functions left to right. It looks intuitive but
-probably doesn't read so well.
-This next function does the same as the one above.
-
-```elm
-fun8 : Float -> Bool
-fun8 = sqrt >> isEven >> not
-
-res9  = fun8 81    -- True, because the square root of 81 is indeed not even
-res10 = fun8 64    -- False, because the square root of 64 is even
-```
-
-(source: [elm-explained](https://github.com/niksilver/elm-explained))
 
 ## Defining functions
 
@@ -607,6 +538,94 @@ conanO'Brien = "It's a-me, Conan O'Brien!"
 There are two noteworthy things here. The first is that in the function name we didn't capitalize Conan's name. That's because functions can't begin with uppercase letters. We'll see why a bit later. The second thing is that this function doesn't take any parameters. When a function doesn't take any parameters, we usually say it's a *definition* (or a *name*). Because we can't change what names (and functions) mean once we've defined them, conanO'Brien and the string "It's a-me, Conan O'Brien!" can be used interchangeably.
 
 (source: [learnyouanelm](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/02-starting-out.md))
+
+### Function Composition
+
+|Operator|Description|Type hint|
+|--------|-----------|----------|
+|`<\|`|backward (pipe) function application `f <| x == f x`|`(a -> b) -> a -> b`
+|`\|>`|forward (pipe) function application `x |> f == f x`|`a -> (a -> b) -> b`
+|`<<`|composes functions into one, arguments first applied to the function from the right side|`(b -> c) -> (a -> b) -> a -> c`
+|`>>`|same as before except arguments first applied to the function from the left side|`(a -> b) -> (b -> c) -> a -> c`
+
+(source: [learnyouanelm](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/02-starting-out.md))
+
+### `|>` as "Applying..." or "Piping to"
+
+The `|>` operator can be read as "applying...". It chains function calls by piping the result of a computation to the next function. 
+
+```elm
+$ elm repl
+> import String
+> "hello " ++ "elm! " |> String.toUpper |> String.repeat 2 |> String.trimRight
+"HELLO ELM! HELLO ELM!" : String
+```
+
+Easier to read than 
+`String.trimRight (String.repeat 2 (String.toUpper ("hello " ++ "elm! ")))`
+
+
+Again, as spaces bind tightest of all the left hand argument of `|>` is effectively appended at the end. So `res4` is also "OnceUponATime"
+
+```elm
+res4 = "Time" |> concat4 "Once" "Upon" "A"
+```
+
+(source: [elm-explained](https://github.com/niksilver/elm-explained))
+
+#### `<|` as "Applied to..."
+
+The `<|` operator can be read as "applied to...". We can read the code here as "increment applied to 17":
+
+```elm
+res1 = increment <| 17    -- res1 is 18
+```
+
+Since spaces bind tightest of all, the right hand argument of `<|` is effectively appended at the end. So `res2` is "OnceUponATime"
+
+```elm
+res2 = concat4 "Once" "Upon" "A" <| "Time"
+```
+
+(source: [elm-explained](https://github.com/niksilver/elm-explained))
+
+### `<<` as "composed with..."
+
+The `<<` operator can be read "composed with...".
+It composes functions right to left. Although that might not
+seem useful it reads very well, as demonstrated here:
+
+```elm
+fun5 : Float -> Bool
+fun5 = not << isEven << sqrt
+```
+
+Now `fun5` is a function that does `not(isEven(sqrt(...)))`.
+
+```elm
+res6 = fun5 81    -- True, because the square root of 81 is indeed not even
+res7 = fun5 64    -- False, because the square root of 64 is even
+```
+
+(source: [elm-explained](https://github.com/niksilver/elm-explained))
+
+
+#### `>>` as "and then..."
+
+The `>>` operator can be read "and then...".
+It composes functions left to right. It looks intuitive but
+probably doesn't read so well.
+This next function does the same as the one above.
+
+```elm
+fun8 : Float -> Bool
+fun8 = sqrt >> isEven >> not
+
+res9  = fun8 81    -- True, because the square root of 81 is indeed not even
+res10 = fun8 64    -- False, because the square root of 64 is even
+```
+
+(source: [elm-explained](https://github.com/niksilver/elm-explained))
 
 ### Currying
 

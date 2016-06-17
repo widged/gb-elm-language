@@ -3,7 +3,6 @@
 
 ## Calling functions
 
-As is usual in functional languages, functions are curried--they only take a single parameter. A function that appears to take several parameters actually takes only the first parameter, returning a function that takes the next parameter, etc., until a single result is obtained.
 
 To call a function, give its name and its parameters, separated by spaces, for example,
 

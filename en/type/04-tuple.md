@@ -2,11 +2,28 @@
 
 ## Tuples
 
+Tuples are denoted with () and contain comma-separated values. 
+
 Tuples are types but they are dependent on their length as well as the types of their components, so there is theoretically an infinite number of tuple types, which is too many to cover in this tutorial. Note that the empty tuple `()` is also a type which can only have a single value: `()`. This value is read as `"unit"` and is the common way to denote an empty value with no specific meaning.
 
 (source: [learnyouanelm-03](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/03-types.md))
 
 (,), (,,), (,,,), etc.
+
+### Creating tuples
+
+There’s more than one way to create a tuple.
+
+```elm
+{- We can write it out explicitly. -}
+yeOldeBasicCoord = (1, 0, 2)
+
+
+{- We can also use a prefix operator, `,`, to construct the tuple. -}
+yeFahncyCoord = (,,) 1 0 2
+```
+
+(source: [Data Structures in Elm @NoRedInk](http://tech.noredink.com/post/140646140878/data-structures-in-elm))
 
 
 ### Operations on tuples
@@ -39,26 +56,7 @@ Tuples are comparable.
 
 Pattern matching in `case` expressions can be used on tuples. Beyond that, Elm has very little support for tuples.
 
-### The Basics of Tuples
 
-
-Tuples are denoted with () and contain comma-separated values. 
-
-
-There’s more than one way to create a tuple.
-
-```elm
-{- We can write it out explicitly. -}
-yeOldeBasicCoord =
-    (1, 0, 2)
-
-
-{- We can also use a prefix operator, `,`, to construct the tuple. -}
-yeFahncyCoord =
-    (,,) 1 0 2
-```
-
-(source: [Data Structures in Elm @NoRedInk](http://tech.noredink.com/post/140646140878/data-structures-in-elm))
 
 ### Tuples
 

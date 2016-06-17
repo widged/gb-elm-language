@@ -29,7 +29,7 @@ sum : Int -> Int -> Int
 init x y  = x + y
 ```
 
-#### export declaration 
+#### Export declaration 
 
 A module declaration begins with the keyword `module`, followed by the module name 
 
@@ -40,15 +40,22 @@ module Mymodule
 
 The module can expose what is being exported using the `exposing` word and the list of exported values between parentheses.
 
+To make explicit that you are exporting everything in this module, use the two dots `(..)`. "Everything" comprises all defined top-level constants, functions, types alias, union types, and their tags.
+
 ```elm
 -- Export everything
-module Mymodule exposing (..) 
+module MyModule exposing (..)
 ```
+
+To limit what is exported, you must list everything that you do want to export (there is no way to "blacklist" private items). 
+
 
 ```elm
 -- Export only specified entities
-module Mymodule exposing (Type, value) 
+module Mymodule exposing (MyType, myValue, myFunction) 
 ```
+
+A list of items is separated by commas, and may be broken up across many lines. The one wrinkle is how union types are exported, but that will be addressed below.
 
 ```elm
 -- Export all or specific states of type
@@ -63,32 +70,13 @@ type Error
     | NotFound String
 ```
 
-(source: [learnyouanelm](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/02-starting-out.md))
-
-
-It is mandatory to specify what is being imposed. 
-
-To make explicit that you are exporting everything in this module, use the two dots `(..)`. "Everything" comprises all defined top-level constants, functions, types alias, union types, and their tags.
-
-Use `exposing (..)`.
-
-```elm
-module MyModule exposing (..)
-```
-
-To limit what is exported, you must list everything that you do want to export (there is no way to "blacklist" private items). A list of items is separated by commas, and may be broken up across many lines. The one wrinkle is how union types are exported, but that will be addressed below.
-
-```elm
-module MyModule (MyType, myValue, myFunction) where
-```
-
-(source: [elm-for-js](https://github.com/elm-guides/elm-for-js/blob/master/Modules,%20Exports,%20and%20Imports.md))
+(source: [learnyouanelm](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/02-starting-out.md) and [elm-for-js](https://github.com/elm-guides/elm-for-js/blob/master/Modules,%20Exports,%20and%20Imports.md))
 
 
 Although uncommon, you should avoid situations like this:
 
 ```elm
-module Chance (Model, init) where
+module Chance exposing (Model, init)
 
 type Coin = Heads | Tails
 
@@ -103,8 +91,7 @@ The private `Coin` type is visible in the definition of the public `Model` type.
 (source: [elm-for-js](https://github.com/elm-guides/elm-for-js/blob/master/Modules,%20Exports,%20and%20Imports.md))
 
 
-
-### Imports
+### Import statements
 
 Elm gives access to a number of values and types by default. At the time of writing, it includes [Basics](http://package.elm-lang.org/packages/elm-lang/core/latest/Basics), Debug, List, Maybe and Result, Program, Cmd, and Sub. You can check the full list of [default imports](http://package.elm-lang.org/packages/elm-lang/core/latest/#default-imports), on the elm-lang website. 
 
@@ -150,7 +137,7 @@ For String, access to `toUpper` and `toLower` is direct. All the module-scoped v
 You can expose multiple values and types from a module by separating them with commas inside the parentheses. The order doesn't matter, but typically the types are listed before the values.
 
 
-#### When to use exposed?
+#### when to use exposed?
 
 Two usages are common. 
 
@@ -170,7 +157,7 @@ For any other usage, take the annoyance of having to type such a long word as ex
 
 Never expose an entire module unless you're really sure about it. When there are multiple `(..)` imports, it becomes impossible to see where something came from, and the odds of a name collision, across modules, is much higher. For instance, for many collection modules, names are deliberately consistent across data structures. For example, the Array, Set, and Dict modules all expose an `empty` value or an `insert` method. The compiler will stop you in truly ambiguous cases. Even in the absence of name collision, the module names serves as a constant reminder of what collection we are using.  (adapted from: [elm-for-js](https://github.com/elm-guides/elm-for-js/blob/master/Modules,%20Exports,%20and%20Imports.md))
 
-#### Renaming an import
+#### renaming an import
 
 When importing a module, you can rename it like so:
 
@@ -198,7 +185,6 @@ When you're listing all of your imports, it's helpful to group them in a sensibl
 #### importing union types
 
 See [Union Type](../type/08-union type.md)
-
 
 
 

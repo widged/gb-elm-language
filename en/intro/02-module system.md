@@ -31,7 +31,7 @@ init x y  = x + y
 
 #### module declaration 
 
-A module declaration begins with the keyword `module`, followed by the module name, the word `exposing` and the list of exported values between parentheses. 
+A module declaration begins with the keyword `module`, optionally followed by the module name, the word `exposing` and the list of exported values between parentheses. 
 
 To make explicit that you are exporting everything in this module, use the two dots `(..)`. "Everything" comprises all defined top-level constants, functions, types alias, union types, and their tags.
 

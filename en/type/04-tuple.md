@@ -37,6 +37,8 @@ It doesn't make sense to have a tuple of size one. It would then store the value
 
 (source: [learnyouanelm](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/02-starting-out.md))
 
+You can also pair up types into tuples, for example (`Int`, `Bool`) . This expands to arbitrarily many elements, i.e. (`Int`, `Float`, `Int`) is a 3-tuple with first element `Int` , second `Float` , third `Int` .
+
 
 ### Creating tuples
 
@@ -55,8 +57,6 @@ Also possible, put as many commas as you'll have values inside a tuple
 > (,,,) 1 True 'a' []
 (1,True,'a',[]) : ( number, Bool, Char, List a )
 ```
-
-
 (source: [Data Structures in Elm @NoRedInk](http://tech.noredink.com/post/140646140878/data-structures-in-elm))
 
 
@@ -223,12 +223,3 @@ So suppose we wanted to refer to author Neil Gaiman in this text: we might say `
 
 (source: [Data Structures in Elm @NoRedInk](http://tech.noredink.com/post/140646140878/data-structures-in-elm))
 
-### Tuples
-
-
-
-
-
-----
-
-You can also pair up types into tuples, for example (`Int`, `Bool`) . This expands to arbitrarily many elements, i.e. (`Int`, `Float`, `Int`) is a 3-tuple with first element `Int` , second `Float` , third `Int` .

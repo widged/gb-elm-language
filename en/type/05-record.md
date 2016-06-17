@@ -52,6 +52,7 @@ To copy a record but with some fields different, use
 It is possible to write functions that work on records that have some of the fields but ignoring any other fields.
 
 
+## -- 2 sort
 
 Let’s look at some more practical examples of how powerful the Elm type system can be. Elm has a data type called records which are very similar to JavaScript objects. The type system allows you to ask for a certain thing to exist in a record.
 

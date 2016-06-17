@@ -276,7 +276,7 @@ Functions that placed in front of arguments while enclosed in parentheses are ca
 overlaps with [Thinking functionally](../thinking functionally/02-recursion)
 
 
-```
+
 
 
 ### Higher Order Functions

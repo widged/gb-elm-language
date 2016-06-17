@@ -25,6 +25,7 @@
   * [Thinking Functionally](thinking functionally/cover.md)
      * [intro](thinking functionally/01-intro.md)
      * [Recursion](thinking functionally/02-recursion.md)
+     * [Higher Order Functions](thinking functionally/03-higher order functions.md)
   * [Data Structures](data-structure/cover.md)
     * [Ordered Array](data-structure/01-array.md)
     * [Set](data-structure/02-set.md)

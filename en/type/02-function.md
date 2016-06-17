@@ -7,9 +7,9 @@
 * Named functions: `avgxy = (x+y)/2`
 * Anonymous functions:`(\ x y -> (x + y) / 2)`
 
-### Function Declaration
+### Named functions
 
-To call a function, give its name and its parameters, separated by spaces, for example,
+We can define a function simply by naming it:
 
 ```elm
 add : Int -> Int -> Int
@@ -21,39 +21,8 @@ increment a = a + 1
 isEven : Int -> Bool
 isEven x = (x % 2 == 0)
 ```
-Declaring a named function, and assigning an anonymous function to a named variable behave identically.
 
-```elm
-add a b = a + b
-add = \a b -> a + b
-```
-
-
-
-## Defining functions
-
-### Named functions
-
-We can define a function simply by naming it:
-
-```elm
-isEvenLength: String -> Bool
-isEvenLength s =
-    (length s % 2 == 0)
-```
-
-Here it is in use, assuming we put the code in
-[a module called DefiningFunctions](DefiningFunctions.elm):
-
-```
-> import DefiningFunctions exposing (..)
-> isEvenLength "Hello"
-False : Bool
-> isEvenLength "Hell"
-True : Bool
->
-```
-(source: [elm-explained](https://github.com/niksilver/elm-explained))
+To call a function, give its name and its parameters, separated by spaces, for example,
 
 
 ### Anonymous functions
@@ -111,6 +80,15 @@ Here it is in use:
 ```
 
 (source: [elm-explained](https://github.com/niksilver/elm-explained))
+
+### Named vs anonymous
+
+Declaring a named function, and assigning an anonymous function to a named variable behave identically.
+
+```elm
+add a b = a + b
+add = \a b -> a + b
+```
 
 
 ### Simple type tags (constructors) are functions, too

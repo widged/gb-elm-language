@@ -7,10 +7,19 @@
 * Named functions: `avgxy = (x+y)/2`
 * Anonymous functions:`(\ x y -> (x + y) / 2)`
 
+### Function Declaration
+
 To call a function, give its name and its parameters, separated by spaces, for example,
 
 ```elm
-List.map toUpper words
+add : Int -> Int -> Int
+add x y =  x + y
+
+increment : Int -> Int
+increment a = a + 1
+
+isEven : Int -> Bool
+isEven x = (x % 2 == 0)
 ```
 Declaring a named function, and assigning an anonymous function to a named variable behave identically.
 
@@ -19,69 +28,15 @@ add a b = a + b
 add = \a b -> a + b
 ```
 
-
-
-## Function Declaration
-
-    add : Int -> Int -> Int
-    add x y =
-      x + y
-
-
-    add : Int -> Int -> Int
-    add x y =
-      let
-        sum = a + b
-      in
-        sum
-
-(source: ???)
-
-
-## AUTOMATIC FUNCTION CURRYING
-
-    concat : String -> String -> String
-    concat a b = a ++ b
-
-    listItem : String -> String
-    listItem =
-        concat "-> "
-
-(source: ???)
-
-
-## Applying functions
-
-First, some functions that will be useful to us. (These can be found in
-[module ApplyingFunctions](ApplyingFunctions.elm).)
-
-```elm
-increment a =
-    a + 1
-
-concat4 a b c d =
-    a ++ b ++ c ++ d
-
-isEven : Float -> Bool
-isEven x =
-    (toFloat (round x) == x
-        && round x % 2 == 0
-    )
-```
-
-(source: [elm-explained](https://github.com/niksilver/elm-explained))
-
 ### "Applied to..."
 
-The `<|` operator can be read as "applied to...".
-We can read the code here as "increment applied to 17":
+The `<|` operator can be read as "applied to...". We can read the code here as "increment applied to 17":
 
 ```elm
 res1 = increment <| 17    -- res1 is 18
 ```
 
-Since spaces bind tightest of all, the right hand argument of `<|` is
-effectively appended at the end. So `res2` is "OnceUponATime"
+Since spaces bind tightest of all, the right hand argument of `<|` is effectively appended at the end. So `res2` is "OnceUponATime"
 
 ```elm
 res2 = concat4 "Once" "Upon" "A" <| "Time"
@@ -92,15 +47,13 @@ res2 = concat4 "Once" "Upon" "A" <| "Time"
 
 ### "Applying..."
 
-The `|>` operator can be read as "applying...".
-We can read the code below as "17 applying increment".
+The `|>` operator can be read as "applying...". We can read the code below as "17 applying increment".
 
 ```elm
 res3 = 17 |> increment    -- res3 is also 18
 ```
 
-Again, as spaces bind tightest of all the left hand argument of `|>` is
-effectively appended at the end. So `res4` is also "OnceUponATime"
+Again, as spaces bind tightest of all the left hand argument of `|>` is effectively appended at the end. So `res4` is also "OnceUponATime"
 
 ```elm
 res4 = "Time" |> concat4 "Once" "Upon" "A"
@@ -655,7 +608,15 @@ There are two noteworthy things here. The first is that in the function name we 
 
 (source: [learnyouanelm](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/02-starting-out.md))
 
-## Higher Order Functions
+### Currying
+
+    concat : String -> String -> String
+    concat a b = a ++ b
+
+    listItem : String -> String
+    listItem = concat "-> "
+
+### Higher Order Functions
 
 Like JavaScript, functions can take other functions as arguments. (We've already seen how currying lets them return functions.)
 

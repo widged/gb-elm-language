@@ -39,19 +39,6 @@ $ elm repl
 ```
 
 
-
-
-Here it is in use:
-
-```
-> import DefiningFunctions exposing (..)
-> concat "elm" "o"
-"elmo" : String
->
-```
-
-(source: [elm-explained](https://github.com/niksilver/elm-explained))
-
 ### Named vs anonymous
 
 Declaring a named function, and assigning an anonymous function to a named variable behave identically. We can define an anonymous function and then give it a name after.

@@ -83,11 +83,26 @@ Or with an accessor fuction, which is a dot and the field name on its own.
 ```
 
 
-#### Immutable modification
+#### Immutable update
 
 To copy a record but with some fields different, use
 { old_record | key1 <- new_value_1, ..., key_n <- new_value_n }
 
+Update the fields of a record. (It must have the fields already.)
+
+```elm
+{ person | name = "George" }
+```
+
+Update multiple fields at once, using the current values.
+
+~~~~ {.Elm:hs name="code"}
+{ particle |
+  position = particle.position + particle.velocity,
+  velocity = particle.velocity + particle.acceleration }
+~~~~
+
+(source: ???)
 
 #### Specifying only some fields
 
@@ -120,8 +135,6 @@ It is  possible to write functions that work on records as long as they have the
 
 
 
-
-
 ### Record type alias
 
 If I define `type alias Point2D = {x : Float, y : Float}`, then like any type alias `Point2D` becomes a valid type to use in annotations. But because we're aliasing a record, we also gain a *record constructor*, `Point2D : Float -> Float -> Point2D`. For example, `origin = Point2D 0 0` becomes legal, and this is actual Elm code, not an annotation. `Point2D` is both a type and a function.
@@ -131,22 +144,7 @@ If I define `type alias Point2D = {x : Float, y : Float}`, then like any type al
 ### Records
 
 
-Update the fields of a record. (It must have the fields already.)
 
-~~~~ {.Elm:hs name="code"}
-{ person |
-  name = "George" }
-~~~~
-
-Update multiple fields at once, using the current values.
-
-~~~~ {.Elm:hs name="code"}
-{ particle |
-  position = particle.position + particle.velocity,
-  velocity = particle.velocity + particle.acceleration }
-~~~~
-
-(source: ???)
 
 
 #### .accessors

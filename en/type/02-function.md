@@ -70,55 +70,10 @@ $ elm repl
 "elmo" : String
 ```
 
-
-
 ### Applying (calling) a function
 
 
 
-Constants are similar, except there are no arguments.
-~~~~ {.Elm:hs name="code"}
-answer =
-  42
-~~~~
-
-(source: ???)
-
-Pass functions as arguments to other functions.
-~~~~ {.Elm:hs name="code"}
-List.map double [1..4] -- [2, 4, 6, 8]
-~~~~
-
-(source: ???)
-
-Or write an anonymous function.
-~~~~ {.Elm:hs name="code"}
-List.map (\a -> a * 2) [1..4] -- [2, 4, 6, 8]
-~~~~
-
-(source: ???)
-
-You can pattern match in function definitions when there's only one case.
-This function takes one tuple rather than two arguments.
-~~~~ {.Elm:hs name="code"}
-area (width, height) =
-  width * height
-area (6, 7) -- 42
-~~~~
-
-(source: ???)
-
-Use curly brackets to pattern match record field names.
-Use let to define intermediate values.
-
-~~~~ {.Elm:hs name="code"}
-volume {width, height, depth} =
-  let
-    area = width * height
-  in
-    area * depth
-volume { width = 3, height = 2, depth = 7 } -- 42
-~~~~
 
 Functions can be recursive.
 ~~~~ {.Elm:hs name="code"}
@@ -409,6 +364,14 @@ res10 = fun8 64    -- False, because the square root of 64 is even
 
 ### Higher Order Functions
 
+Pass functions as arguments to other functions.
+```elm
+double x = x * 2
+List.map double [1..4] -- [2, 4, 6, 8]
+List.map (\a -> a * 2) [1..4] -- [2, 4, 6, 8]
+```
+
+
 #### Currying
 
     concat : String -> String -> String
@@ -452,6 +415,12 @@ Even though `roundMap` doesn't take any arguments explicitly to the left of the 
 (source: [elm-for-js](https://github.com/elm-guides/elm-for-js/blob/master/How%20to%20Read%20a%20Type%20Annotation.md))
 
 ### Everything is a function
+
+Constants are a special case with no arguments.
+
+```elm
+answer = 42
+```
 
 * [Type constructors or types tags](11-type constructors)
 * [Type aliases for records act as multi-parameter functions](05-record.md)

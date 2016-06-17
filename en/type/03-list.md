@@ -41,7 +41,7 @@ $ elm repl
 
 (source: [learnyouanelm](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/02-starting-out.md))
 
-#### Texas ranges
+#### texas ranges
 
 Ranges are a way of making lists that are sequences of numbers. To make a list containing numbers from 1 to 20, you just write `[1..20]`. That is the equivalent of writing `[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]`.
 

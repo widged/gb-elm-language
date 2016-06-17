@@ -194,6 +194,67 @@ onlyX myRecord
 ```
 
 (source: [yang-wei gist](https://gist.github.com/yang-wei/4f563fbf81ff843e8b1e))
+----
+##### Nested record
+
+I don't think Elm support destructuring in nested record (I tried) because Elm encourages sparse record
+
+
+```elm
+format : ParseTree -> State -> State
+format parseTree state =
+  case parseTree of
+    Node Feature (LeafNode (Description description) :: children) ->
+      appendDesribe description children state
+
+    Node Scenario (LeafNode (Description description) :: children) ->
+      appendDesribe description children state
+
+    Node Test (LeafNode (Description description) :: []) ->
+      let
+        open = tabs state ++ "it('" ++ description ++ "', function() {\n"
+        close = tabs state ++ "});\n"
+      in
+        { state | output = state.output ++ open ++ close }
+
+    _ ->
+      state
+```
+(source: [yang-wei gist](https://gist.github.com/yang-wei/4f563fbf81ff843e8b1e))
+
+That one is very useful for record-like opaque types as they don't get the magical accessor functions, especially as you can do partial matching:
+
+```elm
+type AThing = AThing { foo: String, bar: Int }
+
+foo (AThing { foo }) = foo
+```
+(source: [comment on yang-wei gist](https://gist.github.com/yang-wei/4f563fbf81ff843e8b1e))
+
+The latest version of Elm does support destructuring of nested types. Here's an example function I wrote to walk through an AST and return JavaScript code as a String.
+
+```elm
+format : ParseTree -> State -> State
+format parseTree state =
+  case parseTree of
+    Node Feature (LeafNode (Description description) :: children) ->
+      appendDesribe description children state
+
+    Node Scenario (LeafNode (Description description) :: children) ->
+      appendDesribe description children state
+
+    Node Test (LeafNode (Description description) :: []) ->
+      let
+        open = tabs state ++ "it('" ++ description ++ "', function() {\n"
+        close = tabs state ++ "});\n"
+      in
+        { state | output = state.output ++ open ++ close }
+
+    _ ->
+      state
+```
+
+(source: [comment on yang-wei gist](https://gist.github.com/yang-wei/4f563fbf81ff843e8b1e))
 
 
 ### Record type alias
@@ -315,66 +376,7 @@ then this is what it looks like in the Elm REPL:
 ## -- 2 sort --
 
 
-#### Nested record
 
-I don't think Elm support destructuring in nested record (I tried) because Elm encourages sparse record
-
-
-```elm
-format : ParseTree -> State -> State
-format parseTree state =
-  case parseTree of
-    Node Feature (LeafNode (Description description) :: children) ->
-      appendDesribe description children state
-
-    Node Scenario (LeafNode (Description description) :: children) ->
-      appendDesribe description children state
-
-    Node Test (LeafNode (Description description) :: []) ->
-      let
-        open = tabs state ++ "it('" ++ description ++ "', function() {\n"
-        close = tabs state ++ "});\n"
-      in
-        { state | output = state.output ++ open ++ close }
-
-    _ ->
-      state
-```
-(source: [yang-wei gist](https://gist.github.com/yang-wei/4f563fbf81ff843e8b1e))
-
-That one is very useful for record-like opaque types as they don't get the magical accessor functions, especially as you can do partial matching:
-
-```elm
-type AThing = AThing { foo: String, bar: Int }
-
-foo (AThing { foo }) = foo
-```
-(source: [comment on yang-wei gist](https://gist.github.com/yang-wei/4f563fbf81ff843e8b1e))
-
-The latest version of Elm does support destructuring of nested types. Here's an example function I wrote to walk through an AST and return JavaScript code as a String.
-
-```elm
-format : ParseTree -> State -> State
-format parseTree state =
-  case parseTree of
-    Node Feature (LeafNode (Description description) :: children) ->
-      appendDesribe description children state
-
-    Node Scenario (LeafNode (Description description) :: children) ->
-      appendDesribe description children state
-
-    Node Test (LeafNode (Description description) :: []) ->
-      let
-        open = tabs state ++ "it('" ++ description ++ "', function() {\n"
-        close = tabs state ++ "});\n"
-      in
-        { state | output = state.output ++ open ++ close }
-
-    _ ->
-      state
-```
-
-(source: [comment on yang-wei gist](https://gist.github.com/yang-wei/4f563fbf81ff843e8b1e))
 
 # -------
 

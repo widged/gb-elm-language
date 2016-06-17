@@ -16,11 +16,11 @@ To call a function, give its name and its parameters, separated by spaces.
 
 ```elm
 $ elm repl
-> min 9 10 -- min returns the minimum, that is the smallest number of the two
+> min 9 10 -- min takes 2 numbers and returns the smallest (minimum)
 9 : number
 > min 3.4 3.2
 3.2 : Float
-> max 100 101 -- max returns the maximum, that is the biggest number of the two
+> max 100 101 -- min takes 2 numbers and returns the greatest (maximum)
 101 : number
 > multiply a b = a*b
 > multiply 7 6
@@ -91,7 +91,6 @@ $ elm repl
 ## -- 2 sort
 
 
-Calling a function with several parameters is also simple. The functions `min` and `max` take two things that can be put in an order (like numbers!). `min` returns the one that's lesser and `max` returns the one that's greater. See for yourself:
 
 
 Function application (calling a function by putting a space after it and then typing out the parameters) has the highest precedence of them all. What that means for us is that these two statements are equivalent.

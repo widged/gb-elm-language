@@ -14,7 +14,13 @@ Records values use equals between key and value but a colon between key and valu
 point : {x : Float, y : Float}
 point = {x = 3.2, y = 2.5}
 ```
+-----
+Records have fields with names. The order of fields doesn't matter. Notice that record values use equals signs, not colons.
 
+```elm
+{ x = 3, y = 7 }
+```
+-----
 ```elm
 planarDistance : {a | x : Float, y : Float} -> {b | x : Float, y : Float} -> Float
 planarDistance p1 p2 =
@@ -23,15 +29,13 @@ planarDistance p1 p2 =
   in sqrt (dx^2 + dy^2)
 ```
 
-
 The `{a |` part of the annotation indicates a base record, of type `a`, is extended. Then we list the fields it's extended with, and what their types are. In the simplest cast, `a` can be the empty record, i.e. there are no extra fields. We use a different type variable, `b`, for the second argument to indicate that the two records don't have to be the same type. For example:
 
 ```elm
 point3D = {x = 1.0, y = 6.3, z = -0.9}
 dist = planarDistance point point3D
 ```
-
-(source: [elm-for-js](https://github.com/elm-guides/elm-for-js/blob/master/How%20to%20Read%20a%20Type%20Annotation.md))
+(source: [elm-for-js](https://github.com/elm-guides/elm-for-js/blob/master/How%20to%20Read%20a%20Type%20Annotation.md) and [learnyouanelm-03](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/03-types.md))
 
 -> structural type
 
@@ -39,7 +43,18 @@ dist = planarDistance point point3D
 
 #### Accessors 
 
-Use record.keyor .key record to access the fields of a record. [records](http://elm-lang.org/docs/syntax#records) has a number of operations without much explanation. 
+Use record.keyor .key record to access the fields of a record. 
+
+----
+
+Finally, record accessors. Uniquely these functions are defined by a pattern, rather than being listed somewhere. For example, `.name : { b | name : a } -> a`, which basically means `.name` takes any record with a `name` field and extracts its value. You can use any record field name you like.
+
+Beware of creating data structures with record accessors. Because all a list's elements must have the same type, each record accessor must extract a value of the same type, which is usually not what you want.
+```elm
+[.name, .number] : List ({ b | name : a, number : a } -> a)
+```
+
+(source: [elm-for-js](https://github.com/elm-guides/elm-for-js/blob/master/Scope.md))
 
 #### Immutable modification
 
@@ -49,36 +64,6 @@ To copy a record but with some fields different, use
 
 #### Specifying only some fields
 
-It is possible to write functions that work on records that have some of the fields but ignoring any other fields.
-
-
-## -- 2 sort
-
-Let’s look at some more practical examples of how powerful the Elm type system can be. Elm has a data type called records which are very similar to JavaScript objects. The type system allows you to ask for a certain thing to exist in a record.
-
-    sendEmail : { record | email : String } -> Bool
-    sendEmail userOrSomethingEmailable =
-      -- code that sends email ...
-
-This type annotation requires that we pass a record to the function that contains an email which must be a string. The rest of the fields in the record can be anything at all! This allows us to have a strong contract for this function but provides flexibility around the thing we pass into it.
-
-(source: [[http://www.adamwaselnuk.com/elm/2016/05/27/understanding-the-elm-type-system.html]])
-
-### .accessors
-
-Finally, record accessors. Uniquely these functions are defined by a pattern, rather than being listed somewhere. For
-example, `.name : { b | name : a } -> a`, which basically means `.name` takes any record with a `name` field and
-extracts its value. You can use any record field name you like.
-
-Beware of creating data structures with record accessors. Because all a list's elements must have the same type, each
-record accessor must extract a value of the same type, which is usually not what you want.
-```elm
-[.name, .number] : List ({ b | name : a, number : a } -> a)
-```
-
-(source: [[https://github.com/elm-guides/elm-for-js/blob/master/Scope.md]])
-
-## as function argument
 
 If the argument to a function is a record, you can specify which fields must be present. Example:
 
@@ -89,47 +74,36 @@ maxxz {x, z} = if x > z then x else z maxxz rec -- returns 5
 
 (source: ???)
 
-## Record type alias
-
-If I define `type alias Point2D = {x : Float, y : Float}`, then like any type alias `Point2D` becomes a valid type to use in annotations. But because we're aliasing a record, we also gain a *record constructor*, `Point2D : Float -> Float -> Point2D`. For example, `origin = Point2D 0 0` becomes legal, and this is actual Elm code, not an annotation. `Point2D` is both a type and a function.
-
-(source: [[https://github.com/elm-guides/elm-for-js/blob/master/Scope.md]])
-
-## Records
+It is possible to write functions that work on records that have some of the fields but ignoring any other fields.
 
 
-```
+The type system allows you to ask for a certain thing to exist in a record.
+
+    sendEmail : { record | email : String } -> Bool
+    sendEmail userOrSomethingEmailable =
+      -- code that sends email ...
+
+This type annotation requires that we pass a record to the function that contains an email which must be a string. The rest of the fields in the record can be anything at all! This allows us to have a strong contract for this function but provides flexibility around the thing we pass into it.
+
+(source: [understanding-the-elm-type-system.html](http://www.adamwaselnuk.com/elm/2016/05/27/understanding-the-elm-type-system.html))
 
 It is  possible to write functions that work on records as long as they have the right fields, ignoring any other fields.
 
-```elm
-planarDistance : {a | x : Float, y : Float} -> {b | x : Float, y : Float} -> Float
-planarDistance p1 p2 =
-  let dx = p2.x - p1.x
-      dy = p2.y - p1.y
-  in sqrt (dx^2 + dy^2)
-```
-
-The `{a |` part of the annotation indicates a base record, of type `a`, is extended. Then we list the fields it's
-extended with, and what their types are. In the simplest cast, `a` can be the empty record, i.e. there are no extra
-fields. We use a different type variable, `b`, for the second argument to indicate that the two records don't have to be
-the same type. For example:
-
-```elm
-point3D = {x = 1.0, y = 6.3, z = -0.9}
-
-dist = planarDistance point point3D
-```
-
 (source: [learnyouanelm-03](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/03-types.md))
+
+
+
+
+
+### Record type alias
+
+If I define `type alias Point2D = {x : Float, y : Float}`, then like any type alias `Point2D` becomes a valid type to use in annotations. But because we're aliasing a record, we also gain a *record constructor*, `Point2D : Float -> Float -> Point2D`. For example, `origin = Point2D 0 0` becomes legal, and this is actual Elm code, not an annotation. `Point2D` is both a type and a function.
+
+(source: [elm-for-js](https://github.com/elm-guides/elm-for-js/blob/master/Scope.md))
 
 ### Records
 
-Records are like tuples but the fields have names. The order of fields doesn't matter. Notice that record values use equals signs, not colons.
 
-~~~~ {.Elm:hs name="code"}
-{ x = 3, y = 7 }
-~~~~
 
 Access a field with a dot and the field name.
 
@@ -666,3 +640,7 @@ Here's how it looks in the REPL. Notice that we've converted from the type of `t
 ```
 
 (source: [elm-explained](https://github.com/niksilver/elm-explained))
+
+#### All operations
+
+[records](http://elm-lang.org/docs/syntax#records) has a number of operations without much explanation. 

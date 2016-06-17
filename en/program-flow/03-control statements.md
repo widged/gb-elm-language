@@ -12,7 +12,7 @@ case expression of pattern -> expression ...
 pattern -> expression
 ```
 
-If statements must have an else, and the branches must be the same type.
+If statements must have an else, and the branches must be of the same type.
 
 ```elm
 if powerLevel > 9000 then

@@ -2,26 +2,18 @@
 
 ## Records 
 
-### Operations on records
+Records are written with brackets. They hold values in name fields. 
 
-A record is like a Python dictionary or a Java HashMap
-{name=value,...,name=value}defines a record. Use record.keyor .key record to access the fields of a record.
-http://elm-lang.org/docs/syntax#records has a number of operations without much explanation. To copy a record but with some fields different, use
-{ old_record | key1 <- new_value_1, ..., key_n <- new_value_n }
+```elm
+{name=value,...,name=value}
+```
 
--> structural type
-
-### Records
-
-A record is like a JS object, except you know at compile-time that the fields you access will be there. Also like JavaScript, they're written with brackets. *Unlike* JavaScript, records values use equals between key and value; when written with colons, it's a record *type*. Here's a simple record:
+Records values use equals between key and value but a colon between key and value type. 
 
 ```elm
 point : {x : Float, y : Float}
 point = {x = 3.2, y = 2.5}
 ```
-
-In most cases that's all you need to know about record types. But it's also possible to write functions that work on
-records as long as they have the right fields, ignoring any other fields.
 
 ```elm
 planarDistance : {a | x : Float, y : Float} -> {b | x : Float, y : Float} -> Float
@@ -31,18 +23,35 @@ planarDistance p1 p2 =
   in sqrt (dx^2 + dy^2)
 ```
 
-The `{a |` part of the annotation indicates a base record, of type `a`, is extended. Then we list the fields it's
-extended with, and what their types are. In the simplest cast, `a` can be the empty record, i.e. there are no extra
-fields. We use a different type variable, `b`, for the second argument to indicate that the two records don't have to be
-the same type. For example:
+
+The `{a |` part of the annotation indicates a base record, of type `a`, is extended. Then we list the fields it's extended with, and what their types are. In the simplest cast, `a` can be the empty record, i.e. there are no extra fields. We use a different type variable, `b`, for the second argument to indicate that the two records don't have to be the same type. For example:
 
 ```elm
 point3D = {x = 1.0, y = 6.3, z = -0.9}
-
 dist = planarDistance point point3D
 ```
 
 (source: [elm-for-js](https://github.com/elm-guides/elm-for-js/blob/master/How%20to%20Read%20a%20Type%20Annotation.md))
+
+-> structural type
+
+### Operations on records
+
+#### Accessors 
+
+Use record.keyor .key record to access the fields of a record. [records](http://elm-lang.org/docs/syntax#records) has a number of operations without much explanation. 
+
+#### Immutable modification
+
+To copy a record but with some fields different, use
+{ old_record | key1 <- new_value_1, ..., key_n <- new_value_n }
+
+
+#### Specifying only some fields
+
+It is possible to write functions that work on records that have some of the fields but ignoring any other fields.
+
+
 
 Let’s look at some more practical examples of how powerful the Elm type system can be. Elm has a data type called records which are very similar to JavaScript objects. The type system allows you to ask for a certain thing to exist in a record.
 
@@ -87,17 +96,10 @@ If I define `type alias Point2D = {x : Float, y : Float}`, then like any type al
 
 ## Records
 
-A record is like a JS object, except you know at compile-time that the fields you access will be there. Also like
-JavaScript, they're written with brackets. *Unlike* JavaScript, records values use equals between key and value; when
-written with colons, it's a record *type*. Here's a simple record:
 
-```elm
-point : {x : Float, y : Float}
-point = {x = 3.2, y = 2.5}
 ```
 
-In most cases that's all you need to know about record types. But it's also possible to write functions that work on
-records as long as they have the right fields, ignoring any other fields.
+It is  possible to write functions that work on records as long as they have the right fields, ignoring any other fields.
 
 ```elm
 planarDistance : {a | x : Float, y : Float} -> {b | x : Float, y : Float} -> Float

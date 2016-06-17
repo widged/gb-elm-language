@@ -63,9 +63,6 @@ Tuples are comparable.
 Pattern matching in `case` expressions can be used on tuples. Beyond that, Elm has very little support for tuples.
 
 
-### Tuples
-
-
 
 ### Tuples
 

@@ -1,6 +1,6 @@
 **Elm 0.17**, **shareable** 
 
-# Primitive types
+## Primitive types
 
 Primitive types are built into the language. They include `Bool`, `Int`, `Float`, `Char`, and `String`. 
 
@@ -17,9 +17,9 @@ True : Bool
 ```
 
 --------------------------------------------------
-## Boolean Types
+### Boolean Types
 
-### Bool
+#### Bool
 
 `Bool` is a boolean type. It can have only two values: `True` and `False`.
 
@@ -31,7 +31,7 @@ False : Bool
 ```
 
 --------------------------------------------------
-## Numeric Types
+### Numeric Types
 
 Numeric types are `Int` and `Float`. 
 
@@ -44,11 +44,11 @@ Numeric types are `Int` and `Float`.
 1 : Int
 ```
 
-## Int
+### Int
 
 `Int` stands for integer. It's used for whole numbers. `7` can be an `Int` but `7.2` cannot. `Int` is bounded, which means that it has a minimum and a maximum value. The maximum possible value of `Int` is `2147483647` and the `minimum` is `-2147483648`.
 
-## Float
+### Float
 
 `Float` is a floating point.
 
@@ -60,7 +60,7 @@ toPrint = circumference 4.0
 25.132742
 ```
 --------------------------------------------------
-## Text Strings
+### Text Strings
 
 String types are `Char` and `String`
 
@@ -79,11 +79,11 @@ $ elm repl
 'a' -- characters in single quotes
 ```
 
-### Char
+#### Char
 
 `Char` represents a character. It's denoted by single quotes `'a'`.
 
-### String
+#### String
 
 `String` represents a string. It's denoted by double or triple quotes and can contain many characters. Strings are _not_ lists of characters.
 
@@ -102,7 +102,7 @@ Strings can be appended with `++`.
 "Hello " ++ "world!" -- "Hello world!"
 ```
 
-# Links
+## Further Reading
 
 * [learnyouanelm-03](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/03-types.md)
 * [learnyouanelm](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/02-starting-out.md)

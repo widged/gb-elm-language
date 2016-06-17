@@ -42,8 +42,7 @@ isEven x = (x % 2 == 0)
 
 #### anonymous functions
 
-Anonymous functions are defined with  `\arg1 arg2 -> expression`. The backslash is traditionally pronounced *lambda*, after the Greek letter used by programming language theorists, but you're welcome to say *function* if that helps you. It's usual not to have a space after the backslash, but we can.
-
+Anonymous functions are defined with  `\arg1 arg2 -> expression`. They are also known as _lambdas_ as he backslash is traditionally pronounced *lambda*, after the Greek letter used by programming language theorists. It's usual not to have a space after the backslash, but we can.
 
 Take the `filter` function. It filters through just those elements of a list that pass a specific test - i.e. those that return True from a specific function. We can pass it an anonymous function.
 
@@ -53,6 +52,17 @@ $ elm repl
 > filterEven [1, 2, 3, 4, 5]
 [2,4] : List Int   
 ```
+
+
+```elm
+-- (\function arguments -> function body)
+-- parenthesized, content starts with backslash
+(\n -> n < 0)
+(\x y -> x * y)
+```
+
+(source: [learnyouanelm](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/02-starting-out.md))
+
 
 #### named vs anonymous
 
@@ -70,58 +80,13 @@ $ elm repl
 "elmo" : String
 ```
 
-## Functions
+## -- 2 sort
 
 
 
-#### Anonymous
 
-Also known as _lambdas_
-```elm
--- (\function arguments -> function body)
--- parenthesized, content starts with backslash
-(\n -> n < 0)
-(\x y -> x * y)
-```
 
-(source: [learnyouanelm](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/02-starting-out.md))
-
-#### Infix
-Functions that placed between two arguments and enclosed in backticks <code>`</code> are called _infix_
-```elm
--- Normal
-> min 1 2
-1 : number
-
--- Infix
-> 1 `min` 2
-1 : number
-```
-
-(source: [learnyouanelm](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/02-starting-out.md))
-
-#### Prefix
-Functions that placed in front of arguments while enclosed in parentheses are called _prefix_
-```elm
--- Normally you would do this
-> "abcde" ++ "fghij"
-"abcdefghij" : String
-
--- Prefix
-> (++) "abcde" "fghij"
-"abcdefghij" : String
-```
-(source: [learnyouanelm](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/02-starting-out.md))
-
-## ---------
-
-Functions are usually prefix so from now on we won't explicitly state that a function is of the prefix form, we'll just assume it. In most imperative languages functions are called by writing the function name and then writing its parameters in parentheses, usually separated by commas. In Elm, functions are called by writing the function name, a space and then the parameters, separated by spaces. For a start, we'll try calling one of the most boring functions in Elm.
-
-```elm
-show identity 8 -- 8
-```
-
-The `identity` function takes a value and returns that value. As you can see, we just separate the function name from the parameter with a space. Calling a function with several parameters is also simple. The functions `min` and `max` take two things that can be put in an order (like numbers!). `min` returns the one that's lesser and `max` returns the one that's greater. See for yourself:
+Calling a function with several parameters is also simple. The functions `min` and `max` take two things that can be put in an order (like numbers!). `min` returns the one that's lesser and `max` returns the one that's greater. See for yourself:
 
 ```elm
 show min 9 10 -- 9
@@ -301,15 +266,46 @@ res10 = fun8 64    -- False, because the square root of 64 is even
 
 (source: [elm-explained](https://github.com/niksilver/elm-explained))
 
-### infix mode
+### infix vs prefix mode
+
+Functions are usually prefix so from now on we won't explicitly state that a function is of the prefix form, we'll just assume it. 
 
 Function calls happen before any infix operator. Parens indicate precedence.
 ```elm
 cos (degrees 30) ^ 2 + sin (degrees 30) ^ 2 -- 1
 ```
 
-First degrees is applied to 30, then the result is passed to the trig
-functions, which is then squared, and the addition happens last.
+First degrees is applied to 30, then the result is passed to the trig functions, which is then squared, and the addition happens last.
+
+#### Infix
+
+Functions that placed between two arguments and enclosed in backticks <code>`</code> are called _infix_
+```elm
+-- Normal
+> min 1 2
+1 : number
+
+-- Infix
+> 1 `min` 2
+1 : number
+```
+
+(source: [learnyouanelm](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/02-starting-out.md))
+
+#### Prefix
+
+Functions that placed in front of arguments while enclosed in parentheses are called _prefix_
+
+```elm
+-- Normally you would do this
+> "abcde" ++ "fghij"
+"abcdefghij" : String
+
+-- Prefix
+> (++) "abcde" "fghij"
+"abcdefghij" : String
+```
+(source: [learnyouanelm](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/02-starting-out.md))
 
 
 ### Recursive functions

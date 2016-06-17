@@ -32,7 +32,6 @@ You can also define types at the top level, like `type alias Model = Int`.
 
 (source: [elm-for-js](https://github.com/elm-guides/elm-for-js/blob/master/Scope.md))
 
-
 Before the next part, here's a reminder that the `filter` function filters through just those elements of a list that pass a specific test - i.e. those that return True from a specific function.
 
 ```

@@ -19,7 +19,6 @@ $ elm repl
 > multiply 7 6 -- 42
 ```
 
-
 ### Declaring functions
 
 Functions can be declared in two ways.
@@ -73,19 +72,6 @@ $ elm repl
 
 ## Functions
 
-### Basics
-
-
-
-```elm
--- Partial application
-> minus x y = (-) x y
-<function> : number -> number -> number
-> minus1 = minus 1
-<function> : number -> number
-> minus1 11
--10 : number
-```
 
 
 #### Anonymous
@@ -374,6 +360,17 @@ Partially apply a function by passing only some of its arguments. Then give that
 double = multiply 2
 ```
 
+Or
+
+```elm
+-- Partial application
+> minus x y = (-) x y
+<function> : number -> number -> number
+> minus1 = minus 1
+<function> : number -> number
+> minus1 11
+-10 : number
+```
 
 
 #### other

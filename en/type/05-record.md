@@ -324,15 +324,9 @@ ixy : IncXY { z : Float }
 ixy = { x = 10.1, y = 11.1, z = 12.1 }
 ```
 
-Notice the very different type declaration of `ixy`.
-This is because `IncXY` was declared with a variable type (`IncXY a`).
-Now that we're actually using it we must state what that variable type
-is (i.e. what the `a` is) in this particular case. And in this case
-it's the `z` part of the record.
+Notice the very different type declaration of `ixy`. This is because `IncXY` was declared with a variable type (`IncXY a`). Now that we're actually using it we must state what that variable type is (i.e. what the `a` is) in this particular case. And in this case it's the `z` part of the record.
 
-Now we define two functions which take a `JustXY` and an `IncXY`.
-The `sumInc` function will accept values of both types,
-but the `sumJust` function will only take a value of `JustXY`.
+Now we define two functions which take a `JustXY` and an `IncXY`. The `sumInc` function will accept values of both types, but the `sumJust` function will only take a value of `JustXY`.
 
 ```elm
 sumJust : JustXY -> Float

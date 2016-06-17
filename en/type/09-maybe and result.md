@@ -1,9 +1,9 @@
 **Elm 0.??**, **copied, please ignore** 
 
-# Maybe
+## Maybe
 
 
-## BANNING NULLS
+### BANNING NULLS
 
 type Maybe a = Nothing | Just a
 
@@ -23,7 +23,7 @@ canBuyAlcohol user =
 
 (source: ???)
 
-## Where did `null` and `undefined` go?
+### Where did `null` and `undefined` go?
 
 In our applications it is often useful to be able to represent the possible
 absence of a value. In JavaScript we have `undefined` to represent the result
@@ -466,7 +466,7 @@ On the surface it seems like we've made a simple data-model change, but by resha
 (source: [[http://blog.jenkster.com/2016/06/how-elm-slays-a-ui-antipattern.html]])
 
 
-# Result
+## Result
 
 A Result is useful when you have logic that may "fail". For example, parsing a String into an Int may fail. What if the string is filled with the letter B? In cases like this, we want a function with this type:
 

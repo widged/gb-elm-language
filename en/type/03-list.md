@@ -124,15 +124,13 @@ length list =
 
 `head` gives you a Maybe with the value of the first element. `tail` gives you the rest of the List. (source: [Data Structures in Elm @NoRedInk](http://tech.noredink.com/post/140646140878/data-structures-in-elm))
 
-The head and tail of a list are returned as a Maybe. Instead of checking
-every value to see if it's null, you deal with missing values explicitly.
+The head and tail of a list are returned as a Maybe. Instead of checking every value to see if it's null, you deal with missing values explicitly.
 
 ```elm
 List.head [1..5] -- Just 1
 List.tail [1..5] -- Just [2, 3, 4, 5]
 List.head [] -- Nothing
 ```
-
 
 ### An intro to lists
 

@@ -18,7 +18,7 @@ $ elm repl
 > [1, "2", 3, 4, 5]
 -- TYPE MISMATCH --------------------------------------------- repl-temp-000.elm
 The 1st and 2nd elements are different types of values.
-> []
+> [] -- empty list
 [] : List a
 ```
 

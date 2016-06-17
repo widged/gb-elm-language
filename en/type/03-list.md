@@ -2,16 +2,8 @@
 
 ## List
 
-If we tried a list like
-`[1,2,'a',3,'b','c',4]`, Elm would complain that characters (which
-are, by the way, denoted as a character between single quotes) are not
-numbers.
+Lists are denoted by square brackets and the values in the lists are separated by commas.  In Elm, Lists are *homogenous* data structures. All the values in a list must have the same type. 
 
-Lists are just linked lists (ordered collections where each node of the collection points to the subsequent node, if there is one), where all the values must be same type. You get head and tail, just like you’d expect.
-
-(source: [Data Structures in Elm @NoRedInk](http://tech.noredink.com/post/140646140878/data-structures-in-elm))
-
-Lists are denoted by square brackets and the values in the lists are separated by commas.  In Elm, Lists are *homogenous* data structures. All the values in a list must have the same type.
 
 ```elm
 $ elm repl
@@ -29,6 +21,9 @@ The 1st and 2nd elements are different types of values.
 Functions that operate on lists live in the List module. Use `List.functionName` to access them. 
 
 Note. strings are not Lists of characters, though they are similar with Lists.
+
+Note2. The constrain of *homogeneity* applies to list within a list as well.They can be of different lengths but they can't be of different types. You can't have a list that has some lists of characters and some lists of numbers. 
+
 
 ### Creating Lists
 
@@ -48,23 +43,62 @@ $ elm repl
 
 ### Manipulating Lists
 
-#### append one element
-
-To add one item, use "cons". Cons `::` is an infix operator that adds to the front of the List. 
-
-```bash
-$ elm repl
-> 0 :: [1..5]
-[0,1,2,3,4,5] : List number
-```
 
 #### merge two lists
 
+Two lists are put together with the `++` operator.
+
 ```bash
 $ elm repl
-> [1..5] ++ [6..10]
+> [1,2,3,4,5] ++ [6,7,8,9,10]
 [1,2,3,4,5,6,7,8,9,10] : List number
 ```
+
+A limitation to be aware of is that, internally, Elm walks through the whole list on the left side of `++` before adding any new element. It can become an issue when manipulating very long lists.  
+
+
+#### putting something at the beginning of a list
+
+To add one item, use the "cons" operator `::`. Cons is an infix operator that adds to the front of the List. While `++` can be problematic with long lists, `::` is instantaneous.
+
+```bash
+$ elm repl
+> 0 :: [1,2,3,4,5]
+[0,1,2,3,4,5] : List number
+> 1::2::3::[]
+[1,2,3] : List number
+```
+
+Notice that `::` takes an element to the left and a list to the right. 
+
+#### head and tail
+
+Lists are just linked lists (ordered collections where each node of the collection points to the subsequent node, if there is one), where all the values must be same type. You get head and tail, just like you’d expect. (source: [Data Structures in Elm @NoRedInk](http://tech.noredink.com/post/140646140878/data-structures-in-elm))
+
+`head` takes a list and returns its head. The head of a list is basically its first element. `tail` takes a list and returns its tail. In other words, it chops off a list's head. 
+
+
+`head` or `tail` have `Maybe` as return value. 
+
+
+`head` gives you a Maybe with the value of the first element. `tail` gives you the rest of the List. (source: [Data Structures in Elm @NoRedInk](http://tech.noredink.com/post/140646140878/data-structures-in-elm))
+
+The head and tail of a list are returned as a Maybe. Instead of checking every value to see if it's null, you deal with missing values explicitly. It `head` or `tail` value of an empty list is `Nothing`. It is Just a value for non empty lists.
+
+```elm
+$ elm repl
+> List.head [5,4,3,2,1]
+Just 5 : Maybe.Maybe number
+> List.tail [5,4,3,2,1]
+Just [4,3,2,1] : Maybe.Maybe (List number)
+> List.head []
+Nothing : Maybe.Maybe a
+> List.tail []
+Nothing : Maybe.Maybe (List a)
+```
+
+
+
 
 #### Destructuring
 
@@ -122,101 +156,24 @@ length list =
         1 + length rest
 ```
 
-(source: ???)
-
-#### head and tail
-
-`head` gives you a Maybe with the value of the first element. `tail` gives you the rest of the List. (source: [Data Structures in Elm @NoRedInk](http://tech.noredink.com/post/140646140878/data-structures-in-elm))
-
-The head and tail of a list are returned as a Maybe. Instead of checking every value to see if it's null, you deal with missing values explicitly.
-
-```elm
-List.head [1..5] -- Just 1
-List.tail [1..5] -- Just [2, 3, 4, 5]
-List.head [] -- Nothing
-```
-
-### An intro to lists
-
-
-
-A common task is putting two lists together. This is done by using the
-`++` operator.
-
-```elm
-show [1,2,3,4] ++ [9,10,11,12] -- [1,2,3,4,9,10,11,12]
-```
-
-Watch out when repeatedly using the `++` operator on long strings. When
-you put together two lists (even if you append a singleton list to a
-list, for instance: `[1,2,3] ++ [4]`), internally, Elm has to walk
-through the whole list on the left side of `++`. That's not a problem when
-dealing with lists that aren't too big. But putting something at the end
-of a list that's fifty million entries long is going to take a while.
-However, putting something at the beginning of a list using the `::`
-operator (also called the cons operator) is instantaneous.
-
-```elm
-show 5 :: [1,2,3,4,5] -- [5,1,2,3,4,5]
-```
-
-Notice how `::` takes a number and a list of numbers or a character and a
-list of characters, whereas `++` takes two lists. Even if you're adding an
-element to the end of a list with `++`, you have to surround it with
-square brackets so it becomes a list.
-
-`[1,2,3] `is actually just syntactic sugar for `1::2::3::[]`. `[]` is an empty
-list. If we prepend 3 to it, it becomes `[3]`. If we prepend 2 to that, it
-becomes `[2,3]`, and so on.
-
-*Note:* `[]`, `[[]]` and `[[],[],[]]` are all different things. The first one
-is an empty list, the seconds one is a list that contains one empty
-list, the third one is a list that contains three empty lists.
-
-(source: [learnyouanelm](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/02-starting-out.md))
-
-
-#### TODO section on Nth element?
-
-
-The lists within a list can be of different lengths but they can't be of
-different types. Just like you can't have a list that has some
-characters and some numbers, you can't have a list that has some lists
-of characters and some lists of numbers.
-
-What else can you do with lists? Here are some basic functions that
-operate on lists.
-
-(source: [learnyouanelm](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/02-starting-out.md))
-
 #### TODO section on Maybe?
 
-`head` takes a list and returns its head. The head of a list is basically
-its first element.
+`head` takes a list and returns its head. The head of a list is basically its first element. `tail` takes a list and returns its tail. In other words, it chops off a list's head. The head or tail of an empty list is `Nothing`.
 
 ```elm
-show List.head [5,4,3,2,1] -- Just 5
+$ elm repl
+> List.head [5,4,3,2,1]
+Just 5 : Maybe.Maybe number
+> List.tail [5,4,3,2,1]
+Just [4,3,2,1] : Maybe.Maybe (List number)
+> List.head []
+Nothing : Maybe.Maybe a
+> List.tail []
+Nothing : Maybe.Maybe (List a)
 ```
 
-`tail` takes a list and returns its tail. In other words, it chops off a
-list's head.
 
-```elm
-show List.tail [5,4,3,2,1] -- Just [4,3,2,1]
-```
-
-
-But what happens if we try to get the head of an empty list?
-
-```elm
-show List.head [] -- Nothing
-```
-
-What is `Nothing`? And why did `head` return `Just 5` before?
-We'll talk about that a bit more later, but for now,
-think of `Nothing` as a way to indicate when there's no correct value to return,
-and `Just` as a way to show that we could return a value in a place
-where `Nothing` could have also been returned.
+What is `Nothing`? And why did `Listhead` return `Just 5` before? Think of `Nothing` as a way to indicate when there's no correct value to return, and `Just` as a way to show that we could return a value in a place where `Nothing` could have also been returned.
 
 
 `length` takes a list and returns its length, obviously.

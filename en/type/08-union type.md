@@ -1,6 +1,6 @@
 **Elm 0.??**, **copied, please ignore** 
 
-# Union Types
+## Union Types
 
 ```elm
 type Fruit = Apple | Banana | Orange
@@ -49,15 +49,13 @@ The second are the tags of a union type. For example, as tree: `type Tree a = Le
 (source: [[https://github.com/elm-guides/elm-for-js/blob/master/Scope.md]])
 
 
-## Union types
+### Union types
 
 For example, as tree: `type Tree a = Leaf | Node a (Tree a) (Tree a)`. Each tag becomes a value or function (depending on whether it takes any arguments). In this case, we get the value `Leaf : Tree a` and `Node : a -> Tree a -> Tree a -> Tree a`. It's these tags, not the `Tree` type, that are used as pattern matches in `case` statements. Although less common, it's possible to define a union type with a tag the same name as the type. In that case, that name would be both a type and a value or function.
 
 (source: [learnyouanelm-03](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/03-types.md))
 
-
-## Union Types
-
+-------
 
 By contrast, defining a union type creates a type that didn't exist before.
 A union type is so called because it can be one of many possibilities.
@@ -107,7 +105,8 @@ leftmostElement tree =
 
 (source: ???)
 
-## Union Types
+------
+
 Elm allows to create custom types known as _union types_.<br/>
 The expression below creates a type which can have one of the values (or _tags_) from the right. _Union types_ are tightly coupled with [case-of](#case-of) statement.
 ```elm
@@ -138,7 +137,7 @@ type Person a
 (source: [learnyouanelm](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/02-starting-out.md))
 
 
-## Enumerations
+### Enumerations
 
 A simple union type allows us to define an enumeration, like this
 
@@ -179,7 +178,7 @@ because the compiler expects an exhaustive match.
 (source: [elm-explained](https://github.com/niksilver/elm-explained))
 
 
-## More elaborate union types
+### More elaborate union types
 
 Union types also allow us to use more complex constructors.
 The `Character` type defined next is a simple enumeration, but
@@ -214,7 +213,7 @@ Joker ("Laughing Jeremy") : UnionTypes.Card
 
 (source: [elm-explained](https://github.com/niksilver/elm-explained))
 
-## Union types must create new tags
+### Union types must create new tags
 
 For a union type to be valid, all the types in the union
 must be creating a new type. So we can't do (say)
@@ -235,9 +234,9 @@ See also
 
 (source: [elm-explained](https://github.com/niksilver/elm-explained))
 
-## It's okay to have a single tag
+### It's okay to have a single tag
 
-## Type name different from tag name
+### Type name different from tag name
 
 We can have the type declaration (the tag)
 different from the definition, oddly.
@@ -250,7 +249,7 @@ star1 : Laurel
 star1 = Hardy 100
 ```
 
-## Destructuring
+### Destructuring
 
 Again, thanks to @robertjlooby, we can even destruct the arguments of union type.
 

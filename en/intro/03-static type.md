@@ -153,7 +153,8 @@ The key to understanding type annotation in Elm is to acknowledge that at the he
 
 A special case is currying. A function takes a single argument and returns a function that takes the next argument, etc. When all arguments have been taken, a result is computed and returned. 
 
-`repeatString: Int -> String -> String
+```elm
+repeatString: Int -> String -> String
 -- takeQty qty = (\ text fn -> fn(qty))
 -- takeText txt = takeQty text String.repeat
 ```

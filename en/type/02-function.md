@@ -54,7 +54,7 @@ $ elm repl
 "elmo" : String
 ```
 
-### Everything is a function in Elm
+### Everything is a function
 
 * [Type constructors or types tags](11-type constructors)
 * [Type aliases for records act as multi-parameter functions](05-record.md)

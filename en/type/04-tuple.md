@@ -76,17 +76,9 @@ Tuples are comparable.
 
 #### destructuring / pattern matching
 
-Pattern matching in `case` expressions can be used on tuples. Beyond that, Elm has very little support for tuples.
+Pattern matching in `case` expressions can be used on tuples. 
 
-
-
-### Tuples
-
-
-(source: [learnyouanelm](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/02-starting-out.md))
-
-
-### Destructuring
+----------
 
 ```elm
 (x, y) = (1, 2)

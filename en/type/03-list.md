@@ -26,7 +26,7 @@ numbers : List Int
 numbers = [ 1,2,3,4 ]
 
 numbers : List Int
-numbers = [ 1..4 ]
+numbers = [ 1..4 ] -- Texas range
 
 numbers : List Int
 numbers = 1 :: [ 2,3,4 ]
@@ -37,6 +37,24 @@ numbers = 1 :: 2 :: 3 :: 4 :: []
 
 ### List Manipulation
 
+#### append one element
+
+To add one item, use "cons".
+
+```elm
+$ elm repl
+> 0 :: [1..5]
+[0,1,2,3,4,5] : List number
+```
+#### merge two lists
+
+```elm
+$ elm repl
+> [1..5] ++ [6..10]
+[1,2,3,4,5,6,7,8,9,10] : List number
+```
+
+#### iterate through list
 ```elm
 length : List a -> Int
 length list =
@@ -52,24 +70,6 @@ length list =
 
 ### Lists
 
-
-The second example can also be written with two dots.
-
-~~~~ {.Elm:hs name="code"}
-[1..5]
-~~~~
-
-Append lists just like strings.
-
-~~~~ {.Elm:hs name="code"}
-[1..5] ++ [6..10] == [1..10] -- True
-~~~~
-
-To add one item, use "cons".
-
-~~~~ {.Elm:hs name="code"}
-0 :: [1..5] -- [0, 1, 2, 3, 4, 5]
-~~~~
 
 The head and tail of a list are returned as a Maybe. Instead of checking
 every value to see if it's null, you deal with missing values explicitly.
@@ -492,6 +492,8 @@ look at more list functions [later](modules#data-list).
 (source: [learnyouanelm](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/02-starting-out.md))
 
 ### Texas ranges
+
+`[1..5]`
 
 What if we want a list
 of all numbers between 1 and 20? Sure, we could just type them all out

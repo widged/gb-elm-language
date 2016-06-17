@@ -9,6 +9,7 @@ Elm's syntax for functions is very minimal, a name, soe arguments, an equals sig
 $ elm repl
 > sum a b = a + b
 > multiply a b = a*b
+> double x = x + x
 > isNegative n = n < 0
 ```
 
@@ -61,7 +62,6 @@ $ elm repl
 [2,4] : List Int   
 ```
 
-
 ```elm
 -- (\function arguments -> function body)
 -- parenthesized, content starts with backslash
@@ -91,52 +91,8 @@ $ elm repl
 ## -- 2 sort
 
 
+----
 
-Lots of people who come from imperative languages tend to stick to the notion that parentheses should denote function application. For example, in C, you use parentheses to call functions like `foo()`, `bar(1)` or `baz(3, "haha")`. Like we said, spaces are used for function application in Elm. So those functions in Elm would be `foo`, `bar 1` and `baz 3 "haha"`. So if you see something like `bar (bar 3)`, it doesn't mean that `bar` is called with `bar` and `3` as parameters. It means that we first call the function `bar` with `3` as the parameter to get some number and then we call `bar` again with that number. In C, that would be something like `bar(bar(3))`.
-
-(source: [learnyouanelm](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/02-starting-out.md))
-
-### Baby's first functions
-----------------------
-
-In the previous section we got a basic feel for calling functions. Now let's try making our own! Go to our editor window and add this below the `import` line:
-
-a function that takes a number and multiplies it by two.
-
-```elm
-doubleMe x = x + x
-```
-
-Functions are defined in a similar way that they are called. The function name is followed by parameters separated by spaces. But when defining functions, there's an `=` and after that we define what the function does. Now we can play with the function that we defined.
-
-```elm
-show doubleMe 9 -- 18
-show doubleMe 8.3 -- 16.6
-```
-
-Because `+` works on integers as well as on floating-point numbers (anything that can be considered a number, really), our function also works on any number. Let's make a function that takes two numbers and multiplies each by two and then adds them together.
-
-```elm
-doubleUs x y = x*2 + y*2
-```
-
-Simple. We could have also defined it as `doubleUs x y = x + x + y + y`. Testing it out produces pretty predictable results.
-
-```elm
-show doubleUs 4 9 -- 26
-show doubleUs 2.3 34.2 -- 73.0
-show doubleUs 28 88 + doubleMe 123 -- 478
-```
-
-As expected, you can call your own functions from other functions that you made. With that in mind, we could redefine `doubleUs` like this:
-
-```elm
-doubleUs x y = doubleMe x + doubleMe y
-```
-
-This is a very simple example of a common pattern you will see throughout Elm. Making basic functions that are obviously correct and then combining them into more complex functions. This way you also avoid repetition. What if some mathematicians figured out that 2 is actually 3 and you had to change your program? You could just redefine `doubleMe` to be `x + x + x` and since `doubleUs` calls `doubleMe`, it would automatically work in this strange new world where 2 is 3.
-
-Functions in Elm don't have to be in any particular order, so it doesn't matter if you define `doubleMe` first and then `doubleUs` or if you do it the other way around.
 
 Now we're going to make a function that multiplies a number by 2 but only if that number is smaller than or equal to 100 because numbers bigger than 100 are big enough as it is!
 
@@ -163,7 +119,24 @@ There are two noteworthy things here. The first is that in the function name we 
 
 (source: [learnyouanelm](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/02-starting-out.md))
 
-### Function Composition
+### Ok to use a function before it is declared
+
+Functions in Elm don't have to be in any particular order. If you are calling `x = double 3`, it doesn't matter if the function `double` has been defined in the lines that precede or the the lines that follow.
+
+
+### Composing functions 
+
+```elm
+$ elm repl
+> double x = x + x
+> doubleUs x y = x*2 + y*2
+> doubleUs' x y = doubleMe x + doubleMe y
+```
+
+Making basic functions that are obviously correct and then combining them into more complex functions. This way you also avoid repetition. What if some mathematicians figured out that 2 is actually 3 and you had to change your program? You could just redefine `doubleMe` to be `x + x + x` and since `doubleUs` calls `doubleMe`, it would automatically work in this strange new world where 2 is 3.
+
+
+### Function Operators
 
 |Operator|Description|Type hint|
 |--------|-----------|----------|

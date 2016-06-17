@@ -8,6 +8,11 @@ Records are written with brackets. A `record` is a collection of key/value pairs
 {name=value,...,name=value}
 ```
 
+```elm
+myRecord = { style = "Blue", number = 1, isCool = True }
+```
+
+
 Records values use equals between key and value but a colon between key and value type. 
 
 ```elm
@@ -59,25 +64,15 @@ Use record.keyor .key record to access the fields of a record.
 
 ----
 
-Finally, record accessors. Uniquely these functions are defined by a pattern, rather than being listed somewhere. For example, `.name : { b | name : a } -> a`, which basically means `.name` takes any record with a `name` field and extracts its value. You can use any record field name you like.
+Uniquely these functions are defined by a pattern, rather than being listed somewhere. For example, `.name : { b | name : a } -> a`, which basically means `.name` takes any record with a `name` field and extracts its value. You can use any record field name you like.
 
 Beware of creating data structures with record accessors. Because all a list's elements must have the same type, each record accessor must extract a value of the same type, which is usually not what you want.
 ```elm
 [.name, .number] : List ({ b | name : a, number : a } -> a)
 ```
 
-(source: [elm-for-js](https://github.com/elm-guides/elm-for-js/blob/master/Scope.md))
+(source: [elm-for-js](https://github.com/elm-guides/elm-for-js/blob/master/Scope.md) and [learnyouanelm-03](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/03-types.md))
 
-----
-Record accessors. Uniquely these functions are defined by a pattern, rather than being listed somewhere. For example, `.name : { b | name : a } -> a`, which basically means `.name` takes any record with a `name` field and extracts its value. You can use any record field name you like.
-
-Beware of creating data structures with record accessors. Because all a list's elements must have the same type, each record accessor must extract a value of the same type, which is usually not what you want.
-
-```elm
-[.name, .number] : List ({ b | name : a, number : a } -> a)
-```
-
-(source: [learnyouanelm-03](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/03-types.md))
 -----
 
 Access a field with a dot and the field name.
@@ -152,22 +147,12 @@ If I define `type alias Point2D = {x : Float, y : Float}`, then like any type al
 (source: [elm-for-js](https://github.com/elm-guides/elm-for-js/blob/master/Scope.md))
 
 
-
-
-
 # --- 2 sort ---
 
 #### Records
 
 Records are immutable. ,
 
-```elm
-myRecord =
- { style = "Blue",
-   number = 1,
-   isCool = True
- }
-```
 
 Accessing records
 ```elm

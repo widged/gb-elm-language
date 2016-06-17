@@ -424,9 +424,6 @@ If we put all the code above into [an Elm module called ExtensibleRecordTypes](E
 
 ## -- 2 sort --
 
-
-
-
 ### Extensability and Polymorphism
 
 The first iteration of the Elm record was based heavily on (‘Extensible records with scoped labels’ by Daan Leijen), and many features of the Elm record reflect Leijen’s work. The paper is well worth a read for those interested in modeling data. However, the paper’s titular descriptors–“extensible”, “with scoped labels”–no longer apply to Elm records.

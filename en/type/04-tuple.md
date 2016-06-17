@@ -28,26 +28,20 @@ Functions that construct tuples from arguments.
 fst : (a, b) -> a. Returns the first element.
 snd : (a, b) -> b. Returns the second element.
 
+#### comparison
+
+Tuples are comparable.
+
 #### destructuring / pattern matching
 
 Pattern matching in `case` expressions can be used on tuples. Beyond that, Elm has very little support for tuples.
 
 ### The Basics of Tuples
 
-Tuples are similar to records, except that rather than having named fields, the meaning of the fields comes from their order. Plus, Tuples are comparable (which, for our purposes, is most relevant when talking about Sets and Dicts, so we’re going to leave it for now).
-Let’s talk middle school math for a hot second. Suppose I want to graph some points on to the XY plane. I could create a point without Tuples:
+In tuples, the meaning of the fields comes from their order. 
 
-```elm
-type alias Point =
-    { x : Float
-    , y : Float
-    }
 
-aPoint =
-    Point 1 0
-```
 
-So that’s fine. But we have a well-known pattern for expressing XY coordinates. Do we really want to have to say Point or type out { x = 1, y = 0 } every time we want to make a point? With tuples, we don’t need to.
 Tuples are denoted with () and contain comma-separated values. So writing the coordinate (1,0) in an Elm Tuple just looks like (1,0).
 To access the values of a Tuple, we are given a couple of helpers. fst (1,0) gives us the first value, 1, and snd (1,0) gives us the second value, 0. So, using aPoint from above, I might have x = fst aPoint and y = snd aPoint.
 

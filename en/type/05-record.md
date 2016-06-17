@@ -90,6 +90,36 @@ By the way, `posA` and `posB` do not have the same type. `posA` is of type `{ x 
 
 
 (source: [elm-explained](https://github.com/niksilver/elm-explained))
+---
+If we are planning to create more than one record with the same fields on it, we may want to create a type alias that will describe the shape of these records.
+
+```elm
+type alias LibraryEntry =
+    { name : String
+    , author : String
+    , readByMe : Bool
+    }
+Creating a record with these fields looks like this:
+wutheringHeights =
+    { name = "Wuthering Heights"
+    , author = "Bronte"
+    , readByMe = True
+    }
+```
+
+Now we can use LibraryEntry in type signatures, rather than writing out all three requisite fields. We can also use the LibraryEntry as a constructor. LibraryEntry takes three arguments, in order: name, author, and readByMe. It will hand us back a record of the form we desire.
+
+```elm
+wutheringHeights =
+    LibraryEntry "Wuthering Heights" "Bronte" True
+
+diaspora =
+    LibraryEntry "Diaspora" "Egan" False
+```    
+As you can imagine, this pattern comes in very handy when there is a great deal of data to model, or when there are many records that you’d like to create that should all share the same type.
+
+(source: [Data Structures in Elm @NoRedInk](http://tech.noredink.com/post/140646140878/data-structures-in-elm))
+
 
 ### Operations on records
 
@@ -371,34 +401,6 @@ If we put all the code above into [an Elm module called ExtensibleRecordTypes](E
 ## What are Records and How Do We Make One
 
 
-If we are planning to create more than one record with the same fields on it, we may want to create a type alias that will describe the shape of these records.
-
-```elm
-type alias LibraryEntry =
-    { name : String
-    , author : String
-    , readByMe : Bool
-    }
-Creating a record with these fields looks like this:
-wutheringHeights =
-    { name = "Wuthering Heights"
-    , author = "Bronte"
-    , readByMe = True
-    }
-```
-
-Now we can use LibraryEntry in type signatures, rather than writing out all three requisite fields. We can also use the LibraryEntry as a constructor. LibraryEntry takes three arguments, in order: name, author, and readByMe. It will hand us back a record of the form we desire.
-
-```elm
-wutheringHeights =
-    LibraryEntry "Wuthering Heights" "Bronte" True
-
-diaspora =
-    LibraryEntry "Diaspora" "Egan" False
-```    
-As you can imagine, this pattern comes in very handy when there is a great deal of data to model, or when there are many records that you’d like to create that should all share the same type.
-
-(source: [Data Structures in Elm @NoRedInk](http://tech.noredink.com/post/140646140878/data-structures-in-elm))
 
 ### Getting and Setting on Records
 

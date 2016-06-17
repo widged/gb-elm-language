@@ -2,9 +2,8 @@
 
 ## List
 
-### Holds values of the same type
-
-Every element in a list must have the same type.
+A `List` holds a collection of related values separated by commas and enclosed in
+square brackets. All the values in a list must have the same type:
 
 ```elm
 $ elm repl
@@ -17,25 +16,25 @@ $ elm repl
 The 1st and 2nd elements are different types of values.
 ```
 
-### List Building
+Functions that operate on lists live in the List module. Use `List.functionName` to access them. 
+
+### Creating Lists
 
 A list can be built in many different ways. 
 
 ```elm
-numbers : List Int
-numbers = [ 1,2,3,4 ]
-
-numbers : List Int
-numbers = [ 1..4 ] -- Texas range
-
-numbers : List Int
-numbers = 1 :: [ 2,3,4 ]
-
-numbers : List Int
-numbers = 1 :: 2 :: 3 :: 4 :: []
+$ elm repl
+> [1,2,3,4]
+> [1..4] -- Texas range
+> 1 :: [2,3,4]
+> 1 :: 2 :: 3 :: 4 :: []
+[1,2,3,4] : List number
 ```
 
-### List Manipulation
+(source: [learnyouanelm](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/02-starting-out.md))
+
+
+### Manipulating Lists
 
 #### append one element
 
@@ -69,44 +68,18 @@ length list =
 
 (source: ???)
 
-### Lists
-
+#### head and tail
 
 The head and tail of a list are returned as a Maybe. Instead of checking
 every value to see if it's null, you deal with missing values explicitly.
 
-~~~~ {.Elm:hs name="code"}
+```elm
 List.head [1..5] -- Just 1
 List.tail [1..5] -- Just [2, 3, 4, 5]
 List.head [] -- Nothing
-~~~~
-
-List.functionName means the function lives in the List module.
-
-(source: ???)
-
-### Lists
-
-A `list` holds a collection of related values separated by commas and enclosed in
-square brackets. All the values in a list must have the same type:
-```elm
-> []
-[] : List a
-> [1,2,3]
-[1,2,3] : List number
-> ["a", "b", "c"]
-["a","b","c"] : List String
 ```
 
-Ways to create a list
-```elm
-> [1..4]
-> [1,2,3,4]
-> 1 :: [2,3,4]
-> 1 :: 2 :: 3 :: 4 :: []
-```
 
-(source: [learnyouanelm](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/02-starting-out.md))
 
 
 ### Destructuring

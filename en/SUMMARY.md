@@ -2,8 +2,9 @@
 
 * Elm Language
   * [Intro](intro/cover.md)duction
-     * [Module System, Imports, Exports](intro/02-module system.md)
-     * [Static Types](intro/03-static type.md)
+     * [How Elm Works](intro/01-how elm works.md)
+     * [Module System](intro/02-module system.md)
+     * [Static Type System](intro/03-static type.md)
    * [Program Flow](program-flow/cover.md)
      * [Comments](program-flow/01-comments.md)
      * [Basic Operators](program-flow/02-basic operators.md)

@@ -2,11 +2,17 @@
 
 ## Tuples
 
-Tuples are denoted with () and contain comma-separated values. 
+Tuples are denoted with () and contain comma-separated values. Every element in a tuple can be a different type, but a tuple has a fixed length.
 
-Tuples are types but they are dependent on their length as well as the types of their components, so there is theoretically an infinite number of tuple types, which is too many to cover in this tutorial. Note that the empty tuple `()` is also a type which can only have a single value: `()`. This value is read as `"unit"` and is the common way to denote an empty value with no specific meaning.
+```elm
+("elm", 42)
+```
+
+
+Tuples are types but they are dependent on their length as well as the types of their components, so there is theoretically an infinite number of tuple types, which is too many to cover in this tutorial. 
 
 (source: [learnyouanelm-03](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/03-types.md))
+
 
 (,), (,,), (,,,), etc.
 
@@ -58,11 +64,6 @@ Pattern matching in `case` expressions can be used on tuples. Beyond that, Elm h
 
 ### Tuples
 
-Every element in a tuple can be a different type, but a tuple has a fixed length.
-
-~~~~ {.Elm:hs name="code"}
-("elm", 42)
-~~~~
 
 Access the elements of a pair with the first and second functions. (This is a shortcut; we'll come to the "real way" in a bit.)
 

@@ -29,9 +29,44 @@ sum : Int -> Int -> Int
 init x y  = x + y
 ```
 
-#### module declaration 
+#### export declaration 
 
-A module declaration begins with the keyword `module`, followed by the module name, and optionally the word `exposing` and the list of exported values between parentheses. 
+A module declaration begins with the keyword `module`, followed by the module name 
+
+```elm
+-- Defining a module, exports everything by default
+module Mymodule
+```
+
+The module can expose what is being exported using the `exposing` word and the list of exported values between parentheses.
+
+```elm
+-- Export everything
+module Mymodule exposing (..) 
+```
+
+```elm
+-- Export only specified entities
+module Mymodule exposing (Type, value) 
+```
+
+```elm
+-- Export all or specific states of type
+module Mymodule exposing
+    ( Error(Forbidden, Timeout)
+    , Stuff(..)
+    )
+
+type Error
+    = Forbidden String
+    | Timeout String
+    | NotFound String
+```
+
+(source: [learnyouanelm](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/02-starting-out.md))
+
+
+It is mandatory to specify what is being imposed. 
 
 To make explicit that you are exporting everything in this module, use the two dots `(..)`. "Everything" comprises all defined top-level constants, functions, types alias, union types, and their tags.
 
@@ -66,6 +101,8 @@ init = Model Heads
 The private `Coin` type is visible in the definition of the public `Model` type. Even worse, someone importing this code can actually obtain a value of type `Coin` through `init`, even though that type doesn't exist to them. And worst of all, the compiler will not catch this error. It *should*, but it doesn't. So be careful when defining types, and think about what will and will not be exported.
 
 (source: [elm-for-js](https://github.com/elm-guides/elm-for-js/blob/master/Modules,%20Exports,%20and%20Imports.md))
+
+
 
 ### Imports
 
@@ -163,31 +200,7 @@ When you're listing all of your imports, it's helpful to group them in a sensibl
 See [Union Type](../type/08-union type.md)
 
 
-### Export
 
-Exposing happens when you import. This makes it different from exporting, which happens when modules are defined. Many people and even Elm's tooling conflate the two, but if you're being technical they are distinct.
-
-
-```elm
--- Defining a module, exports everything by default
-module Mymodule
-
--- Export only specified entities
-module Mymodule exposing (Type, value) 
-
--- Export all or specific states of type
-module Mymodule exposing
-    ( Error(Forbidden, Timeout)
-    , Stuff(..)
-    )
-
-type Error
-    = Forbidden String
-    | Timeout String
-    | NotFound String
-```
-
-(source: [learnyouanelm](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/02-starting-out.md))
 
 ### Further Reading
 

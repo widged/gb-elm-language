@@ -156,6 +156,32 @@ Accessing records
 > .style myRecord
 "Blue" : String
 ```
+---
+Getting and Setting on Records
+
+Now we have wutheringHeights and diaspora, representing books in our library. But wait! I actually read Diaspora by Egan two weeks ago. We need to update the readByMe field.
+
+```elm
+{-
+
+Updating records follows this pattern:
+
+newRecordName =
+    { oldRecordName | fieldName = newFieldValue }
+
+-}
+
+newDiaspora =
+    { diaspora | readByMe = True }
+```    
+
+Note that diaspora is unchanged by this operation: diaspora.readByMe == False and newDiaspora.readByMe == True.
+
+Dot notation is not the only way we can access a value on a record. For every field name on a record, we are given a corresponding accessor function named after the field. For example: .readByMe diaspora == False and .readByMe newDiaspora == True.
+
+You will never have to write (\book -> book.name); you can use .name newDiaspora without defining anything additional.
+
+(source: [Data Structures in Elm @NoRedInk](http://tech.noredink.com/post/140646140878/data-structures-in-elm))
 
 
 #### Immutable update
@@ -399,31 +425,7 @@ If we put all the code above into [an Elm module called ExtensibleRecordTypes](E
 ## -- 2 sort --
 
 
-### Getting and Setting on Records
 
-Now we have wutheringHeights and diaspora, representing books in our library. But wait! I actually read Diaspora by Egan two weeks ago. We need to update the readByMe field.
-
-```elm
-{-
-
-Updating records follows this pattern:
-
-newRecordName =
-    { oldRecordName | fieldName = newFieldValue }
-
--}
-
-newDiaspora =
-    { diaspora | readByMe = True }
-```    
-
-Note that diaspora is unchanged by this operation: diaspora.readByMe == False and newDiaspora.readByMe == True.
-
-Dot notation is not the only way we can access a value on a record. For every field name on a record, we are given a corresponding accessor function named after the field. For example: .readByMe diaspora == False and .readByMe newDiaspora == True.
-
-You will never have to write (\book -> book.name); you can use .name newDiaspora without defining anything additional.
-
-(source: [Data Structures in Elm @NoRedInk](http://tech.noredink.com/post/140646140878/data-structures-in-elm))
 
 ### Extensability and Polymorphism
 

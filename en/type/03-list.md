@@ -44,7 +44,7 @@ $ elm repl
 
 #### append one element
 
-To add one item, use "cons".
+To add one item, use "cons". Cons `::` is an infix operator that adds to the front of the List. 
 
 ```bash
 $ elm repl
@@ -133,9 +133,6 @@ List.head [] -- Nothing
 
 ### Square Brackets and What’s Inside Them
 
-Want to add an element? Cons `::` is an infix operator that adds to the front of the List. 
-
-(source: [Data Structures in Elm @NoRedInk](http://tech.noredink.com/post/140646140878/data-structures-in-elm))
 
 
 ### List Operations in Practice with Elm Html

@@ -79,9 +79,6 @@ List.tail [1..5] -- Just [2, 3, 4, 5]
 List.head [] -- Nothing
 ```
 
-
-
-
 ### Destructuring
 
 Compare to tuple, List almost do not support destructuring. One of the case is used to find the first element of a list by utilizing the cons operator, ie ::w

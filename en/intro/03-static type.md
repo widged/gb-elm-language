@@ -149,11 +149,16 @@ like this. (source: [learnyouanelm-03](https://github.com/learnyouanelm/learnyou
 
 #### -> "goes to" curried function
 
-The key to understanding type annotation in Elm is to acknowledge that at the heart of any functional programming language, we have functions that make and return functions. 
+The key to understanding type annotation in Elm is to acknowledge that at the heart of any functional programming language, we have functions that can return functions. 
 
-A special case is currying. A function can be called with a single argument and return a function that takes the remaining arguments. With that in mind, a type annotation like `repeatString: Int -> String -> String` can be understood as taking a first argument (`Int`) and returning a curried function that takes the remaining arguments (`String`). When all arguments have been taken, the result is returned (`String`). 
+A special case is currying. A function takes a single argument and returns a function that takes the next argument, etc. When all arguments have been taken, a result is computed and returned. 
+
+`repeatString: Int -> String -> String
+-- takeQty qty = (\ text fn -> fn(qty))
+-- takeText txt = takeQty text String.repeat
 
 // type a-goes-to-b, goes to list of a, goes to list of b
+
 
 #### Parametrised types
 

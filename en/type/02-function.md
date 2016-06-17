@@ -105,11 +105,22 @@ conanO'Brien = "It's a-me, Conan O'Brien!"
 
 Functions cannot begin with uppercase letters. 
 
+
 ### Ok to use a function before it is declared
 
 Functions in Elm don't have to be in any particular order. If you are calling `x = double 3`, it doesn't matter if the function `double` has been defined in the lines that precede or the the lines that follow.
 
+### Everything is a function
 
+Constants are a special case. When a function doesn't take any parameters, we usually say it's a *definition* (or a *name*). Because we can't change what names (and functions) mean once we've defined them, the name can be used in place of the value.
+
+```elm
+answer = 42
+```
+
+* [Type constructors or types tags](11-type constructors)
+* [Type aliases for records act as multi-parameter functions](05-record.md)
+* 
 ### Composing functions 
 
 ```elm
@@ -341,16 +352,7 @@ Even though `roundMap` doesn't take any arguments explicitly to the left of the 
 ---
 
 
-### Everything is a function
 
-Constants are a special case. When a function doesn't take any parameters, we usually say it's a *definition* (or a *name*). Because we can't change what names (and functions) mean once we've defined them, the name can be used in place of the value.
-
-```elm
-answer = 42
-```
-
-* [Type constructors or types tags](11-type constructors)
-* [Type aliases for records act as multi-parameter functions](05-record.md)
 
 
 

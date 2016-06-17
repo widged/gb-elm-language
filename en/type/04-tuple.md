@@ -67,15 +67,6 @@ Pattern matching in `case` expressions can be used on tuples. Beyond that, Elm h
 
 
 
-
-The empty tuple, or "unit", is sometimes used as a placeholder. It is the only value of its type, also called "Unit".
-
-~~~~ {.Elm:hs name="code"}
-()
-~~~~
-
-(source: ???)
-
 ### Tuples
 
 Tuples package two or more expressions into a single expression.

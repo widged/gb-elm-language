@@ -58,11 +58,9 @@ $ elm repl
 
 ### Simple type tags (constructors) are functions, too
 
-If we've defined a type with a tag then the tag (the constructor)
-is a function, too.
+If we've defined a type with a tag then the tag (the constructor) is a function, too.
 
-Here we use `map` to convert a list of Int values into a list
-of `Boxed` values.
+Here we use `map` to convert a list of Int values into a list of `Boxed` values.
 
 ```elm
 type Boxed = Boxed Int

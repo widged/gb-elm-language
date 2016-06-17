@@ -246,4 +246,6 @@ Remember that `DefiningFunctions` is just the name of our module, so `DefiningFu
 
 (source: [elm-explained](https://github.com/niksilver/elm-explained))
 
+### Type tags for records
 
+See [Records](05-record.md)

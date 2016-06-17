@@ -563,3 +563,69 @@ getSentenceForLibraryEntry libraryEntry =
 ```
 
 (source: [Data Structures in Elm @NoRedInk](http://tech.noredink.com/post/140646140878/data-structures-in-elm))
+
+
+## Type aliases for records act as multi-parameter functions
+
+If we have a type alias for a record then that also acts as a function, but in a different way from a type declaration. Let's define a type alias...
+
+```elm
+type alias Person = { name : String, age : Int }
+```
+
+Now the `Person` function is one that takes several arguments, one for each field, and it will return a record with those fields. This means we need to know the order in which we originally defined the fields.
+
+If we look at it in the REPL we see that `Person` is indeed a function:
+
+```
+> import DefiningFunctions exposing (..)
+> Person
+<function> : String -> Int -> DefiningFunctions.Person
+>
+```
+
+Now let's define a value using the `Person` function, passing in two arguments:
+
+```elm
+bob : { name : String, age : Int }
+bob = Person "Robert" 55
+```
+
+And here we use the `Person` function to bring a list of names and a list of ages together:
+
+```elm
+people : List { name : String, age : Int }
+people =
+    map2 Person ["Alice", "Brian", "Coco"] [61, 23, 35]
+```
+
+Let's see what that looks like in the REPL:
+
+```
+> import DefiningFunctions exposing (..)
+> bob
+{ name = "Robert", age = 55 } : { age : Int, name : String }
+> people
+[{ name = "Alice", age = 61 },{ name = "Brian", age = 23 },{ name = "Coco", age = 35 }]
+: List { age : Int, name : String }
+>
+```
+
+(source: [elm-explained](https://github.com/niksilver/elm-explained))
+
+
+## Record field names define functions
+
+Any field name is a function if you precede it immediately with a dot (no whitespace). It is a function that takes any type of record with that field, and returns the value of that field. Here's what we can do in the Elm REPL:
+
+```
+> .name
+<function> : { b | name : a } -> a
+> .age
+<function> : { b | age : a } -> a
+> .totallyUnlikelyMadeUpField
+<function> : { b | totallyUnlikelyMadeUpField : a } -> a
+>
+```
+
+(source: [elm-explained](https://github.com/niksilver/elm-explained))

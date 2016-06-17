@@ -348,9 +348,7 @@ res3 = sumInc ixy
 res4 = sumInc jxy
 ```
 
-If we put all the code above into
-[an Elm module called ExtensibleRecordTypes](ExtensibleRecordTypes.elm)
-then this is what it looks like in the Elm REPL:
+If we put all the code above into [an Elm module called ExtensibleRecordTypes](ExtensibleRecordTypes.elm) then this is what it looks like in the Elm REPL:
 
 ```
 > import ExtensibleRecordTypes exposing (..)

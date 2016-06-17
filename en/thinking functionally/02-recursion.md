@@ -1,6 +1,6 @@
 **Elm 0.??**, **copied, please ignore** 
 
-# Recursion
+## Recursion
 
 We mentioned recursion briefly in the previous chapter. In this chapter, we'll take a closer look at recursion, why it's important to Elm and how we can work out very concise and elegant solutions to problems by thinking recursively.
 
@@ -121,8 +121,7 @@ The first two patterns say that if the first list or second list is empty, we ge
 (source: [learnyouanelm-05](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/05-recursion.md))
 
 
-Quick, sort!
-------------
+### Quick, sort!
 
 We have a list of items that can be sorted. Their type is one of the comparable types. And now, we want to sort them! There's a very cool algoritm for sorting called quicksort. It's a very clever way of sorting items. While it takes upwards of 10 lines to implement quicksort in imperative languages, the implementation is much shorter and elegant in Elm. Quicksort has become a sort of poster child for functional languages. Therefore, let's implement it here, even though implementing quicksort in functional languages is considered really cheesy because everyone does it to showcase how elegant they are.
 
@@ -163,8 +162,7 @@ application of quicksort.
 (source: [learnyouanelm-05](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/05-recursion.md))
 
 
-Thinking recursively
---------------------
+### Thinking recursively
 
 We did quite a bit of recursion so far and as you've probably noticed, there's a pattern here. Usually you define an edge case and then yo define a function that does something between some element and the function applied to the rest. It doesn't matter if it's a list, a tree or any other data structure. A sum is the first element of a list plus the sum of the rest of the list. A product of a list is the first element of the list times the product of the rest of the list. The length of a list is one plus the length of the tail of the list.
 Et cetera, et cetera ...

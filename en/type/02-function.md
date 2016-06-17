@@ -91,15 +91,6 @@ $ elm repl
 ## -- 2 sort
 
 
-
-
-Function application (calling a function by putting a space after it and then typing out the parameters) has the highest precedence of them all. What that means for us is that these two statements are equivalent.
-
-```elm
-show identity 9 + max 5 4 + 1 -- 15
-show (identity 9) + (max 5 4) + 1 -- 15
-```
-
 If a function takes two parameters, we can also call it as an infix function by surrounding it with backticks. For instance, the `rem` function takes two integers and does gives the remainder when you divide the first by the second. Doing `rem 92 10` results in a 2. But when we call it like that, there may be some confusion as to which number is doing the division and which one is being divided. So we can call it as an infix function by doing ``92 `rem` 10`` and suddenly it's much clearer.
 
 ```elm

@@ -133,6 +133,29 @@ $ elm repl
 
 Making basic functions that are obviously correct and then combining them into more complex functions. This way you also avoid repetition. What if some mathematicians figured out that 2 is actually 3 and you had to change your program? You could just redefine `doubleMe` to be `x + x + x` and since `doubleUs` calls `doubleMe`, it would automatically work in this strange new world where 2 is 3.
 
+----
+
+Like JavaScript, functions can take other functions as arguments. (We've already seen how currying lets them return functions.)
+
+Let's look at a specialized version of the `List.map` function, which takes a function, and applies it to every element of a list of Float, returning a new list of Int as a result.
+
+```elm
+specialMap : (Float -> Int) -> List Float -> List Int
+```
+
+The first argument of this function needs to be a function, that takes a Float as a parameter and returns an Int. Whenyou read this annotation, it may help to say "Float goes to Int" a little bit faster, and then pause. Here, the brackets *do* matter. This is different than `Int -> Float -> List Int -> List Float`, which takes two numbers and a
+list, but never a function.
+
+We know that `round : Float -> Int`, so we can write:
+
+```elm
+roundMap : List Float -> List Int
+roundMap = specialMap round
+```
+
+Even though `roundMap` doesn't take any arguments explicitly to the left of the equals, applying `specialMap` returns a function thanks to currying. We could also write `roundMap xs = specialMap round xs`; it's really a matter of style.
+
+(source: [elm-for-js](https://github.com/elm-guides/elm-for-js/blob/master/How%20to%20Read%20a%20Type%20Annotation.md))
 
 #### Operators
 
@@ -310,33 +333,6 @@ Partially apply a function by passing only some of its arguments. Then give that
 > minus1 11
 -10 : number
 ```
-
-
-#### other
-
-Like JavaScript, functions can take other functions as arguments. (We've already seen how currying lets them return functions.)
-
-Let's look at a specialized version of the `List.map` function, which takes a function, and applies it to every element of a list of Float, returning a new list of Int as a result.
-
-```elm
-specialMap : (Float -> Int) -> List Float -> List Int
-```
-
-The first argument of this function needs to be a function, that takes a Float as a parameter and returns an Int. Whenyou read this annotation, it may help to say "Float goes to Int" a little bit faster, and then pause. Here, the brackets *do* matter. This is different than `Int -> Float -> List Int -> List Float`, which takes two numbers and a
-list, but never a function.
-
-We know that `round : Float -> Int`, so we can write:
-
-```elm
-roundMap : List Float -> List Int
-roundMap = specialMap round
-```
-
-Even though `roundMap` doesn't take any arguments explicitly to the left of the equals, applying `specialMap` returns a function thanks to currying. We could also write `roundMap xs = specialMap round xs`; it's really a matter of style.
-
-(source: [elm-for-js](https://github.com/elm-guides/elm-for-js/blob/master/How%20to%20Read%20a%20Type%20Annotation.md))
-
----
 
 
 

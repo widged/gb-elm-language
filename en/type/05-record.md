@@ -209,6 +209,40 @@ Let's see what that looks like in the REPL:
 ```
 
 (source: [elm-explained](https://github.com/niksilver/elm-explained))
+---
+Type tags for records are also functions
+
+Next we define a type for a record called `Point`, and its associated tag/constructor (also called `Point`). But that tag is also a function from the plain record to a `Point`. This is exactly the same idea as with simple type tags. We can see this when we use it with the `map` function.
+
+```elm
+type Point = Point { x : Float, y : Float }
+
+triangle1 : List { x : Float, y : Float }
+triangle1 =
+    [ { x = 0, y = 0 }
+    , { x = 8, y = 1 }
+    , { x = 5, y = 7 }
+    ]
+
+triangle2 : List Point
+triangle2 =
+    map Point triangle1
+```
+
+Here's how it looks in the REPL. Notice that we've converted from the type of `triangle1` to the type of `triangle2` thanks to the `Point` function.
+
+```
+> import DefiningFunctions exposing (..)
+> triangle1
+[{ x = 0, y = 0 },{ x = 8, y = 1 },{ x = 5, y = 7 }]
+    : List { x : Float, y : Float }
+> triangle2
+[Point { x = 0, y = 0 },Point { x = 8, y = 1 },Point { x = 5, y = 7 }]
+    : List DefiningFunctions.Point
+>
+```
+
+(source: [elm-explained](https://github.com/niksilver/elm-explained))
 
 ### Operations on records
 
@@ -542,44 +576,8 @@ If we put all the code above into [an Elm module called ExtensibleRecordTypes](E
 
 (source: [elm-explained](https://github.com/niksilver/elm-explained))
 
-## -- 2 sort --
 
 
-
-## Type tags for records are also functions
-
-Next we define a type for a record called `Point`, and its associated tag/constructor (also called `Point`). But that tag is also a function from the plain record to a `Point`. This is exactly the same idea as with simple type tags. We can see this when we use it with the `map` function.
-
-```elm
-type Point = Point { x : Float, y : Float }
-
-triangle1 : List { x : Float, y : Float }
-triangle1 =
-    [ { x = 0, y = 0 }
-    , { x = 8, y = 1 }
-    , { x = 5, y = 7 }
-    ]
-
-triangle2 : List Point
-triangle2 =
-    map Point triangle1
-```
-
-Here's how it looks in the REPL. Notice that we've converted from the type of `triangle1` to the type of `triangle2` thanks to the `Point` function.
-
-```
-> import DefiningFunctions exposing (..)
-> triangle1
-[{ x = 0, y = 0 },{ x = 8, y = 1 },{ x = 5, y = 7 }]
-    : List { x : Float, y : Float }
-> triangle2
-[Point { x = 0, y = 0 },Point { x = 8, y = 1 },Point { x = 5, y = 7 }]
-    : List DefiningFunctions.Point
->
-```
-
-(source: [elm-explained](https://github.com/niksilver/elm-explained))
-
-#### All operations
+### All operations
 
 [records](http://elm-lang.org/docs/syntax#records) has a number of operations without much explanation. 

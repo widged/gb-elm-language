@@ -96,11 +96,11 @@ Update the fields of a record. (It must have the fields already.)
 
 Update multiple fields at once, using the current values.
 
-~~~~ {.Elm:hs name="code"}
+```elm
 { particle |
   position = particle.position + particle.velocity,
   velocity = particle.velocity + particle.acceleration }
-~~~~
+```
 
 (source: ???)
 

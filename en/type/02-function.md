@@ -275,24 +275,7 @@ Functions that placed in front of arguments while enclosed in parentheses are ca
 
 overlaps with [Thinking functionally](../thinking functionally/02-recursion)
 
-### Recursive functions
 
-Functions can be recursive.
-
-```elm
-fib n =
-if n < 2 then 1
-  else
-    fib (n - 1) + fib (n - 2)
-List.map fib [0..8] -- [1, 1, 2, 3, 5, 8, 13, 21, 34]
-```
-
-Another recursive function (use List.length in real code).
-```elm
-listLength aList =
-  case aList of
-    [] -> 0
-    x::xs -> 1 + listLength xs
 ```
 
 

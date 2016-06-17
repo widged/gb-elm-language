@@ -271,6 +271,9 @@ Functions that placed in front of arguments while enclosed in parentheses are ca
 ```
 (source: [learnyouanelm](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/02-starting-out.md))
 
+----
+
+overlaps with [Thinking functionally](../thinking functionally/02-recursion)
 
 ### Recursive functions
 

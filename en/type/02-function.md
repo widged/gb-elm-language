@@ -91,11 +91,6 @@ $ elm repl
 ## -- 2 sort
 
 
-If a function takes two parameters, we can also call it as an infix function by surrounding it with backticks. For instance, the `rem` function takes two integers and does gives the remainder when you divide the first by the second. Doing `rem 92 10` results in a 2. But when we call it like that, there may be some confusion as to which number is doing the division and which one is being divided. So we can call it as an infix function by doing ``92 `rem` 10`` and suddenly it's much clearer.
-
-```elm
-show 92 `rem` 10 -- 2
-```
 
 Lots of people who come from imperative languages tend to stick to the notion that parentheses should denote function application. For example, in C, you use parentheses to call functions like `foo()`, `bar(1)` or `baz(3, "haha")`. Like we said, spaces are used for function application in Elm. So those functions in Elm would be `foo`, `bar 1` and `baz 3 "haha"`. So if you see something like `bar (bar 3)`, it doesn't mean that `bar` is called with `bar` and `3` as parameters. It means that we first call the function `bar` with `3` as the parameter to get some number and then we call `bar` again with that number. In C, that would be something like `bar(bar(3))`.
 
@@ -268,6 +263,14 @@ cos (degrees 30) ^ 2 + sin (degrees 30) ^ 2 -- 1
 First degrees is applied to 30, then the result is passed to the trig functions, which is then squared, and the addition happens last.
 
 #### Infix
+
+If a function takes two parameters, we can also call it as an infix function by surrounding it with backticks. For instance, the `rem` function takes two integers and does gives the remainder when you divide the first by the second. Doing `rem 92 10` results in a 2. But when we call it like that, there may be some confusion as to which number is doing the division and which one is being divided. So we can call it as an infix function by doing ``92 `rem` 10`` and suddenly it's much clearer.
+
+```elm
+show 92 `rem` 10 -- 2
+```
+
+-----
 
 Functions that placed between two arguments and enclosed in backticks <code>`</code> are called _infix_
 ```elm

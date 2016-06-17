@@ -543,8 +543,8 @@ There are two noteworthy things here. The first is that in the function name we 
 
 |Operator|Description|Type hint|
 |--------|-----------|----------|
-|`<\|`|backward (pipe) function application `f <| x == f x`|`(a -> b) -> a -> b`
-|`\|>`|forward (pipe) function application `x |> f == f x`|`a -> (a -> b) -> b`
+|`<\|`|backward (pipe) function application `f <\| x == f x`|`(a -> b) -> a -> b`
+|`\|>`|forward (pipe) function application `x \|> f == f x`|`a -> (a -> b) -> b`
 |`<<`|composes functions into one, arguments first applied to the function from the right side|`(b -> c) -> (a -> b) -> a -> c`
 |`>>`|same as before except arguments first applied to the function from the left side|`(a -> b) -> (b -> c) -> a -> c`
 

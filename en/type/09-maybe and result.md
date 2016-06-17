@@ -340,7 +340,7 @@ shouldBeSeven =
 
 (source: [[https://github.com/elm-guides/elm-for-js/blob/master/Where%20Did%20Null%20And%20Undefined%20Go.md]])
 
-## What about representing failed operations?
+### What about representing failed operations?
 
 In JavaScript `null` and `undefined` are sometimes used to encode the fact that
 an operation has or has not successfully completed. Consider the canonical
@@ -413,7 +413,7 @@ so we can use `Result` to model the output.
 
 (source: [[https://github.com/elm-guides/elm-for-js/blob/master/Where%20Did%20Null%20And%20Undefined%20Go.md]])
 
-## Conclusions
+### Conclusions
 
 Languages like JavaScript handle the concept of emptiness with low-level values
 like `null` and `undefined`, and may also use those to represent failure and
@@ -524,7 +524,7 @@ Again, we have to use case so we are guaranteed to handle the special case where
 (source: [an introduction to elm](https://evancz.gitbooks.io/an-introduction-to-elm/content/error_handling/result.html))
 
 
-# Where did `null` and `undefined` go?
+## Where did `null` and `undefined` go?
 
 In our applications it is often useful to be able to represent the possible
 absence of a value. In JavaScript we have `undefined` to represent the result

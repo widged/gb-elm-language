@@ -15,7 +15,7 @@ module MyModule exposing (..)
 
 A module is stored into a file whose name must begin with a capital letter and exactly match the name of the module they contain. For example, `MyModule.elm` should declare the module `MyModule`. The compiler will not allow module names and file paths to disagree. Convention is to capitalize only the first letter of acronyms (e.g. `Json` and `Http`).
 
-When files are within nested folders, the module contain dots. For example `Json.Encode`, which is in file `Json/Encode.elm`. Folders may be nested as deep as you like, but don't overdo it. 
+When files are within nested folders, the module contain dots to mark each level of nesting. For example `Json.Encode`, which is in file `Json/Encode.elm`. Folders may be nested as deep as you like, but don't overdo it. 
 
 
 ### Module shape

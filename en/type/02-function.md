@@ -7,6 +7,7 @@ Elm's syntax for functions is very minimal, a name, soe arguments, an equals sig
 
 ```elm
 $ elm repl
+> sum a b = a + b
 > multiply a b = a*b
 > isNegative n = n < 0
 ```
@@ -70,51 +71,10 @@ $ elm repl
 "elmo" : String
 ```
 
-### Applying (calling) a function
-
-
-
-
-Functions can be recursive.
-~~~~ {.Elm:hs name="code"}
-fib n =
-if n < 2 then 1
-  else
-    fib (n - 1) + fib (n - 2)
-List.map fib [0..8] -- [1, 1, 2, 3, 5, 8, 13, 21, 34]
-~~~~
-
-(source: ???)
-
-Another recursive function (use List.length in real code).
-~~~~ {.Elm:hs name="code"}
-listLength aList =
-  case aList of
-    [] -> 0
-    x::xs -> 1 + listLength xs
-~~~~
-
-Function calls happen before any infix operator. Parens indicate precedence.
-~~~~ {.Elm:hs name="code"}
-cos (degrees 30) ^ 2 + sin (degrees 30) ^ 2 -- 1
-~~~~
-
-First degrees is applied to 30, then the result is passed to the trig
-functions, which is then squared, and the addition happens last.
-
-(source: ???)
-
 ## Functions
 
 ### Basics
 
-```elm
--- function name | arguments names = function body
-sum a b = a + b
-
--- combine arguments in a tuple
-sum (a, b) = a + b
-```
 
 All functions in Elm are _curried_ by default.<br/>
 If you have a function of 2 arguments, it takes one argument and returns a function that takes another argument:
@@ -361,6 +321,37 @@ res10 = fun8 64    -- False, because the square root of 64 is even
 
 (source: [elm-explained](https://github.com/niksilver/elm-explained))
 
+### infix mode
+
+Function calls happen before any infix operator. Parens indicate precedence.
+```elm
+cos (degrees 30) ^ 2 + sin (degrees 30) ^ 2 -- 1
+```
+
+First degrees is applied to 30, then the result is passed to the trig
+functions, which is then squared, and the addition happens last.
+
+
+### Recursive functions
+
+Functions can be recursive.
+
+```elm
+fib n =
+if n < 2 then 1
+  else
+    fib (n - 1) + fib (n - 2)
+List.map fib [0..8] -- [1, 1, 2, 3, 5, 8, 13, 21, 34]
+```
+
+Another recursive function (use List.length in real code).
+```elm
+listLength aList =
+  case aList of
+    [] -> 0
+    x::xs -> 1 + listLength xs
+```
+
 
 ### Higher Order Functions
 
@@ -388,6 +379,7 @@ Partially apply a function by passing only some of its arguments. Then give that
 ```elm
 double = multiply 2
 ```
+
 
 
 #### other

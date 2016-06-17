@@ -2,6 +2,10 @@
 
 ## List
 
+Lists are just linked lists (ordered collections where each node of the collection points to the subsequent node, if there is one), where all the values must be same type. You get head and tail, just like you’d expect.
+
+(source: [Data Structures in Elm @NoRedInk](http://tech.noredink.com/post/140646140878/data-structures-in-elm))
+
 A `List` holds a collection of related values separated by commas and enclosed in
 square brackets. All the values in a list must have the same type:
 
@@ -14,6 +18,8 @@ $ elm repl
 > [1, "2", 3, 4, 5]
 -- TYPE MISMATCH --------------------------------------------- repl-temp-000.elm
 The 1st and 2nd elements are different types of values.
+> []
+[] : List a
 ```
 
 Functions that operate on lists live in the List module. Use `List.functionName` to access them. 
@@ -114,6 +120,8 @@ length list =
 
 #### head and tail
 
+`head` gives you a Maybe with the value of the first element. `tail` gives you the rest of the List. (source: [Data Structures in Elm @NoRedInk](http://tech.noredink.com/post/140646140878/data-structures-in-elm))
+
 The head and tail of a list are returned as a Maybe. Instead of checking
 every value to see if it's null, you deal with missing values explicitly.
 
@@ -125,9 +133,9 @@ List.head [] -- Nothing
 
 ### Square Brackets and What’s Inside Them
 
-In Elm, [] signifies an empty list. Lists are just linked lists (ordered collections where each node of the collection points to the subsequent node, if there is one), where all the values must be same type. You get head and tail, just like you’d expect.
 
-`head` gives you a Maybe with the value of the first element. tail gives you the rest of the List. Want to add an element? Cons `::` is an infix operator that adds to the front of the List. You can concat, append, or intersperse. Or partition or unzip or pretty much whatever else you can think of to do. My point: yay lists!
+
+Want to add an element? Cons `::` is an infix operator that adds to the front of the List. You can concat, append, or intersperse. Or partition or unzip or pretty much whatever else you can think of to do. My point: yay lists!
 
 (source: [Data Structures in Elm @NoRedInk](http://tech.noredink.com/post/140646140878/data-structures-in-elm))
 

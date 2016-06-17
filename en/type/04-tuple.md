@@ -198,7 +198,6 @@ Exact values of comparables can be used to match when destructuring (also works 
 
 (source: [yang-wei gist](https://gist.github.com/yang-wei/4f563fbf81ff843e8b1e))
 
-
 -----
 
 We can write our own function for accessing the third value in a tuple, if we want:

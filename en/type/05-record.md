@@ -576,8 +576,6 @@ If we put all the code above into [an Elm module called ExtensibleRecordTypes](E
 
 (source: [elm-explained](https://github.com/niksilver/elm-explained))
 
-
-
 ### All operations
 
 [records](http://elm-lang.org/docs/syntax#records) has a number of operations without much explanation. 

@@ -161,6 +161,16 @@ concat = \a -> (\b -> a ++ b)
 // type a-goes-to-b, goes to list of a, goes to list of b
 
 ----
+
+All functions in Elm are _curried_ by default.  If you have a function of 2 arguments, it takes one argument and returns a function that takes another argument:
+```elm
+-- Both are equal
+myFunction arg1 arg2
+((myFunction arg1) arg2)
+```
+(source: [learnyouanelm](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/02-starting-out.md))
+
+----
 `->` is used to separate the arguments and return value in the types of functions. It's pronounced "goes to". So for example, `String.length : String -> Int` is pronounced "string-dot-length has type String goes to Int". You just read left to right, like an English sentence.
 
 What's really going on is that the type annotation is telling you about *partial application*: you can give a function only some of its arguments, and get a function as a result. You can always get the new function's type annotation by covering up part of the left side of the original function's annotation.

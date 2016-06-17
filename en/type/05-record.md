@@ -60,15 +60,15 @@ Beware of creating data structures with record accessors. Because all a list's e
 
 Access a field with a dot and the field name.
 
-~~~~ {.Elm:hs name="code"}
+```elm
 { x = 3, y = 7 }.x -- 3
-~~~~
+```
 
 Or with an accessor fuction, which is a dot and the field name on its own.
 
-~~~~ {.Elm:hs name="code"}
+```elm
 .y { x = 3, y = 7 } -- 7
-~~~~
+```
 
 
 #### Immutable modification

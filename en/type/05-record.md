@@ -398,9 +398,6 @@ If we put all the code above into [an Elm module called ExtensibleRecordTypes](E
 
 ## -- 2 sort --
 
-## What are Records and How Do We Make One
-
-
 
 ### Getting and Setting on Records
 

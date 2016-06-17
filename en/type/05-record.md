@@ -1,23 +1,19 @@
 **Elm 0.??**, **copied, please ignore** 
 
-## Operations on records
+## Records 
+
+### Operations on records
 
 A record is like a Python dictionary or a Java HashMap
 {name=value,...,name=value}defines a record. Use record.keyor .key record to access the fields of a record.
 http://elm-lang.org/docs/syntax#records has a number of operations without much explanation. To copy a record but with some fields different, use
 { old_record | key1 <- new_value_1, ..., key_n <- new_value_n }
 
-
 -> structural type
 
+### Records
 
-
-## Records
-
-
-A record is like a JS object, except you know at compile-time that the fields you access will be there. Also like
-JavaScript, they're written with brackets. *Unlike* JavaScript, records values use equals between key and value; when
-written with colons, it's a record *type*. Here's a simple record:
+A record is like a JS object, except you know at compile-time that the fields you access will be there. Also like JavaScript, they're written with brackets. *Unlike* JavaScript, records values use equals between key and value; when written with colons, it's a record *type*. Here's a simple record:
 
 ```elm
 point : {x : Float, y : Float}
@@ -46,7 +42,7 @@ point3D = {x = 1.0, y = 6.3, z = -0.9}
 dist = planarDistance point point3D
 ```
 
-(source: [[https://github.com/elm-guides/elm-for-js/blob/master/How%20to%20Read%20a%20Type%20Annotation.md]])
+(source: [elm-for-js](https://github.com/elm-guides/elm-for-js/blob/master/How%20to%20Read%20a%20Type%20Annotation.md))
 
 Let’s look at some more practical examples of how powerful the Elm type system can be. Elm has a data type called records which are very similar to JavaScript objects. The type system allows you to ask for a certain thing to exist in a record.
 
@@ -58,7 +54,7 @@ This type annotation requires that we pass a record to the function that contain
 
 (source: [[http://www.adamwaselnuk.com/elm/2016/05/27/understanding-the-elm-type-system.html]])
 
-## .accessors
+### .accessors
 
 Finally, record accessors. Uniquely these functions are defined by a pattern, rather than being listed somewhere. For
 example, `.name : { b | name : a } -> a`, which basically means `.name` takes any record with a `name` field and
@@ -303,9 +299,9 @@ then this is what it looks like in the Elm REPL:
 
 (source: [elm-explained](https://github.com/niksilver/elm-explained))
 
-# -- 2 sort --
+## -- 2 sort --
 
-## Record types don't have names by default
+### Record types don't have names by default
 
 The type of a record is just the description of its fields.
 This next code
@@ -324,7 +320,7 @@ The type of `posA` does not have a name, though.
 (source: [elm-explained](https://github.com/niksilver/elm-explained))
 
 
-## Naming record types
+### Naming record types
 
 We can name a record type by tagging it - like this:
 
@@ -352,7 +348,7 @@ while
 
 (source: [elm-explained](https://github.com/niksilver/elm-explained))
 
-## Destructuring
+### Destructuring
 
 ```elm
 myRecord = { x = 3, y = 4 }

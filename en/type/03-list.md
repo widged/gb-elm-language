@@ -262,6 +262,7 @@ look at more list functions [later](modules#data-list).
 
 (source: [learnyouanelm](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/02-starting-out.md))
 
+#### all 
 ```
 (::) : a -> List a -> List a. "Cons" (add) an element to a list.
 head : List a -> a

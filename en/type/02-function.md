@@ -7,74 +7,19 @@
 * Named functions: `avgxy = (x+y)/2`
 * Anonymous functions:`(\ x y -> (x + y) / 2)`
 
-
-
-## Calling functions
-
-
 To call a function, give its name and its parameters, separated by spaces, for example,
 
 ```elm
 List.map toUpper words
 ```
-
-(source: ???)
-
-
-## Higher Order Functions
-
-Like JavaScript, functions can take other functions as arguments. (We've already seen how currying lets them return
-functions.)
-
-Let's look at a specialized version of the `List.map` function, which takes a function, and applies it to every element
-of a list of Float, returning a new list of Int as a result.
-
-```elm
-specialMap : (Float -> Int) -> List Float -> List Int
-```
-
-The first argument of this function needs to be a function, that takes a Float as a parameter and returns an Int. When
-you read this annotation, it may help to say "Float goes to Int" a little bit faster, and then pause. Here, the brackets
-*do* matter. This is different than `Int -> Float -> List Int -> List Float`, which takes two numbers and a
-list, but never a function.
-
-We know that `round : Float -> Int`, so we can write:
-
-```elm
-roundMap : List Float -> List Int
-roundMap = specialMap round
-```
-
-Even though `roundMap` doesn't take any arguments explicitly to the left of the equals, applying `specialMap` returns a
-function thanks to currying. We could also write `roundMap xs = specialMap round xs`; it's really a matter of style.
-
-(source: [[https://github.com/elm-guides/elm-for-js/blob/master/How%20to%20Read%20a%20Type%20Annotation.md]])
-
-## --
-
-In JavaScript, functions can either be declared or assigned to variables.
-
-```javascript
-function add(a, b){ return a + b }
-var add = function(a, b){ return a + b }
-```
-
-These two lines of JS do subtly different things, thanks to hoisting, and in both cases the definition of `add` is
-mutable. In some ways, the following two snippets of Elm code also preserve the distinction between declaring a named
-function, and assigning an anonymous function to a named variable. However, they behave identically.
+Declaring a named function, and assigning an anonymous function to a named variable behave identically.
 
 ```elm
 add a b = a + b
 add = \a b -> a + b
 ```
 
-Note that `\arg1 arg2 -> expression` is Elm's syntax for anonymous functions. The backslash is traditionally pronounced
-*lambda*, after the Greek letter used by programming language theorists, but you're welcome to say *function* if that
-helps you.
 
-You can also define types at the top level, like `type alias Model = Int`.
-
-(source: [[https://github.com/elm-guides/elm-for-js/blob/master/Scope.md]])
 
 ## Function Declaration
 
@@ -229,16 +174,14 @@ True : Bool
 
 ### Anonymous functions
 
-`\arg1 arg2 -> expression` is Elm's syntax for anonymous functions. The backslash is traditionally pronounced
-*lambda*, after the Greek letter used by programming language theorists, but you're welcome to say *function* if that
-helps you.
+Note that `\arg1 arg2 -> expression` is Elm's syntax for anonymous functions. The backslash is traditionally pronounced *lambda*, after the Greek letter used by programming language theorists, but you're welcome to say *function* if that helps you.
 
-(source: ???)
+You can also define types at the top level, like `type alias Model = Int`.
+
+(source: [elm-for-js](https://github.com/elm-guides/elm-for-js/blob/master/Scope.md))
 
 
-Before the next part, here's a reminder that the `filter` function
-filters through just those elements of a list that pass a specific
-test - i.e. those that return True from a specific function.
+Before the next part, here's a reminder that the `filter` function filters through just those elements of a list that pass a specific test - i.e. those that return True from a specific function.
 
 ```
 > import DefiningFunctions exposing (..)
@@ -711,3 +654,27 @@ conanO'Brien = "It's a-me, Conan O'Brien!"
 There are two noteworthy things here. The first is that in the function name we didn't capitalize Conan's name. That's because functions can't begin with uppercase letters. We'll see why a bit later. The second thing is that this function doesn't take any parameters. When a function doesn't take any parameters, we usually say it's a *definition* (or a *name*). Because we can't change what names (and functions) mean once we've defined them, conanO'Brien and the string "It's a-me, Conan O'Brien!" can be used interchangeably.
 
 (source: [learnyouanelm](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/02-starting-out.md))
+
+## Higher Order Functions
+
+Like JavaScript, functions can take other functions as arguments. (We've already seen how currying lets them return functions.)
+
+Let's look at a specialized version of the `List.map` function, which takes a function, and applies it to every element of a list of Float, returning a new list of Int as a result.
+
+```elm
+specialMap : (Float -> Int) -> List Float -> List Int
+```
+
+The first argument of this function needs to be a function, that takes a Float as a parameter and returns an Int. Whenyou read this annotation, it may help to say "Float goes to Int" a little bit faster, and then pause. Here, the brackets *do* matter. This is different than `Int -> Float -> List Int -> List Float`, which takes two numbers and a
+list, but never a function.
+
+We know that `round : Float -> Int`, so we can write:
+
+```elm
+roundMap : List Float -> List Int
+roundMap = specialMap round
+```
+
+Even though `roundMap` doesn't take any arguments explicitly to the left of the equals, applying `specialMap` returns a function thanks to currying. We could also write `roundMap xs = specialMap round xs`; it's really a matter of style.
+
+(source: [elm-for-js](https://github.com/elm-guides/elm-for-js/blob/master/How%20to%20Read%20a%20Type%20Annotation.md))

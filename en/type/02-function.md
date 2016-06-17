@@ -26,47 +26,20 @@ To call a function, give its name and its parameters, separated by spaces, for e
 
 ### Anonymous functions
 
-Note that `\arg1 arg2 -> expression` is Elm's syntax for anonymous functions. The backslash is traditionally pronounced *lambda*, after the Greek letter used by programming language theorists, but you're welcome to say *function* if that helps you.
+Anonymous functions are defined with  `\arg1 arg2 -> expression`. The backslash is traditionally pronounced *lambda*, after the Greek letter used by programming language theorists, but you're welcome to say *function* if that helps you. It's usual not to have a space after the backslash, but we can.
 
-You can also define types at the top level, like `type alias Model = Int`.
 
-(source: [elm-for-js](https://github.com/elm-guides/elm-for-js/blob/master/Scope.md))
-
-Before the next part, here's a reminder that the `filter` function filters through just those elements of a list that pass a specific test - i.e. those that return True from a specific function.
-
-```
-> import DefiningFunctions exposing (..)
-> import List exposing (filter)
-> filter isEvenLength ["Once", "upon", "a", "time", "long", "ago"]
-["Once","upon","time","long"] : List String
->
-```
-
-We can define a function anonymously using the backslash operator.
-Here the function we pass to `filter` is anonymous.
-It's usual not to have a space after the backslash, but we can.
+Take the `filter` function. It filters through just those elements of a list that pass a specific test - i.e. those that return True from a specific function. We can pass it an anonymous function.
 
 ```elm
-ones: List String -> List String
-ones li =
-    filter (\s -> length s == 1) li
+$ elm repl
+> filterShorts li = List.filter (\s -> String.length s <= 3) li
+> filterShorts ["Once", "upon", "a", "time", "long", "ago"]
+["a","ago"] : List String   
 ```
 
-Here's the `ones` function in use:
 
-```
-> import DefiningFunctions exposing (..)
-> ones ["a", "bb", "c", "d", "ee"]
-["a","c","d"] : List String
->
-```
 
-We can define an anonymous function and then give it a name after.
-
-```elm
-concat : String -> String -> String
-concat = (\a b -> a ++ b)
-```
 
 Here it is in use:
 
@@ -81,11 +54,18 @@ Here it is in use:
 
 ### Named vs anonymous
 
-Declaring a named function, and assigning an anonymous function to a named variable behave identically.
+Declaring a named function, and assigning an anonymous function to a named variable behave identically. We can define an anonymous function and then give it a name after.
 
 ```elm
-add a b = a + b
-add = \a b -> a + b
+$ elm repl
+> add = \a b -> a + b -- instead of add a b = a + b
+> add 2 4
+6 : number
+> concat : String -> String -> String
+> concat = \a b -> a ++ b
+> concat = \a -> (\b -> a ++ b)
+> concat "elm" "o"
+"elmo" : String
 ```
 
 

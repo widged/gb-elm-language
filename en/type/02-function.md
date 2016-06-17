@@ -1,18 +1,6 @@
 **Elm 0.??**, **copied, please ignore** 
 
 
-## Calling functions
-
-
-To call a function, give its name and its parameters, separated by spaces, for example,
-
-```elm
-List.map toUpper words
-```
-
-(source: ???)
-
-
 ## Functions
 
 * Functions: `isNegative n = n < 0`
@@ -20,18 +8,13 @@ List.map toUpper words
 * Anonymous functions:`(\ x y -> (x + y) / 2)`
 
 
-`->` is used to separate the arguments and return value in the types of functions. It's pronounced "goes to". So for
-example, `String.length : String -> Int` is pronounced "string-dot-length has type String goes to Int". You just read
-left to right, like an English sentence. Oh and by the way, `String.length` means the `length` function in the `String`
-module. Whenever a capital letter is followed by a dot, it's a module, not a type.
+`->` is used to separate the arguments and return value in the types of functions. It's pronounced "goes to". So for example, `String.length : String -> Int` is pronounced "string-dot-length has type String goes to Int". You just read left to right, like an English sentence.. 
 
-Things get interesting with multiple arrows, for example, `update : Action -> Model -> Model`. This function takes an
-Action and a Model as arguments (in that order), and returns a Model. Or, "update has type Action goes to Model goes to
-Model."
 
-What's really going on is that the type annotation is telling you about *partial application*: you can give a function
-only some of its arguments, and get a function as a result. You can always get the new function's type annotation by
-covering up part of the left side of the original function's annotation.
+
+Things get interesting with multiple arrows, for example, `update : Action -> Model -> Model`. This function takes an Action and a Model as arguments (in that order), and returns a Model. Or, "update has type Action goes to Model goes to Model."
+
+What's really going on is that the type annotation is telling you about *partial application*: you can give a function only some of its arguments, and get a function as a result. You can always get the new function's type annotation by covering up part of the left side of the original function's annotation.
 
 ```elm
 example : Model -> Model
@@ -44,6 +27,18 @@ You probably don't need to worry about partial application, also known as curryi
 type after the last arrow as the return value, and the others as the arguments to your function.
 
 (source: [[https://github.com/elm-guides/elm-for-js/blob/master/How%20to%20Read%20a%20Type%20Annotation.md]])
+
+
+## Calling functions
+
+
+To call a function, give its name and its parameters, separated by spaces, for example,
+
+```elm
+List.map toUpper words
+```
+
+(source: ???)
 
 
 ## Higher Order Functions

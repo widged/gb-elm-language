@@ -95,7 +95,7 @@ Nothing : Maybe.Maybe a
 Nothing : Maybe.Maybe (List a)
 ```
 
-#### Destructuring
+#### destructuring
 
 List have limited support for destructuring. One of the case is used to find the first element of a list by utilizing the cons operator, ie ::w
 

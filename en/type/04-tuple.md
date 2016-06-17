@@ -15,6 +15,22 @@ The type of a tuple records the number of components s well as the types of the 
 (1,"2",True) : ( number, String, Bool )
 ```
 
+For instance, a tuple of size two (also called a pair) can be used to store x,y coordinates of a point. 
+
+```elm
+$ elm repl
+> [(1,2),(8,11),(4,5)]
+[(1,2),(8,11),(4,5)] : List ( number, number' )
+```
+
+```elm
+> [(1,2),(8,11,5),(4,5)]
+-- TYPE MISMATCH --------------------------------------------- repl-temp-000.elm
+The 1st and 2nd elements are different types of values.
+```
+
+Tuples can be used to represent a wide variety of data. For instance, if we wanted to represent someone's name and age in Elm, we could use a triple: `("Christopher", "Walken", 55)`. 
+
 (,), (,,), (,,,), etc.
 
 ### Creating tuples
@@ -178,18 +194,7 @@ So suppose we wanted to refer to author Neil Gaiman in this text: we might say `
 ### Tuples
 
 
-For instance, a tuple of size two (also called a pair) can be used to store x,y coordinates of a point. 
 
-```elm
-$ elm repl
-> [(1,2),(8,11),(4,5)]
-[(1,2),(8,11),(4,5)] : List ( number, number' )
-> [(1,2),(8,11,5),(4,5)]
--- TYPE MISMATCH --------------------------------------------- repl-temp-000.elm
-The 1st and 2nd elements are different types of values.
-```
-
-Tuples can be used to represent a wide variety of data. For instance, if we wanted to represent someone's name and age in Elm, we could use a triple: `("Christopher", "Walken", 55)`. 
 
  Tuples are much more rigid because each different size of tuple is its own type, so you can't write a general function to append an element to a tuple — you'd have to write a function for appending to a pair, one function for appending to a triple, one function for appending to a 4-tuple, etc.
 

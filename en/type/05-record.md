@@ -156,7 +156,6 @@ It is  possible to write functions that work on records as long as they have the
 #### Pattern matching / destructuring
 
 
-Destructuring
 ```elm
 { style, number, isCool } = myRecord
 > style
@@ -173,8 +172,6 @@ If I define `type alias Point2D = {x : Float, y : Float}`, then like any type al
 
 
 # --- 2 sort ---
-
-
 
 
 # Extensible record types

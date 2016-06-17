@@ -1,6 +1,6 @@
 **Elm 0.??**, **copied, please ignore** 
 
-# Type Aliases
+## Type Aliases
 
 ```elm
 type alias Description = String
@@ -95,7 +95,7 @@ The Elm compiler notices when you don't account for all cases. Imagine the power
 (source: [[http://www.adamwaselnuk.com/elm/2016/05/27/understanding-the-elm-type-system.html]])
 
 
-# Type aliases
+### Type aliases
 
 A type alias doesn't define a type, it simply provides a convenient
 alternative name for another type or record shape.
@@ -169,7 +169,7 @@ And then here's what it looks like when we use the functions in the REPL:
 
 (source: [elm-explained](https://github.com/niksilver/elm-explained))
 
-## Type alias
+### Type alias
 
 You can also define types at the top level, like `type alias Model = Int`.
 
@@ -177,7 +177,7 @@ The first is a record type alias. If I define `type alias Point2D = {x : Float, 
 
 (source: [learnyouanelm-03](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/03-types.md))
 
-## Type Aliases
+### Type Aliases
 
 When you write a record or tuple, its type already exists.
 (Notice that record types use colon and record values use equals.)
@@ -209,7 +209,7 @@ origin == otherOrigin -- True
 
 (source: ???)
 
-## Type Aliases
+### Type Aliases
 
 You can give existing types a custom name with `type alias`
 

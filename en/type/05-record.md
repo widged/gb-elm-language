@@ -2,6 +2,8 @@
 
 ## Records 
 
+Records (semantically named) are frequently employed to record state or to model information. They employ key-value pairs, with (likely-familar) dot notation for accessing values. (source: [Data Structures in Elm @NoRedInk](http://tech.noredink.com/post/140646140878/data-structures-in-elm))
+
 Records are written with brackets. A `record` is a collection of key/value pairs (name fields).
 
 ```elm
@@ -377,9 +379,7 @@ then this is what it looks like in the Elm REPL:
 
 ## What are Records and How Do We Make One
 
-Records (semantically named) are frequently employed to record state or to model information. They employ key-value pairs, with (likely-familar) dot notation for accessing values.
 
-(source: [Data Structures in Elm @NoRedInk](http://tech.noredink.com/post/140646140878/data-structures-in-elm))
 
 To create a record, you can write out the desired key-value pairs: { name = "Wuthering Heights", author = "Bronte", readByMe = True }. (Note that notation here may be backwards from what you expect. Type signatures, in Elm, use a colon. Assignment uses an equals sign)
 

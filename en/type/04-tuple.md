@@ -15,7 +15,6 @@ The type of a tuple records the number of components s well as the types of the 
 (1,"2",True) : ( number, String, Bool )
 ```
 
-
 (,), (,,), (,,,), etc.
 
 ### Creating tuples

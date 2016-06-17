@@ -133,11 +133,10 @@ List.head [] -- Nothing
 
 ### Square Brackets and What’s Inside Them
 
-
-
-Want to add an element? Cons `::` is an infix operator that adds to the front of the List. You can concat, append, or intersperse. Or partition or unzip or pretty much whatever else you can think of to do. My point: yay lists!
+Want to add an element? Cons `::` is an infix operator that adds to the front of the List. 
 
 (source: [Data Structures in Elm @NoRedInk](http://tech.noredink.com/post/140646140878/data-structures-in-elm))
+
 
 ### List Operations in Practice with Elm Html
 
@@ -491,7 +490,12 @@ show [1..20] -- [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]
 
 ### Operations on lists
 
-import List exposing (..)
+You can concat, append, or intersperse. Or partition or unzip or pretty much whatever else you can think of to do. 
+
+(source: [Data Structures in Elm @NoRedInk](http://tech.noredink.com/post/140646140878/data-structures-in-elm))
+
+`import List exposing (..)`
+
 
 ```
 (::) : a -> List a -> List a. "Cons" (add) an element to a list.

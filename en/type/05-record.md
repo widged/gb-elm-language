@@ -271,8 +271,7 @@ posB : Positioned
 posB = Positioned { x = 7.7, y = 5.2 }
 ```
 
-However, this isn't anything new. This is just tagging a record type
-in the same way we might tag an Int type, like this:
+However, this isn't anything new. This is just tagging a record type in the same way we might tag an Int type, like this:
 
 ```elm
 type Aged = Aged Int

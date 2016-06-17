@@ -1,14 +1,14 @@
 **Elm 0.??**, **copied, please ignore** 
 
-# Dicts
+## Dicts
 
-## What is a Dictionary?
+### What is a Dictionary?
 
 A dict maps unique keys to values. There’s a fair amount of overlap in the use cases for dictionaries and sets, but dictionaries allow for storing a bit more information. Since values are indexed by unique keys, we can try to Dict.get 'some comparable' Dict.empty, which may give us Nothing.
 
 (source: [Data Structures in Elm @NoRedInk](http://tech.noredink.com/post/140646140878/data-structures-in-elm))
 
-## Our Library Has a Dictionary
+### Our Library Has a Dictionary
 
 Our library book loaning system from the set example might work better as a dict. With a dict, we can tie checked out ids to library entries directly.
 

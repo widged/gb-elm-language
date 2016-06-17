@@ -1,8 +1,7 @@
 # Summary
 
 * Elm Language
-  * [Intro](intro/cover.md)
-     * [Introduction](intro/01-intro.md)
+  * [Intro](intro/cover.md)duction
      * [Module System, Imports, Exports](intro/02-module system.md)
      * [Static Types](intro/03-static type.md)
    * [Program Flow](program-flow/cover.md)

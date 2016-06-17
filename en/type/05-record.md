@@ -37,7 +37,19 @@ dist = planarDistance point point3D
 ```
 (source: [elm-for-js](https://github.com/elm-guides/elm-for-js/blob/master/How%20to%20Read%20a%20Type%20Annotation.md) and [learnyouanelm-03](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/03-types.md))
 
--> structural type
+### Structural type
+
+The type of a record is just the description of its fields. This next code says the type of `posA` is a record with a field `x` that's a Float and a field `y` that's a Float.
+
+```elm
+posA : { x : Float, y : Float }
+posA = { x = 2.1, y = 8.8 }
+```
+
+The type of `posA` does not have a name, though.
+
+(source: [elm-explained](https://github.com/niksilver/elm-explained))
+
 
 ### Operations on records
 
@@ -280,23 +292,7 @@ then this is what it looks like in the Elm REPL:
 
 ## -- 2 sort --
 
-### Record types don't have names by default
 
-The type of a record is just the description of its fields.
-This next code
-says the type of `posA` is a record with a field `x` that's a Float
-and a field `y` that's a Float.
-
-```elm
-posA : { x : Float, y : Float }
-posA = { x = 2.1, y = 8.8 }
-```
-
-The type of `posA` does not have a name, though.
-
-
-
-(source: [elm-explained](https://github.com/niksilver/elm-explained))
 
 
 ### Naming record types

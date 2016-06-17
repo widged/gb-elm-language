@@ -9,7 +9,7 @@
 
 ### Named functions
 
-We can define a function simply by naming it:
+We can define a function by naming it:
 
 ```elm
 add : Int -> Int -> Int
@@ -23,7 +23,6 @@ isEven x = (x % 2 == 0)
 ```
 
 To call a function, give its name and its parameters, separated by spaces, for example,
-
 
 ### Anonymous functions
 

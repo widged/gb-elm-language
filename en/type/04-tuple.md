@@ -8,8 +8,7 @@ Tuples are denoted with () and contain comma-separated values. Every element in 
 ("elm", 42)
 ```
 
-
-Tuples are types but they are dependent on their length as well as the types of their components, so there is theoretically an infinite number of tuple types, which is too many to cover in this tutorial. 
+Tuples are types but they are dependent on their length as well as the types of their components. 
 
 (source: [learnyouanelm-03](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/03-types.md))
 

@@ -48,7 +48,12 @@ snd : (a, b) -> b. Returns the second element.
 
 To access the values of a Tuple, we are given a couple of helpers. fst (1,0) gives us the first value, 1, and snd (1,0) gives us the second value, 0.
 
+Access the elements of a pair with the first and second functions. (This is a shortcut; we'll come to the "real way" in a bit.)
 
+```elm
+fst ("elm", 42) -- "elm"
+snd ("elm", 42) -- 42
+```
 #### comparison
 
 Tuples are comparable.
@@ -58,16 +63,10 @@ Tuples are comparable.
 Pattern matching in `case` expressions can be used on tuples. Beyond that, Elm has very little support for tuples.
 
 
-
 ### Tuples
 
 
-Access the elements of a pair with the first and second functions. (This is a shortcut; we'll come to the "real way" in a bit.)
 
-~~~~ {.Elm:hs name="code"}
-fst ("elm", 42) -- "elm"
-snd ("elm", 42) -- 42
-~~~~
 
 The empty tuple, or "unit", is sometimes used as a placeholder. It is the only value of its type, also called "Unit".
 

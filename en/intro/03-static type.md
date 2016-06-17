@@ -214,7 +214,17 @@ startPosition =
 
 Functions don't necessarily need to be aware of the type of values held in a collection to computer an answer. Take `List.length`. It doesn't really matter whether the values inside the list are all strings, numbers, or complex records. What we are after is the number of items in the list.
 
-Type variables help with this. Check the `List.length` signature using the REPL.
+Type variables help with this. Check the signature of the `identity` function in the repl. It takes a value and returns that value. 
+
+```elm
+$ elm repl
+> identity
+<function> : a -> a
+> identity 8
+8 : number
+```
+
+Or check the `List.length` signature using the REPL.
 
 ```elm
 $ elm repl

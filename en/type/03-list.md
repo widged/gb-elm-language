@@ -54,32 +54,7 @@ $ elm repl
 [1,2,3,4,5,6,7,8,9,10] : List number
 ```
 
-#### iterate through list
-```elm
-length : List a -> Int
-length list =
-  case list of
-    [] ->
-        0
-
-    first :: rest ->
-        1 + length rest
-```
-
-(source: ???)
-
-#### head and tail
-
-The head and tail of a list are returned as a Maybe. Instead of checking
-every value to see if it's null, you deal with missing values explicitly.
-
-```elm
-List.head [1..5] -- Just 1
-List.tail [1..5] -- Just [2, 3, 4, 5]
-List.head [] -- Nothing
-```
-
-### Destructuring
+#### Destructuring
 
 List have limited support for destructuring. One of the case is used to find the first element of a list by utilizing the cons operator, ie ::w
 
@@ -124,6 +99,29 @@ listFn list =
 ```
 (source: [comment on yang-wei gist](https://gist.github.com/yang-wei/4f563fbf81ff843e8b1e))
 
+#### iterate through list
+```elm
+length : List a -> Int
+length list =
+  case list of
+    [] ->
+        0
+    first :: rest ->
+        1 + length rest
+```
+
+(source: ???)
+
+#### head and tail
+
+The head and tail of a list are returned as a Maybe. Instead of checking
+every value to see if it's null, you deal with missing values explicitly.
+
+```elm
+List.head [1..5] -- Just 1
+List.tail [1..5] -- Just [2, 3, 4, 5]
+List.head [] -- Nothing
+```
 
 ### Square Brackets and What’s Inside Them
 

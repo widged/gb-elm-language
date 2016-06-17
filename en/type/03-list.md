@@ -140,7 +140,7 @@ listFn list =
 ```
 (source: [comment on yang-wei gist](https://gist.github.com/yang-wei/4f563fbf81ff843e8b1e))
 
-#### iterate through list
+#### iterating through list
 ```elm
 length : List a -> Int
 length list =

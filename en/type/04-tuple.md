@@ -87,6 +87,7 @@ Pattern matching in `case` expressions can be used on tuples. Beyond that, Elm h
 
 
 ### Destructuring
+
 ```elm
 (x, y) = (1, 2)
 > x
@@ -125,18 +126,8 @@ in
 ```
 (source: [yang-wei gist](https://gist.github.com/yang-wei/4f563fbf81ff843e8b1e))
 
-In many functional languages, _ is a wildcard match: it will match anything but importantly (and contrary to Python or Javascript for instance) it will not create a binding. Which means you can match to multiple _ in a single pattern.
 
-```elm
-let
-  (a,b,_) = myTuple
-in
-  a ++ b
--- "AB" : String
-```
-(source: [yang-wei gist](https://gist.github.com/yang-wei/4f563fbf81ff843e8b1e))
-
-It's also more elegant to decrale some constant of your app using destructuring.
+It's also more elegant to declare some constant of your app using destructuring.
 
 ```elm
 -- with no destructuring

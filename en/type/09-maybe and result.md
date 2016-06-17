@@ -3,6 +3,7 @@
 ## Maybe
 
 
+
 ### BANNING NULLS
 
 type Maybe a = Nothing | Just a
@@ -78,6 +79,25 @@ getId id =
 ```
 
 (source: [learnyouanelm](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/02-starting-out.md))
+
+---
+
+`head` takes a list and returns its head. The head of a list is basically its first element. `tail` takes a list and returns its tail. In other words, it chops off a list's head. The head or tail of an empty list is `Nothing`.
+
+```elm
+$ elm repl
+> List.head [5,4,3,2,1]
+Just 5 : Maybe.Maybe number
+> List.tail [5,4,3,2,1]
+Just [4,3,2,1] : Maybe.Maybe (List number)
+> List.head []
+Nothing : Maybe.Maybe a
+> List.tail []
+Nothing : Maybe.Maybe (List a)
+```
+
+
+What is `Nothing`? And why did `Listhead` return `Just 5` before? Think of `Nothing` as a way to indicate when there's no correct value to return, and `Just` as a way to show that we could return a value in a place where `Nothing` could have also been returned.
 
 
 ### Maybe

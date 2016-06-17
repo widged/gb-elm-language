@@ -375,11 +375,6 @@ then this is what it looks like in the Elm REPL:
 
 ## -- 2 sort --
 
-
-
-
-# -------
-
 ## What are Records and How Do We Make One
 
 Records (semantically named) are frequently employed to record state or to model information. They employ key-value pairs, with (likely-familar) dot notation for accessing values.

@@ -153,21 +153,7 @@ It is  possible to write functions that work on records as long as they have the
 
 (source: [learnyouanelm-03](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/03-types.md))
 
-
-
-### Record type alias
-
-If I define `type alias Point2D = {x : Float, y : Float}`, then like any type alias `Point2D` becomes a valid type to use in annotations. But because we're aliasing a record, we also gain a *record constructor*, `Point2D : Float -> Float -> Point2D`. For example, `origin = Point2D 0 0` becomes legal, and this is actual Elm code, not an annotation. `Point2D` is both a type and a function.
-
-(source: [elm-for-js](https://github.com/elm-guides/elm-for-js/blob/master/Scope.md))
-
-
-# --- 2 sort ---
-
-#### Records
-
-
-
+#### Pattern matching / destructuring
 
 
 Destructuring
@@ -178,6 +164,17 @@ Destructuring
 ```
 
 (source: [learnyouanelm](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/02-starting-out.md))
+
+### Record type alias
+
+If I define `type alias Point2D = {x : Float, y : Float}`, then like any type alias `Point2D` becomes a valid type to use in annotations. But because we're aliasing a record, we also gain a *record constructor*, `Point2D : Float -> Float -> Point2D`. For example, `origin = Point2D 0 0` becomes legal, and this is actual Elm code, not an annotation. `Point2D` is both a type and a function.
+
+(source: [elm-for-js](https://github.com/elm-guides/elm-for-js/blob/master/Scope.md))
+
+
+# --- 2 sort ---
+
+
 
 
 # Extensible record types

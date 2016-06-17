@@ -271,7 +271,22 @@ Dot notation is not the only way we can access a value on a record. For every fi
 You will never have to write (\book -> book.name); you can use .name newDiaspora without defining anything additional.
 
 (source: [Data Structures in Elm @NoRedInk](http://tech.noredink.com/post/140646140878/data-structures-in-elm))
+----
+Record field names define functions
 
+Any field name is a function if you precede it immediately with a dot (no whitespace). It is a function that takes any type of record with that field, and returns the value of that field. Here's what we can do in the Elm REPL:
+
+```
+> .name
+<function> : { b | name : a } -> a
+> .age
+<function> : { b | age : a } -> a
+> .totallyUnlikelyMadeUpField
+<function> : { b | totallyUnlikelyMadeUpField : a } -> a
+>
+```
+
+(source: [elm-explained](https://github.com/niksilver/elm-explained))
 
 #### Immutable update
 
@@ -530,26 +545,6 @@ If we put all the code above into [an Elm module called ExtensibleRecordTypes](E
 ## -- 2 sort --
 
 
-
-
-
-
-
-## Record field names define functions
-
-Any field name is a function if you precede it immediately with a dot (no whitespace). It is a function that takes any type of record with that field, and returns the value of that field. Here's what we can do in the Elm REPL:
-
-```
-> .name
-<function> : { b | name : a } -> a
-> .age
-<function> : { b | age : a } -> a
-> .totallyUnlikelyMadeUpField
-<function> : { b | totallyUnlikelyMadeUpField : a } -> a
->
-```
-
-(source: [elm-explained](https://github.com/niksilver/elm-explained))
 
 ## Type tags for records are also functions
 

@@ -161,8 +161,40 @@ It is  possible to write functions that work on records as long as they have the
 > style
 "Blue" : String
 ```
-
 (source: [learnyouanelm](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/02-starting-out.md))
+---
+```elm
+myRecord = { x = 3, y = 4 }
+
+sum {x,y} =
+  x + y
+
+sum myRecord
+-- 7
+```
+
+Notice that the variable declared on the left side must match the key of record:
+
+```elm
+sum {a,b} =
+  a + b
+
+sum myRecord
+-- The argument to function `sum` is causing a mismatch.
+```
+
+As long as our variable match one of the key of record, we can ignore other.
+
+```elm
+onlyX {x} =
+  x
+
+onlyX myRecord
+-- 3 : number
+```
+
+(source: [yang-wei gist](https://gist.github.com/yang-wei/4f563fbf81ff843e8b1e))
+
 
 ### Record type alias
 
@@ -194,12 +226,11 @@ By the way, `posA` and `posB` do not have the same type. `posA` is of type `{ x 
 
 (source: [elm-explained](https://github.com/niksilver/elm-explained))
 
-# --- 2 sort ---
 
 
-# Extensible record types
+### Extensible record types
 
-## Defining extensible records
+#### Defining extensible records
 
 We can define a record type that has *at least* the given fields.
 Here we define aliases for two record types.
@@ -218,7 +249,7 @@ Notice that the `IncXY` type has to declare the use of type variable `a`. That's
 (source: [elm-explained](https://github.com/niksilver/elm-explained))
 
 
-## Defining values with extensible record types
+#### Defining values with extensible record types
 
 Here we define a value of type `JustXY` and one of type `IncXY`.
 
@@ -283,41 +314,6 @@ then this is what it looks like in the Elm REPL:
 
 ## -- 2 sort --
 
-
-
-### Destructuring
-
-```elm
-myRecord = { x = 3, y = 4 }
-
-sum {x,y} =
-  x + y
-
-sum myRecord
--- 7
-```
-
-Notice that the variable declared on the left side must match the key of record:
-
-```elm
-sum {a,b} =
-  a + b
-
-sum myRecord
--- The argument to function `sum` is causing a mismatch.
-```
-
-As long as our variable match one of the key of record, we can ignore other.
-
-```elm
-onlyX {x} =
-  x
-
-onlyX myRecord
--- 3 : number
-```
-
-(source: [yang-wei gist](https://gist.github.com/yang-wei/4f563fbf81ff843e8b1e))
 
 #### Nested record
 

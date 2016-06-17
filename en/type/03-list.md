@@ -2,12 +2,16 @@
 
 ## List
 
+If we tried a list like
+`[1,2,'a',3,'b','c',4]`, Elm would complain that characters (which
+are, by the way, denoted as a character between single quotes) are not
+numbers.
+
 Lists are just linked lists (ordered collections where each node of the collection points to the subsequent node, if there is one), where all the values must be same type. You get head and tail, just like you’d expect.
 
 (source: [Data Structures in Elm @NoRedInk](http://tech.noredink.com/post/140646140878/data-structures-in-elm))
 
-A `List` holds a collection of related values separated by commas and enclosed in
-square brackets. All the values in a list must have the same type:
+Lists are denoted by square brackets and the values in the lists are separated by commas.  In Elm, Lists are *homogenous* data structures. All the values in a list must have the same type.
 
 ```elm
 $ elm repl
@@ -134,29 +138,7 @@ List.head [] -- Nothing
 
 ### An intro to lists
 
-Much like shopping lists in the real world, lists in Elm are very useful. It's a common
-used data structure and it can be used in a multitude of different ways
-to model and solve a whole bunch of problems. Lists are SO awesome. In
-this section we'll look at the basics of lists, as well as strings (which are
-similar to lists).
 
-In Elm, lists are a *homogenous* data structure. It stores several
-elements of the same type. That means that we can have a list of
-integers or a list of characters but we can't have a list that has a few
-integers and then a few characters. And now, a list!
-
-
-```elm
-lostNumbers = [4,8,15,16,23,42]
-
-show lostNumbers -- [4,8,15,16,23,42]
-```
-
-As you can see, lists are denoted by square brackets and the values in
-the lists are separated by commas. If we tried a list like
-`[1,2,'a',3,'b','c',4]`, Elm would complain that characters (which
-are, by the way, denoted as a character between single quotes) are not
-numbers.
 
 A common task is putting two lists together. This is done by using the
 `++` operator.

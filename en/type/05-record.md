@@ -264,7 +264,7 @@ format parseTree state =
 If I define `type alias Point2D = {x : Float, y : Float}`, then like any type alias `Point2D` becomes a valid type to use in annotations. But because we're aliasing a record, we also gain a *record constructor*, `Point2D : Float -> Float -> Point2D`. For example, `origin = Point2D 0 0` becomes legal, and this is actual Elm code, not an annotation. `Point2D` is both a type and a function.
 
 (source: [elm-for-js](https://github.com/elm-guides/elm-for-js/blob/master/Scope.md))
-----
+
 ### Naming record types
 
 We can name a record type by tagging it - like this:

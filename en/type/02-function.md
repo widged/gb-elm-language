@@ -76,13 +76,8 @@ $ elm repl
 ### Basics
 
 
-All functions in Elm are _curried_ by default.<br/>
-If you have a function of 2 arguments, it takes one argument and returns a function that takes another argument:
-```elm
--- Both are equal
-myFunction arg1 arg2
-((myFunction arg1) arg2)
 
+```elm
 -- Partial application
 > minus x y = (-) x y
 <function> : number -> number -> number
@@ -92,7 +87,6 @@ myFunction arg1 arg2
 -10 : number
 ```
 
-(source: [learnyouanelm](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/02-starting-out.md))
 
 #### Anonymous
 

@@ -2,15 +2,13 @@
 
 ## Tuples
 
-Tuples are denoted with () and contain comma-separated values. Every element in a tuple can be a different type, but a tuple has a fixed length.
+Tuples are denoted with () and their values are separated by commas. The length is fixed. Tuples they don't have to be *homogenous*. Unlike a list, a tuple can contain a combination of several types.
 
 ```elm
 ("elm", 42)
 ```
 
-Tuples are types but they are dependent on their length as well as the types of their components. (source: [learnyouanelm-03](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/03-types.md))
-
-The type of a tuple records the number of components and each of their types.
+The type of a tuple records the number of components s well as the types of the components..
 
 ```elm
 > (1, "2", True)
@@ -181,9 +179,7 @@ So suppose we wanted to refer to author Neil Gaiman in this text: we might say `
 
 ### Tuples
 
-Tuples, however, are used when you know exactly how many values you want to combine and its type depends on how many components it has and the types of the components. They are denoted with parentheses and their components are separated by commas.
 
-Another key difference is that they don't have to be homogenous. Unlike a list, a tuple can contain a combination of several types.
 
 Think about how we'd represent a two-dimensional vector in Elm. One way would be to use a list. That would kind of work. So what if we wanted to put a couple of vectors in a list to represent points of a shape on a two-dimensional plane? We could do something like `[[1,2],[8,11],[4,5]]`. The problem with that method is that we could also do stuff like `[[1,2],[8,11,5],[4,5]]`, which Elm has no problem with since it's still a list of lists with numbers but it kind of doesn't make sense. But a tuple of size two (also called a pair) is its own type, which means that a list can't have a couple of pairs in it and then a triple (a tuple of size three), so let's use that instead. Instead of surrounding the vectors with square brackets, we use parentheses: `[(1,2),(8,11),(4,5)]`. What if we tried to make a shape like `[(1,2),(8,11,5),(4,5)]`? Well, we'd get this error:
 

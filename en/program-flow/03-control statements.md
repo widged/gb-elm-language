@@ -216,6 +216,15 @@ so we just write a \_.
 
 (source: [learnyouanelm-04](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/04-syntax-in-functions.md))
 
+---
+
+You can pattern match in function definitions when there's only one case. This function takes one tuple rather than two arguments.
+```elm
+area (width, height) = width * height
+area (6, 7) -- 42
+```
+
+
 
 #### on a List
 
@@ -320,6 +329,18 @@ case List.head aList of
 ```elm
 -- Requires the argument with x and y fields
 multiply {x,y} = x * y
+```
+
+Use curly brackets to pattern match record field names.
+Use let to define intermediate values.
+
+```elm
+volume {width, height, depth} =
+  let
+    area = width * height
+  in
+    area * depth
+volume { width = 3, height = 2, depth = 7 } -- 42
 ```
 
 ### Eager execution by default

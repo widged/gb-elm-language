@@ -21,7 +21,7 @@ point = {x = 3.2, y = 2.5}
 
 ### structural type
 
-The type is determined by the names given to the fields. The order of fields doesn't matter. Notice that record values use equals signs, not colons.
+The type is determined by the names given to the fields. The order of fields doesn't matter. 
 
 ```elm
 { x = 3, y = 7 }

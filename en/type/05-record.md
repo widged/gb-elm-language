@@ -118,6 +118,69 @@ midPoint p1 p2 = Point2D ((p1.x + p2.x) / 2) ((p1.y + p2.y) / 2)
 
 See [Type Constructor](11-type constructor.md)
 
+----
+
+#### on records
+
+This becomes a very powerful tool when applied to records as it allows you to define your core models for your view. Consider the following example:
+
+```elm
+type alias User =
+  { name : String
+  , email : Email
+  , age : Int
+  , admin : Bool
+  }
+
+  userView : User -> Html
+  userView user =
+    -- code that renders a view for user ...
+```
+
+Using a type alias we can describe the exact shape of what a user record should be. Our Elm app won’t compile if a user record is missing one of these entries, has an extra entry, or an entry is not the correct type. This ensures that any bugs are caught long before a customer ever sees them.
+
+The compiler sees Ship and Person as the same thing, which is a record with a name field. However, if we later change the shape of Ship, by adding an extra field, they will stop being interchangeable. 
+
+```elm
+iimport Html exposing (div, text, br)
+
+main = div [] 
+  [ text (launch vessel)
+  , br [] []
+  , text (greet captain)
+  , br [] []
+  -- these two function also work, for as long as Ship and Person 
+  -- have the exact same record shape. Add an extra field name to 
+  -- either Ship or Person and you will get a TYPE MISMATCH
+  , text (launch captain)
+  , br [] []
+  , text (greet vessel)
+  ]
+-- I name this ship HMS Splendid
+-- Hello there, Captain Robert Q. Peabody
+-- I name this ship Captain Robert Q. Peabody
+-- Hello there, HMS Splendid
+
+type alias Ship = { name : String }
+type alias Person = { name : String }
+
+vessel : Ship
+vessel = { name = "HMS Splendid" }
+
+captain : Person
+captain = { name = "Captain Robert Q. Peabody" }
+
+launch : Ship -> String
+launch s
+  = "I name this ship " ++ s.name
+
+greet : Person -> String
+greet p
+  = "Hello there, " ++ p.name
+```
+
+If you alias a record, you can use the name as a constructor function.
+
 #### extending another record type
 
 We can define an extensible record type by specifying the fields that must *at least* be present. The syntax is `type alias BaseRecord a = { a | key1 : Type1 , key2 : Type2}` and reads "something of type `a` which also has a field `key1` which is of `Type1` and a field `key2` which is of `Type2`". 

@@ -69,9 +69,6 @@ $ elm repl
 
 `()` is called a unit type. See chapter on [Unit Type](10-unit type.md)
 
-You can also pair up types into tuples, for example (`Int`, `Bool`) . This expands to arbitrarily many elements, i.e. (`Int`, `Float`, `Int`) is a 3-tuple with first element `Int` , second `Float` , third `Int` .
-
-### Tuples of 
 
 ### Creating tuples
 

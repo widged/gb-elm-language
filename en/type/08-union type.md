@@ -15,7 +15,7 @@ East : Repl.Direction
 We define the type `Direction` and we also create and define the values `North`, `East`, `South` and `West`.
 
 
-Tags are handy to defined enumerations but they are not limited to that use. Tags can carry other values of known type. Each tag then becomes a value or function depending on whether it takes any arguments.
+Tags are handy to define simple enumerations. They can also carry other values of known type. Each tag then becomes a value or function depending on whether it takes any arguments.
 
 ```elm
 type CardSuit = Club | Diamond | Spade | Heart
@@ -32,7 +32,11 @@ main = div []
   , br [] []
   , text ( cardValueToName Jack )
   , br [] []
-    , text ( cardValueToName ( Num 3 ) )
+  , text ( cardValueToName ( Num 3 ) )
+  , br [] []
+  , text ( toString firstCard )
+  , br [] []
+  , text ( toString secondCard )
   ]
 -- club
 -- Jack
@@ -56,27 +60,13 @@ cardValueToName value =
     King -> "King"
     Ace -> "Ace"
     Num x -> toString x
+    
+type alias Card = (CardValue, CardSuit)
+firstCard = (Jack, Diamond)
+secondCard = ((Num 4), Heart)
 ```
 
-_Union types_ are tightly coupled with [case-of](#case-of) statement. It's the tags, not the parent type, that are matched against `case` statements. The compiler expects an exhaustive match, that is all tags must be accounted for. 
 
-
-```elm
-type alias Point = { x : Float, y : Float }
-
-type Shape
-  = Circle Point Float
-  | Rectangle Point Point
-
-area : Shape -> Float
-area shape =
-  case shape of
-    Circle center radius ->
-      pi * radius ^ 2
-
-    Rectangle corner1 corner2 ->
-      abs (corner1.x - corner2.x) * abs (corner1.y - corner2.y)
-```
 
 Tags can work recursively.
 
@@ -120,143 +110,55 @@ leftmostElement tree =
 
 (source: [elm-for-js](https://github.com/elm-guides/elm-for-js/blob/master/Scope.md) and [learnyouanelm-03](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/03-types.md))
 
-Although less common, it's possible to define a union type with a tag the same name as the type. In that case, that name would be both a type and a value or function.
 
+### Special Cases
 
-### Enumerations
-
-
-
-
-### More elaborate union types
-
-Union types also allow us to use more complex constructors.
-The `Character` type defined next is a simple enumeration, but
-the `Card` type is a mix of tagged `Value` and tagged `String` types.
+#### warning
 
 ```elm
-type Character = Ace | King | Queen | Jack
-type Value = Pips Int | Name Character
-type Card = Heart Value
-    | Diamond Value
-    | Club Value
-    | Spade Value
-    | Joker String
-
-d10 = Diamond (Pips 10)
-hking = Heart (Name King)
-joker1 = Joker "Laughing Jeremy"
+-- oddly enough, the compiler doesn't complain at this
+type BadIdeas = Int | Float`
+-- but this you should always declare an entirely new tag and specify a value type
+type RightWay = ANewTag Int | AnotherNewTag Float
 ```
 
-Let's look at the values' types:
 
-```
-> import UnionTypes exposing (..)
-> d10
-Diamond (Pips 10) : UnionTypes.Card
-> hking
-Heart (Name King) : UnionTypes.Card
-> joker1
-Joker ("Laughing Jeremy") : UnionTypes.Card
->
-```
+#### Type name different from tag name
 
-(source: [elm-explained](https://github.com/niksilver/elm-explained))
+It is possible to define a union type with a tag the same name as the type. In that case, that name would be both a type and a value or function.
 
-### Union types must create new tags
-
-For a union type to be valid, all the types in the union
-must be creating a new type. So we can't do (say)
+This only makes sense when there is a single tag.
 
 ```elm
-type Counter = Int | { name : String, c : Int}
+type Weight = Weight Int
+
+star1 : Weight
+star1 = Weight 100
 ```
 
-But we can do this if `AnonCounter` and `NamedCounter` are entirely
-new and haven't been defined already
+### Pattern matching / Destructuring
+
+_Union types_ are tightly coupled with [case-of](#case-of) statement. It's the tags, not the parent type, that are matched against `case` statements. The compiler expects an exhaustive match, that is all tags must be accounted for. 
+
 
 ```elm
-type Counter = AnonCounter Int | NamedCounter { name : String, c : Int }
+type alias Point = { x : Float, y : Float }
+
+type Shape
+  = Circle Point Float
+  | Rectangle Point Point
+
+area : Shape -> Float
+area shape =
+  case shape of
+    Circle center radius ->
+      pi * radius ^ 2
+
+    Rectangle corner1 corner2 ->
+      abs (corner1.x - corner2.x) * abs (corner1.y - corner2.y)
 ```
 
-See also
-[Evan Czaplicki's discussion of union types](https://gist.github.com/evancz/06fe634245a3aab4a61b)
 
-(source: [elm-explained](https://github.com/niksilver/elm-explained))
-
-### It's okay to have a single tag
-
-### Type name different from tag name
-
-We can have the type declaration (the tag)
-different from the definition, oddly.
-What is the value of this?
-
-```elm
-type Laurel = Hardy Int
-
-star1 : Laurel
-star1 = Hardy 100
-```
-
-### Destructuring
-
-Again, thanks to @robertjlooby, we can even destruct the arguments of union type.
-
-```elm
-type MyThing
-  = AString String
-  | AnInt Int
-  | ATuple (String, Int)
-
-unionFn : MyThing -> String
-unionFn thing =
-  case thing of
-    AString s -> "It was a string: " ++ s
-    AnInt i -> "It was an int: " ++ toString i
-    ATuple (s, i) -> "It was a string and an int: " ++ s ++ " and " ++ toString i
-```
-(source: [yang-wei gist](https://gist.github.com/yang-wei/4f563fbf81ff843e8b1e))
-
-You can destructure nested values in tagged union types:
-
-```elm
-type MyThing
-  = AString String
-  | AnInt Int
-  | ATuple (String, Int)
-
-unionFn : MyThing -> String
-unionFn thing =
-  case thing of
-    AString s -> "It was a string: " ++ s
-    AnInt i -> "It was an int: " ++ toString i
-    ATuple (s, i) -> "It was a string and an int: " ++ s ++ " and " ++ toString i
-```
-
-(source: [comment on yang-wei gist](https://gist.github.com/yang-wei/4f563fbf81ff843e8b1e))
-
-
-Exact values of comparables can be used to match when destructuring (also works with String, Char, etc. and any Tuple/List/union type built up of them) :
-
-```elm
-f : Maybe Int -> String
-f n =
-  case n of
-    Just 42 -> "You got it!"
-    Just 41 -> "Almost!"
-    Just _ -> "Nope!"
-    Nothing -> "You have to at least try!"
-The full value that is matched can be bound with the as keyword:
-
-f : (Int, Int) -> String
-f point =
-  case point of
-    (0, _) as thePoint -> toString thePoint ++ " is on the x axis"
-    _ as thePoint-> toString thePoint ++ " is not on the x axis"
-```
-
-(source: [comment on yang-wei gist](https://gist.github.com/yang-wei/4f563fbf81ff843e8b1e))
 
 Another case union types with only one member:
 
@@ -395,4 +297,10 @@ type AThing = AThing { foo: String, bar: Int }
 foo (AThing { foo }) = foo
 ```
 (source: [comment on yang-wei gist](https://gist.github.com/yang-wei/4f563fbf81ff843e8b1e))
+
+### Further Reading
+
+- [Evan Czaplicki's discussion of union types](https://gist.github.com/evancz/06fe634245a3aab4a61b)
+- [elm-explained](https://github.com/niksilver/elm-explained)
+- [understanding-the-elm-type-system.html](http://www.adamwaselnuk.com/elm/2016/05/27/understanding-the-elm-type-system.html)
 

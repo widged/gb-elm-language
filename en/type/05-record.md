@@ -150,42 +150,50 @@ origin3D = { x = 0, y = 0, z = 0 }
 Note that extensible types have no constructor function attached.
 
 ```elm
+> type alias Point a = { a | x : Float , y : Float}
+> Point
+-- NAMING ERROR ---------------------------------------------- repl-temp-000.elm
+Cannot find variable `Point`
+> type alias Point3D = Point { z : Float }
+> Point3D
+-- NAMING ERROR ---------------------------------------------- repl-temp-000.elm
+Cannot find variable `Point3D`
+```
+
+Or in the program provided before. 
+
+```elm
 $ open http://elm-lang.org/try
 import Html exposing (div, text, br)
-main = text (toString ( midPoint2D { x = 1, y = 10} { x = 3, y = 7}) )
--- { x = 2, y = 8.5 }
--- Point2D 0 0 -- Cannot find variable `Point2D`, Point2D is a type, not a constructor
+main = div []
+  [ text (toString ( midJustX { x = 1, y = 10} { x = 3, y = 7}) )
+  , br [] []
+  , text (toString ( midJustX (PointJust 1 10) (PointJust 3 7) ) )
+  , br [] []
+  , text (toString ( midExtX { x = 1, y = 10} { x = 3, y = 7}) )
+  , br [] []
+  , text (toString ( midExtX (PointJust 1 10) (PointJust 3 7) ) )
+  , br [] []
+  , text (toString ( midExtX { x = 1, y = 10, z = 4} { x = 3, y = 7, z = 8}) )
+  ]
+-- 2
+-- Point2D 0 0 --> Cannot find variable `Point2D`, Point2D is a type, not a constructor
+-- midJustX { x = 1, y = 10, z = 4} { x = 3, y = 7, z = 8}) --> TYPE MISMATCH 
 
-type alias Point a = { a | x : Float , y : Float}
+type alias PointExt a = { a | x : Float , y : Float}
+type alias PointJust = { x : Float , y : Float}
 
-type alias Point2D = Point {}
-origin2D : Point2D 
-origin2D = { x = 0, y = 0}
+type alias Point2D = PointExt {}
+type alias Point3D = PointExt {z : Float}
 
-midPoint2D : Point2D -> Point2D -> Point2D
-midPoint2D p1 p2 = {x = ((p1.x + p2.x) / 2), y = ((p1.y + p2.y) / 2)}
+midExtX : PointExt a -> PointExt a -> Float
+midExtX p1 p2 = ((p1.x + p2.x) / 2)
+
+midJustX : PointJust -> PointJust -> Float
+midJustX p1 p2 = ((p1.x + p2.x) / 2)
 ```
 
 
-```elm
-sumJust : JustXY -> Float
-sumJust coords =
-    coords.x + coords.y
-
-sumInc : IncXY a -> Float
-sumInc coords =
-    coords.x + coords.y
-```
-
-Here's how we can (and can't) use them:
-
-```elm
-res1 = sumJust jxy
--- This next line won't compile if we uncomment it
--- res2 = sumJust ixy
-res3 = sumInc ixy
-res4 = sumInc jxy
-```
 
 If we put all the code above into [an Elm module called ExtensibleRecordTypes](ExtensibleRecordTypes.elm) then this is what it looks like in the Elm REPL:
 

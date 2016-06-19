@@ -122,7 +122,6 @@ See [Type Constructor](11-type constructor.md)
 
 We can define an extensible record type by specifying the fields that must *at least* be present. The syntax is `type alias BaseRecord a = { a | key1 : Type1 , key2 : Type2}` and reads "something of type `a` which also has a field `key1` which is of `Type1` and a field `key2` which is of `Type2`". 
 
-
 ```elm
 $ open http://elm-lang.org/try
 import Html exposing (div, text, br)
@@ -175,6 +174,8 @@ main = div []
   , text (toString ( midExtX (PointJust 1 10) (PointJust 3 7) ) )
   , br [] []
   , text (toString ( midExtX { x = 1, y = 10, z = 4} { x = 3, y = 7, z = 8}) )
+  , br [] []
+  , text (toString ( midExtX fst3D { x = 3, y = 7, z = 8}) )
   ]
 -- 2
 -- Point2D 0 0 --> Cannot find variable `Point2D`, Point2D is a type, not a constructor
@@ -184,38 +185,16 @@ type alias PointExt a = { a | x : Float , y : Float}
 type alias PointJust = { x : Float , y : Float}
 
 type alias Point2D = PointExt {}
-type alias Point3D = PointExt {z : Float}
 
 midExtX : PointExt a -> PointExt a -> Float
 midExtX p1 p2 = ((p1.x + p2.x) / 2)
 
 midJustX : PointJust -> PointJust -> Float
 midJustX p1 p2 = ((p1.x + p2.x) / 2)
+
+fst3D : PointExt { z : Float }
+fst3D = { x = 1, y = 10, z = 4}
 ```
-
-
-
-If we put all the code above into [an Elm module called ExtensibleRecordTypes](ExtensibleRecordTypes.elm) then this is what it looks like in the Elm REPL:
-
-```
-> import ExtensibleRecordTypes exposing (..)
-> ixy
-{ x = 10.1, y = 11.1, z = 12.1 } : ExtensibleRecordTypes.IncXY { z : Float }
-> jxy
-{ x = 1.1, y = 2.1 } : ExtensibleRecordTypes.JustXY
-> res1
-3.2 : Float
-> res3
-21.2 : Float
-> res4
-3.2 : Float
->
-```
-
-(source: [elm-explained](https://github.com/niksilver/elm-explained))
-
-#### Defining values with extensible record types
-
 
 
 ### Creating a record

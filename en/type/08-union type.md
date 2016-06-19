@@ -3,7 +3,7 @@
 ## Union Types
 
 
-A union type defines a custom type that can be one of many possibilities. Each of the possibilities is represented as a "tag". 
+A union type defines a custom type that represents the possibility of multiple types. Each of the possibilities is represented as a "tag". 
 
 ```elm
 $ elm repl
@@ -113,7 +113,7 @@ leftmostElement tree =
 
 ### Special Cases
 
-#### warning
+#### only new tags should be used
 
 ```elm
 -- oddly enough, the compiler doesn't complain at this
@@ -122,8 +122,7 @@ type BadIdeas = Int | Float`
 type RightWay = ANewTag Int | AnotherNewTag Float
 ```
 
-
-#### Type name different from tag name
+#### type name is typically different from tag name
 
 It is possible to define a union type with a tag the same name as the type. In that case, that name would be both a type and a value or function.
 
@@ -136,9 +135,39 @@ star1 : Weight
 star1 = Weight 100
 ```
 
+The alternative is a bit weird.
+
+```elm
+type Weight = AWeight Int
+weightValue : Weight -> Int
+weightValue  (AWeight a) = a
+```
+
+#### tags with record values don't get accessor functions
+
+```elm
+> type User = AUser { first: String, last: String, age: Int }
+> user = AUser { first = "Jane", last = "Doe", age = 42 }
+AUser { first = "Jane", last = "Doe", age = 42 } : Repl.User
+> user.foo
+-- TYPE MISMATCH --------------------------------------------- repl-temp-000.elm
+
+`user` is being used in an unexpected way.
+
+6|   user.foo
+     ^^^^
+Based on its definition, `user` has this type:
+
+    User
+
+But you are trying to use it as:
+
+    { b | foo : a }
+```
+
 ### Pattern matching / Destructuring
 
-_Union types_ are tightly coupled with [case-of](#case-of) statement. It's the tags, not the parent type, that are matched against `case` statements. The compiler expects an exhaustive match, that is all tags must be accounted for. 
+_Union types_ are tightly coupled with a [case-of](#case-of) statement. It's the tags, not the parent type, that are matched against `case` statements. 
 
 
 ```elm
@@ -158,40 +187,8 @@ area shape =
       abs (corner1.x - corner2.x) * abs (corner1.y - corner2.y)
 ```
 
+The compiler expects an exhaustive match, that is all tags must be accounted for. If you leave one out, the Elm compiler will complain. 
 
-
-Another case union types with only one member:
-
-```elm
-type MyThing
-  = AString String
-
-
-unionFn : MyThing -> String
-unionFn  (AString a) = a
-```
-
-(source: [comment on yang-wei gist](https://gist.github.com/yang-wei/4f563fbf81ff843e8b1e))
-
-#### Exporting and Importing Union Types
-
-Union types have a little bit of special treatment when it comes to imports and exports. Let's start with a simple union type, which you might find in a counter demo.
-
-`type Action = Increment | Decrement`
-
-Remember that `Increment` and `Decrement` are called "tags". How would we export this type?
-
-`module MyModule exposing (Action)` exports `Action` only. That is called an *opaque type*. Clients can see that `Action` exists, but they can't see into it. This is frequently what you want, and we'll talk about it more in the next section.
-
-`module MyModule exposing (Action(..))` exports `Action` and all of its tags, namely `Increment` and `Decrement`. This form can be useful sometimes if you can commit to keeping `Action` the same. A good example is a [nonempty list](http://package.elm-lang.org/packages/mgold/elm-nonempty-list/latest/List-Nonempty#Nonempty); there will never be a reason to change the type's definition so the tag can be safely exported.
-
-`module MyModule (Action(Increment, Decrement)) where` exports `Action` and only the listed tags. In this case it's listing all the tags explicitly. It's possible to only export *some* of the tags, but there is no reason to do this, ever.
-
-The trouble with exporting tags is not only that you may want to remove some, which will break any code that relies on the ones being removed. Even adding tags will break code, because previously exhaustive pattern matches are no longer exhaustive. If only some of the tags are exported, it's impossible to write a valid `case` statement (at least not without a `_ ->` pattern, which are discouraged).
-
-Importing union types exposed follows the exact same syntax. For example, `import MyModule exposing (Action)` will import only the type, while `import MyModule exposing (Action(..))` will import any exported tags as well. You can also use exported tags qualified, like `MyModule.Increment`.
-
-(source: [elm-for-js](https://github.com/elm-guides/elm-for-js/blob/master/Modules,%20Exports,%20and%20Imports.md))
 
 #### Opaque Types
 
@@ -249,58 +246,33 @@ age person =
 
 (source: [elm-for-js](https://github.com/elm-guides/elm-for-js/blob/master/Modules,%20Exports,%20and%20Imports.md))
 
-With tagged unions, you can define a type that represents the possibility of multiple types. This is one of the key features that supports the Elm architecture. A tagged union will typically be paired with a case statement to build out a function that offers multiple paths through which your program can update. The name sounds strange but the code is simple, and the type system will support you every step of the way. Here is an example:
 
-```elm
-type User = SuperAdmin | Admin | Basic
-
-userPhoto : User -> String
-userPhoto user =
-  case user of
-    SuperAdmin ->
-      "thassa.png"
-
-    Admin ->
-      "jace.png"
-
-    Basic ->
-      "merfolk.png"
-```
+ 
 
 
-This basic example only scratches the surface of how helpful these types can be. The Elm compiler is there to guide you towards accounting for every scenario so that your customers won’t encounter errors at runtime. Watch what happens when you remove one of the branches from the case statment and try to compile:
 
-```elm
-type User = SuperAdmin | Admin | Basic
+#### Exporting and Importing Union Types
 
-userPhoto : User -> String
-userPhoto user =
-  case user of
-    Admin ->
-      "jace.png"
+Union types have a little bit of special treatment when it comes to imports and exports. 
 
-    Basic ->
-      "merfolk.png"
-```
+`type Msg = Increment | Decrement`
 
-The Elm compiler notices when you don't account for all cases. Imagine the power of this when you are working on a code base with multiple modules, or multiple programmers, or when you haven’t looked at the code in a while. Tagged unions are outlined in greater detail in the Elm docs.
+`module MyModule exposing (Msg)` exports `Msg` only. That is called an *opaque type*. Clients can see that `Action` exists, but they can't see into it. This is frequently what you want, and we'll talk about it more in the next section.
 
-(source: [understanding-the-elm-type-system.html](http://www.adamwaselnuk.com/elm/2016/05/27/understanding-the-elm-type-system.html))
+`module MyModule exposing (Action(..))` exports `Action` and all of its tags, namely `Increment` and `Decrement`. This form can be useful sometimes if you can commit to keeping `Action` the same. A good example is a [nonempty list](http://package.elm-lang.org/packages/mgold/elm-nonempty-list/latest/List-Nonempty#Nonempty); there will never be a reason to change the type's definition so the tag can be safely exported.
 
-### Opaque type
+`module MyModule (Action(Increment, Decrement)) where` exports `Action` and only the listed tags. In this case it's listing all the tags explicitly. It's possible to only export *some* of the tags, but there is no reason to do this, ever.
 
-Record-like opaque types don't get the magical accessor functions
+The trouble with exporting tags is not only that you may want to remove some, which will break any code that relies on the ones being removed. Even adding tags will break code, because previously exhaustive pattern matches are no longer exhaustive. If only some of the tags are exported, it's impossible to write a valid `case` statement (at least not without a `_ ->` pattern, which are discouraged).
 
-```elm
-type AThing = AThing { foo: String, bar: Int }
+Importing union types exposed follows the exact same syntax. For example, `import MyModule exposing (Action)` will import only the type, while `import MyModule exposing (Action(..))` will import any exported tags as well. You can also use exported tags qualified, like `MyModule.Increment`.
 
-foo (AThing { foo }) = foo
-```
-(source: [comment on yang-wei gist](https://gist.github.com/yang-wei/4f563fbf81ff843e8b1e))
+(source: [elm-for-js](https://github.com/elm-guides/elm-for-js/blob/master/Modules,%20Exports,%20and%20Imports.md))
 
 ### Further Reading
 
 - [Evan Czaplicki's discussion of union types](https://gist.github.com/evancz/06fe634245a3aab4a61b)
 - [elm-explained](https://github.com/niksilver/elm-explained)
-- [understanding-the-elm-type-system.html](http://www.adamwaselnuk.com/elm/2016/05/27/understanding-the-elm-type-system.html)
+- [understanding-the-elm-type-system](http://www.adamwaselnuk.com/elm/2016/05/27/understanding-the-elm-type-system.html)
+
 

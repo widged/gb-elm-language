@@ -97,7 +97,7 @@ $ elm repl
 
 This creates a *record constructor* that is both a function and a type. 
 
-The function can be used to construct new records. 
+The constructor act as multi-parameter functions to construct records. 
 
 ```elm
 $ elm repl
@@ -107,27 +107,23 @@ $ elm repl
 { x = 0, y = 0 } : Repl.Point2D
 ```
 
-The type can be used in signature, in place of all required fields.  
+The type can be used in type signatures, in place of all required fields.  
 
+```elm
+open http://elm-lang.org/try
+import Html exposing (div, text, br)
+main = text ( toString ( midPoint (Point2D 1 10)  (Point2D 5 7) ) )
+-- { x = 3, y = 8.5 }
+type alias Point2D = {x : Float, y : Float}  
+midPoint : Point2D -> Point2D -> Point2D
+midPoint p1 p2 = Point2D ((p1.x + p2.x) / 2) ((p1.y + p2.y) / 2) 
+```
 
 See [Type Constructor](11-type constructor.md)
 
 
-
-Now we can use Point2D in type signatures, rather than writing out all three requisite fields. We can also use the LibraryEntry as a constructor. LibraryEntry takes three arguments, in order: name, author, and readByMe. It will hand us back a record of the form we desire.
-
-```elm
-wutheringHeights =
-    LibraryEntry "Wuthering Heights" "Bronte" True
-
-diaspora =
-    LibraryEntry "Diaspora" "Egan" False
-```    
-As you can imagine, this pattern comes in very handy when there is a great deal of data to model, or when there are many records that you’d like to create that should all share the same type.
-
-(source: [Data Structures in Elm @NoRedInk](http://tech.noredink.com/post/140646140878/data-structures-in-elm))
 ---
-Type aliases for records act as multi-parameter functions
+
 
 If we have a type alias for a record then that also acts as a function, but in a different way from a type declaration. Let's define a type alias...
 
@@ -569,5 +565,7 @@ If we put all the code above into [an Elm module called ExtensibleRecordTypes](E
 [records](http://elm-lang.org/docs/syntax#records) has a number of operations without much explanation. 
 
 ### Further Readings
+
+* [Data Structures in Elm @NoRedInk](http://tech.noredink.com/post/140646140878/data-structures-in-elm)
 
 The first iteration of the Elm record was based heavily on (‘Extensible records with scoped labels’ by Daan Leijen), and many features of the Elm record reflect Leijen’s work. The paper is well worth a read for those interested in modeling data. However, the paper’s titular descriptors–“extensible”, “with scoped labels”–no longer apply to Elm records. [I]n practice, developers did not find Extensibility (or restrictability) useful, and extensibility of record values was removed. (source: [Data Structures in Elm @NoRedInk](http://tech.noredink.com/post/140646140878/data-structures-in-elm))

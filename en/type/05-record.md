@@ -147,7 +147,7 @@ origin3D : Point3D
 origin3D = { x = 0, y = 0, z = 0 }
 ```
 
-Note that variables created that way are type definitions. They have no constructor function attached.
+Note that extensible types have no constructor function attached.
 
 ```elm
 $ open http://elm-lang.org/try

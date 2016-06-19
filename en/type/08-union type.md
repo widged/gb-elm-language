@@ -1,4 +1,4 @@
-**Elm 0.??**, **copied, please ignore** 
+**Elm 0.17**, **copied, please ignore** 
 
 ## Union Types
 
@@ -434,3 +434,15 @@ userPhoto user =
 The Elm compiler notices when you don't account for all cases. Imagine the power of this when you are working on a code base with multiple modules, or multiple programmers, or when you haven’t looked at the code in a while. Tagged unions are outlined in greater detail in the Elm docs.
 
 (source: [understanding-the-elm-type-system.html](http://www.adamwaselnuk.com/elm/2016/05/27/understanding-the-elm-type-system.html))
+
+### Opaque type
+
+Record-like opaque types don't get the magical accessor functions
+
+```elm
+type AThing = AThing { foo: String, bar: Int }
+
+foo (AThing { foo }) = foo
+```
+(source: [comment on yang-wei gist](https://gist.github.com/yang-wei/4f563fbf81ff843e8b1e))
+

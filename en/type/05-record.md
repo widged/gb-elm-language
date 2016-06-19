@@ -149,7 +149,7 @@ myRecord = { first = "Jane", last = "Doe", age = 42, gender = "female" }
 
 ### Operations on records
 
-#### Accessing
+#### accessing
 
 Use `record.key` or `.key record` to access the fields of a record. 
 
@@ -161,7 +161,7 @@ $ elm repl
 7 : number
 ```
 
-Uniquely these functions are defined by a pattern.
+Uniquely these functions are defined by a pattern. Any field name is a function if you precede it immediately with a dot (no whitespace).
 
 ```elm
 $ elm repl
@@ -171,77 +171,21 @@ $ elm repl
 <function> : { b | aPatternThanElmKnowsNothingAbout : a } -> a
 ```
 
-#### getting and setting on Records
+#### updating, the immutable way
 
-Now we have wutheringHeights and diaspora, representing books in our library. But wait! I actually read Diaspora by Egan two weeks ago. We need to update the readByMe field.
+Updating records follows this pattern: `newRecordName = { oldRecordName | fieldName = newFieldValue }`. The fields must exist. 
 
 ```elm
-{-
-
-Updating records follows this pattern:
-
-newRecordName =
-    { oldRecordName | fieldName = newFieldValue }
-
--}
-
-newDiaspora =
-    { diaspora | readByMe = True }
+> unidentifiedPerson = { first = "Jane", last = "Doe", age = 42, gender = "female" }
+{ first = "Jane", last = "Doe", age = 42, gender = "female" }
+    : { age : number, first : String, gender : String, last : String }
+> identifiedPerson  = { myRecord | first = "Erica", last = "Urban" }
+{ first = "Erica", last = "Urban", age = 42, gender = "female" }
+    : { age : number, gender : String, first : String, last : String }
 ```    
 
-Note that diaspora is unchanged by this operation: diaspora.readByMe == False and newDiaspora.readByMe == True.
+Because records are immutable, we return a new record. 
 
-Dot notation is not the only way we can access a value on a record. For every field name on a record, we are given a corresponding accessor function named after the field. For example: .readByMe diaspora == False and .readByMe newDiaspora == True.
-
-You will never have to write (\book -> book.name); you can use .name newDiaspora without defining anything additional.
-
-(source: [Data Structures in Elm @NoRedInk](http://tech.noredink.com/post/140646140878/data-structures-in-elm))
-----
-Record field names define functions
-
-Any field name is a function if you precede it immediately with a dot (no whitespace). It is a function that takes any type of record with that field, and returns the value of that field. Here's what we can do in the Elm REPL:
-
-```
-> .name
-<function> : { b | name : a } -> a
-> .age
-<function> : { b | age : a } -> a
-> .totallyUnlikelyMadeUpField
-<function> : { b | totallyUnlikelyMadeUpField : a } -> a
->
-```
-
-(source: [elm-explained](https://github.com/niksilver/elm-explained))
-
-#### Immutable update
-
-To copy a record but with some fields different, use
-{ old_record | key1 <- new_value_1, ..., key_n <- new_value_n }
-
-Update the fields of a record. (It must have the fields already.)
-
-```elm
-{ person | name = "George" }
-```
-
-Update multiple fields at once, using the current values.
-
-```elm
-{ particle |
-  position = particle.position + particle.velocity,
-  velocity = particle.velocity + particle.acceleration }
-```
-
-(source: ???)
----
-Records are immutable. Updating records returns a new record
-```elm
-> updatedRecord = { myRecord | style = "Red", number = 10, isCool = False }
-> myRecord.style
-"Blue" : String
-> updatedRecord.style
-"Red" : String
-```
 
 
 #### Specifying only some fields

@@ -3,13 +3,19 @@
 ## Union Types
 
 
-A union type defines a custom type that can be one of many possibilities. Each of the possibilities is represented as a "tag".
+A union type defines a custom type that can be one of many possibilities. Each of the possibilities is represented as a "tag". 
 
 ```elm
-type Direction = North | South | East | West
+$ elm repl
+> type Direction = North | South | East | West
+> East
+East : Repl.Direction
 ```
 
-Tags can carry other values of known type. Each tag then becomes a value or function depending on whether it takes any arguments.
+We define the type `Direction` and we also create and define the values `North`, `East`, `South` and `West`.
+
+
+Tags are handy to defined enumerations but they are not limited to that use. Tags can carry other values of known type. Each tag then becomes a value or function depending on whether it takes any arguments.
 
 ```elm
 type CardSuit = Club | Diamond | Spade | Heart
@@ -52,9 +58,8 @@ cardValueToName value =
     Num x -> toString x
 ```
 
-They can accept multiple arguments. 
+_Union types_ are tightly coupled with [case-of](#case-of) statement. It's the tags, not the parent type, that are matched against `case` statements. The compiler expects an exhaustive match, that is all tags must be accounted for. 
 
-_Union types_ are tightly coupled with [case-of](#case-of) statement. It's the tags, not the parent type, that are matched against `case` statements.
 
 ```elm
 type alias Point = { x : Float, y : Float }
@@ -81,8 +86,19 @@ root : IntTree
 root = Node 7 Leaf Leaf
 ```
 
-They can use type variables.
+_Union types_ can also use type variables
 
+```elm
+type Person a
+  = Name String
+  | Surname String
+  | Age Int
+  | About a
+```
+
+(source: [learnyouanelm](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/02-starting-out.md))
+
+Or
 ```elm
 type Tree a = Leaf | Node a (Tree a) (Tree a)
 Leaf : Tree a
@@ -106,72 +122,10 @@ leftmostElement tree =
 
 Although less common, it's possible to define a union type with a tag the same name as the type. In that case, that name would be both a type and a value or function.
 
--------
-
-
-Tags bring additional information, after tag itself comes a type or multiple types.
-```elm
-type Movement
-    = Right Int
-    | Left Int
-    | Stop Bool
-    | Coordinates (Float, Float)
-
--- passing to the function
-myFunction ( Coordinates (45.7, 67.5) )
-```
-
-_Union types_ can also have type variables
-```elm
-type Person a
-  = Name String
-  | Surname String
-  | Age Int
-  | About a
-```
-
-(source: [learnyouanelm](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/02-starting-out.md))
-
 
 ### Enumerations
 
-A simple union type allows us to define an enumeration, like this
 
-```elm
-type Direction = North | East | South | West
-```
-
-In the above example we've defined the type `Direction`, but we've also
-created and defined the values `North`, `East`, `South` and `West`.
-If we put this code into
-[UnionTypes.elm](UnionTypes.elm)
-then we can use them like this in the REPL:
-
-```
-> import UnionTypes exposing (..)
-> East
-East : UnionTypes.Direction
->
-```
-
-You can see that `East` is a value, and it has type `Direction`.
-
-Here's an example of using this
-
-```elm
-describe : Direction -> String
-describe dir
-    = case dir of
-        North -> "Cold"
-        East -> "Arid"
-        South -> "Hot"
-        West -> "Humid"
-```
-
-Note that the code above won't compile if we miss out one of the directions,
-because the compiler expects an exhaustive match.
-
-(source: [elm-explained](https://github.com/niksilver/elm-explained))
 
 
 ### More elaborate union types

@@ -6,17 +6,25 @@
 
 In Elm, value types are absolutely static. If a value is expected to be of type `String`, then the compiler will complain whenever a value of a different type is assigned. A difficulty, then, is to find a way to express a value that has not yet been defined. Using an empty string to denote a value not yet defined is bound to bite us sooner or later. 
 
-We need to be able represent optional values and since Elm types are static we need a single type to represent the possible absence of the `Int` we are trying to find. `Maybe` is that type. The `Maybe` type fully describes the presence of an optional value.
+We need to be able represent optional values and since Elm types are static we need a single type to represent the possible absence of the `Int` we are trying to find. `Maybe` is that type. It is a _Union Type_ that fully describes the presence of an optional value.
 
 ```elm
+$ elm repl
 -- Takes an argument that can be filled with any value
-type Maybe a = Just a | Nothing
+> type Maybe a = Just a | Nothing
+> Just "hello"
+Just "hello" : Maybe.Maybe String
+> Nothing
+Nothing : Maybe.Maybe a
 ```
+
+Think of `Nothing` as a way to indicate when there's no correct value to return, and `Just` as a way to show that we could return a value.
+
 ### Examples
 
 #### elm functions
 
-`List.head` or `List.tail` return `Nothing` for an empty list and `Maybe a` for a non empty one. 
+`List.head` or `List.tail` return `Nothing` for an empty list and `Just a` for a non empty one. 
 
 ```elm
 $ elm repl
@@ -33,6 +41,8 @@ Nothing : Maybe.Maybe (List a)
 ```
 #### handling Maybe values
 
+You have to use a case expression to ensure that you have covered all possibilities.
+
 ```elm
 type alias User = { name : String , age : Maybe In }
 
@@ -48,6 +58,8 @@ canBuyAlcohol user =
 
 #### returning Maybe values
 
+If you want to have a Maybe value, you have to use the Nothing or Just constructors to create it. 
+
 ```elm
 getId : Int -> Maybe Int
 getId id =
@@ -57,41 +69,6 @@ getId id =
     Nothing
 ```
 (source: [learnyouanelm](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/02-starting-out.md))
-
-
----
-
-
-
-
-What is `Nothing`? And why did `Listhead` return `Just 5` before? Think of `Nothing` as a way to indicate when there's no correct value to return, and `Just` as a way to show that we could return a value in a place where `Nothing` could have also been returned.
-
-
-### Maybe
-
-It is best to just start with the definition of Maybe. It is a union type just like in all the examples here. It is defined like this:
-
-```elm
-> type Maybe a = Nothing | Just a
-
-> Nothing
-Nothing : Maybe a
-
-> Just
-<function> : a -> Maybe a
-
-> Just "hello"
-Just "hello" : Maybe String
-
-> Just 1.618
-Just 1.618 : Maybe Float
-```
-
-If you want to have a Maybe value, you have to use the Nothing or Just constructors to create it. This means that to deal with the data, you have to use a case expression. This means the compiler can ensure that you have definitely covered both possibilities!
-
-There are two major cases where you will see Maybe values.
-
-(source: [an introduction to elm](https://evancz.gitbooks.io/an-introduction-to-elm/content/error_handling/maybe.html))
 
 
 ### Optional Fields
@@ -847,3 +824,6 @@ or some `Ok` data.
 
 What do you think is the type of the List `length` function? Because `length` takes a list of any type and returns either `Just` the first element or `Nothing`, so what could it be? Let's check!
 
+### Further Readings
+
+* [an introduction to elm](https://evancz.gitbooks.io/an-introduction-to-elm/content/error_handling/maybe.html)

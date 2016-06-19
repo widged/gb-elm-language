@@ -171,7 +171,7 @@ $ elm repl
 <function> : { b | aPatternThanElmKnowsNothingAbout : a } -> a
 ```
 
-#### Getting and Setting on Records
+#### getting and setting on Records
 
 Now we have wutheringHeights and diaspora, representing books in our library. But wait! I actually read Diaspora by Egan two weeks ago. We need to update the readByMe field.
 

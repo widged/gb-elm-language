@@ -59,33 +59,6 @@ True : Bool
 -- TYPE MISMATCH --------------------------------------------- repl-temp-000.elm
 ```    
 
-#### extending another record type
-
-```elm
-$ open http://elm-lang.org/try
-import Html exposing (text)
-main = text (toString wutheringHeightsWithISBN)
-
-type alias LibraryEntry a = { a | name : String , author : String , readByMe : Bool }
-type alias LibraryEntryWithISBN = LibraryEntry { isbn : String }
-
-wutheringHeightsWithISBN : LibraryEntryWithISBN 
-
-wutheringHeightsWithISBN = { name = "Wuthering Heights", author = "Bronte" , readByMe = True , isbn = "1853260010" }
-```
-(source: [Data Structures in Elm @NoRedInk](http://tech.noredink.com/post/140646140878/data-structures-in-elm))
-
-
-### Creating a record
-
-#### key-value pairs
-
-The typical way to create a record is to write key-value pairs
-
-```elm
-myRecord = { first = "Jane", last = "Doe", age = 42, gender = "female" }
-```
-
 #### naming record types
 
 If we are planning to create more than one record with the same fields on it, we can create a type alias that describes the shape of these records. 
@@ -146,6 +119,34 @@ midPoint p1 p2 = Point2D ((p1.x + p2.x) / 2) ((p1.y + p2.y) / 2)
 ```
 
 See [Type Constructor](11-type constructor.md)
+
+#### extending another record type
+
+```elm
+$ open http://elm-lang.org/try
+import Html exposing (text)
+main = text (toString wutheringHeightsWithISBN)
+
+type alias LibraryEntry a = { a | name : String , author : String , readByMe : Bool }
+type alias LibraryEntryWithISBN = LibraryEntry { isbn : String }
+
+wutheringHeightsWithISBN : LibraryEntryWithISBN 
+
+wutheringHeightsWithISBN = { name = "Wuthering Heights", author = "Bronte" , readByMe = True , isbn = "1853260010" }
+```
+(source: [Data Structures in Elm @NoRedInk](http://tech.noredink.com/post/140646140878/data-structures-in-elm))
+
+
+### Creating a record
+
+#### key-value pairs
+
+The typical way to create a record is to write key-value pairs
+
+```elm
+myRecord = { first = "Jane", last = "Doe", age = 42, gender = "female" }
+```
+
 
 ### Operations on records
 

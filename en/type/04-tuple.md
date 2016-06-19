@@ -32,8 +32,9 @@ As must the type in any given position.
 ```elm
 > [(1,2),(8,"11"),(4,5)]
 -- TYPE MISMATCH --------------------------------------------- repl-temp-000.elm
-
 The 1st and 2nd elements are different types of values.
+> [(1,"2"),(8,"11"),(4,"5")]
+[(1,"2"),(8,"11"),(4,"5")] : List ( number, String )
 ```
 
 Tuples can be used to represent a wide variety of data. For instance, if we wanted to represent someone's name and age in Elm, we could use a triple: `("Christopher", "Walken", 55)`. 

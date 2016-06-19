@@ -284,7 +284,7 @@ planarDistance p1 p2 =
   in sqrt (dx^2 + dy^2)
 ```
 
-The `{a |` part of the annotation corresponds to a record extension. See above. We use different type variables, `a` and `b` to indicate that the two records don't have to be the same type.
+The `{a |` part of the annotation corresponds to a record extension. See above. We have two type variables, `a` and `b` to indicate that the two records don't have to be the same type.
 
 
 #### Pattern matching / destructuring

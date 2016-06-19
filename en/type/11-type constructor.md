@@ -272,14 +272,3 @@ By the way, `posA` and `posB` do not have the same type. `posA` is of type `{ x 
 
 (source: [elm-explained](https://github.com/niksilver/elm-explained))
 
-### Opaque type
-
-Record-like opaque types don't get the magical accessor functions
-
-```elm
-type AThing = AThing { foo: String, bar: Int }
-
-foo (AThing { foo }) = foo
-```
-(source: [comment on yang-wei gist](https://gist.github.com/yang-wei/4f563fbf81ff843e8b1e))
-

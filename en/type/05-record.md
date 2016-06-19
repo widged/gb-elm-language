@@ -88,38 +88,33 @@ myRecord = { first = "Jane", last = "Doe", age = 42, gender = "female" }
 
 #### naming record types
 
-If we are planning to create more than one record with the same fields on it, we can create a type alias that describes the shape of these records. This creates a *record constructor* that is both a type and a function. It describes the shape of these records.
+If we are planning to create more than one record with the same fields on it, we can create a type alias that describes the shape of these records. 
 
 ```elm
 $ elm repl
 > type alias Point2D = {x : Float, y : Float}
+```
+
+This creates a *record constructor* that is both a function and a type. 
+
+The function can be used to construct new records. 
+
+```elm
+$ elm repl
 > Point2D
 <function> : Float -> Float -> Repl.Point2D
 > origin = Point2D 0 0
 { x = 0, y = 0 } : Repl.Point2D
 ```
 
+The type can be used in signature, in place of all required fields.  
+
+
 See [Type Constructor](11-type constructor.md)
 
 
----
 
-
-```elm
-type alias LibraryEntry =
-    { name : String
-    , author : String
-    , readByMe : Bool
-    }
-Creating a record with these fields looks like this:
-wutheringHeights =
-    { name = "Wuthering Heights"
-    , author = "Bronte"
-    , readByMe = True
-    }
-```
-
-Now we can use LibraryEntry in type signatures, rather than writing out all three requisite fields. We can also use the LibraryEntry as a constructor. LibraryEntry takes three arguments, in order: name, author, and readByMe. It will hand us back a record of the form we desire.
+Now we can use Point2D in type signatures, rather than writing out all three requisite fields. We can also use the LibraryEntry as a constructor. LibraryEntry takes three arguments, in order: name, author, and readByMe. It will hand us back a record of the form we desire.
 
 ```elm
 wutheringHeights =

@@ -34,7 +34,6 @@ Records in Elm are structurally typed. The type of a record is just the descript
 
 Both `{ age : number, first : String, gender : String, last : String }` and `{first : String, last : String, age: Int, gender: String}` define the same type. 
 
-
 Records are transitive with respect to their fields. The order of fields doesn't matter. 
 
 ```elm
@@ -43,6 +42,14 @@ $ elm
 True : Bool
 > { one = 1 , two = 2 } == { two = 3 , one = 1 }
 False : Bool
+```
+
+We can compare Records only when their types are equivalent.
+
+```elm
+$ elm
+> { one = 1 , two = 2 } == { one = 1 , two = 2 }
+True : Bool
 > { one = 1 , two = 2 } == { one = 1 , two = "2" }
 -- TYPE MISMATCH --------------------------------------------- repl-temp-000.elm
 > { one = 1 , two = 2 } == { one = 1 , otherThanTwo = 2 }
@@ -51,9 +58,6 @@ False : Bool
 -- TYPE MISMATCH --------------------------------------------- repl-temp-000.elm
 ```    
 
-We can’t just compare Records with each other because they’re both Records–we can compare Records if all their fields have the same types.
-
-(source: [Data Structures in Elm @NoRedInk](http://tech.noredink.com/post/140646140878/data-structures-in-elm))
 
 #### using only some fields
 

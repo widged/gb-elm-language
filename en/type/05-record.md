@@ -34,7 +34,7 @@ The type of a record is just the description of its fields. The names given to t
 
 Both `{ age : number, first : String, gender : String, last : String }` and `{first : String, last : String, age: Int, gender: String}` define the same type. 
 
-#### type variables
+#### using only some fields
 
 ```elm
 planarDistance : {a | x : Float, y : Float} -> {b | x : Float, y : Float} -> Float

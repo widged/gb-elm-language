@@ -35,8 +35,6 @@ userProfile = { first = "Jane", last = "Doe", age = 42, gender = "female" }
 
 Records in Elm are structurally typed. The type of a record is just the description of its fields: the names given of the fields and the type of their contents.
 
-Both `{ age : number, first : String, gender : String, last : String }` and `{first : String, last : String, age: Int, gender: String}` define the same type. 
-
 Records are transitive with respect to their fields. The order of fields doesn't matter. 
 
 ```elm
@@ -47,7 +45,7 @@ True : Bool
 False : Bool
 ```
 
-We can compare Records only when their types are equivalent.
+However, we can compare Records only when their types are equivalent.
 
 ```elm
 $ elm

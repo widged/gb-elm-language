@@ -133,6 +133,20 @@ Function `fst` is expecting the argument to be: ( a, b )
 
 Tuples are comparable.
 
+```elm
+$ elm repl
+> (5,7) == (5,7)
+True : Bool
+> (5,7) < (1,1)
+False : Bool
+> (5,7) < (10,10)
+True : Bool
+> (5,7) < (1,10)
+False : Bool
+> (5,7) < (10,1)
+True : Bool
+```
+
 #### destructuring / pattern matching
 
 Pattern matching in `case` expressions can be used on tuples. 

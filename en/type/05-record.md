@@ -30,7 +30,7 @@ userProfile = { first = "Jane", last = "Doe", age = 42, gender = "female" }
 
 #### structural type, order doesn't matter
 
-The type of a record is just the description of its fields. The names given to the fields and the type of each one. 
+Records in Elm are structurally typed. The type of a record is just the description of its fields. The names given to the fields and the type of their contents
 
 Both `{ age : number, first : String, gender : String, last : String }` and `{first : String, last : String, age: Int, gender: String}` define the same type. 
 
@@ -43,15 +43,15 @@ $ elm
 True : Bool
 > { one = 1 , two = 2 } == { two = 3 , one = 1 }
 False : Bool
-> { one = 1 , two = 2 } == { two = "2" , one = 1 }
+> { one = 1 , two = 2 } == { one = 1 , two = "2" }
 -- TYPE MISMATCH --------------------------------------------- repl-temp-000.elm
-> { one = 1 , two = 2 } == { twoBis = 2 , one = 1 }
+> { one = 1 , two = 2 } == { one = 1 , otherThanTwo = 2 }
+-- TYPE MISMATCH --------------------------------------------- repl-temp-000.elm
+> { one = 1 , two = 2 } == { one = 1 , two = 2, three = 3 }
 -- TYPE MISMATCH --------------------------------------------- repl-temp-000.elm
 ```    
 
-
-
-This is because Records in Elm are structurally typed: the use of records is dependent on the type of their contents. We can’t just compare Records with each other because they’re both Records–we can compare Records if all their fields have the same types.
+This is because : the use of records is dependent on the type of their contents. We can’t just compare Records with each other because they’re both Records–we can compare Records if all their fields have the same types.
 
 (source: [Data Structures in Elm @NoRedInk](http://tech.noredink.com/post/140646140878/data-structures-in-elm))
 

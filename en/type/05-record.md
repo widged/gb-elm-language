@@ -2,9 +2,11 @@
 
 ## Records 
 
+Records are written with brackets. The brackets enclose a collection of key/value pairs, or named fields
+
 Records (semantically named) are frequently employed to record state or to model information. They employ key-value pairs, with (likely-familar) dot notation for accessing values. (source: [Data Structures in Elm @NoRedInk](http://tech.noredink.com/post/140646140878/data-structures-in-elm))
 
-Records are written with brackets. A `record` is a collection of key/value pairs (name fields).
+
 
 ```elm
 {name=value,...,name=value}
@@ -56,6 +58,8 @@ posA = { x = 2.1, y = 8.8 }
 The type of `posA` does not have a name, though.
 
 (source: [elm-explained](https://github.com/niksilver/elm-explained))
+
+
 ---
 #### No Extensibility
 

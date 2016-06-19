@@ -5,17 +5,15 @@
 A type alias doesn't define a type, it simply provides a convenient alternative name for another type (primitive or complex shape). It helps you model the problem and reason about how data flows through your program.
 
 ```elm
-type alias Point = { x : Float, y : Float }
+type alias Model = Int
+type alias Point2D = { x : Float, y : Float }
 origin : Point
 origin = { x = 0, y = 0 }
 ```
 
-
 ### Type alias
 
-You can also define types at the top level, like `type alias Model = Int`.
-
-The first is a record type alias. If I define `type alias Point2D = {x : Float, y : Float}`, then like any type alias `Point2D` becomes a valid type to use in annotations. But because we're aliasing a record, we also gain a *record constructor*, `Point2D : Float -> Float -> Point2D`. For example, `origin = Point2D 0 0` becomes legal, and this is actual Elm code, not an annotation. `Point2D` is both a type and a function.
+becomes a valid type to use in annotations. But because we're aliasing a record, we also gain a *record constructor*, `Point2D : Float -> Float -> Point2D`. For example, `origin = Point2D 0 0` becomes legal, and this is actual Elm code, not an annotation. `Point2D` is both a type and a function.
 
 (source: [learnyouanelm-03](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/03-types.md))
 

@@ -120,7 +120,7 @@ See [Type Constructor](11-type constructor.md)
 
 #### extending another record type
 
-We can define a record type that has *at least* the given fields.
+We can define an extensible record type by specifying the fields that must *at least* be present, using `type alias BaseRecord a = { a | key1 : Type1 , key2 : Type2}`.
 
 ```elm
 $ open http://elm-lang.org/try
@@ -148,7 +148,7 @@ origin3D = { x = 0, y = 0, z = 0 }
 
 #### Defining extensible records
 
-We can define a record type that has *at least* the given fields. Here we define aliases for two record types. Type `JustXY` has just the fields `x` and `y`. It is an ordinary record type.
+ It is an ordinary record type.
 Type `IncXY` has at least the fields `x` and `y`. It is an extensible record type.
 
 ```elm

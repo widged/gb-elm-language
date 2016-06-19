@@ -4,14 +4,149 @@
 
 *Type constructors* are base types for a new type shape. In `List a`, the type variable `a` can be replaced with a real type. They cannot really exist on its own. 
 
+### simple tag constructor
 
+If we've defined a type with a tag then the tag (the constructor) is a function, too.
 
-## Example with more than one argument
-
-We can of course also define a type with more than one argument.
-Here is how we define and use a number with a name
+Here we use `map` to convert a list of Int values into a list of `Boxed` values.
 
 ```elm
+type Boxed = Boxed Int
+
+box : List Int -> List Boxed
+box li = map Boxed li
+```
+
+Remember that `DefiningFunctions` is just the name of our module, so `DefiningFunctions.Boxed` is just the fully qualified name of `Boxed`:
+
+```
+> import DefiningFunctions exposing (..)
+> box [7, 6, 5, 4]
+[Boxed 7,Boxed 6,Boxed 5,Boxed 4] : List DefiningFunctions.Boxed
+>
+```
+
+(source: [elm-explained](https://github.com/niksilver/elm-explained))
+
+Tagging an Int type, like this:
+
+```elm
+type Aged = Aged Int
+century = Aged 100
+```
+### record tag constructor
+
+Record types can be named by tagging them.  See [Records](05-record.md)
+
+```elm
+pos A = { x = 7.7, y = 5.2 }
+type Positioned = Positioned { x : Float, y : Float }
+
+posB : Positioned
+posB = Positioned { x = 7.7, y = 5.2 }
+```
+
+Note that `posA` and `posB` do not have the same type. `posA` is of type `{ x : Float, y : Float }` while `posB` is of type `Positioned`.
+
+(source: [elm-explained](https://github.com/niksilver/elm-explained))
+
+```elm
+$ open http://elm-lang.org/try
+import Html exposing (div, text, br, hr, h3)
+main = div [] 
+  [ text ( launch vessel )
+  , br [] []
+  , text ( greet captain )
+  -- , br [] []
+  -- , text ( launch captain ) -- > TYPE MISMATCH
+  -- , br [] []
+  -- , text ( greet vessel ) -- > TYPE MISMATCH
+  ]
+{-
+I name this ship HMS Splendid
+Hello there, Captain Robert Q. Peabody
+-} 
+
+type Ship = Ship { name : String }
+type Person = Person { name : String }
+
+vessel : Ship
+vessel = Ship {name = "HMS Splendid"}
+
+captain : Person
+captain = Person {name = "Captain Robert Q. Peabody"}
+
+launch : Ship -> String
+launch s
+    = case s of
+        Ship r -> "I name this ship " ++ r.name
+
+greet : Person -> String
+greet p
+    = case p of
+        Person r -> "Hello there, " ++ r.name
+```
+
+### Offers better type protection than type alias
+
+```elm
+$ open http://elm-lang.org/try
+import Html exposing (div, text, br, hr, h3)
+main = div [] 
+  [ text ( launchAlias vesselAlias )
+  , br [] []
+  , text ( greetAlias captainAlias )
+  , br [] []
+  , text "(no type protection)"
+  , br [] []
+  , text ( launchAlias captainAlias )
+  , br [] []
+  , text ( greetAlias vesselAlias )
+  ]
+{-
+I name this ship HMS Splendid
+Hello there, Captain Robert Q. Peabody
+(no type protection)
+I name this ship Captain Robert Q. Peabody
+Hello there, HMS Splendid
+-} 
+
+type alias ShipAlias = { name : String }
+type alias PersonAlias = { name : String }
+
+vesselAlias : ShipAlias
+vesselAlias = ShipAlias "HMS Splendid"
+
+captainAlias : PersonAlias
+captainAlias = PersonAlias "Captain Robert Q. Peabody"
+
+launchAlias : ShipAlias -> String
+launchAlias s
+    = case s of
+        r -> "I name this ship " ++ r.name
+
+greetAlias : PersonAlias -> String
+greetAlias p
+    = case p of
+        r -> "Hello there, " ++ r.name
+```
+(source: [elm-explained](https://github.com/niksilver/elm-explained))
+
+
+
+
+### multiple arguments
+
+```elm
+$ open http://elm-lang.org/try
+import Html exposing (div, text, br, hr, h3)
+main = div [] 
+  [ text ( describe n37 )
+  ]
+{-
+Number thirty seven looks like 37
+-} 
+
 type NamedInt = NamedInt String Int
 
 describe : NamedInt -> String
@@ -23,20 +158,9 @@ n1 = NamedInt "one" 1
 n2 = NamedInt "two" 2
 n37 = NamedInt "thirty seven" 37
 ```
-
-If we add that code to our module
-we can use it like this in the Elm REPL:
-
-```
-> import TypeConstructors exposing (..)
-> describe n37
-"Number thirty seven looks like 37" : String
->
-```
-
 (source: [elm-explained](https://github.com/niksilver/elm-explained))
 
-### Type declaration ???
+### Container Type
 
 When we declare a type, the left had side of the equals sign says how it's used; the right hand side says how it's defined. The following `MiscHolder` can hold any type of value. It's defined as an unknown type `a` tagged with the `MiscHolder` tag (its right hand side), but when we use it we must use both the `MiscHolder` tag and the specific type that's in use at the time.
 
@@ -123,53 +247,5 @@ True : Bool
 (source: [elm-explained](https://github.com/niksilver/elm-explained))
 
 
-### Simple type tags (constructors) are functions, too
 
-If we've defined a type with a tag then the tag (the constructor) is a function, too.
-
-Here we use `map` to convert a list of Int values into a list of `Boxed` values.
-
-```elm
-type Boxed = Boxed Int
-
-box : List Int -> List Boxed
-box li = map Boxed li
-```
-
-Remember that `DefiningFunctions` is just the name of our module, so `DefiningFunctions.Boxed` is just the fully qualified name of `Boxed`:
-
-```
-> import DefiningFunctions exposing (..)
-> box [7, 6, 5, 4]
-[Boxed 7,Boxed 6,Boxed 5,Boxed 4] : List DefiningFunctions.Boxed
->
-```
-
-(source: [elm-explained](https://github.com/niksilver/elm-explained))
-
-### Type tags for records
-
-See [Records](05-record.md)
-
-Tagging an Int type, like this:
-
-```elm
-type Aged = Aged Int
-century = Aged 100
-```
-
-We can name a record type by tagging it - like this:
-
-```elm
-pos A = { x = 7.7, y = 5.2 }
-type Positioned = Positioned { x : Float, y : Float }
-
-posB : Positioned
-posB = Positioned { x = 7.7, y = 5.2 }
-```
-
-By the way, `posA` and `posB` do not have the same type. `posA` is of type `{ x : Float, y : Float }` while `posB` is of type `Positioned`.
-
-
-(source: [elm-explained](https://github.com/niksilver/elm-explained))
 

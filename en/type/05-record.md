@@ -83,13 +83,21 @@ wutheringHeightsWithISBN = { name = "Wuthering Heights", author = "Bronte" , rea
 The typical way to create a record is to write key-value pairs
 
 ```elm
-recordShape = { name1 = value1, name2 = value2 }
 myRecord = { first = "Jane", last = "Doe", age = 42, gender = "female" }
 ```
 
-#### Record type alias (Naming record types)
+#### naming record types
 
-If I define `type alias Point2D = {x : Float, y : Float}`, then like any type alias `Point2D` becomes a valid type to use in annotations. But because we're aliasing a record, we also gain a *record constructor*, `Point2D : Float -> Float -> Point2D`. For example, `origin = Point2D 0 0` becomes legal, and this is actual Elm code, not an annotation. `Point2D` is both a type and a function.
+Types can be named to create a *record constructor*.
+
+```elm
+$ elm repl
+> type alias Point2D = {x : Float, y : Float}
+> Point2D
+<function> : Float -> Float -> Repl.Point2D
+```
+
+From now on, `Point2D` becomes a valid type to use in annotations. But because we're aliasing a record, we also gain a *record constructor*, `Point2D : Float -> Float -> Point2D`. For example, `origin = Point2D 0 0` becomes legal, and this is actual Elm code, not an annotation. `Point2D` is both a type and a function.
 
 (source: [elm-for-js](https://github.com/elm-guides/elm-for-js/blob/master/Scope.md))
 

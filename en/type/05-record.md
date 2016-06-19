@@ -12,7 +12,7 @@ Records are frequently employed to record state or to model information.
 
 ### Type annotations
 
-Records values use equals between key and value when specifying values. However, they use  a colon between key and value type in the type annotation. 
+For value assignment, records use equals between key and value when specifying values. However, in the type signature, records use  a colon between key and value type. 
 
 ```elm
 $ elm repl
@@ -78,7 +78,14 @@ wutheringHeightsWithISBN = { name = "Wuthering Heights", author = "Bronte" , rea
 
 ### Creating a record
 
-To create a record, you can write out the desired key-value pairs: { name = "Wuthering Heights", author = "Bronte", readByMe = True }. (Note that notation here may be backwards from what you expect. Type signatures, in Elm, use a colon. Assignment uses an equals sign)
+#### key-value pairs
+
+The typical way to create a record is to write key-value pairs
+
+```elm
+recordShape = { name1 = value1, name2 = value2 }
+myRecord = { first = "Jane", last = "Doe", age = 42, gender = "female" }
+```
 
 #### Record type alias (Naming record types)
 

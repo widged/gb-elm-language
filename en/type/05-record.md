@@ -1,4 +1,4 @@
-**Elm 0.??**, **copied, please ignore** 
+**Elm 0.17**, **copied, please ignore** 
 
 ## Records 
 
@@ -60,9 +60,14 @@ True : Bool
 ```    
 
 
-#### using only some fields ??? only early versions of Elm
+#### extensibility
 
 ```elm
+$ open http://elm-lang.org/try
+import Html exposing (text)
+main = text ( toString ( planarDistance {x = 10, y = 10}  {x = 20, y = 20} ) )
+-- 14.142135623730951
+
 planarDistance : {a | x : Float, y : Float} -> {b | x : Float, y : Float} -> Float
 planarDistance p1 p2 =
   let dx = p2.x - p1.x
@@ -80,16 +85,23 @@ dist = planarDistance point point3D
 
 #### No Extensibility
 
-The first iteration of the Elm record was based heavily on (‘Extensible records with scoped labels’ by Daan Leijen), and many features of the Elm record reflect Leijen’s work. The paper is well worth a read for those interested in modeling data. However, the paper’s titular descriptors–“extensible”, “with scoped labels”–no longer apply to Elm records. [I]n practice, developers did not find Extensibility (or restrictability) useful, and extensibility of record values was removed.
 
-The removal of the extensibility of records also meant the end to scoped labels (labels of the same name pointing to different values on the same record, e.g.
+
 ```elm
-{ diaspora + name | name {- This type alias uses "a" to say that a LibraryEntry is any record with name, author, and readByMe fields. -} type alias LibraryEntry a = { a | name : String , author : String , readByMe : Bool }`
+$ open http://elm-lang.org/try
+import Html exposing (text)
+main = text (toString wutheringHeightsWithISBN)
 
-`{- This type alias says that it is a LibraryEntry with exactly one more property–isbn. -} type alias LibraryEntryWithISBN = LibraryEntry { isbn : String }`
+type alias LibraryEntry a = { a | name : String , author : String , readByMe : Bool }
+type alias LibraryEntryWithISBN = LibraryEntry { isbn : String }
 
-`wutheringHeightsWithISBN : LibraryEntryWithISBN wutheringHeightsWithISBN = { name = “Wuthering Heights” , author = “Bronte” , readByMe = True , isbn = “1853260010” }
+wutheringHeightsWithISBN : LibraryEntryWithISBN 
+
+wutheringHeightsWithISBN = { name = "Wuthering Heights", author = "Bronte" , readByMe = True , isbn = "1853260010" }
 ```
+(source: [Data Structures in Elm @NoRedInk](http://tech.noredink.com/post/140646140878/data-structures-in-elm))
+
+
 #### Polymorphism
 
 Records in Elm remain polymorphic, meaning they can be comprised of fields with all sorts of different types. While I’ve only used Strings and Bools in the library example above, records can hold any values. The following is reasonable, for instance:
@@ -585,3 +597,7 @@ If we put all the code above into [an Elm module called ExtensibleRecordTypes](E
 ### All operations
 
 [records](http://elm-lang.org/docs/syntax#records) has a number of operations without much explanation. 
+
+### Further Readings
+
+The first iteration of the Elm record was based heavily on (‘Extensible records with scoped labels’ by Daan Leijen), and many features of the Elm record reflect Leijen’s work. The paper is well worth a read for those interested in modeling data. However, the paper’s titular descriptors–“extensible”, “with scoped labels”–no longer apply to Elm records. [I]n practice, developers did not find Extensibility (or restrictability) useful, and extensibility of record values was removed. (source: [Data Structures in Elm @NoRedInk](http://tech.noredink.com/post/140646140878/data-structures-in-elm))

@@ -1,4 +1,4 @@
-**Elm 0.17**, **copied, please ignore** 
+**Elm 0.17**, **shareable** 
 
 ## Records 
 
@@ -198,7 +198,6 @@ fst3D : PointExt { z : Float }
 fst3D = { x = 1, y = 10, z = 4}
 ```
 
-
 ### Creating a record
 
 #### key-value pairs
@@ -305,8 +304,6 @@ True : Bool
 
 
 The latest version of Elm does support destructuring of nested types.  (source: [comment on yang-wei gist](https://gist.github.com/yang-wei/4f563fbf81ff843e8b1e))
-
-
 
 
 ### All operations

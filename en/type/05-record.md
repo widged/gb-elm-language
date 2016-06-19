@@ -2,10 +2,12 @@
 
 ## Records 
 
-Records are written with brackets. The brackets enclose a collection of key-value pairs, or semantically named fields. Records in Elm are polymorphic, meaning they can be comprised of fields with all sorts of different types. 
+Records are written with brackets. The brackets enclose a collection of key-value pairs, or semantically named fields `recordName = { name1 = value1, name2 = value2 }`
+
+Records in Elm are polymorphic, meaning they can be comprised of fields with all sorts of different types. 
 
 ```elm
-recordShape = { name1 = value1, name2 = value2 }
+
 myRecord = { first = "Jane", last = "Doe", age = 42, gender = "female" }
 ```
 Records are frequently employed to record state or to model information. 

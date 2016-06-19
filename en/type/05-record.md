@@ -59,7 +59,6 @@ True : Bool
 -- TYPE MISMATCH --------------------------------------------- repl-temp-000.elm
 ```    
 
-
 #### extending another record type
 
 ```elm

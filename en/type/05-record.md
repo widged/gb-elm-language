@@ -147,14 +147,6 @@ origin3D : Point3D
 origin3D = { x = 0, y = 0, z = 0 }
 ```
 
-#### Defining extensible records
-
-
-See [our notes on parameterised types](ParameterisedTypes.md) elsewhere.
-
-
-
-
 #### Defining values with extensible record types
 
 Here we define a value of type `JustXY` and one of type `IncXY`.

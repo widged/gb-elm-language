@@ -120,7 +120,7 @@ See [Type Constructor](11-type constructor.md)
 
 #### extending another record type
 
-We can define an extensible record type by specifying the fields that must *at least* be present, using `type alias BaseRecord a = { a | key1 : Type1 , key2 : Type2}`.
+We can define an extensible record type by specifying the fields that must *at least* be present. The syntax is `type alias BaseRecord a = { a | key1 : Type1 , key2 : Type2}`.
 
 ```elm
 $ open http://elm-lang.org/try

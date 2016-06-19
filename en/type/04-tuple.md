@@ -109,10 +109,9 @@ $ elm repl
 
 With tuples, type is bound to the number of elements. Therefore, functions have to target a given length. Different functions must be provided to append an element to a tuple pair, a tuple triple, or a tuple quad.
 
+#### fst and snd of a tuple pair
 
-#### fst and snd
-
-In tuples, the meaning of the fields comes from their order. 
+F 
 
 fst : (a, b) -> a. Returns the first element.
 snd : (a, b) -> b. Returns the second element.

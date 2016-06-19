@@ -18,6 +18,8 @@ The type of a tuple records the number of components as well as the types of the
 $ elm repl
 > (1, "2", True)
 (1,"2",True) : ( number, String, Bool )
+> userProfile : (String, String, Int)
+> userProfile = ("John", "Doe", 42)
 ```
 
 The number of elements must be constant.  
@@ -74,27 +76,31 @@ $ elm repl
 
 ### Creating tuples
 
-There’s more than one way to create a tuple.
+Tuples are typically created by enclosing comma separated values in between parentheses.
 
 ```elm
--- We can write it out explicitly.
-yeOldeBasicCoord = (1, 0, 2)
--- We can also use a prefix operator, `(,)`, to construct the tuple.
-yeFahncyCoord = (,,) 1 0 2
+$ elm repl
+> (12, 7)
+(12,7) : ( number, number' )
 ```
 
-Also possible, put as many commas as you'll have values inside a tuple
+However, it is also possible to use a prefix operator, `(,)`, to construct a tuple. The function is a tuple constructor not bound to the value it helps create. 
 
 ```elm
+$ elm repl
+> (,) 12 7
+(12,7) : ( number, number' )
+> coord = (,)
+<function> : a -> b -> ( a, b )
+> coord 12 7
+(12,7) : ( number, number' )
+> coord 12 "7"
+(12,"7") : ( number, String )
 > (,,,) 1 True 'a' []
 (1,True,'a',[]) : ( number, Bool, Char, List a )
 ```
-(source: [Data Structures in Elm @NoRedInk](http://tech.noredink.com/post/140646140878/data-structures-in-elm))
-
 
 ### Operations on tuples
-
-You can also pair up types into tuples, for example `(Int, Bool)`. This expands to arbitrarily many elements, i.e. `(Int, Float, Int)` is a 3-tuple with first element `Int`, second `Float`, third `Int`.
 
 ```elm
 myTuple : (String, Int, Bool)

@@ -77,10 +77,6 @@ wutheringHeightsWithISBN = { name = "Wuthering Heights", author = "Bronte" , rea
 (source: [Data Structures in Elm @NoRedInk](http://tech.noredink.com/post/140646140878/data-structures-in-elm))
 
 
-
-
-
-
 #### Polymorphism
 
 Records in Elm remain polymorphic, meaning they can be comprised of fields with all sorts of different types. While I’ve only used Strings and Bools in the library example above, records can hold any values. The following is reasonable, for instance:

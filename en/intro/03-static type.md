@@ -64,7 +64,7 @@ Constrained types
 
 ### Type inference
 
-We don't have to explicitly write out the types of our functions and expressions to get things done. Elm, like most ML dialects, has type inference. The compiler will automatically infer the type of every value in your program. If we write a number, we don't have to tell Elm it's a number. It can *infer* that on its own.
+We don't have to explicitly write out the types of our functions and expressions. Elm, like most ML dialects, has type inference. The compiler will automatically infer the type of every value in your program. 
 
 ```bash
 $ elm repl
@@ -76,7 +76,7 @@ $ elm repl
 5 : Int
 ```
 
-Both `2` and `3` are number literals.  without a decimal point they can be treated as an Int or a Float, depending on the operations run on them.
+Both `2` and `3` are recognized as number literals. Without a decimal point they can be treated as an Int or a Float, depending on the operations run on them.
 
 
 ### Type annotations

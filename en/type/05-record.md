@@ -57,7 +57,7 @@ True : Bool
 -- TYPE MISMATCH --------------------------------------------- repl-temp-000.elm
 ```    
 
-#### naming record types
+#### aliasing record types
 
 If we are planning to create more than one record with the same fields on it, we can create a type alias that describes the shape of these records. 
 

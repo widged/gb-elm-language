@@ -113,6 +113,8 @@ $ elm repl
 > Point2D
 > origin = Point2D 0 0
 { x = 0, y = 0 } : Repl.Point2D
+> line2D = List.map (\pt -> Point2D pt.x pt.y) [ { x = 0, y = 0 }, { x = 8, y = 1 } ]
+[{ x = 0, y = 0 },{ x = 8, y = 1 }] : List Repl.Point2D
 ```
 
 In this context, field order does matter. We need to know the order in which we originally defined the fields
@@ -143,57 +145,7 @@ midPoint : Point2D -> Point2D -> Point2D
 midPoint p1 p2 = Point2D ((p1.x + p2.x) / 2) ((p1.y + p2.y) / 2)
 ```
 
-
 See [Type Constructor](11-type constructor.md)
-
-
-Let's see what that looks like in the REPL:
-
-```
-> import DefiningFunctions exposing (..)
-> bob
-{ name = "Robert", age = 55 } : { age : Int, name : String }
-> people
-[{ name = "Alice", age = 61 },{ name = "Brian", age = 23 },{ name = "Coco", age = 35 }]
-: List { age : Int, name : String }
->
-```
-
-(source: [elm-explained](https://github.com/niksilver/elm-explained))
----
-Type tags for records are also functions
-
-Next we define a type for a record called `Point`, and its associated tag/constructor (also called `Point`). But that tag is also a function from the plain record to a `Point`. This is exactly the same idea as with simple type tags. We can see this when we use it with the `map` function.
-
-```elm
-type Point = Point { x : Float, y : Float }
-
-triangle1 : List { x : Float, y : Float }
-triangle1 =
-    [ { x = 0, y = 0 }
-    , { x = 8, y = 1 }
-    , { x = 5, y = 7 }
-    ]
-
-triangle2 : List Point
-triangle2 =
-    map Point triangle1
-```
-
-Here's how it looks in the REPL. Notice that we've converted from the type of `triangle1` to the type of `triangle2` thanks to the `Point` function.
-
-```
-> import DefiningFunctions exposing (..)
-> triangle1
-[{ x = 0, y = 0 },{ x = 8, y = 1 },{ x = 5, y = 7 }]
-    : List { x : Float, y : Float }
-> triangle2
-[Point { x = 0, y = 0 },Point { x = 8, y = 1 },Point { x = 5, y = 7 }]
-    : List DefiningFunctions.Point
->
-```
-
-(source: [elm-explained](https://github.com/niksilver/elm-explained))
 
 ### Operations on records
 

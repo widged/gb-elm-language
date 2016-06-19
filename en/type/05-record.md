@@ -147,12 +147,11 @@ The typical way to create a record is to write key-value pairs
 myRecord = { first = "Jane", last = "Doe", age = 42, gender = "female" }
 ```
 
-
 ### Operations on records
 
 #### Accessing
 
-Use record.keyor .key record to access the fields of a record. 
+Use record.key or .key record to access the fields of a record. 
 
 ----
 Uniquely these functions are defined by a pattern, rather than being listed somewhere. For example, `.name : { b | name : a } -> a`, which basically means `.name` takes any record with a `name` field and extracts its value. You can use any record field name you like.

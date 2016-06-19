@@ -12,7 +12,7 @@ Records are frequently employed to record state or to model information.
 
 ### Type annotations
 
-Records values use equals between key and value but a colon between key and value type. 
+Records values use equals between key and value but a colon between key and value type in the type annotaiton. 
 
 ```elm
 point : {x : Float, y : Float}

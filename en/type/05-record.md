@@ -142,7 +142,7 @@ Using a type alias we can describe the exact shape of what a user record should 
 The compiler sees Ship and Person as the same thing, which is a record with a name field. However, if we later change the shape of Ship, by adding an extra field, they will stop being interchangeable. 
 
 ```elm
-iimport Html exposing (div, text, br)
+import Html exposing (div, text, br)
 
 main = div [] 
   [ text (launch vessel)

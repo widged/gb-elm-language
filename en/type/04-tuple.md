@@ -69,6 +69,8 @@ $ elm repl
 
 `()` is called a unit type. See chapter on [Unit Type](10-unit type.md)
 
+`(,)` returns a function that can be used to create a tuple
+
 
 ### Creating tuples
 

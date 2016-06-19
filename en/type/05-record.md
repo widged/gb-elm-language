@@ -2,12 +2,11 @@
 
 ## Records 
 
-Records are written with brackets. The brackets enclose a collection of key-value pairs, or semantically named fields `myRecord = { name1 = value1, name2 = value2 }`. Records in Elm are polymorphic, meaning they can be comprised of fields with all sorts of different types. 
+Records are written with brackets. The brackets enclose a collection of key-value pairs, or semantically named fields `myRecord = { name1 = value1, name2 = value2 }`. Records in Elm are polymorphic, meaning they can be comprised of fields with all sorts of different types. They frequently employed to record state or to model information. 
 
 ```elm
 unidentifiedPerson = { first = "Jane", last = "Doe", age = 42, gender = "female" }
 ```
-Records are frequently employed to record state or to model information. 
 
 ### Type annotations
 
@@ -121,21 +120,31 @@ See [Type Constructor](11-type constructor.md)
 
 #### extending another record type
 
+We can define a record type that has *at least* the given fields.
+
 ```elm
 $ open http://elm-lang.org/try
-import Html exposing (text)
-main = text (toString wutheringHeightsWithISBN)
+import Html exposing (div, text, br)
+main = div [] 
+  [ text (toString origin2D)
+  , br [] []
+  , text (toString origin3D)
+  ]
+-- { x = 0, y = 0 }
+-- { x = 0, y = 0, z = 0 }
+-- origin2D = { x = 0, y = 0, z = 0} will show an error
+-- origin3D = { x = 0, y = 0} will show an error
 
-type alias LibraryEntry a = { a | name : String , author : String , readByMe : Bool }
-type alias LibraryEntryWithISBN = LibraryEntry { isbn : String }
+type alias Point a = { a | x : Float , y : Float}
 
-wutheringHeightsWithISBN : LibraryEntryWithISBN 
+type alias Point2D = Point {}
+origin2D : Point2D 
+origin2D = { x = 0, y = 0}
 
-wutheringHeightsWithISBN = { name = "Wuthering Heights", author = "Bronte" , readByMe = True , isbn = "1853260010" }
+type alias Point3D = Point { z : Float }
+origin3D : Point3D 
+origin3D = { x = 0, y = 0, z = 0 }
 ```
-(source: [Data Structures in Elm @NoRedInk](http://tech.noredink.com/post/140646140878/data-structures-in-elm))
-
-----
 
 #### Defining extensible records
 
@@ -143,7 +152,9 @@ We can define a record type that has *at least* the given fields. Here we define
 Type `IncXY` has at least the fields `x` and `y`. It is an extensible record type.
 
 ```elm
-type alias JustXY  =     { x : Float, y : Float }
+> type alias Point2D  =     { x : Float, y : Float }
+> Point2D
+<function> : Float -> Float -> Repl.Point2D
 
 type alias IncXY a = { a | x : Float, y : Float }
 ```

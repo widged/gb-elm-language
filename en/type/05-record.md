@@ -31,7 +31,7 @@ userProfile : {first : String, last : String, age: Int, gender: String}
 userProfile = { first = "Jane", last = "Doe", age = 42, gender = "female" }
 ```
 
-#### structural type, order doesn't matter
+#### structural type, field order doesn't matter
 
 Records in Elm are structurally typed. The type of a record is just the description of its fields: the names given of the fields and the type of their contents.
 
@@ -65,31 +65,6 @@ True : Bool
 ```elm
 $ open http://elm-lang.org/try
 import Html exposing (text)
-main = text ( toString ( planarDistance {x = 10, y = 10}  {x = 20, y = 20} ) )
--- 14.142135623730951
-
-planarDistance : {a | x : Float, y : Float} -> {b | x : Float, y : Float} -> Float
-planarDistance p1 p2 =
-  let dx = p2.x - p1.x
-      dy = p2.y - p1.y
-  in sqrt (dx^2 + dy^2)
-```
-
-The `{a |` part of the annotation indicates a base record, of type `a`, is extended. Then we list the fields it's extended with, and what their types are. In the simplest cast, `a` can be the empty record, i.e. there are no extra fields. We use a different type variable, `b`, for the second argument to indicate that the two records don't have to be the same type. For example:
-
-```elm
-point3D = {x = 1.0, y = 6.3, z = -0.9}
-dist = planarDistance point point3D
-```
-(source: [elm-for-js](https://github.com/elm-guides/elm-for-js/blob/master/How%20to%20Read%20a%20Type%20Annotation.md) and [learnyouanelm-03](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/03-types.md))
-
-#### No Extensibility
-
-
-
-```elm
-$ open http://elm-lang.org/try
-import Html exposing (text)
 main = text (toString wutheringHeightsWithISBN)
 
 type alias LibraryEntry a = { a | name : String , author : String , readByMe : Bool }
@@ -100,6 +75,10 @@ wutheringHeightsWithISBN : LibraryEntryWithISBN
 wutheringHeightsWithISBN = { name = "Wuthering Heights", author = "Bronte" , readByMe = True , isbn = "1853260010" }
 ```
 (source: [Data Structures in Elm @NoRedInk](http://tech.noredink.com/post/140646140878/data-structures-in-elm))
+
+
+
+
 
 
 #### Polymorphism
@@ -415,6 +394,29 @@ getSentenceForLibraryEntry libraryEntry =
 
 (source: [Data Structures in Elm @NoRedInk](http://tech.noredink.com/post/140646140878/data-structures-in-elm))
 
+#### functions that operate only on some fields 
+
+```elm
+$ open http://elm-lang.org/try
+import Html exposing (div, text, br)
+main = div [] 
+  [ text ( toString ( planarDistance {x = 1, y = 10}  {x = 1, y = 6.3} ) )
+  , br [] []
+  , text ( toString ( planarDistance {x = 1, y = 10}  {x = 1.0, y = 6.3, z = -0.9} ) )
+  ]
+-- 3.7
+-- 3.7
+
+planarDistance : {a | x : Float, y : Float} -> {b | x : Float, y : Float} -> Float
+planarDistance p1 p2 =
+  let dx = p2.x - p1.x
+      dy = p2.y - p1.y
+  in sqrt (dx^2 + dy^2)
+```
+
+The `{a |` part of the annotation indicates a base record, of type `a`, is extended. Then we list the fields it's extended with, and what their types are. In the simplest cast, `a` can be the empty record, i.e. there are no extra fields. We use a different type variable, `b`, for the second argument to indicate that the two records don't have to be the same type. For example:
+
+(source: [elm-for-js](https://github.com/elm-guides/elm-for-js/blob/master/How%20to%20Read%20a%20Type%20Annotation.md) and [learnyouanelm-03](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/03-types.md))
 
 #### Pattern matching / destructuring
 

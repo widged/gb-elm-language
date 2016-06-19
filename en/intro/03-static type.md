@@ -82,6 +82,8 @@ Both `2` and `3` are recognized as number literals. Without a decimal point they
 
 Though it is not mandatory, it is best practice to always write explicit type declarations. The annotation provide clear information as to how many arguments a function takes, what their types are, what order to pass them, and what the return type is. In the early stages of a program, type annotations help you think about what the function should be doing. In the long run, they provide documentation verified by the compiler and improve the reliability, clarity, and scalability of your programs.
 
+// As you program in Elm, you follow a delicious breadcrumb trail of extremely readable compiler error messages until the program compiles and everything works. By leveraging the type system in Elm, you account for all scenarios before you even open a browser. You never open the JavaScript console.
+
 
 #### Annotation shape
 

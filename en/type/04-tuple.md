@@ -8,6 +8,8 @@ Tuples are denoted with () and their values are separated by commas. They are us
 ("elm", 42)
 ```
 
+### Type annotation
+
 The type of a tuple records the number of components s well as the types of the components..
 
 ```elm

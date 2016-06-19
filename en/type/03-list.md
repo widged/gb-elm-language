@@ -27,6 +27,8 @@ Note2. The constrain of *homogeneity* applies to list within a list as well.They
 
 ### Type annotation
 
+
+
 ### Creating Lists
 
 A list can be built in many different ways. 

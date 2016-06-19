@@ -249,3 +249,25 @@ Remember that `DefiningFunctions` is just the name of our module, so `DefiningFu
 ### Type tags for records
 
 See [Records](05-record.md)
+
+Tagging an Int type, like this:
+
+```elm
+type Aged = Aged Int
+century = Aged 100
+```
+
+We can name a record type by tagging it - like this:
+
+```elm
+pos A = { x = 7.7, y = 5.2 }
+type Positioned = Positioned { x : Float, y : Float }
+
+posB : Positioned
+posB = Positioned { x = 7.7, y = 5.2 }
+```
+
+By the way, `posA` and `posB` do not have the same type. `posA` is of type `{ x : Float, y : Float }` while `posB` is of type `Positioned`.
+
+
+(source: [elm-explained](https://github.com/niksilver/elm-explained))

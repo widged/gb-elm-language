@@ -2,90 +2,26 @@
 
 ## Maybe
 
-
-
-### BANNING NULLS
-
-type Maybe a = Nothing | Just a
-
-type alias User =
-  { name : String
-  , age : Maybe Int
-  }
-
-canBuyAlcohol : User -> Bool
-canBuyAlcohol user =
-  case user.age of
-    Nothing ->
-      False
-
-    Just age ->
-      age >= 18
-
-(source: ???)
-
-### Where did `null` and `undefined` go?
-
-In our applications it is often useful to be able to represent the possible
-absence of a value. In JavaScript we have `undefined` to represent the result
-of trying to access something that was never defined to begin with, and we have
-`null` to assign to values that _might_ have a value but could also be empty. These two are often conflated and used interchangeably both at the core language level and in libraries, but both are used to communicate the lack of a value where it is possible to find one.
-
-For example, consider the function `Array.prototype.find` which is defined in the ECMAscript 2015 spec:
-
-```javascript
-const array = [1, 2, 3, 4, 5];
-const foundOne = array.find((x) => x === 1); // foundOne === 1
-const foundSix = array.find((x) => x === 6); // foundSix === undefined
-```
-
-The return value of the `find` method in this scenario is either a `number`, or `undefined` to indicate to us that the item we are looking for is not present in the array. This type of API, and the presence of values like `null` and `undefined` in our programming language put the idea of emptiness on an equivalent level to the concept of the value of a variable. In dynamic languages like JavaScript this is a trivial outcome of the dynamic type system. In typed languages like C# the concept of emptiness requires additional type information to denote, but the same rules apply: a variable of a type, provided it is
-allowed to be `null`, can be `null` at any time.
-
-This requires us as programmers to perform checks when we expect a value
-might be `null` or `undefined`.  Humans are not perfect, therefore a major
-category of bugs manifests itself such as the Null Reference Error when we
-forget to check or incorrectly expect that a value will never be null.
-
-(source: [[https://github.com/elm-guides/elm-for-js/blob/master/Where%20Did%20Null%20And%20Undefined%20Go.md]])
-
 ### `null` is not allowed in Elm
 
-In Elm, values have types and those types are absolutely static. If a function expects an `Int` argument, the program will only compile if that function is only called with `Int` values. This prevents us from calling that function with `String` values, etc., but it also precludes the situation explained earlier where the value might be `null` or `undefined`. Not only are `null` and `undefined` not included as a part of Elm, they wouldn't work regardless because `undefined` and `null` are not of type `Int` or any other type.
+In Elm, value types are absolutely static. If a value is expected to be of type `String`, then the compiler will complain whenever a value of a different type is assigned. A difficulty, then, is to find a way to express a value that has not yet been defined. Using an empty string to denote a value not yet defined is bound to bite us sooner or later. 
 
-### `Maybe` arises from these properties of Elm
+We need to be able represent optional values and since Elm types are static we need a single type to represent the possible absence of the `Int` we are trying to find. `Maybe` is that type. The `Maybe` type fully describes the presence of an optional value.
 
-Even though we no longer have a concept of `null` and `undefined`, we still need to be able represent optional values. Consider again the scenario where we want to attempt to find an element in an Elm `List Int`, as opposed to the JavaScript array. We still may not find the thing we were looking for, and since Elm types are static we need a single type to represent the possible absence of the `Int` we are trying to find. `Maybe` is that type. Furthermore, because types are static, a function which returns an `Int` rather than a `Maybe Int` will _always_ return an `Int`, so there is never uncertainty or need for unnecessary `null` checks. The `Maybe` type fully describes the presence of an optional
-value.
-
-### Maybe
-A `Maybe` can help you with optional arguments, error handling, and records with optional fields. Think of it as a kind of`null`
 ```elm
--- Maybe resides in a module
-import Maybe exposing ( Maybe(..) )
-
 -- Takes an argument that can be filled with any value
 type Maybe a = Just a | Nothing
 ```
+### Examples
 
-[Type annotation](#type-annotation) explicitly tells that it will give back an `Int` or it won't.
-```elm
-getId : Int -> Maybe Int
-getId id =
-  if id >= 0 then
-    Just id
-  else
-    Nothing
-```
+#### elm functions
 
-(source: [learnyouanelm](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/02-starting-out.md))
-
----
-
-`head` takes a list and returns its head. The head of a list is basically its first element. `tail` takes a list and returns its tail. In other words, it chops off a list's head. The head or tail of an empty list is `Nothing`.
+`List.head` or `List.tail` return `Nothing` for an empty list and `Maybe a` for a non empty one. 
 
 ```elm
 $ elm repl
+> List.head
+<function> : List a -> Maybe.Maybe a
 > List.head [5,4,3,2,1]
 Just 5 : Maybe.Maybe number
 > List.tail [5,4,3,2,1]
@@ -95,6 +31,37 @@ Nothing : Maybe.Maybe a
 > List.tail []
 Nothing : Maybe.Maybe (List a)
 ```
+#### handling Maybe values
+
+```elm
+type alias User = { name : String , age : Maybe In }
+
+canBuyAlcohol : User -> Bool
+canBuyAlcohol user =
+  case user.age of
+    Nothing ->
+      False
+
+    Just age ->
+      age >= 18
+```
+
+#### returning Maybe values
+
+```elm
+getId : Int -> Maybe Int
+getId id =
+  if id >= 0 then
+    Just id
+  else
+    Nothing
+```
+(source: [learnyouanelm](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/02-starting-out.md))
+
+
+---
+
+
 
 
 What is `Nothing`? And why did `Listhead` return `Just 5` before? Think of `Nothing` as a way to indicate when there's no correct value to return, and `Just` as a way to show that we could return a value in a place where `Nothing` could have also been returned.

@@ -146,6 +146,8 @@ origin3D : Point3D
 origin3D = { x = 0, y = 0, z = 0 }
 ```
 
+The `{a |` part of the annotation indicates a base record, of type `a`, is extended. Then we list the fields it's extended with, and what their types are. In the simplest cast, `a` can be the empty record, i.e. there are no extra fields. 
+
 Note that extensible types have no constructor function attached.
 
 ```elm
@@ -247,10 +249,7 @@ $ elm repl
 
 Because records are immutable, we return a new record. 
 
-
-
 #### functions that operate only on some of the fields 
-
 
 If the argument to a function is a record, you can specify which fields must be present. Example:
 
@@ -265,47 +264,7 @@ $ elm repl
 "Doe" : String
 ```
 
-Alternatively, in you can ask in the signature for a certain field to exist in a record.
-
-```elm
-$ open http://elm-lang.org/try
-import Html exposing (text)
-main = text (printLastName person)
-person = { first = "Jane", last = "Doe", age = 42, gender = "female" }
-printLastName : { record | last : String} -> String
-printLastName {last} = last
-```
-
-The type system allows you to ask for a certain thing to exist in a record.
-
-    sendEmail : { record | email : String } -> Bool
-    sendEmail userOrSomethingEmailable =
-      -- code that sends email ...
-
-This type annotation requires that we pass a record to the function that contains an email which must be a string. The rest of the fields in the record can be anything at all! This allows us to have a strong contract for this function but provides flexibility around the thing we pass into it.
-
-(source: [understanding-the-elm-type-system.html](http://www.adamwaselnuk.com/elm/2016/05/27/understanding-the-elm-type-system.html))
-
-It is  possible to write functions that work on records as long as they have the right fields, ignoring any other fields.
-
-(source: [learnyouanelm-03](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/03-types.md))
----
-When we create functions consuming Records, they can be as general or as specific as we please. I can write a getName function that takes any Record with a name field, or I can write a displayHeader function that requires name, author, publishDate, editDate, yourFirstBorn, and maybe a list of related titles too, just because.
-
-```elm
-getSentenceForLibraryEntry : LibraryEntry -> String
-getSentenceForLibraryEntry {name, author} = -- note that Elm gives us clean desctructuring
-    author ++ " wrote " ++ name ++ "."
-
-
-getSentenceForLibraryEntry : LibraryEntry -> String
-getSentenceForLibraryEntry libraryEntry =
-    libraryEntry.author ++ " wrote " ++ libraryEntry.name ++ "."
-```
-
-(source: [Data Structures in Elm @NoRedInk](http://tech.noredink.com/post/140646140878/data-structures-in-elm))
-
-#### functions that operate only on some fields 
+Alternatively, in you can ask in the signature for a certain field to exist in a record. The rest of the fields can be anything. 
 
 ```elm
 $ open http://elm-lang.org/try
@@ -325,9 +284,8 @@ planarDistance p1 p2 =
   in sqrt (dx^2 + dy^2)
 ```
 
-The `{a |` part of the annotation indicates a base record, of type `a`, is extended. Then we list the fields it's extended with, and what their types are. In the simplest cast, `a` can be the empty record, i.e. there are no extra fields. We use a different type variable, `b`, for the second argument to indicate that the two records don't have to be the same type. For example:
+The `{a |` part of the annotation corresponds to a record extension. See above. We use different type variables, `a` and `b` to indicate that the two records don't have to be the same type.
 
-(source: [elm-for-js](https://github.com/elm-guides/elm-for-js/blob/master/How%20to%20Read%20a%20Type%20Annotation.md) and [learnyouanelm-03](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/03-types.md))
 
 #### Pattern matching / destructuring
 
@@ -338,6 +296,20 @@ The `{a |` part of the annotation indicates a base record, of type `a`, is exten
 "Blue" : String
 ```
 (source: [learnyouanelm](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/02-starting-out.md))
+---
+
+```elm
+getSentenceForLibraryEntry : LibraryEntry -> String
+getSentenceForLibraryEntry {name, author} = -- note that Elm gives us clean desctructuring
+    author ++ " wrote " ++ name ++ "."
+
+
+getSentenceForLibraryEntry : LibraryEntry -> String
+getSentenceForLibraryEntry libraryEntry =
+    libraryEntry.author ++ " wrote " ++ libraryEntry.name ++ "."
+```
+
+(source: [Data Structures in Elm @NoRedInk](http://tech.noredink.com/post/140646140878/data-structures-in-elm))
 ---
 ```elm
 myRecord = { x = 3, y = 4 }
@@ -443,5 +415,8 @@ format parseTree state =
 
 * [Data Structures in Elm @NoRedInk](http://tech.noredink.com/post/140646140878/data-structures-in-elm)
 * [elm-explained](https://github.com/niksilver/elm-explained)
+* [learnyouanelm-03](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/03-types.md)
+* [elm-for-js](https://github.com/elm-guides/elm-for-js/blob/master/How%20to%20Read%20a%20Type%20Annotation.md)
+
 
 The first iteration of the Elm record was based heavily on (‘Extensible records with scoped labels’ by Daan Leijen), and many features of the Elm record reflect Leijen’s work. The paper is well worth a read for those interested in modeling data. However, the paper’s titular descriptors–“extensible”, “with scoped labels”–no longer apply to Elm records. [I]n practice, developers did not find Extensibility (or restrictability) useful, and extensibility of record values was removed. (source: [Data Structures in Elm @NoRedInk](http://tech.noredink.com/post/140646140878/data-structures-in-elm))

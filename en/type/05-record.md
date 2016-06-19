@@ -60,7 +60,7 @@ True : Bool
 ```    
 
 
-#### extensibility
+#### type extensibility
 
 ```elm
 $ open http://elm-lang.org/try

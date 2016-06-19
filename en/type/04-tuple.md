@@ -173,42 +173,22 @@ $ elm repl
 "Jane Doe" : String
 ```
 
-Destructuring can be useful to declare constants
+Destructuring can be useful to declare constants within the elm program `(width, height) = (200, 100)`
+
+Exact values of comparables can be used to match when destructuring.
 
 ```elm
--- with no destructuring
-width = 200
-height = 100
-
--- with destructuring
-(width, height) = (200, 100)
-```
-(source: [yang-wei gist](https://gist.github.com/yang-wei/4f563fbf81ff843e8b1e))
-
-Thanks to @robertjlooby, I learned that we can match exact value of comparable. This is useful when you want to explicitly renaming the variable in your branches of case .. of.
-
-```elm
-isOrdered : (String, String, String) -> String
-isOrdered tuple =
- case tuple of
-  ("A","B","C") as orderedTuple ->
-    toString orderedTuple ++ " is an ordered tuple."
-
-  (_,_,_) as unorderedTuple ->
-    toString unorderedTuple ++ " is an unordered tuple."
-
-
-isOrdered myTuple
--- "(\"A\",\"B\",\"C\") is an ordered tuple."
-
-isOrdered ("B", "C", "A")
--- "(\"B\",\"C\",\"A\") is an unordered tuple."
-Exact values of comparables can be used to match when destructuring (also works with String, Char, etc. and any Tuple/List/union type built up of them) - @robertjlooby
+> isLastNameDoe tuple = \
+ case tuple of \
+   (_,"Doe")  -> True \
+   (_,_)  -> False
+<function> : ( a, String ) -> Bool
+> isLastNameDoe ("Jane", "Doe")
+True : Bool
+> isLastNameDoe ("Albert", "Marb")
+False : Bool
 ```
 
-(source: [yang-wei gist](https://gist.github.com/yang-wei/4f563fbf81ff843e8b1e))
-
------
 
 We can write our own function for accessing the third value in a tuple, if we want:
 

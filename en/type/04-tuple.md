@@ -23,6 +23,7 @@ $ elm repl
 In a program
 
 ```elm
+$ open http://elm-lang.org/try
 userProfile : (String, String, Int)
 userProfile = ("John", "Doe", 42)
 ```

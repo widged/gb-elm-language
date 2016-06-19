@@ -153,44 +153,27 @@ Pattern matching in `case` expressions can be used on tuples.
 
 ```elm
 $ elm repl
-> coord = let (x,y) = (5,7) in (x,y)
+> coord = (5,7)
+(5,7) : ( number, number' )
+> let (x,y) = coord in (x,y)
 (5,7) : ( number, number' )
 > (x, y) = (5, 7) -- doesn't work in the REPL.
 -- NAMING ERROR ---------------------------------------------- repl-temp-000.elm
 ```
 
+Destructuring can be used on nested tuples. 
 
 ```elm
-myTuple = ("A", "B", "C")
-myNestedTuple = ("A", "B", "C", ("X", "Y", "Z"))
-
-let
-  (a,b,c) = myTuple
-in
-  a ++ b ++ c
--- "ABC" : String
-
-let
-  (a,b,c,(x,y,z)) = myNestedTuple
-in
-  a ++ b ++ c ++ x ++ y ++ z
--- "ABCXYZ" : String
+$ elm repl
+> nestedTuple = ("Jane", "Doe", (42, "female"))
+("Jane","Doe",(42,"female")) : ( String, String, ( number, String ) )
+> let (first, last, (age, gender)) = nestedTuple in first ++ " " ++ last ++ ", age: "++ (toString age) ++ ", gender: " ++ gender
+"Jane Doe, age: 42, gender: female" : String
+> let (first, last, _) = nestedTuple in first ++ " " ++ last
+"Jane Doe" : String
 ```
-(source: [yang-wei gist](https://gist.github.com/yang-wei/4f563fbf81ff843e8b1e))
 
-Make sure to match every tuple(no more no less) or you will get an error like:
-
-```elm
-let
-  (a,b) = myTuple
-in
-  a ++ b
--- TYPE MISMATCH :(
-```
-(source: [yang-wei gist](https://gist.github.com/yang-wei/4f563fbf81ff843e8b1e))
-
-
-It's also more elegant to declare some constant of your app using destructuring.
+Destructuring can be useful to declare constants
 
 ```elm
 -- with no destructuring

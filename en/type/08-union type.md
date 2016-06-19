@@ -66,8 +66,6 @@ firstCard = (Jack, Diamond)
 secondCard = ((Num 4), Heart)
 ```
 
-
-
 Tags can work recursively.
 
 ```elm
@@ -124,24 +122,9 @@ type RightWay = ANewTag Int | AnotherNewTag Float
 
 #### type name is typically different from tag name
 
-It is possible to define a union type with a tag the same name as the type. In that case, that name would be both a type and a value or function.
+It is possible to define a union type with a tag the same name as the type.  However, it generally doesn't make sense. 
 
-This only makes sense when there is a single tag.
-
-```elm
-type Weight = Weight Int
-
-star1 : Weight
-star1 = Weight 100
-```
-
-The alternative is a bit weird.
-
-```elm
-type Weight = AWeight Int
-weightValue : Weight -> Int
-weightValue  (AWeight a) = a
-```
+The only exception is when there is only a single tag. This is then a special case of [Type Constructor](11-type constructor.md). 
 
 #### tags that carry a record don't get accessor functions
 

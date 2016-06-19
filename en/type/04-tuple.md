@@ -151,12 +151,12 @@ True : Bool
 
 Pattern matching in `case` expressions can be used on tuples. 
 
-----------
-
 ```elm
-(x, y) = (1, 2)
-> x
-1 : number
+$ elm repl
+> coord = let (x,y) = (5,7) in (x,y)
+(5,7) : ( number, number' )
+> (x, y) = (5, 7) -- doesn't work in the REPL
+-- NAMING ERROR ---------------------------------------------- repl-temp-000.elm
 ```
 (source: [learnyouanelm](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/02-starting-out.md))
 

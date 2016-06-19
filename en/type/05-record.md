@@ -76,7 +76,6 @@ wutheringHeightsWithISBN = { name = "Wuthering Heights", author = "Bronte" , rea
 (source: [Data Structures in Elm @NoRedInk](http://tech.noredink.com/post/140646140878/data-structures-in-elm))
 
 
-
 ### Creating a record
 
 To create a record, you can write out the desired key-value pairs: { name = "Wuthering Heights", author = "Bronte", readByMe = True }. (Note that notation here may be backwards from what you expect. Type signatures, in Elm, use a colon. Assignment uses an equals sign)

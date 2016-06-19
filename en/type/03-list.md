@@ -32,10 +32,16 @@ The type of a List records the collection type (List) and the type of the elemen
 ```elm
 > ["the", "quick", "brown", "fox"]
 ["the","quick","brown","fox"] : List String
+> ['a','b','c']
+['a','b','c'] : List Char
 > [1, 2, 3, 4, 5]
 [1,2,3,4,5] : List number
 > [1, 2, 3, 4, 5.0]
 [1,2,3,4,5] : List Float
+> [(0,0), (0,1), (1,1)]
+[(0,0),(0,1),(1,1)] : List ( number, number' )
+> [{x = 0, y = 0}, {x = 0, y = 1}]
+[{ x = 0, y = 0 },{ x = 0, y = 1 }] : List { x : number, y : number' }
 ```
 
 ### Creating Lists

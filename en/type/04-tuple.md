@@ -111,21 +111,22 @@ With tuples, type is bound to the number of elements. Therefore, functions have 
 
 #### fst and snd of a tuple pair
 
-F 
-
-fst : (a, b) -> a. Returns the first element.
-snd : (a, b) -> b. Returns the second element.
-
-To access the values of a Tuple, we are given a couple of helpers. fst (1,0) gives us the first value, 1, and snd (1,0) gives us the second value, 0.
-
-Access the elements of a pair with the first and second functions. (This is a shortcut; we'll come to the "real way" in a bit.)
+For tuple pairs, special accessors are given that return the first or second element of the pair. 
 
 ```elm
-fst ("elm", 42) -- "elm"
-snd ("elm", 42) -- 42
+$ elm repl
+> pair = (5, 7)
+(5,7) : ( number, number' )
+> fst pair
+5 : number
+> triple = (5, 7, 8)
+(5,7,8) : ( number, number', number'' )
+> fst triple
+-- TYPE MISMATCH --------------------------------------------- repl-temp-000.elm
+The argument to function `fst` is causing a mismatch.
+Function `fst` is expecting the argument to be: ( a, b )
 ```
 
----
 
 
 Two useful functions that operate on pairs:

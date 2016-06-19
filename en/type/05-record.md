@@ -99,17 +99,18 @@ This creates a *record constructor* that is both a function and a type.
 
 ```elm
 > type alias Point2D = {x : Float, y : Float}  
+> Point2D
+<function> : Float -> Float -> Repl.Point2D
 > [(Point2D 0 0), (Point2D 0 1), (Point2D 1 1), (Point2D 1 0)]
 [{ x = 0, y = 0 },{ x = 0, y = 1 },{ x = 1, y = 1 },{ x = 1, y = 0 }]
     : List Repl.Point2D
 ```
 
-The constructor act as multi-parameter functions to construct records. It takes one argument for each field, and returns a record with those fields
+The constructor acts as multi-parameter functions to construct records. It takes one argument for each field, and returns a record with those fields
 
 ```elm
 $ elm repl
 > Point2D
-<function> : Float -> Float -> Repl.Point2D
 > origin = Point2D 0 0
 { x = 0, y = 0 } : Repl.Point2D
 ```

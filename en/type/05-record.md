@@ -2,20 +2,15 @@
 
 ## Records 
 
-Records are written with brackets. The brackets enclose a collection of key/value pairs, or semantically named fields.
-
-Records are frequently employed to record state or to model information. They employ key-value pairs, with (likely-familar) dot notation for accessing values. (source: [Data Structures in Elm @NoRedInk](http://tech.noredink.com/post/140646140878/data-structures-in-elm))
-
-
+Records are written with brackets. The brackets enclose a collection of key-value pairs, or semantically named fields.
 
 ```elm
-{name=value,...,name=value}
+recordShape = { name1 = value1, name2 = value2 }
+myRecord = { first = "Jane", last = "Doe", age = 42, gender = "female" }
 ```
+Records are frequently employed to record state or to model information. 
 
-```elm
-myRecord = { style = "Blue", number = 1, isCool = True }
-```
-
+### Type annotations
 
 Records values use equals between key and value but a colon between key and value type. 
 
@@ -23,8 +18,10 @@ Records values use equals between key and value but a colon between key and valu
 point : {x : Float, y : Float}
 point = {x = 3.2, y = 2.5}
 ```
------
-Records have fields with names. The order of fields doesn't matter. Notice that record values use equals signs, not colons.
+
+### structural type
+
+The type is determined by the names given to the fields. The order of fields doesn't matter. Notice that record values use equals signs, not colons.
 
 ```elm
 { x = 3, y = 7 }

@@ -34,6 +34,17 @@ Tagging an Int type, like this:
 type Aged = Aged Int
 century = Aged 100
 ```
+
+
+This only makes sense when there is a single tag.
+
+```elm
+type Weight = Weight Int
+star1 : Weight
+star1 = Weight 100
+```
+
+
 ### record tag constructor
 
 Record types can be named by tagging them.  See [Records](05-record.md)

@@ -25,6 +25,8 @@ Note. strings are not Lists of characters, though they are similar with Lists.
 Note2. The constrain of *homogeneity* applies to list within a list as well.They can be of different lengths but they can't be of different types. You can't have a list that has some lists of characters and some lists of numbers. 
 
 
+### Type annotation
+
 ### Creating Lists
 
 A list can be built in many different ways. 

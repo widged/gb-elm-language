@@ -88,42 +88,20 @@ myRecord = { first = "Jane", last = "Doe", age = 42, gender = "female" }
 
 #### naming record types
 
-Types can be named to create a *record constructor*.
+Types can be named to create a *record constructor*. The constructor is both a type and a function. (adapted from [elm-for-js](https://github.com/elm-guides/elm-for-js/blob/master/Scope.md))
 
 ```elm
 $ elm repl
 > type alias Point2D = {x : Float, y : Float}
 > Point2D
 <function> : Float -> Float -> Repl.Point2D
+> origin = Point2D 0 0
+{ x = 0, y = 0 } : Repl.Point2D
 ```
 
-From now on, `Point2D` becomes a valid type to use in annotations. But because we're aliasing a record, we also gain a *record constructor*, `Point2D : Float -> Float -> Point2D`. For example, `origin = Point2D 0 0` becomes legal, and this is actual Elm code, not an annotation. `Point2D` is both a type and a function.
-
-(source: [elm-for-js](https://github.com/elm-guides/elm-for-js/blob/master/Scope.md))
-
----
-
-We can name a record type by tagging it - like this:
-
-```elm
-type Positioned = Positioned { x : Float, y : Float }
-
-posB : Positioned
-posB = Positioned { x = 7.7, y = 5.2 }
-```
-
-However, this isn't anything new. This is just tagging a record type in the same way we might tag an Int type, like this:
-
-```elm
-type Aged = Aged Int
-
-century = Aged 100
-```
-
-By the way, `posA` and `posB` do not have the same type. `posA` is of type `{ x : Float, y : Float }` while `posB` is of type `Positioned`.
+See [Type Constructor](11-type constructor.md)
 
 
-(source: [elm-explained](https://github.com/niksilver/elm-explained))
 ---
 If we are planning to create more than one record with the same fields on it, we may want to create a type alias that will describe the shape of these records.
 

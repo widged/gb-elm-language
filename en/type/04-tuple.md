@@ -2,7 +2,7 @@
 
 ## Tuples
 
-Tuples are denoted with () and their values are separated by commas. They are used when you know in advance how many components some piece of data should have. The length is fixed. Unlike a list, , tuples don't have to be *homogenous*; their elements can be of mixed types.
+Tuples are denoted with () and their values are separated by commas. They are used when you know in advance how many components some piece of data should have. The length is fixed. Unlike a list, , tuples don't have to be *homogenous*; their elements can be of different types.
 
 ```elm
 ("elm", 42)
@@ -10,7 +10,7 @@ Tuples are denoted with () and their values are separated by commas. They are us
 
 ### Type annotation
 
-The type of a tuple records the number of components s well as the types of the components..
+The type of a tuple records the number of components as well as the types of the components.
 
 ```elm
 > (1, "2", True)

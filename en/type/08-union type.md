@@ -2,28 +2,59 @@
 
 ## Union Types
 
-```elm
-type Fruit = Apple | Banana | Orange
 
-fruitToColor: Fruit -> String
-fruitToColor fruit =
-  case fruit of
-    Apple -> "green"
-    Banana -> "yellow"
-    Orange -> "orange"
-```
-
-(source: ???)
+A union type defines a custom type that can be one of many possibilities. Each of the possibilities is represented as a "tag".
 
 ```elm
-type Value = Jack | Queen | King | Ace | Num Int
-type Suit = Club | Diamond | Spade | Heart
+type Direction = North | South | East | West
 ```
 
-Both types are *union types*. That means that a Suit can either be a Club, Diamond, Spade or Heart. And a Value can be a Jack, a Queen, a King, an Ace or a Num with an integer. So, a Num 2 or Num 5 is a valid Value. That seems like a nice model for our problem. Now let's implement the functions that print a card. ## Printing a Card I'll first print a Suit. It's a no brainer:
-printSuit suit = toString suit
+Tags can carry other values of known type. Each tag then becomes a value or function depending on whether it takes any arguments.
 
-(source: [[http://lucasmreis.github.io/blog/learning-elm-part-1/]])
+```elm
+type CardSuit = Club | Diamond | Spade | Heart
+type CardValue = Jack | Queen | King | Ace | Num Int
+```
+
+This expresses that a card Suit can either be a Club, Diamond, Spade or Heart. And a card value can be a Jack, a Queen, a King, an Ace or a Num with an integer. So, a Num 2 or Num 5 is a valid Value. (source: [learning-elm-part-1](http://lucasmreis.github.io/blog/learning-elm-part-1/))
+
+```elm
+$ open http://elm-lang.org/try
+import Html exposing (div, text, br)
+main = div [] 
+  [ text ( cardSuitToName Club )
+  , br [] []
+  , text ( cardValueToName Jack )
+  , br [] []
+    , text ( cardValueToName ( Num 3 ) )
+  ]
+-- club
+-- Jack
+-- 3
+
+type CardSuit = Club | Diamond | Spade | Heart
+type CardValue = Jack | Queen | King | Ace | Num Int
+cardSuitToName: CardSuit -> String
+cardSuitToName suit =
+  case suit of
+    Club -> "club"
+    Diamond -> "diamond"
+    Spade -> "spade"
+    Heart -> "heart" 
+    
+cardValueToName: CardValue -> String
+cardValueToName value =
+  case value of
+    Jack -> "Jack"
+    Queen -> "Queen"
+    King -> "King"
+    Ace -> "Ace"
+    Num x -> toString x
+```
+
+They can accept multiple arguments. 
+
+_Union types_ are tightly coupled with [case-of](#case-of) statement. It's the tags, not the parent type, that are matched against `case` statements.
 
 ```elm
 type alias Point = { x : Float, y : Float }
@@ -42,76 +73,41 @@ area shape =
       abs (corner1.x - corner2.x) * abs (corner1.y - corner2.y)
 ```
 
-(source: ???)
+Tags can work recursively.
 
-The second are the tags of a union type. For example, as tree: `type Tree a = Leaf | Node a (Tree a) (Tree a)`. Each tag becomes a value or function (depending on whether it takes any arguments). In this case, we get the value `Leaf : Tree a` and `Node : a -> Tree a -> Tree a -> Tree a`. It's these tags, not the `Tree` type, that are used as pattern matches in `case` statements. Although less common, it's possible to define a union type with a tag the same name as the type. In that case, that name would be both a type and a value or function.
-
-(source: [[https://github.com/elm-guides/elm-for-js/blob/master/Scope.md]])
-
-
-### Union types
-
-For example, as tree: `type Tree a = Leaf | Node a (Tree a) (Tree a)`. Each tag becomes a value or function (depending on whether it takes any arguments). In this case, we get the value `Leaf : Tree a` and `Node : a -> Tree a -> Tree a -> Tree a`. It's these tags, not the `Tree` type, that are used as pattern matches in `case` statements. Although less common, it's possible to define a union type with a tag the same name as the type. In that case, that name would be both a type and a value or function.
-
-(source: [learnyouanelm-03](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/03-types.md))
-
--------
-
-By contrast, defining a union type creates a type that didn't exist before.
-A union type is so called because it can be one of many possibilities.
-Each of the possibilities is represented as a "tag".
-
-~~~~ {.Elm:hs name="code"}
-type Direction =
-  North | South | East | West
-~~~~
-
-Tags can carry other values of known type. This can work recursively.
-
-~~~~ {.Elm:hs name="code"}
-type IntTree =
-  Leaf | Node Int IntTree IntTree
-~~~~
-
-"Leaf" and "Node" are the tags. Everything following a tag is a type.
-Tags can be used as values or functions.
-
-~~~~ {.Elm:hs name="code"}
+```elm
+type IntTree = Leaf | Node Int IntTree IntTree
 root : IntTree
-root =
-  Node 7 Leaf Leaf
-~~~~
+root = Node 7 Leaf Leaf
+```
 
-Union types (and type aliases) can use type variables.
+They can use type variables.
 
-~~~~ {.Elm:hs name="code"}
-type Tree a =
-  Leaf | Node a (Tree a) (Tree a)
-~~~~
+```elm
+type Tree a = Leaf | Node a (Tree a) (Tree a)
+Leaf : Tree a
+Node : a -> Tree a -> Tree a -> Tree a
+```
 
 "The type tree-of-a is a leaf, or a node of a, tree-of-a, and tree-of-a."
-Pattern match union tags. The uppercase tags will be matched exactly. The
-lowercase variables will match anything. Underscore also matches anything,
-but signifies that you aren't using it.
 
-~~~~ {.Elm:hs name="code"}
+The uppercase tags will be matched exactly. The lowercase variables will match anything. Underscore also matches anything, but signifies that you aren't using it.
+
+```elm
 leftmostElement : Tree a -> Maybe a
 leftmostElement tree =
   case tree of
     Leaf -> Nothing
     Node x Leaf _ -> Just x
     Node _ subtree _ -> leftmostElement subtree
-~~~~
-
-(source: ???)
-
-------
-
-Elm allows to create custom types known as _union types_.<br/>
-The expression below creates a type which can have one of the values (or _tags_) from the right. _Union types_ are tightly coupled with [case-of](#case-of) statement.
-```elm
-type Movement = Right | Left | Stop
 ```
+
+(source: [elm-for-js](https://github.com/elm-guides/elm-for-js/blob/master/Scope.md) and [learnyouanelm-03](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/03-types.md))
+
+Although less common, it's possible to define a union type with a tag the same name as the type. In that case, that name would be both a type and a value or function.
+
+-------
+
 
 Tags bring additional information, after tag itself comes a type or multiple types.
 ```elm

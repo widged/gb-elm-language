@@ -25,6 +25,8 @@ In a program
 
 ```elm
 $ open http://elm-lang.org/try
+import Html exposing (text)
+main = text ( toString userProfile )
 userProfile : {first : String, last : String, age: Int, gender: String}
 userProfile = { first = "Jane", last = "Doe", age = 42, gender = "female" }
 ```

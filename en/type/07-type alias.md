@@ -10,45 +10,10 @@ origin : Point
 origin = { x = 0, y = 0 }
 ```
 
+(source: [understanding-the-elm-type-system.html](http://www.adamwaselnuk.com/elm/2016/05/27/understanding-the-elm-type-system.html))
 
 
-With tagged unions, you can define a type that represents the possibility of multiple types. This is one of the key features that supports the Elm architecture. A tagged union will typically be paired with a case statement to build out a function that offers multiple paths through which your program can update. The name sounds strange but the code is simple, and the type system will support you every step of the way. Here is an example:
 
-```elm
-type User = SuperAdmin | Admin | Basic
-
-userPhoto : User -> String
-userPhoto user =
-  case user of
-    SuperAdmin ->
-      "thassa.png"
-
-    Admin ->
-      "jace.png"
-
-    Basic ->
-      "merfolk.png"
-```
-
-
-This basic example only scratches the surface of how helpful these types can be. The Elm compiler is there to guide you towards accounting for every scenario so that your customers won’t encounter errors at runtime. Watch what happens when you remove one of the branches from the case statment and try to compile:
-
-```elm
-type User = SuperAdmin | Admin | Basic
-
-userPhoto : User -> String
-userPhoto user =
-  case user of
-    Admin ->
-      "jace.png"
-
-    Basic ->
-      "merfolk.png"
-```
-
-The Elm compiler notices when you don't account for all cases. Imagine the power of this when you are working on a code base with multiple modules, or multiple programmers, or when you haven’t looked at the code in a while. Tagged unions are outlined in greater detail in the Elm docs.
-
-(source: [[http://www.adamwaselnuk.com/elm/2016/05/27/understanding-the-elm-type-system.html]])
 
 
 ### Type aliases

@@ -17,17 +17,22 @@ The type of a tuple records the number of components as well as the types of the
 (1,"2",True) : ( number, String, Bool )
 ```
 
-For instance, a tuple of size two (also called a pair) can be used to store x,y coordinates of a point. 
+The number of elements must be constant.  
 
 ```elm
 $ elm repl
 > [(1,2),(8,11),(4,5)]
 [(1,2),(8,11),(4,5)] : List ( number, number' )
-```
-
-```elm
 > [(1,2),(8,11,5),(4,5)]
 -- TYPE MISMATCH --------------------------------------------- repl-temp-000.elm
+The 1st and 2nd elements are different types of values.
+```
+```elm
+As must the type in any given position
+
+> [(1,2),(8,"11"),(4,5)]
+-- TYPE MISMATCH --------------------------------------------- repl-temp-000.elm
+
 The 1st and 2nd elements are different types of values.
 ```
 

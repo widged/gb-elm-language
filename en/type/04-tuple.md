@@ -26,6 +26,7 @@ In a program
 userProfile : (String, String, Int)
 userProfile = ("John", "Doe", 42)
 ```
+
 The number of elements must be constant.  
 
 ```elm
@@ -88,7 +89,7 @@ $ elm repl
 (12,7) : ( number, number' )
 ```
 
-However, it is also possible to use a prefix operator, `(,)`, to construct a tuple. The function is a tuple constructor not bound to the value it helps create. 
+It is also possible to use a prefix operator, `(,)`, to construct a tuple. The function is a tuple constructor not bound to the value it helps create. 
 
 ```elm
 $ elm repl

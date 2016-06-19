@@ -18,10 +18,14 @@ The type of a tuple records the number of components as well as the types of the
 $ elm repl
 > (1, "2", True)
 (1,"2",True) : ( number, String, Bool )
-> userProfile : (String, String, Int)
-> userProfile = ("John", "Doe", 42)
 ```
 
+In a program
+
+```elm
+userProfile : (String, String, Int)
+userProfile = ("John", "Doe", 42)
+```
 The number of elements must be constant.  
 
 ```elm

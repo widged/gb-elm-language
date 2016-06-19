@@ -36,7 +36,6 @@ The type of a List records the collection type (List) and the type of the elemen
 [1,2,3,4,5] : List number
 ```
 
-
 ### Creating Lists
 
 A list can be built in many different ways. 

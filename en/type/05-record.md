@@ -284,100 +284,26 @@ planarDistance p1 p2 =
   in sqrt (dx^2 + dy^2)
 ```
 
-The `{a |` part of the annotation corresponds to a record extension. See above. We have two type variables, `a` and `b` to indicate that the two records don't have to be the same type.
+The `{a |` part of the annotation corresponds to a record extension. See above. We introduce two type variables, `a` and `b` to indicate that the two records don't have to be the same type.
 
 
 #### Pattern matching / destructuring
 
 
 ```elm
-{ style, number, isCool } = myRecord
-> style
-"Blue" : String
-```
-(source: [learnyouanelm](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/02-starting-out.md))
----
-
-```elm
-getSentenceForLibraryEntry : LibraryEntry -> String
-getSentenceForLibraryEntry {name, author} = -- note that Elm gives us clean desctructuring
-    author ++ " wrote " ++ name ++ "."
-
-
-getSentenceForLibraryEntry : LibraryEntry -> String
-getSentenceForLibraryEntry libraryEntry =
-    libraryEntry.author ++ " wrote " ++ libraryEntry.name ++ "."
+$ elm repl
+> isAtOrigin {x,y} = \
+  case (x,y) of \
+    (0,0) -> True \
+    (_,_) -> False
+> isAtOrigin { x = 3, y = 4 }
+False : Bool
+> isAtOrigin { x = 0, y = 0, z = 3 }
+True : Bool
 ```
 
-(source: [Data Structures in Elm @NoRedInk](http://tech.noredink.com/post/140646140878/data-structures-in-elm))
----
-```elm
-myRecord = { x = 3, y = 4 }
+##### nested record
 
-sum {x,y} =
-  x + y
-
-sum myRecord
--- 7
-```
-
-Notice that the variable declared on the left side must match the key of record:
-
-```elm
-sum {a,b} =
-  a + b
-
-sum myRecord
--- The argument to function `sum` is causing a mismatch.
-```
-
-As long as our variable match one of the key of record, we can ignore other.
-
-```elm
-onlyX {x} =
-  x
-
-onlyX myRecord
--- 3 : number
-```
-
-(source: [yang-wei gist](https://gist.github.com/yang-wei/4f563fbf81ff843e8b1e))
-----
-##### Nested record
-
-I don't think Elm support destructuring in nested record (I tried) because Elm encourages sparse record
-
-
-```elm
-format : ParseTree -> State -> State
-format parseTree state =
-  case parseTree of
-    Node Feature (LeafNode (Description description) :: children) ->
-      appendDesribe description children state
-
-    Node Scenario (LeafNode (Description description) :: children) ->
-      appendDesribe description children state
-
-    Node Test (LeafNode (Description description) :: []) ->
-      let
-        open = tabs state ++ "it('" ++ description ++ "', function() {\n"
-        close = tabs state ++ "});\n"
-      in
-        { state | output = state.output ++ open ++ close }
-
-    _ ->
-      state
-```
-(source: [yang-wei gist](https://gist.github.com/yang-wei/4f563fbf81ff843e8b1e))
-
-That one is very useful for record-like opaque types as they don't get the magical accessor functions, especially as you can do partial matching:
-
-```elm
-type AThing = AThing { foo: String, bar: Int }
-
-foo (AThing { foo }) = foo
-```
-(source: [comment on yang-wei gist](https://gist.github.com/yang-wei/4f563fbf81ff843e8b1e))
 
 The latest version of Elm does support destructuring of nested types. Here's an example function I wrote to walk through an AST and return JavaScript code as a String.
 
@@ -417,6 +343,7 @@ format parseTree state =
 * [elm-explained](https://github.com/niksilver/elm-explained)
 * [learnyouanelm-03](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/03-types.md)
 * [elm-for-js](https://github.com/elm-guides/elm-for-js/blob/master/How%20to%20Read%20a%20Type%20Annotation.md)
+* [yang-wei gist](https://gist.github.com/yang-wei/4f563fbf81ff843e8b1e)
 
 
 The first iteration of the Elm record was based heavily on (‘Extensible records with scoped labels’ by Daan Leijen), and many features of the Elm record reflect Leijen’s work. The paper is well worth a read for those interested in modeling data. However, the paper’s titular descriptors–“extensible”, “with scoped labels”–no longer apply to Elm records. [I]n practice, developers did not find Extensibility (or restrictability) useful, and extensibility of record values was removed. (source: [Data Structures in Elm @NoRedInk](http://tech.noredink.com/post/140646140878/data-structures-in-elm))

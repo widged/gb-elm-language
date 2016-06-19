@@ -151,39 +151,27 @@ myRecord = { first = "Jane", last = "Doe", age = 42, gender = "female" }
 
 #### Accessing
 
-Use record.key or .key record to access the fields of a record. 
-
-----
-Uniquely these functions are defined by a pattern, rather than being listed somewhere. For example, `.name : { b | name : a } -> a`, which basically means `.name` takes any record with a `name` field and extracts its value. You can use any record field name you like.
-
-Beware of creating data structures with record accessors. Because all a list's elements must have the same type, each record accessor must extract a value of the same type, which is usually not what you want.
-```elm
-[.name, .number] : List ({ b | name : a, number : a } -> a)
-```
-
-(source: [elm-for-js](https://github.com/elm-guides/elm-for-js/blob/master/Scope.md) and [learnyouanelm-03](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/03-types.md))
------
-Access a field with a dot and the field name.
+Use `record.key` or `.key record` to access the fields of a record. 
 
 ```elm
-{ x = 3, y = 7 }.x -- 3
+$ elm repl
+> { x = 3, y = 7 }.x
+3 : number
+> .y { x = 3, y = 7 }
+7 : number
 ```
 
-Or with an accessor fuction, which is a dot and the field name on its own.
+Uniquely these functions are defined by a pattern.
 
 ```elm
-.y { x = 3, y = 7 } -- 7
+$ elm repl
+> .x
+<function> : { b | x : a } -> a
+> .aPatternThanElmKnowsNothingAbout
+<function> : { b | aPatternThanElmKnowsNothingAbout : a } -> a
 ```
-----
-Accessing records
-```elm
-> myRecord.style
-"Blue" : String
-> .style myRecord
-"Blue" : String
-```
----
-Getting and Setting on Records
+
+#### Getting and Setting on Records
 
 Now we have wutheringHeights and diaspora, representing books in our library. But wait! I actually read Diaspora by Egan two weeks ago. We need to update the readByMe field.
 

@@ -88,7 +88,7 @@ myRecord = { first = "Jane", last = "Doe", age = 42, gender = "female" }
 
 #### naming record types
 
-Types can be named to create a *record constructor*. The constructor is both a type and a function. (adapted from [elm-for-js](https://github.com/elm-guides/elm-for-js/blob/master/Scope.md))
+If we are planning to create more than one record with the same fields on it, we can create a type alias that describes the shape of these records. This creates a *record constructor* that is both a type and a function. It describes the shape of these records.
 
 ```elm
 $ elm repl
@@ -103,7 +103,7 @@ See [Type Constructor](11-type constructor.md)
 
 
 ---
-If we are planning to create more than one record with the same fields on it, we may want to create a type alias that will describe the shape of these records.
+
 
 ```elm
 type alias LibraryEntry =

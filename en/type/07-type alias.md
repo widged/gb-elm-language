@@ -2,53 +2,15 @@
 
 ## Type Aliases
 
-```elm
-type alias Description = String
-
-description : Description
-description = "abc"
-```
+Type aliases help you model the problem and reason about how data flows through your program.
 
 ```elm
 type alias Point = { x : Float, y : Float }
-
 origin : Point
-origin =
-  { x = 0, y = 0 }
+origin = { x = 0, y = 0 }
 ```
 
-Type aliases help you model the problem
 
-Type aliases allow you to attach human readable names to existing types. This helps you model your problem and reason about how data flows through your program. A simple example is:
-
-```elm
-type alias Email = String
-```
-
-With this type alias in place, we can rewrite the above type annotation as follows:
-
-```elm
-sendEmail : { record | email : Email } -> Bool
-```
-
-This becomes a very powerful tool when applied to records as it allows you to define your core models for your view. Consider the following example:
-
-```elm
-type alias User =
-  { name : String
-  , email : Email
-  , age : Int
-  , admin : Bool
-  }
-
-  userView : User -> Html
-  userView user =
-    -- code that renders a view for user ...
-```
-
-Using a type alias we can describe the exact shape of what a user record should be. Our Elm app won’t compile if a user record is missing one of these entries, has an extra entry, or an entry is not the correct type. This ensures that any bugs are caught long before a customer ever sees them.
-
-As you program in Elm, you follow a delicious breadcrumb trail of extremely readable compiler error messages until the program compiles and everything works. By leveraging the type system in Elm, you account for all scenarios before you even open a browser. You never open the JavaScript console.
 
 For example, when writing an Elm program I might at some point decide that users should have an admin flag. I will then try to use that flag in a function at which point the compiler will tell me that I have failed to add it to the User model. I will add it to the model at which point the compiler will tell me that I have failed to account for it in my main update function.
 
@@ -244,3 +206,22 @@ name == secondName
 ```
 
 (source: [learnyouanelm](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/02-starting-out.md))
+
+#### on records
+
+This becomes a very powerful tool when applied to records as it allows you to define your core models for your view. Consider the following example:
+
+```elm
+type alias User =
+  { name : String
+  , email : Email
+  , age : Int
+  , admin : Bool
+  }
+
+  userView : User -> Html
+  userView user =
+    -- code that renders a view for user ...
+```
+
+Using a type alias we can describe the exact shape of what a user record should be. Our Elm app won’t compile if a user record is missing one of these entries, has an extra entry, or an entry is not the correct type. This ensures that any bugs are caught long before a customer ever sees them.

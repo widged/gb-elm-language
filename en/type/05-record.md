@@ -236,6 +236,7 @@ $ elm repl
 Updating records follows this pattern: `newRecordName = { oldRecordName | fieldName = newFieldValue }`. The fields must exist. 
 
 ```elm
+$ elm repl
 > unidentifiedPerson = { first = "Jane", last = "Doe", age = 42, gender = "female" }
 { first = "Jane", last = "Doe", age = 42, gender = "female" }
     : { age : number, first : String, gender : String, last : String }
@@ -260,15 +261,20 @@ $ elm repl
     : { age : number, first : String, gender : String, last : String }
 > printLastName {last} = last
 <function> : { b | last : a } -> a
-> printLastName
-<function> : { b | last : a } -> a
 > printLastName person
 "Doe" : String
-
 ```
 
-(source: ???)
+Alternatively, in you can ask in the signature for a certain field to exist in a record.
 
+```elm
+$ open http://elm-lang.org/try
+import Html exposing (text)
+main = text (printLastName person)
+person = { first = "Jane", last = "Doe", age = 42, gender = "female" }
+printLastName : { record | last : String} -> String
+printLastName {last} = last
+```
 
 The type system allows you to ask for a certain thing to exist in a record.
 

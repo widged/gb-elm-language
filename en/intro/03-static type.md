@@ -323,11 +323,47 @@ $ elm repl
 
 `List.map` is a function that takes a function that converts a value of type `a` to a value of type `b`, then take a list of values of type `a`, and returns a list of values of type `b`. Type variables are used `(a -> b)` as the map function doesn't need to know what is in the list. It traverses the list and an apply a function to each value in the list, resulting in a new list. Only the function applied to each element needs to know what type those elements are. 
 
+### Type Aliases
+
+With type aliases, we can give a convenient alternative name for another existing type (primitive or complex shape). The general shape is `type alias CustomType = ExistingType`. 
+
+It helps you model the problem and reason about how data flows through your program.
+
+
+```elm
+$ open http://elm-lang.org/try
+import Html exposing (div, text, br)
+main = div [] 
+  [ text ( toString( origin2D == { x = 0, y = 0 } ) )
+  , br [] []
+  , text ( toString( origin3D == (0,0,0) ) )
+  , br [] []
+  , text ( toString closedShape )
+  ]
+type alias Name = String
+type alias IncrementCount = Int
+-- aliasing record shapes
+type alias Point2D = { x : Float, y : Float }
+origin2D : Point2D
+origin2D = { x = 0, y = 0 }
+-- aliasing tuple shapes
+type alias Point3D = (Float, Float, Float)
+origin3D : Point3D
+origin3D = (0,0,0)
+-- aliasing list shapes
+type alias Shape = List Point2D
+closedShape : Shape
+closedShape = [Point2D 0 1, Point2D 3 4, Point2D 6 9, Point2D 0 1]
+```
+
+See individual types for more examples: [Lists](03-list.md), [Tuples](04-tuples.md), [Records](05-record.md)
+
+
 ### Further Reading
 
 - Types chapter in the Elm guide by Elm lang org
 - Professor Frisby's Mostly Adequate Guide to Functional Programming: Chapter 4 - Currying by Brian Lonsdorf (dr boolean)
 - Partial Function Application for Humans by Andrew Berls
-- [Understanding the elm type system](http://www.adamwaselnuk.com/elm/2016/05/27/understanding-the-elm-type-system.html))
+- [Understanding the elm type system](http://www.adamwaselnuk.com/elm/2016/05/27/understanding-the-elm-type-system.html)
 
 

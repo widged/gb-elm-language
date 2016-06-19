@@ -81,7 +81,7 @@ A number literal without a decimal point can be treated as an Int or a Float in 
 [1,2,3,4] : List number
 > [1,2,3,4.2]
 [1,2,3,4.2] : List Float
-> [1,2,3,4 // 2]
+> [1,2,3,4 // 2] -- // is for integer division
 [1,2,3,2] : List Int
 ```
 

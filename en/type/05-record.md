@@ -289,7 +289,6 @@ The `{a |` part of the annotation corresponds to a record extension. See above. 
 
 #### Pattern matching / destructuring
 
-
 ```elm
 $ elm repl
 > isAtOrigin {x,y} = \
@@ -302,33 +301,10 @@ False : Bool
 True : Bool
 ```
 
-##### nested record
+#### nested record
 
 
-The latest version of Elm does support destructuring of nested types. Here's an example function I wrote to walk through an AST and return JavaScript code as a String.
-
-```elm
-format : ParseTree -> State -> State
-format parseTree state =
-  case parseTree of
-    Node Feature (LeafNode (Description description) :: children) ->
-      appendDesribe description children state
-
-    Node Scenario (LeafNode (Description description) :: children) ->
-      appendDesribe description children state
-
-    Node Test (LeafNode (Description description) :: []) ->
-      let
-        open = tabs state ++ "it('" ++ description ++ "', function() {\n"
-        close = tabs state ++ "});\n"
-      in
-        { state | output = state.output ++ open ++ close }
-
-    _ ->
-      state
-```
-
-(source: [comment on yang-wei gist](https://gist.github.com/yang-wei/4f563fbf81ff843e8b1e))
+The latest version of Elm does support destructuring of nested types.  (source: [comment on yang-wei gist](https://gist.github.com/yang-wei/4f563fbf81ff843e8b1e))
 
 
 

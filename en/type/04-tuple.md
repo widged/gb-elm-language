@@ -27,9 +27,9 @@ $ elm repl
 -- TYPE MISMATCH --------------------------------------------- repl-temp-000.elm
 The 1st and 2nd elements are different types of values.
 ```
-```elm
-As must the type in any given position
+As must the type in any given position.
 
+```elm
 > [(1,2),(8,"11"),(4,5)]
 -- TYPE MISMATCH --------------------------------------------- repl-temp-000.elm
 

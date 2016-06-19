@@ -15,15 +15,22 @@ Records are frequently employed to record state or to model information.
 Records values use equals between key and value when specifying values. However, they use  a colon between key and value type in the type annotation. 
 
 ```elm
-point : {x : Float, y : Float}
-point = {x = 3.2, y = 2.5}
+$ elm repl
+> myRecord = { first = "Jane", last = "Doe", age = 42, gender = "female" }
+{ first = "Jane", last = "Doe", age = 42, gender = "female" }
+    : { age : number, first : String, gender : String, last : String }
+```
+
+In a program
+
+```elm
+userProfile : {first : String, last : String, age: Int, gender: String}
+userProfile = { first = "Jane", last = "Doe", age = 42, gender = "female" }
 ```
 
 #### structural type
 
-The type of a record is just the description of its fields. This next code says the type of `posA` is a record with a field `x` that's a Float and a field `y` that's a Float.
-
-The type of a record determined by the names given to the fields and the type of each field. The order of fields doesn't matter. 
+The type of a record is just the description of its fields. The names given to the fields and the type of each one. The order of fields doesn't matter. 
 
 
 ```elm

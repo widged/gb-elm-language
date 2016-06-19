@@ -5,7 +5,7 @@
 Records are written with brackets. The brackets enclose a collection of key-value pairs, or semantically named fields `myRecord = { name1 = value1, name2 = value2 }`. Records in Elm are polymorphic, meaning they can be comprised of fields with all sorts of different types. They frequently employed to record state or to model information. 
 
 ```elm
-unidentifiedPerson = { first = "Jane", last = "Doe", age = 42, gender = "female" }
+unidentifiedPerson d
 ```
 
 ### Type annotations
@@ -248,19 +248,26 @@ Because records are immutable, we return a new record.
 
 
 
-#### Specifying only some fields
+#### functions that operate only on some of the fields 
 
 
 If the argument to a function is a record, you can specify which fields must be present. Example:
 
 ```elm
-rec = {x = 5, y = 7, z = 3}
-maxxz {x, z} = if x > z then x else z maxxz rec -- returns 5
+$ elm repl
+> person = { first = "Jane", last = "Doe", age = 42, gender = "female" }
+{ first = "Jane", last = "Doe", age = 42, gender = "female" }
+    : { age : number, first : String, gender : String, last : String }
+> printLastName {last} = last
+<function> : { b | last : a } -> a
+> printLastName
+<function> : { b | last : a } -> a
+> printLastName person
+"Doe" : String
+
 ```
 
 (source: ???)
-
-It is possible to write functions that work on records that have some of the fields but ignoring any other fields.
 
 
 The type system allows you to ask for a certain thing to exist in a record.

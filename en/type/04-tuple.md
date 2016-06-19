@@ -119,6 +119,8 @@ $ elm repl
 (5,7) : ( number, number' )
 > fst pair
 5 : number
+> snd pair
+7 : number
 > triple = (5, 7, 8)
 (5,7,8) : ( number, number', number'' )
 > fst triple
@@ -126,28 +128,6 @@ $ elm repl
 The argument to function `fst` is causing a mismatch.
 Function `fst` is expecting the argument to be: ( a, b )
 ```
-
-
-
-Two useful functions that operate on pairs:
-
-`fst` takes a pair and returns its first component.
-
-```elm
-show fst (8,11) -- 8
-show fst ("Wow", False) -- "Wow"
-```
-
-`snd` takes a pair and returns its second component. Surprise!
-
-```elm
-show snd (8,11) -- 11
-show snd ("Wow", False) -- False
-```
-
-*Note:* these functions operate only on pairs. They won't work on triples, 4-tuples, 5-tuples, etc. We'll go over extracting data from tuples in different ways a bit later.
-
-(source: [learnyouanelm](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/02-starting-out.md))
 
 #### comparison
 

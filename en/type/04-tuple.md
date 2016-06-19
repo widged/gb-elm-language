@@ -5,7 +5,9 @@
 Tuples are denoted with () and their values are separated by commas. They are used when you know in advance how many components some piece of data should have. The length is fixed. Unlike a list, , tuples don't have to be *homogenous*; their elements can be of different types.
 
 ```elm
-("elm", 42)
+$ elm repl
+> ("elm", 42)
+> ("Christopher", "Walken", 55)
 ```
 
 ### Type annotation
@@ -13,6 +15,7 @@ Tuples are denoted with () and their values are separated by commas. They are us
 The type of a tuple records the number of components as well as the types of the components.
 
 ```elm
+$ elm repl
 > (1, "2", True)
 (1,"2",True) : ( number, String, Bool )
 ```
@@ -30,6 +33,7 @@ The 1st and 2nd elements are different types of values.
 As must the type in any given position.
 
 ```elm
+$ elm repl
 > [(1,2),(8,"11"),(4,5)]
 -- TYPE MISMATCH --------------------------------------------- repl-temp-000.elm
 The 1st and 2nd elements are different types of values.
@@ -37,16 +41,37 @@ The 1st and 2nd elements are different types of values.
 [(1,"2"),(8,"11"),(4,"5")] : List ( number, String )
 ```
 
-Tuples can be used to represent a wide variety of data. For instance, if we wanted to represent someone's name and age in Elm, we could use a triple: `("Christopher", "Walken", 55)`. 
+### Special cases
 
-(,), (,,), (,,,), etc.
+#### tuple of size one
 
-It doesn't make sense to have a tuple of size one. It would then store the value it contains and as such would have no benefit.
+```elm
+$ elm repl
+> (5)
+5 : number
+```
 
-(source: [learnyouanelm](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/02-starting-out.md))
+It doesn't make sense to have a tuple of size one as it stores the value it contains.
+
+
+#### tuple with no value
+
+
+```elm
+$ elm repl
+> ()
+() : ()
+> (,)
+<function> : a -> b -> ( a, b )
+> (,,)
+<function> : a -> b -> c -> ( a, b, c )
+```
+
+`()` is called a unit type. See chapter on [Unit Type](10-unit type.md)
 
 You can also pair up types into tuples, for example (`Int`, `Bool`) . This expands to arbitrarily many elements, i.e. (`Int`, `Float`, `Int`) is a 3-tuple with first element `Int` , second `Float` , third `Int` .
 
+### Tuples of 
 
 ### Creating tuples
 

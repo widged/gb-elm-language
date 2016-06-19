@@ -34,6 +34,8 @@ The type of a List records the collection type (List) and the type of the elemen
 ["the","quick","brown","fox"] : List String
 > [1, 2, 3, 4, 5]
 [1,2,3,4,5] : List number
+> [1, 2, 3, 4, 5.0]
+[1,2,3,4,5] : List Float
 ```
 
 ### Creating Lists

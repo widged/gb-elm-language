@@ -2,6 +2,40 @@
 
 We can evaluate expressions with pattern matching. Pattern matching consists of specifying patterns to which some data should conform and then checking to see if it does and deconstructing the data according to those patterns. 
 
+Exact values of comparables can be used to match when destructuring (also works with String, Char, etc. and any Tuple/List/union type built up of them) :
+
+```elm
+f : Maybe Int -> String
+f n =
+  case n of
+    Just 42 -> "You got it!"
+    Just 41 -> "Almost!"
+    Just _ -> "Nope!"
+    Nothing -> "You have to at least try!"
+The full value that is matched can be bound with the as keyword:
+
+f : (Int, Int) -> String
+f point =
+  case point of
+    (0, _) as thePoint -> toString thePoint ++ " is on the x axis"
+    _ as thePoint-> toString thePoint ++ " is not on the x axis"
+```
+
+(source: [comment on yang-wei gist](https://gist.github.com/yang-wei/4f563fbf81ff843e8b1e))
+
+### _ 
+
+In many functional languages, _ is a wildcard match: it will match anything but importantly (and contrary to Python or Javascript for instance) it will not create a binding. Which means you can match to multiple _ in a single pattern.
+
+```elm
+let
+  (a,b,_) = myTuple
+in
+  a ++ b
+-- "AB" : String
+```
+(source: [yang-wei gist](https://gist.github.com/yang-wei/4f563fbf81ff843e8b1e))
+
 ### on a Tuple
 
 ```elm
@@ -176,15 +210,6 @@ case List.head aList of
   Nothing -> "The list was empty."
 ```
 
-### _ 
 
-In many functional languages, _ is a wildcard match: it will match anything but importantly (and contrary to Python or Javascript for instance) it will not create a binding. Which means you can match to multiple _ in a single pattern.
 
-```elm
-let
-  (a,b,_) = myTuple
-in
-  a ++ b
--- "AB" : String
-```
-(source: [yang-wei gist](https://gist.github.com/yang-wei/4f563fbf81ff843e8b1e))
+

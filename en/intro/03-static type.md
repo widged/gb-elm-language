@@ -68,22 +68,16 @@ We don't have to explicitly write out the types of our functions and expressions
 
 ```bash
 $ elm repl
-> 2 + 2.3
-4.3 : Float
+> 2 + 3
+5 : number
+> 2 + (3 / 1)
+5 : Float
+> 2 + (round 3)
+5 : Int
 ```
 
-Both `2` and `2.3` are identified as numbers. The answer is a `Float`. 
+Both `2` and `3` are number literals.  without a decimal point can be treated as an Int or a Float in different operations.
 
-A number literal without a decimal point can be treated as an Int or a Float in different operations.
-
-```elm
-> [1,2,3,4]
-[1,2,3,4] : List number
-> [1,2,3,4.2]
-[1,2,3,4.2] : List Float
-> [1,2,3,4 // 2] -- // is for integer division
-[1,2,3,2] : List Int
-```
 
 ### Type annotations
 

@@ -76,7 +76,7 @@ $ elm repl
 5 : Int
 ```
 
-Both `2` and `3` are recognized as number literals. Without a decimal point they can be treated as an Int or a Float, depending on the operations run on them.
+Both `2` and `3` are recognized as number literals. Without a decimal point they can be treated as Int or Float, depending on the operations run on them.
 
 
 ### Type annotations

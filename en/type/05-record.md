@@ -51,7 +51,7 @@ False : Bool
 -- TYPE MISMATCH --------------------------------------------- repl-temp-000.elm
 ```    
 
-This is because : the use of records is dependent on the type of their contents. We can’t just compare Records with each other because they’re both Records–we can compare Records if all their fields have the same types.
+We can’t just compare Records with each other because they’re both Records–we can compare Records if all their fields have the same types.
 
 (source: [Data Structures in Elm @NoRedInk](http://tech.noredink.com/post/140646140878/data-structures-in-elm))
 

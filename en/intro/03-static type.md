@@ -78,7 +78,6 @@ $ elm repl
 
 Both `2` and `3` are recognized as number literals. Without a decimal point they can be treated as Int or Float, depending on the operations run on them.
 
-
 ### Type annotations
 
 Though it is not mandatory, it is best practice to always write explicit type declarations. The annotation is a form of documentation, which is verified by the compiler. They provide clear information as to how many arguments a function takes, what their types are, what order to pass them, and what the return type is. In the early stages of a program, type annotations help you think about what the function should be doing. In the long run, they improve the reliability, clarity, and scalability of your programs.

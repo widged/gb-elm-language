@@ -39,15 +39,17 @@ Records are transitive with respect to their fields. The order of fields doesn't
 
 ```elm
 $ elm
-> oneBeforeTwo = { one = 1 , two = 2 }
-{ one = 1, two = 2 } : { one : number, two : number' }
-> twoBeforeOne = { two = 2 , one = 1 }
-{ two = 2, one = 1 } : { one : number, two : number' }
-> oneBeforeTwo == twoBeforeOne
+> { one = 1 , two = 2 } == { two = 2 , one = 1 }
 True : Bool
+> { one = 1 , two = 2 } == { two = 3 , one = 1 }
+False : Bool
+> { one = 1 , two = 2 } == { two = "2" , one = 1 }
+-- TYPE MISMATCH --------------------------------------------- repl-temp-000.elm
+> { one = 1 , two = 2 } == { twoBis = 2 , one = 1 }
+-- TYPE MISMATCH --------------------------------------------- repl-temp-000.elm
 ```    
 
-We will find that oneBeforeTwo and twoBeforeOne are equal, even though the fields are declared in different orders. If, though, in twoBeforeOne our field values were strings instead of numbers, we’d find that the compiler would not let us make the comparison at all: we’d be causing a type mismatch.
+
 
 This is because Records in Elm are structurally typed: the use of records is dependent on the type of their contents. We can’t just compare Records with each other because they’re both Records–we can compare Records if all their fields have the same types.
 

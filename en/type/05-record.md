@@ -60,7 +60,7 @@ True : Bool
 ```    
 
 
-#### type extensibility
+#### extending another record type
 
 ```elm
 $ open http://elm-lang.org/try

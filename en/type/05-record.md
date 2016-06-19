@@ -32,24 +32,10 @@ userProfile = { first = "Jane", last = "Doe", age = 42, gender = "female" }
 
 The type of a record is just the description of its fields. The names given to the fields and the type of each one. The order of fields doesn't matter. 
 
+Both `{ age : number, first : String, gender : String, last : String }` and `{first : String, last : String, age: Int, gender: String}` define the same type. 
 
-```elm
-posA : { x : Float, y : Float }
-posA = { x = 2.1, y = 8.8 }
-```
+#### type variables
 
-The type of `posA` does not have a name, though.
-
-(source: [elm-explained](https://github.com/niksilver/elm-explained))
-
-### structural type
-
-
-
-```elm
-{ x = 3, y = 7 }
-```
------
 ```elm
 planarDistance : {a | x : Float, y : Float} -> {b | x : Float, y : Float} -> Float
 planarDistance p1 p2 =

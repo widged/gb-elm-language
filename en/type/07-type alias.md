@@ -15,6 +15,7 @@ origin : Point2D
 origin = { x = 0, y = 0 }
 ```
 
+See [Records](05-record.md)
 
 
 ### Further Readings

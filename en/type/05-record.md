@@ -24,6 +24,7 @@ $ elm repl
 In a program
 
 ```elm
+open http://elm-lang.org/try
 userProfile : {first : String, last : String, age: Int, gender: String}
 userProfile = { first = "Jane", last = "Doe", age = 42, gender = "female" }
 ```

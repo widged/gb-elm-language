@@ -126,6 +126,11 @@ It is possible to define a union type with a tag the same name as the type.  How
 
 The only exception is when there is only a single tag. This is then a special case of [Type Constructor](11-type constructor.md). 
 
+```elm
+type Aged = Aged Int
+century = Aged 100
+```
+
 #### tags that carry a record don't get accessor functions
 
 ```elm

@@ -12,12 +12,6 @@ origin = { x = 0, y = 0 }
 
 
 
-For example, when writing an Elm program I might at some point decide that users should have an admin flag. I will then try to use that flag in a function at which point the compiler will tell me that I have failed to add it to the User model. I will add it to the model at which point the compiler will tell me that I have failed to account for it in my main update function.
-
-You really have to try Elm yourself to get a feel for the power of this idea and the way it guides your programming style.
-
-(source: [[http://www.adamwaselnuk.com/elm/2016/05/27/understanding-the-elm-type-system.html]])
-
 With tagged unions, you can define a type that represents the possibility of multiple types. This is one of the key features that supports the Elm architecture. A tagged union will typically be paired with a case statement to build out a function that offers multiple paths through which your program can update. The name sounds strange but the code is simple, and the type system will support you every step of the way. Here is an example:
 
 ```elm

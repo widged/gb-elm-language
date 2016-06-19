@@ -120,7 +120,8 @@ See [Type Constructor](11-type constructor.md)
 
 #### extending another record type
 
-We can define an extensible record type by specifying the fields that must *at least* be present. The syntax is `type alias BaseRecord a = { a | key1 : Type1 , key2 : Type2}`.
+We can define an extensible record type by specifying the fields that must *at least* be present. The syntax is `type alias BaseRecord a = { a | key1 : Type1 , key2 : Type2}` and reads "something of type `a` which also has a field `key1` which is of `Type1` and a field `key2` which is of `Type2`". 
+
 
 ```elm
 $ open http://elm-lang.org/try
@@ -148,20 +149,10 @@ origin3D = { x = 0, y = 0, z = 0 }
 
 #### Defining extensible records
 
- It is an ordinary record type.
-Type `IncXY` has at least the fields `x` and `y`. It is an extensible record type.
 
-```elm
-> type alias Point2D  =     { x : Float, y : Float }
-> Point2D
-<function> : Float -> Float -> Repl.Point2D
+See [our notes on parameterised types](ParameterisedTypes.md) elsewhere.
 
-type alias IncXY a = { a | x : Float, y : Float }
-```
 
-Notice that the `IncXY` type has to declare the use of type variable `a`. That's because the type definition effectively reads "something of type `a` which also has a field `x` which is a Float and a field `y` which is a Float". See [our notes on parameterised types](ParameterisedTypes.md) elsewhere.
-
-(source: [elm-explained](https://github.com/niksilver/elm-explained))
 
 
 #### Defining values with extensible record types
@@ -451,5 +442,6 @@ format parseTree state =
 ### Further Readings
 
 * [Data Structures in Elm @NoRedInk](http://tech.noredink.com/post/140646140878/data-structures-in-elm)
+* [elm-explained](https://github.com/niksilver/elm-explained)
 
 The first iteration of the Elm record was based heavily on (‘Extensible records with scoped labels’ by Daan Leijen), and many features of the Elm record reflect Leijen’s work. The paper is well worth a read for those interested in modeling data. However, the paper’s titular descriptors–“extensible”, “with scoped labels”–no longer apply to Elm records. [I]n practice, developers did not find Extensibility (or restrictability) useful, and extensibility of record values was removed. (source: [Data Structures in Elm @NoRedInk](http://tech.noredink.com/post/140646140878/data-structures-in-elm))

@@ -30,7 +30,7 @@ userProfile = { first = "Jane", last = "Doe", age = 42, gender = "female" }
 
 #### structural type, order doesn't matter
 
-Records in Elm are structurally typed. The type of a record is just the description of its fields. The names given to the fields and the type of their contents
+Records in Elm are structurally typed. The type of a record is just the description of its fields: the names given of the fields and the type of their contents.
 
 Both `{ age : number, first : String, gender : String, last : String }` and `{first : String, last : String, age: Int, gender: String}` define the same type. 
 

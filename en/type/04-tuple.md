@@ -2,7 +2,7 @@
 
 ## Tuples
 
-Tuples are denoted with () and their values are separated by commas. They are used when you know in advance how many components some piece of data should have. The length is fixed. Unlike a list, , tuples don't have to be *homogenous*; its elements can be of several types.
+Tuples are denoted with () and their values are separated by commas. They are used when you know in advance how many components some piece of data should have. The length is fixed. Unlike a list, , tuples don't have to be *homogenous*; their elements can be of mixed types.
 
 ```elm
 ("elm", 42)

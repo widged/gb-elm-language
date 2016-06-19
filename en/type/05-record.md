@@ -97,7 +97,14 @@ $ elm repl
 
 This creates a *record constructor* that is both a function and a type. 
 
-The constructor act as multi-parameter functions to construct records. 
+```elm
+> type alias Point2D = {x : Float, y : Float}  
+> [(Point2D 0 0), (Point2D 0 1), (Point2D 1 1), (Point2D 1 0)]
+[{ x = 0, y = 0 },{ x = 0, y = 1 },{ x = 1, y = 1 },{ x = 1, y = 0 }]
+    : List Repl.Point2D
+```
+
+The constructor act as multi-parameter functions to construct records. It takes one argument for each field, and returns a record with those fields
 
 ```elm
 $ elm repl
@@ -107,55 +114,37 @@ $ elm repl
 { x = 0, y = 0 } : Repl.Point2D
 ```
 
-The type can be used in type signatures, in place of all required fields.  
+In this context, field order does matter. We need to know the order in which we originally defined the fields
 
 ```elm
-open http://elm-lang.org/try
+$ open http://elm-lang.org/try
+import Html exposing (div, text, br)
+main = div [] 
+  [ text ( toString ( Person "Jane" 42 ) )
+  , br [] []
+  , text ( toString ( Person2 42 "Jane" ) )
+  ]
+-- { name = "Jane", age = 42 }
+-- { age = 42, name = "Jane" }
+type alias Person = { name : String, age : Int }
+type alias Person2 = { age : Int, name : String }
+```
+
+The alias can be used in type signatures, in place of all required fields.  
+
+```elm
+$ open http://elm-lang.org/try
 import Html exposing (div, text, br)
 main = text ( toString ( midPoint (Point2D 1 10)  (Point2D 5 7) ) )
 -- { x = 3, y = 8.5 }
 type alias Point2D = {x : Float, y : Float}  
 midPoint : Point2D -> Point2D -> Point2D
-midPoint p1 p2 = Point2D ((p1.x + p2.x) / 2) ((p1.y + p2.y) / 2) 
+midPoint p1 p2 = Point2D ((p1.x + p2.x) / 2) ((p1.y + p2.y) / 2)
 ```
+
 
 See [Type Constructor](11-type constructor.md)
 
-
----
-
-
-If we have a type alias for a record then that also acts as a function, but in a different way from a type declaration. Let's define a type alias...
-
-```elm
-type alias Person = { name : String, age : Int }
-```
-
-Now the `Person` function is one that takes several arguments, one for each field, and it will return a record with those fields. This means we need to know the order in which we originally defined the fields.
-
-If we look at it in the REPL we see that `Person` is indeed a function:
-
-```
-> import DefiningFunctions exposing (..)
-> Person
-<function> : String -> Int -> DefiningFunctions.Person
->
-```
-
-Now let's define a value using the `Person` function, passing in two arguments:
-
-```elm
-bob : { name : String, age : Int }
-bob = Person "Robert" 55
-```
-
-And here we use the `Person` function to bring a list of names and a list of ages together:
-
-```elm
-people : List { name : String, age : Int }
-people =
-    map2 Person ["Alice", "Brian", "Coco"] [61, 23, 35]
-```
 
 Let's see what that looks like in the REPL:
 

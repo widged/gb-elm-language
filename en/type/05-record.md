@@ -147,21 +147,25 @@ origin3D : Point3D
 origin3D = { x = 0, y = 0, z = 0 }
 ```
 
-#### Defining values with extensible record types
-
-Here we define a value of type `JustXY` and one of type `IncXY`.
+Note that variables created that way are type definitions. They have no constructor function attached.
 
 ```elm
-jxy : JustXY
-jxy = { x = 1.1, y = 2.1 }
+$ open http://elm-lang.org/try
+import Html exposing (div, text, br)
+main = text (toString ( midPoint2D { x = 1, y = 10} { x = 3, y = 7}) )
+-- { x = 2, y = 8.5 }
+-- Point2D 0 0 -- Cannot find variable `Point2D`, Point2D is a type, not a constructor
 
-ixy : IncXY { z : Float }
-ixy = { x = 10.1, y = 11.1, z = 12.1 }
+type alias Point a = { a | x : Float , y : Float}
+
+type alias Point2D = Point {}
+origin2D : Point2D 
+origin2D = { x = 0, y = 0}
+
+midPoint2D : Point2D -> Point2D -> Point2D
+midPoint2D p1 p2 = {x = ((p1.x + p2.x) / 2), y = ((p1.y + p2.y) / 2)}
 ```
 
-Notice the very different type declaration of `ixy`. This is because `IncXY` was declared with a variable type (`IncXY a`). Now that we're actually using it we must state what that variable type is (i.e. what the `a` is) in this particular case. And in this case it's the `z` part of the record.
-
-Now we define two functions which take a `JustXY` and an `IncXY`. The `sumInc` function will accept values of both types, but the `sumJust` function will only take a value of `JustXY`.
 
 ```elm
 sumJust : JustXY -> Float
@@ -201,6 +205,10 @@ If we put all the code above into [an Elm module called ExtensibleRecordTypes](E
 ```
 
 (source: [elm-explained](https://github.com/niksilver/elm-explained))
+
+#### Defining values with extensible record types
+
+
 
 ### Creating a record
 

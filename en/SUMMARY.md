@@ -17,7 +17,6 @@
      * [List](type/03-list.md)
      * [Tuple](type/04-tuple.md)
      * [Record](type/05-record.md)
-     * [Type Alias](type/07-type alias.md)
      * [Union Type](type/08-union type.md)
      * [Maybe and Result](type/09-maybe and result.md)
      * [Unit Type](type/10-unit type.md)

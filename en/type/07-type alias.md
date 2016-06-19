@@ -15,7 +15,7 @@ origin : Point2D
 origin = { x = 0, y = 0 }
 ```
 
-See [Records](05-record.md)
+See [Records](05-record.md) for more examples of aliasing records. 
 
 
 ### Further Readings

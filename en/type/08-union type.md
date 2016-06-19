@@ -143,7 +143,7 @@ weightValue : Weight -> Int
 weightValue  (AWeight a) = a
 ```
 
-#### tags with record values don't get accessor functions
+#### tags that carry a record don't get accessor functions
 
 ```elm
 > type User = AUser { first: String, last: String, age: Int }
@@ -169,7 +169,6 @@ But you are trying to use it as:
 
 _Union types_ are tightly coupled with a [case-of](#case-of) statement. It's the tags, not the parent type, that are matched against `case` statements. 
 
-
 ```elm
 type alias Point = { x : Float, y : Float }
 
@@ -190,49 +189,58 @@ area shape =
 The compiler expects an exhaustive match, that is all tags must be accounted for. If you leave one out, the Elm compiler will complain. 
 
 
-#### Opaque Types
+### Exporting Union Types and their tags
 
-An **opaque type** is a union type where the type is exported but the tag(s) are not. Someone outside the module can see that the type exists, pass it around, and store it in records. They only thing they *can't* do is look inside the type, even if they know what the tags are named. Hence, it's opaque.
+The trouble with exporting tags is not only that you may want to remove some, which will break any code that relies on the ones being removed. Even adding tags will break code, because previously exhaustive pattern matches are no longer exhaustive. If only some of the tags are exported, it's impossible to write a valid `case` statement (at least not without a `_ ->` pattern, which are discouraged).
 
-An example of an opaque type would be a 2D point. Creating a point would require either `x` and `y`, or `r` and `theta`. Each value could be accessed individually from a given point. The point might actually store all four, knowing that there's no way for someone to create a point that's inconsistent.
+In packages, you typically want to avoid exposing the tag values. 
 
-What this means is that opaque types are Elm's way of enforcing information hiding. They allow a package author to define an interface of functions to create, update, and read useful values out of the opaque type. The implementation can change completely, but as long as all functions on the type are updated to match, it's still considered a patch change. This gives package writers flexibility when writing their libraries. It also lets them rely on invariants, assured that the client hasn't meddled with values of the type in unexpected ways.
+In applications, if you're typing to simply pass information around, exporting record type aliases is fine or the tags of union types is fine.
 
-Opaque types are less useful in applications. If you're typing to simply pass information around, exporting record type aliases is fine. If it makes sense to also define operations on these models, an opaque type might be a better fit.
+#### exporting as opaque type with wraping functions
 
-If your union type contains many tags, you can export functions that wrap them. You can be selective about which ones you export. Sometimes it can be tedious, but it's worth it.
+An **opaque type** is a union type where the type is exported but the tag(s) are not. Someone outside the module can see that the type exists, pass it around, and store it in records. They cannot access the tags. Hence, it's opaque.
 
 ```elm
-module Road (Action, addCar, redLight) where
+module MyModule exposing (Msg)
+type Msg = Increment | Decrement
+```
+
+Opaque types provide a way of enforcing information hiding. Clients can see that `Msg` exists, but they can't see into it. 
+
+The package author instead defines an interface of functions to create, update, and read useful values out of the opaque type. 
+
+(source: [elm-for-js](https://github.com/elm-guides/elm-for-js/blob/master/Modules,%20Exports,%20and%20Imports.md))
+
+```elm
+module Road exposing (Msg, addCar, redLight)
 
 import Car exposing (Car)
 
-type Light =
-  Red | Yellow | Green
+type Light = Red | Yellow | Green
 
-type Action =
-  AddCar Car | Light Light | SomethingPrivate
+type Msg = AddCar Car | Light Light | SomethingPrivate
 
-addCar : Car -> Action
-addCar =
-  AddCar
+addCar : Car -> Msg
+addCar = AddCar
 
-redLight : Action
-redLight =
-  Light Red
+redLight : Msg
+redLight = Light Red
 ```
 
-You cannot make an opaque type out of a type alias; those are either exported or not, just like values. But you can create a union type to hide it. (This is more common when the opaque type represents a model rather than an action.)
+Sometimes it can be tedious, but it's worth it. The implementation can change completely, but as long as all functions on the type are updated to match, it's still considered a patch change. This gives package writers flexibility when writing their libraries. It also lets them rely on invariants, assured that the client hasn't meddled with values of the type in unexpected ways.
+
+(source: [elm-for-js](https://github.com/elm-guides/elm-for-js/blob/master/Modules,%20Exports,%20and%20Imports.md))
+
+#### union type instead of record alias
+
+A _Union Type_ can similarly be used to hide what would have been a type alias for a record shape. (This is more common when the opaque type represents a model rather than an action.)
 
 ```elm
-module Person (Person, age) where
-
-type Person =
-  P { name : String, age : Int }
-
+module Person exposing (Person, age)
+type Person = P { name : String, age : Int }
 age : Person -> Int
-age (P {age}) =
-  age
+age (P {age}) = age
 ```
 
 First, we define the union type `Person` with one tag, `P`, which carries a record. (You can put the record definition directly in the union type, or define an unexported alias.) Then we can export the `age` function which accesses the record in a way not possible outside of this module. The definition uses two nifty language features. First, it pattern matches on the `P` tag in the argument list. This is permitted when there is only one tag, because otherwise it's an incomplete pattern match. Next, `{age}` destructures the record, assigning the local constant `age` to the value of the record's `age` field. It's a much more concise way of writing this:
@@ -246,26 +254,32 @@ age person =
 
 (source: [elm-for-js](https://github.com/elm-guides/elm-for-js/blob/master/Modules,%20Exports,%20and%20Imports.md))
 
+#### exporting a union type and all of its tags
 
- 
+```elm
+module MyModule exposing (Msg (..))
+type Msg = Increment | Decrement
+```
+
+This form should be used only if you can commit to keeping `Msg` the same. A good example is a [nonempty list](http://package.elm-lang.org/packages/mgold/elm-nonempty-list/latest/List-Nonempty#Nonempty) `type Nonempty a = Nonempty a (List a)`; there will never be a reason to change the type's definition so the tag can be safely exported.
+
+(source: [elm-for-js](https://github.com/elm-guides/elm-for-js/blob/master/Modules,%20Exports,%20and%20Imports.md))
+
+#### exporting a union type and some of its tags
+
+It is possible to only export *some* of the tags. However, there is no reason to do this, ever.
+
+```elm
+module MyModule exposing (Msg (Increment, Decrement))
+type Msg = Increment | Decrement
+```
+
+(source: [elm-for-js](https://github.com/elm-guides/elm-for-js/blob/master/Modules,%20Exports,%20and%20Imports.md))
+
+#### exporting a union type 
 
 
-
-#### Exporting and Importing Union Types
-
-Union types have a little bit of special treatment when it comes to imports and exports. 
-
-`type Msg = Increment | Decrement`
-
-`module MyModule exposing (Msg)` exports `Msg` only. That is called an *opaque type*. Clients can see that `Action` exists, but they can't see into it. This is frequently what you want, and we'll talk about it more in the next section.
-
-`module MyModule exposing (Action(..))` exports `Action` and all of its tags, namely `Increment` and `Decrement`. This form can be useful sometimes if you can commit to keeping `Action` the same. A good example is a [nonempty list](http://package.elm-lang.org/packages/mgold/elm-nonempty-list/latest/List-Nonempty#Nonempty); there will never be a reason to change the type's definition so the tag can be safely exported.
-
-`module MyModule (Action(Increment, Decrement)) where` exports `Action` and only the listed tags. In this case it's listing all the tags explicitly. It's possible to only export *some* of the tags, but there is no reason to do this, ever.
-
-The trouble with exporting tags is not only that you may want to remove some, which will break any code that relies on the ones being removed. Even adding tags will break code, because previously exhaustive pattern matches are no longer exhaustive. If only some of the tags are exported, it's impossible to write a valid `case` statement (at least not without a `_ ->` pattern, which are discouraged).
-
-Importing union types exposed follows the exact same syntax. For example, `import MyModule exposing (Action)` will import only the type, while `import MyModule exposing (Action(..))` will import any exported tags as well. You can also use exported tags qualified, like `MyModule.Increment`.
+Importing union types exposed follows the exact same syntax. For example, `import MyModule exposing (Msg)` will import only the type, while `import MyModule exposing (Msg(..))` will import any exported tags as well. You can also use exported tags qualified, like `MyModule.Increment`.
 
 (source: [elm-for-js](https://github.com/elm-guides/elm-for-js/blob/master/Modules,%20Exports,%20and%20Imports.md))
 

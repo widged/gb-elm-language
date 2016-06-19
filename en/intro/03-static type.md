@@ -82,12 +82,13 @@ Both `2` and `3` are recognized as number literals. Without a decimal point they
 
 Though it is not mandatory, it is best practice to always write explicit type declarations. The annotation provide clear information as to how many arguments a function takes, what their types are, what order to pass them, and what the return type is. In the early stages of a program, type annotations help you think about what the function should be doing. In the long run, they provide documentation verified by the compiler and improve the reliability, clarity, and scalability of your programs.
 
+
+#### Annotation shape
+
 ```elm
 add : Int -> Int -> Int
 add x y = x + y
 ```
-
-#### Annotation shape
 
 Any type annotation must include a `:` and the type of the value returned. The `:` reads as "has type of". Types always begin with a capital letter (or open parenthesis). Note. Whenever a capital letter is followed by a dot, it's a module, not a type. `String.length` means the `length` function in the `String` module.
 

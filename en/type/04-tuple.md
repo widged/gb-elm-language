@@ -188,27 +188,3 @@ True : Bool
 > isLastNameDoe ("Albert", "Marb")
 False : Bool
 ```
-
-
-We can write our own function for accessing the third value in a tuple, if we want:
-
-```elm
-{- "_" here is used to indicate that we don't use the first two values from the tuple. -}
-z : (Float, Float, Float) -> Float
-z (_, _, thirdVal) =
-    thirdVal
-```
-
-We can write out a function that uses more than one value from a tuple:
-
-```elm
-{- Note the type signature here! Tuples' values don't all need to be of the same type. -}
-formatNameAndAge : (String, String, Int) -> String
-formatNameAndAge (firstName, lastName, age) =
-    firstName ++ " " ++ lastName ++ " (" ++ (toString age) ++ ")"
-```
-
-So suppose we wanted to refer to author Neil Gaiman in this text: we might say `formatNameAndAge ("Neil", "Gaiman", 55), or "Neil Gaiman (55)"`.
-
-(source: [Data Structures in Elm @NoRedInk](http://tech.noredink.com/post/140646140878/data-structures-in-elm))
-

@@ -107,15 +107,7 @@ $ elm repl
 
 ### Operations on tuples
 
-```elm
-myTuple : (String, Int, Bool)
-myTuple = ("the answer", 42, True)
-```
-(source: [elm-for-js](https://github.com/elm-guides/elm-for-js/blob/master/How%20to%20Read%20a%20Type%20Annotation.md))
-
-Because each different size of tuple is its own type, you cannot really write general functions for tuples. You have to write functions for that target a given length. For, instance, to append an element to a tuple, you'd have to write a function for appending to a pair, one function for appending to a triple, one function for appending to a 4-tuple, etc.
-
-(source: [learnyouanelm](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/02-starting-out.md))
+With tuples, type is bound to the number of elements. Therefore, functions have to target a given length. Different functions must be provided to append an element to a tuple pair, a tuple triple, or a tuple quad.
 
 
 #### fst and snd

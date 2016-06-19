@@ -2,9 +2,9 @@
 
 ## Records 
 
-Records are written with brackets. The brackets enclose a collection of key/value pairs, or named fields.
+Records are written with brackets. The brackets enclose a collection of key/value pairs, or semantically named fields.
 
-Records (semantically named) are frequently employed to record state or to model information. They employ key-value pairs, with (likely-familar) dot notation for accessing values. (source: [Data Structures in Elm @NoRedInk](http://tech.noredink.com/post/140646140878/data-structures-in-elm))
+Records are frequently employed to record state or to model information. They employ key-value pairs, with (likely-familar) dot notation for accessing values. (source: [Data Structures in Elm @NoRedInk](http://tech.noredink.com/post/140646140878/data-structures-in-elm))
 
 
 

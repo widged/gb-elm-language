@@ -69,7 +69,7 @@ $ elm repl
 
 `()` is called a unit type. See chapter on [Unit Type](10-unit type.md)
 
-`(,)` returns a function that can be used to create a tuple
+`(,)` returns a function that can be used to create a tuple. See creating tuple below.
 
 
 ### Creating tuples
@@ -79,7 +79,7 @@ There’s more than one way to create a tuple.
 ```elm
 -- We can write it out explicitly.
 yeOldeBasicCoord = (1, 0, 2)
--- We can also use a prefix operator, `,`, to construct the tuple.
+-- We can also use a prefix operator, `(,)`, to construct the tuple.
 yeFahncyCoord = (,,) 1 0 2
 ```
 

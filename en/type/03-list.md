@@ -27,6 +27,14 @@ Note2. The constrain of *homogeneity* applies to list within a list as well.They
 
 ### Type annotation
 
+The type of a List records the collection type (List) and the type of the elements contained in the list
+
+```elm
+> ["the", "quick", "brown", "fox"]
+["the","quick","brown","fox"] : List String
+> [1, 2, 3, 4, 5]
+[1,2,3,4,5] : List number
+```
 
 
 ### Creating Lists

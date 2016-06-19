@@ -28,11 +28,30 @@ userProfile : {first : String, last : String, age: Int, gender: String}
 userProfile = { first = "Jane", last = "Doe", age = 42, gender = "female" }
 ```
 
-#### structural type
+#### structural type, order doesn't matter
 
-The type of a record is just the description of its fields. The names given to the fields and the type of each one. The order of fields doesn't matter. 
+The type of a record is just the description of its fields. The names given to the fields and the type of each one. 
 
 Both `{ age : number, first : String, gender : String, last : String }` and `{first : String, last : String, age: Int, gender: String}` define the same type. 
+
+
+Records are transitive with respect to their fields. The order of fields doesn't matter. 
+
+```elm
+$ elm
+> oneBeforeTwo = { one = 1 , two = 2 }
+{ one = 1, two = 2 } : { one : number, two : number' }
+> twoBeforeOne = { two = 2 , one = 1 }
+{ two = 2, one = 1 } : { one : number, two : number' }
+> oneBeforeTwo == twoBeforeOne
+True : Bool
+```    
+
+We will find that oneBeforeTwo and twoBeforeOne are equal, even though the fields are declared in different orders. If, though, in twoBeforeOne our field values were strings instead of numbers, we’d find that the compiler would not let us make the comparison at all: we’d be causing a type mismatch.
+
+This is because Records in Elm are structurally typed: the use of records is dependent on the type of their contents. We can’t just compare Records with each other because they’re both Records–we can compare Records if all their fields have the same types.
+
+(source: [Data Structures in Elm @NoRedInk](http://tech.noredink.com/post/140646140878/data-structures-in-elm))
 
 #### using only some fields
 
@@ -78,20 +97,7 @@ type alias Widget entry =
     }
 ```
 
-#### Field order doesn't matter
 
-Records are also transitive with respect to their fields. That is, defining:
-
-```elm
-oneBeforeTwo = { one = 1 , two = 2 }
-twoBeforeOne = { two = 2 , one = 1 }
-```    
-
-We will find that oneBeforeTwo and twoBeforeOne are equal, even though the fields are declared in different orders. If, though, in twoBeforeOne our field values were strings instead of numbers, we’d find that the compiler would not let us make the comparison at all: we’d be causing a type mismatch.
-
-This is because Records in Elm are structurally typed: the use of records is dependent on the type of their contents. We can’t just compare Records with each other because they’re both Records–we can compare Records if all their fields have the same types.
-
-(source: [Data Structures in Elm @NoRedInk](http://tech.noredink.com/post/140646140878/data-structures-in-elm))
 
 
 ### Creating

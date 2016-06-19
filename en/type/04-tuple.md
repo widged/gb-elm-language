@@ -175,7 +175,7 @@ $ elm repl
 
 Destructuring can be useful to declare constants within the elm program `(width, height) = (200, 100)`
 
-Exact values of comparables can be used to match when destructuring.
+Exact values of comparables can be used to match in a case of statement.
 
 ```elm
 > isLastNameDoe tuple = \

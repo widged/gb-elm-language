@@ -9,7 +9,7 @@
      * [Comments](program-flow/01-comments.md)
      * [Basic Operators](program-flow/02-basic operators.md)
      * [Control Statement](program-flow/03-control statements.md)
-     * [Pattern Matching](04-pattern matching.md)
+     * [Pattern Matching](program-flow/04-pattern matching.md)
      * [Scope and let in](program-flow/05-scope.md)
   * [Types](type/cover.md)
      * [Primitive](type/01-primitive.md)

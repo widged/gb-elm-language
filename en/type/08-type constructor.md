@@ -144,8 +144,6 @@ greetAlias p
 (source: [elm-explained](https://github.com/niksilver/elm-explained))
 
 
-
-
 ### can take multiple arguments
 
 ```elm

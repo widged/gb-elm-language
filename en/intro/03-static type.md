@@ -84,7 +84,6 @@ Though it is not mandatory, it is best practice to always write explicit type de
 
 // As you program in Elm, you follow a delicious breadcrumb trail of extremely readable compiler error messages until the program compiles and everything works. By leveraging the type system in Elm, you account for all scenarios before you even open a browser. You never open the JavaScript console. // For example, when writing an Elm program I might at some point decide that users should have an admin flag. I will then try to use that flag in a function at which point the compiler will tell me that I have failed to add it to the User model. I will add it to the model at which point the compiler will tell me that I have failed to account for it in my main update function. // You really have to try Elm yourself to get a feel for the power of this idea and the way it guides your programming style. (source: [understanding-the-elm-type-system](http://www.adamwaselnuk.com/elm/2016/05/27/understanding-the-elm-type-system.html))
 
-
 #### Annotation shape
 
 ```elm
@@ -267,7 +266,7 @@ $ elm repl
 > fst ("John", "Doe") -- "Marc"
 ```
 
-The function `fst` takes a pair expressed as a tuple and returns a value that is of the same type as the first element. The tuple is expressed as `( a, b )` because the value type for the first element can differ from the value type of the second. Two variable names`a` and `b` are introduced because the first and second values can be of different type variables. However, they don't have to be different types. The return value's type is the same as the one of the first element in the tuple. 
+The function `fst` takes a pair expressed as a tuple and returns a value that is of the same type as the first element. The tuple is expressed as `( a, b )` because the value type for the first element can differ from the value type of the second (they can differ but don't have to). The return value's type is the same as the one of the first element in the tuple. 
 
 It is rare for functions to have more than 2 type variables. It however is not impossible. 
 

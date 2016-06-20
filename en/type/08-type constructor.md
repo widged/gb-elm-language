@@ -146,7 +146,7 @@ greetAlias p
 
 
 
-### multiple arguments
+### can take multiple arguments
 
 ```elm
 $ open http://elm-lang.org/try

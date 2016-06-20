@@ -280,7 +280,6 @@ $ elm repl
 
 Though the convention is to use `a,b,c,d`, (almost) any lowercase string will work. Sometimes, another letter or a descriptive word, can help better capture the intent. For example, `Dict k v` reminds us that the types variables are the keys and values.
 
-
 #### Constrained Type variables
 
 Elm has three special types of type variables: `number`, `comparable`, and `appendable`.

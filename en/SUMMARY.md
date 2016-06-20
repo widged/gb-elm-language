@@ -21,7 +21,10 @@
      * [Union Type](type/07-union type.md)
      * [Type Constructor](type/08-type constructor.md)
      * [Maybe and Result](type/09-maybe and result.md)
-  * [Thinking Functionally](thinking functionally/cover.md)
+  
+  Coming Up
+  
+  * [Thinking Functionally](thinking functionally/cover.md) 
      * [Recursion](thinking functionally/02-recursion.md)
      * [Higher Order Functions](thinking functionally/03-higher order functions.md)
   * [Data Structures](data-structure/cover.md)

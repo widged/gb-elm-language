@@ -186,30 +186,7 @@ update' : Action -> (Model -> Model)
 
 #### Parametrised types
 
-With collections like lists, tuples, records, annotations take a slightly different form. They specify both the type of the collection and the type of value held in the collection. 
-
-List:
-```elm
-flagColors: List String
-flagColors = ["Black", "Yellow", "Red"]
-diceFaces : List Int
-diceFaces = [1,2,3,4,5,6]
-```
-
-Tuple:
-```elm
-answerToEverything : (String, Int, Bool)
-answerToEverything = ("the answer", 42, True)
-```
-
-Record:
-```elm
-startPosition : { x : Float, y : Float }
-startPosition =
-    { x = 0,
-      y = 0
-    }    
-```
+See [Type Constructor](../type/08-type constructor.md)
 
 #### Type variables
 

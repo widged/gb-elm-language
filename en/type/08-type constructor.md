@@ -169,7 +169,9 @@ n37 = NamedInt "thirty seven" 37
 ```
 (source: [elm-explained](https://github.com/niksilver/elm-explained))
 
-### Container Type
+#### Parametrised types
+
+
 
 When we declare a type, the left had side of the equals sign says how it's used; the right hand side says how it's defined. The following `MiscHolder` can hold any type of value. It's defined as an unknown type `a` tagged with the `MiscHolder` tag (its right hand side), but when we use it we must use both the `MiscHolder` tag and the specific type that's in use at the time.
 
@@ -195,6 +197,33 @@ listOfStringsInABox = MiscHolder ["Once", "upon", "a", "time"]
 ```
 
 (source: [elm-explained](https://github.com/niksilver/elm-explained))
+
+#### Container Type
+
+With collections like lists, tuples, records, annotations take a slightly different form. They specify both the type of the collection and the type of value held in the collection. 
+
+List:
+```elm
+flagColors: List String
+flagColors = ["Black", "Yellow", "Red"]
+diceFaces : List Int
+diceFaces = [1,2,3,4,5,6]
+```
+
+Tuple:
+```elm
+answerToEverything : (String, Int, Bool)
+answerToEverything = ("the answer", 42, True)
+```
+
+Record:
+```elm
+startPosition : { x : Float, y : Float }
+startPosition =
+    { x = 0,
+      y = 0
+    }    
+```
 
 
 ### A more involved example

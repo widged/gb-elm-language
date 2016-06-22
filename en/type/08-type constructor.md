@@ -171,8 +171,6 @@ n37 = NamedInt "thirty seven" 37
 
 #### Parametrised types
 
-
-
 When we declare a type, the left had side of the equals sign says how it's used; the right hand side says how it's defined. The following `MiscHolder` can hold any type of value. It's defined as an unknown type `a` tagged with the `MiscHolder` tag (its right hand side), but when we use it we must use both the `MiscHolder` tag and the specific type that's in use at the time.
 
 ```elm

@@ -198,7 +198,7 @@ As the elm language does not have syntax for qualified infix operators, they mus
 import Json.Encode exposing (object2, (:=))
 ```
 
-#### exposing Data Types
+#### import Extra functions under the name of the module extended
 
 Modules that provide extra functionalities to an existing module are suffixed with `Extra`. For instance, modules `Random` and `Random.Extra`. It is customary to import both under the same name.
 

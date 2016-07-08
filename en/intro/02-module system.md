@@ -15,8 +15,6 @@ To define your own module, you use create a new file that starts with the `modul
 module ModuleName exposing (..)
 ```
 
-### Hello
-
 The module name must begin with a capital letter and is usually written in CamelCase style. It can consist of alphanumerics, underscores (e.g. `Json` and `Http`).
 
 The module file has to be stored in a file called `ModuleName.elm` (the file name name must exactly match the name of the module they contain and have `.elm` as extension). For example, the module `ModuleName` will be stored in the file `ModuleName.elm`. [:CHECK:] The compiler will not allow module names and file paths to disagree.

@@ -1,10 +1,77 @@
-**Elm 0.17**, **copied, please ignore** 
+**Elm 0.17**, **copied, please ignore**
 
 ## Pattern matching (destructuring)
 
-We can evaluate expressions with pattern matching. Pattern matching consists of specifying patterns to which some data should conform and then checking to see if it does and deconstructing the data according to those patterns. 
+A match expression has this general form:
 
-Exact values of comparables can be used to match when destructuring (also works with String, Char, etc. and any Tuple/List/union type built up of them) :
+```elm
+let pattern = expression in result
+
+myFunction pattern = expression
+
+myFunction a b =
+  case (a,b) of
+    pattern1 -> expression1
+    pattern2 -> expression2
+```
+
+or
+
+```elm
+> let a = 1 + 3 in a
+4 : number
+```
+
+Pattern matching consists of specifying patterns to which some data should conform and then checking to see if it does and deconstructing the data according to those patterns.
+
+Matching against equations is in order from top to bottom.  If a match succeeds, some parts of the term are bound to variables from the pattern. The result of the expression is returned. If the match fails, an error is raised.
+
+### Basic Usage
+
+```elm
+let (name, age) = ("Bob", 25) in "Hello " ++ name
+```
+
+In the example, the variables name and age are matched onto the tuple ("Bob", 25). Whenever a variable name exists in the left-side pattern, it always matches the corresponding right-side term. The variable is also bound to the term it matches.
+
+### Matching function arguments
+
+Function arguments are patterns. Calling a function tries to match the provided values to the patterns specified in the function definition.
+
+```elm
+> sum (a,b) = a + b
+<function> : ( number, number ) -> number
+> sum (1, 2)
+3 : number
+```
+
+When you call a function, the arguments you provide are matched against the patterns specified in the function definition. The function expects a two-element tuple and binds the tuple’s elements to variables a and b.
+
+When calling functions, the term being matched is the argument provided to the function call. The pattern you match against is the argument specifier, in this case (a, b).
+
+Of course, if you provide anything that isn’t a two-element tuple, an error will be raised:
+
+
+### Wildcard match (_)
+
+Occasionally we aren’t interested in a value, but we still need to match on it. In such cases, <code>_</code> is used as a wilcard match. The anonymous variable works just like a named variable: it matches any right-side term. But no binding is created. This means you can match to multiple <code>_</code> in a single pattern.
+
+```elm
+let
+  (a,b,_) = myTuple
+in
+  a ++ b
+-- "AB" : String
+```
+(source: [yang-wei gist](https://gist.github.com/yang-wei/4f563fbf81ff843e8b1e))
+
+### on a Maybe
+
+```elm
+case List.head aList of
+  Just x -> "The head is " ++ toString x
+  Nothing -> "The list was empty."
+```
 
 ```elm
 f : Maybe Int -> String
@@ -25,25 +92,27 @@ f point =
 
 (source: [comment on yang-wei gist](https://gist.github.com/yang-wei/4f563fbf81ff843e8b1e))
 
-### _ 
+### Complex Variables
 
-In many functional languages, _ is a wildcard match: it will match anything but importantly (and contrary to Python or Javascript for instance) it will not create a binding. Which means you can match to multiple _ in a single pattern.
+Pattern matching is a feature that makes manipulations with complex variables (such as tuples and lists) a lot easier.
+
+#### on a Tuple
+
+Basic pattern matching of tuples:
 
 ```elm
-let
-  (a,b,_) = myTuple
-in
-  a ++ b
--- "AB" : String
+> area (width, height) = width * height
+> dim = (6, 7)
+> area dim
+42 : number
 ```
-(source: [yang-wei gist](https://gist.github.com/yang-wei/4f563fbf81ff843e8b1e))
 
-### on a Tuple
+When the expression is evaluated, the variables width and height are bound to the corresponding elements of the tuple. This feature is useful when you call a function that returns a tuple and you want to bind individual elements of that tuple to separate variables.
 
 ```elm
-sum (a, b) = a + b
-toPrint = (let (a,b,c) = (1,2,3) in a+b+c) * 100
-600
+> sum (a, b) = a + b
+> let (a,b,c) = (1,2,3) in (a+b+c) * 100
+600 : number
 ```
 
 (source: [learnyouanelm-04](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/04-syntax-in-functions.md))
@@ -84,116 +153,166 @@ so we just write a \_.
 
 (source: [learnyouanelm-04](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/04-syntax-in-functions.md))
 
----
 
-You can pattern match in function definitions when there's only one case. This function takes one tuple rather than two arguments.
+#### nesting
+
+Patterns can be arbitrarily nested.
+
 ```elm
-area (width, height) = width * height
-area (6, 7) -- 42
+let (_, (a,_)) = (1, (2,3)) in a
 ```
 
+#### different variables
 
-
-### on a List
+Different variables must be used.
 
 ```elm
-case aList of
-  [] -> "matches the empty list"
-  [x]-> "matches a list of exactly one item, " ++ toString x
-  x::xs -> "matches a list of at least one item whose head is " ++ toString x
+> let (a,a,a) = (1,1,1) in a
+-- DUPLICATE DEFINITION -------------------------------------- repl-temp-000.elm
+
+There are multiple values named `a` in this let-expression.
 ```
 
-Pattern matches go in order. If we put [x] last, it would never match because
-x::xs also matches (xs would be the empty list). Matches do not "fall through".
-The compiler will alert you to missing or extra cases.
+#### on a List
 
-----
+Matching lists is more often done by relying on their recursive nature.
 
-Lists themselves can also be used in pattern matching. You can match with the empty list [] or any pattern that involves :: and the empty list. But since [1,2,3] is just syntactic sugar for 1::2::3::[], you can also use the former pattern. A pattern like x::xs will bind the head of the list to x and the rest of it to xs, even if there's only one element so xs ends up being an empty list.
-
-*Note*: The x::xs pattern is used a lot, especially with recursive functions. But patterns that have :: in them only match against lists of length 1 or more.
-
-If you want to bind, say, the first three elements to variables and the rest of the list to another variable, you can use something like x::y::z::zs. It will only match against lists that have three elements or more.
-
-Now that we know how to pattern match against list, let's make our own implementation of the List.member function, which checks if a value is present in a list, using
+Let's make a trivial function that tells us some of the first elements of the list.
 
 ```elm
-member' : a -> List a -> Bool
-member' value list =
-    case list of
-        [] -> False
-        (x::xs) ->
-            if x == value then
-                True
-            else
-                member' value xs
-```
+open "http://elm-lang.org/try"
+import Html
 
-Checking if it works:
+main = Html.text (toString (tell [], tell [1], tell [1,2], tell [1,2,3,4,5]))
+{- ("The list is empty","The list has exactly one element: 1","The list of at least one item whose head is 1","The list of at least one item whose head is 1") -}
 
-```elm
-toPrint = member' 1 [1,2,3,4]
-True
-toPrint = member' 1 [2,3,4,5]
-False
-```
-
-Nice! Notice that if you want to bind to several variables (even if one of them is just \_ and doesn't actually bind at all), we have to surround them in parentheses. Also notice the if then else expression we used. It's very similar to if statements in other languages, except it's an expression instead of a statement. That means it evaluates to a specific value, so we can't ignore the else.
-
-Let's make a trivial function that tells us some of the first elements of the list in (in)convenient English form.
-
-```elm
 tell : List a -> String
 tell list =
-    case list of
-        [] -> "The list is empty"
-        (x::[]) -> "The list has one element: " ++ toString x
-        (x::y::[]) -> "The list has two elements: " ++ toString x ++ " and " ++ toString y
-        (x::y::_) -> "This list is long. The first two elements are: " ++ toString x ++ " and " ++ toString y
+  case list of
+    [] -> "The list is empty"
+    [x] -> "The list has exactly one element: " ++ toString x
+    x::xs -> "The list of at least one item whose head is " ++ toString x
 ```
 
-This function is safe because it takes care of the empty list, a singleton list, a list with two elements and a list with more than two elements. Note that (x::[]) and (x::y::[]) could be rewriten as [x] and [x,y] (because its syntatic sugar, we don't need the parentheses). We can't rewrite (x::y::\_) with square brackets because it matches any list of length 2 or more.
+You can match with the empty list `[]` or any pattern that involves `::` and the empty list. The pattern, `[x]` is used to capture a list with only one element. The pattern `x::xs` is used to bind the head of the list to `x` and the rest of it to `xs`. It reflects the fact that `[1,2,3]` is syntactic sugar for `1::2::3::[]`. Pattern matches go in order. If we put [x] last, it would never match because `x::xs` also matches (xs would be the empty list).
 
-This type of function construction is very common in Elm. Let's get some more practice by using pattern matching and a little recursion to implement our own List.length function:
+This function is safe because it takes care of the empty list, a singleton list, a list with two elements and a list with more than two elements.
+
+Note. It’s customary to write pattern matching on lists using a letter or a small word followed by the same identifier in plural, like `x:xs`. Note also that `++` cannot be used in pattern matches.
+
+If you need only one element of the (head, tail) pair, you can use the anonymous variable <code>_</code>. Here are a few other examples.
+
+```haskell
+x::y::[] -- matches against a list of  exactly two elements
+[x,y] -- also matches against a list of  exactly two elements
+x::y::z::zs -- matches against lists that have three elements or more; the first three elements will be bound to variables and the rest of the list to zs.
+x::y::_ -- matches lists of length 2 or more; the first two elements are bound to variables
+```
+
+Now that we know how to pattern match against list, let's make our own implementation of the `List.member` function, which checks if a value is present in a list, using
 
 ```elm
-length' : List a -> Int
-length' list =
-    case list of
-        [] -> 0
-        (_::xs) -> 1 + length' xs
+open "http://elm-lang.org/try"
+import Html
+
+main = Html.text (toString (member 1 [1,2,3,4], member 1 [2,3,4,5]))
+-- (True,False)
+
+member : a -> List a -> Bool
+member value list =
+  case list of
+    [] -> False
+    (x::xs) ->
+      if x == value then
+        True
+      else
+        member value xs
 ```
 
-This is similar to the factorial and member functions we wrote earlier. First we defined the result of a known input — the empty list. This is also known as the edge condition. Then in the second pattern we take the list apart by splitting it into a head and a tail. We say that the length is equal to 1 plus the length of the tail. We use \_ to match the head because we don't actually care what it is. Also note that we've taken care of all possible patterns of a list. The first pattern matches an empty list and the second one matches anything that isn't an empty list.
+We can also implement our own `List.length` function:
+
+```elm
+open "http://elm-lang.org/try"
+import Html
+
+main = Html.text (toString (length [], length [1], length [1,2], length [1,2,3,4,5]))
+-- (0,1,2,5)
+
+length : List a -> Int
+length list =
+    case list of
+        [] -> 0
+        (_::xs) -> 1 + length xs
+```
+
+This is similar to the factorial and member functions we wrote earlier. First we defined the result of a known input — the empty list. This is also known as the edge condition. Then in the second pattern we take the list apart by splitting it into a head and a tail. We say that the length is equal to 1 plus the length of the tail. We use <code>_</code> to match the head because we don't actually care what it is. Also note that we've taken care of all possible patterns of a list. The first pattern matches an empty list and the second one matches anything that isn't an empty list.
 
 Let's see what happens if we call length' on ['h','a','m']. First, it will check if it's an empty list. Because it isn't, it falls through to the second pattern. It matches on the second pattern and there it says that the length is 1 + length' ['a','m'], because we broke it into a head and a tail and discarded the head. O-kay. The length' of ['a','m'] is, similarly, 1 + length' ['m']. So right now we have 1 + (1 + length' ['m']). length' ['m'] is 1 + length' []. And we've defined length' [] to be 0. So in the end we have 1 + (1 + (1 + 0)).
 
-Let's implement List.sum. We know that the sum of an empty list is 0. We write that down as a pattern. And we also know that the sum of a list is the head plus the sum of the rest of the list. So if we write that down, we get:
+Let's implement `List.sum`. We know that the sum of an empty list is 0. We write that down as a pattern. And we also know that the sum of a list is the head plus the sum of the rest of the list. So if we write that down, we get:
 
 ```elm
-sum' : List number -> number
-sum' list =
+import Html
+
+main = Html.text (toString (sum [], sum [1], sum [1,2], sum [1,2,3,4,5]))
+-- (0,1,2,5)
+
+sum : List number -> number
+sum list =
     case list of
         [] -> 0
-        (x::xs) -> x + sum' xs
+        (x::xs) -> x + sum xs
 ```
 
-One more thing — you can't use ++ in pattern matches. If you tried to pattern match against (xs ++ ys), what would be in the first and what would be in the second list? It doesn't make much sense. It would make sense to match stuff against (xs ++ [x,y,z]) or just (xs ++ [x]), but because of the nature of lists, you can't do that.
 
-*Note:* Not only can we call functions as infix with backticks, we can also define them using backticks. Sometimes it's easier to read that way.
+##### limitations
 
-(source: [learnyouanelm-04](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/04-syntax-in-functions.md))
+List matching doesn't work similarly to tuples.
+
+```elm
+> let [a, b] = [12, 25] in a
+==================================== ERRORS ====================================
+
+-- PARTIAL PATTERN ------------------------------------------- repl-temp-000.elm
+
+The pattern used here does not cover all possible values.
+```
 
 
-### on a record
+#### on a record
+
+```elm
+> let {name} = {name = "Bob"} in name
+"Bob" : String
+```
+When matching a map, the left-side pattern doesn’t need to contain all the keys from the right-side term:
+
+```elm
+> let {name} = {name = "Bob", age = 25} in name
+"Bob" : String
+```
+
+Of course, a match will fail if the pattern contains a key that’s not in the matched term:
+
+```elm
+> let {name, address} = {name = "Bob", age = 25} in name
+-- TYPE MISMATCH --------------------------------------------- repl-temp-000.elm
+This record is being used in an unexpected way.
+```
+
+Patterns can be nested:
+
+```elm
+> let ({name}, _) = ({name = "Bob", age = 25}, "ignored") in name
+"Bob" : String
+```
 
 ```elm
 -- Requires the argument with x and y fields
 multiply {x,y} = x * y
 ```
 
-Use curly brackets to pattern match record field names.
-Use let to define intermediate values.
+Use curly brackets to pattern match record field names. Use let to define intermediate values.
 
 ```elm
 volume {width, height, depth} =
@@ -204,14 +323,6 @@ volume {width, height, depth} =
 volume { width = 3, height = 2, depth = 7 } -- 42
 ```
 
-### on a Maybe
+### Further reading
 
-```elm
-case List.head aList of
-  Just x -> "The head is " ++ toString x
-  Nothing -> "The list was empty."
-```
-
-
-
-
+* [learnyouanelm-04](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/04-syntax-in-functions.md)

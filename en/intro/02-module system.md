@@ -90,7 +90,7 @@ At this time, it is not possible to "blacklist" items.
 
 Functions and values within a module might depend on functionalities stored in other modules.
 
-Elm gives access to a number of basic types and most used functions by default. For instance, accessors like fst or head. All of the arithmetic operators like `(+)` and the cons `(::)` operator of the List module are also exposed by default. They are all defined in the  [Basics](http://package.elm-lang.org/packages/elm-lang/core/latest/Basics) package.
+Elm gives access to a number of ‘basics’ commands. This is a collection of basic types, type classes, functions and other values that are indispensible in many programming tasks. For instance, accessors like fst or head. All of the arithmetic operators like `(+)` and the cons `(::)` operator of the List module are also exposed by default. They are all defined in the  [Basics](http://package.elm-lang.org/packages/elm-lang/core/latest/Basics) package.
 
 Elm also gives access to a range of modules without explicity imports. At the time of writing, it includes, Debug, List, Maybe and Result, Program, Cmd, and Sub. You can check the full list of [default imports](http://package.elm-lang.org/packages/elm-lang/core/latest/#default-imports), on the elm-lang website.
 

@@ -51,7 +51,6 @@ When calling functions, the term being matched is the argument provided to the f
 
 Of course, if you provide anything that isn’t a two-element tuple, an error will be raised:
 
-
 ### Wildcard match (_)
 
 Occasionally we aren’t interested in a value, but we still need to match on it. In such cases, <code>_</code> is used as a wilcard match. The anonymous variable works just like a named variable: it matches any right-side term. But no binding is created. This means you can match to multiple <code>_</code> in a single pattern.
@@ -326,3 +325,4 @@ volume { width = 3, height = 2, depth = 7 } -- 42
 ### Further reading
 
 * [learnyouanelm-04](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/04-syntax-in-functions.md)
+* [yang-wei gist](https://gist.github.com/yang-wei/4f563fbf81ff843e8b1e)

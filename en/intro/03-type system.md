@@ -201,12 +201,32 @@ double  = List.map (\x -> x * 2)
 doubled = double [1,2,3]
 ```
 
-### Compound Types
+### Constrained Type variables
 
-Any good programming language will let us construct compound types from simple ones like these. Let’s examine some of these operations, which are called type constructors.
+Elm has three special types of type variables: `number`, `comparable`, and `appendable`.
 
-See [Type Constructor](../type/08-type constructor.md)
+A `number` is any type that supports basic arithmetic (`+`,`-`, `*`; except division, which is handled separately for each type: `/` always results a float, `//` for integer division), `%` for mod). These are `Int` or `Float`.
 
+```elm
+doubleMe : number -> number
+doubleMe x =
+    x + x
+```
+
+A `comparable` represents types that can be compared or ordered, like `1 == 1` or `1 < 2`. This can be `String`, `Char`, `Int`, `Float`, `Time`, or a `List` or `tuple` containing only comparable values. Surprisingly enough, comparables can be compared with operations like `<`, `<=`, `==`, `!=`, `>=`, `>`.
+
+An `appendable` represents items that can be appended to each other with the `++` operator. These can be `string`, `text` (i.e. with typesetting information), or a `list` (containing any type).
+
+To use any of these types, just use their name in an annotation instead of a specific type or type variable.
+
+If one of these types appears multiple times in a type annotation, all occurrences must resolve to the same type. You can allow them to be different by sticking something on to the end of the type, like `appendable2` or similar. For example, if you enter `(4, 2)` into the Elm REPL, it will infer the type `(number, number')`. The apostrophe indicates that the second number need not be the same type as the first.
+
+
+### Collection Types
+
+* [Lists](../type/03-list.md)
+* [Tuple](../type/04-tuple.md)
+* [Record](../type/05-record.md)
 
 #### Type variables
 
@@ -277,27 +297,6 @@ $ elm repl
 
 Though the convention is to use `a,b,c,d`, (almost) any lowercase string will work. Sometimes, another letter or a descriptive word, can help better capture the intent. For example, `Dict k v` reminds us that the types variables are the keys and values.
 
-#### Constrained Type variables
-
-Elm has three special types of type variables: `number`, `comparable`, and `appendable`.
-
-A `number` is any type that supports basic arithmetic (`+`,`-`, `*`; except division, which is handled separately for each type: `/` always results a float, `//` for integer division), `%` for mod). These are `Int` or `Float`.
-
-```elm
-doubleMe : number -> number
-doubleMe x =
-    x + x
-```
-
-A `comparable` represents types that can be compared or ordered, like `1 == 1` or `1 < 2`. This can be `String`, `Char`, `Int`, `Float`, `Time`, or a `List` or `tuple` containing only comparable values. Surprisingly enough, comparables can be compared with operations like `<`, `<=`, `==`, `!=`, `>=`, `>`.
-
-An `appendable` represents items that can be appended to each other with the `++` operator. These can be `string`, `text` (i.e. with typesetting information), or a `list` (containing any type).
-
-To use any of these types, just use their name in an annotation instead of a specific type or type variable.
-
-If one of these types appears multiple times in a type annotation, all occurrences must resolve to the same type. You can allow them to be different by sticking something on to the end of the type, like `appendable2` or similar. For example, if you enter `(4, 2)` into the Elm REPL, it will infer the type `(number, number')`. The apostrophe indicates that the second number need not be the same type as the first.
-
-
 ### Grouping
 
 The example given for `List.map5` highlight yet another pattern, grouping. It shows in all variants of `List.map`.
@@ -344,6 +343,12 @@ closedShape = [Point2D 0 1, Point2D 3 4, Point2D 6 9, Point2D 0 1]
 ```
 
 See individual types for more examples: [Lists](03-list.md), [Tuples](04-tuples.md), [Records](05-record.md)
+
+### Compound Types
+
+Any good programming language will let us construct compound types from simple ones like these. Let’s examine some of these operations, which are called type constructors.
+
+See [Type Constructor](../type/08-type constructor.md)
 
 
 ### Further Reading

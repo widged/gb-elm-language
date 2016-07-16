@@ -21,8 +21,7 @@ Functions are first-class citizens. This means that functions can be manipulated
 * Functions can produce functions as results: `addTwo = let add x = (\y -> x + y) in add 2`
 * Functions can be stored in data structures such as lists:  `let mult x y = x * y in List.map2 (\f v -> f v) [mult 2, mult 3, mult 5] [1, 3, 5] -- [2,9,25]`
 
-This ability to treat functions as data allows a higher level of abstraction. It promotes the heavy uses of higher-order functions and
-the division of the code into many small, highly reusable, easily composable functions. This in turn helps write code that tends to display *simplicity, conciseness, and clarity*. Programs written with functional languages are often between two and ten times shorter than programs written in other current languages. For instance, a complex algorithm like quicksort, can be written in as little as 4 lines of code.
+This ability to treat functions as data allows a higher level of abstraction. It promotes the heavy uses of higher-order functions and the division of the code into many small, highly reusable, easily composable functions. This in turn helps write code that tends to display *simplicity, conciseness, and clarity*. Programs written with functional languages are often between two and ten times shorter than programs written in other current languages. For instance, a complex algorithm like quicksort, can be written in as little as 4 lines of code.
 
 ```elm
 qsort lst =
@@ -43,7 +42,7 @@ This allows for a *Strong, statically checked, type system*. Every function has 
 
 An important advantage of a strong type system is that programs can be statically checked at compile time. For each expression, the type (inferred or supplied by the programmer) is checked. Any incompatibility errors in between the type of actual arguments and the expected type of an expression will be automatically detected. For example, attempting to add a number and a character would be reported as an error, because characters are not a type of numbers. Checks are not limited to types. They encompass any branching condition, to help guarantee we’ve accounted for every possible branching case. The programs won't compile until all errors have been fixed. Hence, the saying “once it compiles, it works”.
 
-Sure, compiler errors can be frustrating when learning the language. However, Elm's compiler does it best to provide readable compiler messages. Catching bugs early is cheaper than generaring inccorect code, running it, getting users report an issue, debugging the code, and gradually tracing the problem back to its original cause. As programs are more maintainable and less error-prone, refactoring also becomes easier. It helps develop larger and faster applications.
+Sure, compiler errors can be frustrating when learning the language. However, Elm's compiler does it best to provide readable compiler messages. Then, catching bugs early is certainly cheaper than generaring inccorect code, running it, getting users report an issue, debugging the code, and gradually tracing the problem back to its original cause. As programs are more maintainable and less error-prone, refactoring also becomes easier. It helps develop larger and faster applications.
 
 In most functional programming languages, purity is an unescapable requirement, coming from a commitment to lazy evaluation, which is based upon the idea that no computation should be performed until its result is actually required (call-by-need).  If laziness forces the language to remain pure, purity doesn't depend on a lazy evaluation model. Elm opted for evaluation model is based on eagerness (call-by-value) [Also better suited to streaming]
 
@@ -52,4 +51,4 @@ In most functional programming languages, purity is an unescapable requirement, 
 
 At this point you must be feeling the need to actually try Elm on your own computer. The first step for this is, of course, to have a working Elm installation in your system.
 
-See [gb-elm-platform](https://www.gitbook.com/book/widged/gb-elm-platform/details)
+See [Diving into Elm @gb-elm-platform](https://widged.gitbooks.io/gb-elm-platform/content/en/intro/02-diving%20in.html)

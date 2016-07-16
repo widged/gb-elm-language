@@ -1,4 +1,4 @@
-**Elm 0.17**, **shareable** 
+**Elm 0.17**, **shareable**
 
 ## Tuples
 
@@ -28,7 +28,7 @@ userProfile : (String, String, Int)
 userProfile = ("John", "Doe", 42)
 ```
 
-The number of elements must be constant.  
+The number of elements must be constant.
 
 ```elm
 $ elm repl
@@ -53,17 +53,18 @@ The 1st and 2nd elements are different types of values.
 
 #### tuple of size one
 
+It does't make sense to distinguish between a 1-tuple (called a “singleton”) and the type of its element. A tuple of size one as it stores the value it contains. For example, (Int) is usually equivalent to Int.
+
 ```elm
 $ elm repl
 > (5)
 5 : number
 ```
 
-It doesn't make sense to have a tuple of size one as it stores the value it contains.
-
 
 #### tuple with no value
 
+A special case of tuples is the 0-tuple, which is also called the unit type. The unit type can only hold one value (which means it stores zero information). It is sometimes called Void or Unit, and its value is often called null, nil, none, or nothing.
 
 ```elm
 $ elm repl
@@ -90,7 +91,7 @@ $ elm repl
 (12,7) : ( number, number' )
 ```
 
-It is also possible to use a prefix operator, `(,)`, to construct a tuple. The function is a tuple constructor not bound to the value it helps create. 
+It is also possible to use a prefix operator, `(,)`, to construct a tuple. The function is a tuple constructor not bound to the value it helps create.
 
 ```elm
 $ elm repl
@@ -112,7 +113,7 @@ With tuples, type is bound to the number of elements. Therefore, functions have 
 
 #### fst and snd of a tuple pair
 
-For tuple pairs, special accessors are given that return the first or second element of the pair. 
+For tuple pairs, special accessors are given that return the first or second element of the pair.
 
 ```elm
 $ elm repl
@@ -150,7 +151,7 @@ True : Bool
 
 #### destructuring / pattern matching
 
-Pattern matching in `case` expressions can be used on tuples. 
+Pattern matching in `case` expressions can be used on tuples.
 
 ```elm
 $ elm repl
@@ -162,7 +163,7 @@ $ elm repl
 -- NAMING ERROR ---------------------------------------------- repl-temp-000.elm
 ```
 
-Destructuring can be used on nested tuples. 
+Destructuring can be used on nested tuples.
 
 ```elm
 $ elm repl

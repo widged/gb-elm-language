@@ -208,9 +208,9 @@ Elm has three special types of type variables: `number`, `comparable`, and `appe
 A `number` is any type that supports basic arithmetic (`+`,`-`, `*`; except division, which is handled separately for each type: `/` always results a float, `//` for integer division), `%` for mod). These are `Int` or `Float`.
 
 ```elm
-doubleMe : number -> number
-doubleMe x =
-    x + x
+$ elm repl
+> doubleMe : number -> number
+> doubleMe x = x + x
 ```
 
 A `comparable` represents types that can be compared or ordered, like `1 == 1` or `1 < 2`. This can be `String`, `Char`, `Int`, `Float`, `Time`, or a `List` or `tuple` containing only comparable values. Surprisingly enough, comparables can be compared with operations like `<`, `<=`, `==`, `!=`, `>=`, `>`.
@@ -222,7 +222,7 @@ To use any of these types, just use their name in an annotation instead of a spe
 If one of these types appears multiple times in a type annotation, all occurrences must resolve to the same type. You can allow them to be different by sticking something on to the end of the type, like `appendable2` or similar. For example, if you enter `(4, 2)` into the Elm REPL, it will infer the type `(number, number')`. The apostrophe indicates that the second number need not be the same type as the first.
 
 
-### Collection Types
+### Primary Data Structures
 
 * [Lists](../type/03-list.md)
 * [Tuple](../type/04-tuple.md)
@@ -230,9 +230,31 @@ If one of these types appears multiple times in a type annotation, all occurrenc
 
 #### Type variables
 
-Functions don't necessarily need to be aware of the type of values held in a collection to computer an answer. Take `List.length`. It doesn't really matter whether the values inside the list are all strings, numbers, or complex records. What we are after is the number of items in the list.
+If look at the signature of the basic tuple, list, record data structures, you will see lower case letters appear.
 
-Type variables help with this. Check the signature of the `identity` function in the repl. It takes a value and returns that value.
+```elm
+$ elm repl
+> -- tuples
+> fst
+<function> : ( a, b ) -> a
+> snd
+<function> : ( a, b ) -> b
+> -- lists
+> import List
+> List.map
+<function> : (a -> b) -> List a -> List b
+> List.length
+<function> : List a -> Int
+> -- record
+> .name
+<function> : { b | name : a } -> a
+```
+
+These are called type variables. They stand for a value type that the function doesn't necessarily need to be fully specified for an answer to be computed. Take `List.length`. It doesn't really matter whether the values inside the list are all strings, numbers, or complex records. What we are after is the number of items in the list.
+
+The lower case letters like `a` or `b` in the type signature are known as type variables. Each letter is a placeholder for a specific type that is left unspecified. It indicates that the function works for any type. A given type variable can appear multiple times in the annotation. In this case, whatever type `a` holds, all occurrences of `a` resolve to the same type
+
+Take the `identity` function. It takes a value and returns that value. The types are de facto identical.
 
 ```elm
 $ elm repl
@@ -240,29 +262,15 @@ $ elm repl
 <function> : a -> a
 > identity 8
 8 : number
+> identity "a"
+"a" : String
+> identity {name = "John"}
+{ name = "John" } : { name : String }
 ```
 
-Or check the `List.length` signature using the REPL.
+Similarly, the List.map signature `(a -> b) -> List a -> List b` says that this function takes as frirst parameter a function that transforms values of type a into value of type b and as second parameter a List of elements of type a and returns a list of values of type b.
 
-```elm
-$ elm repl
-> List.length
-<function> : List a -> Int
-```
-
-The lower case letter `a` is what is known as a type variable. It is a placeholder for a specific type that is left unspecified. The only requirement for running `List.length` is a List with values of the same type. It can be any type. The function returns the length of the list, represented as a `Int`.
-
-```elm
-$ elm repl
-> List.take
-<function> : Int -> List a -> List a
-List.take 2 [1,2,3,4] -- [1,2]
-List.take 2 ["a","b","c"] -- ["a","b"]
-```
-
-A given type variable can appear multiple times in the annotation. It then means that whatever type `a` holds, `a` must always refer to that exact same type. In the case of `List.take`, if the initial List had values of type `Int`, then the resulting list will have values of type `Int`.
-
-Some functions can accept, as arguments, values of different types. The convention is to use single letters starting at the beginning of the alphabet, `a, b, c, d`, to mark each new value type. An example is the `List.unzip` function, which decomposes a list of tuples into a tuple of lists.
+Some functions can accept, as arguments, values of different types. The convention is to use single letters starting at the beginning of the alphabet, `a, b, c, d`, to mark each new value type. Another example is the `List.unzip` function, which decomposes a list of tuples into a tuple of lists.
 
 ```elm
 $ elm repl
@@ -270,20 +278,6 @@ $ elm repl
 <function> : List ( a, b ) -> ( List a, List b )
 List.unzip [(0, True), (17, False), (1337, True)] -- ([0,17,1337], [True,False,True])
 ```
-
-Here both `a` and `b` are introduced, to specify that the function works for any types, provided that all occurrences of `a` resolve to the same type and all occurrences of `b` resolve to the same type.
-
-Another example is the `fst` function that returns the first element of a tuple.
-
-```elm
-$ elm repl
-> fst
-<function> : ( a, b ) -> a
-> fst ("Marc", 21) -- "Marc"
-> fst ("John", "Doe") -- "Marc"
-```
-
-The function `fst` takes a pair expressed as a tuple and returns a value that is of the same type as the first element. The tuple is expressed as `( a, b )` because the value type for the first element can differ from the value type of the second (they can differ but don't have to). The return value's type is the same as the one of the first element in the tuple.
 
 It is rare for functions to have more than 2 type variables. It however is not impossible.
 
@@ -296,60 +290,6 @@ $ elm repl
 ```
 
 Though the convention is to use `a,b,c,d`, (almost) any lowercase string will work. Sometimes, another letter or a descriptive word, can help better capture the intent. For example, `Dict k v` reminds us that the types variables are the keys and values.
-
-### Grouping
-
-The example given for `List.map5` highlight yet another pattern, grouping. It shows in all variants of `List.map`.
-
-```elm
-$ elm repl
-> List.map
-<function> : (a -> b) -> List a -> List b
-```
-
-`List.map` is a function that takes a function that converts a value of type `a` to a value of type `b`, then take a list of values of type `a`, and returns a list of values of type `b`. Type variables are used `(a -> b)` as the map function doesn't need to know what is in the list. It traverses the list and an apply a function to each value in the list, resulting in a new list. Only the function applied to each element needs to know what type those elements are.
-
-### Type Aliases
-
-With type aliases, we can give a convenient alternative name for another existing type (primitive or complex shape). The general shape is `type alias CustomType = ExistingType`.
-
-It helps you model the problem and reason about how data flows through your program.
-
-
-```elm
-$ open http://elm-lang.org/try
-import Html exposing (div, text, br)
-main = div []
-  [ text ( toString( origin2D == { x = 0, y = 0 } ) )
-  , br [] []
-  , text ( toString( origin3D == (0,0,0) ) )
-  , br [] []
-  , text ( toString closedShape )
-  ]
-type alias Name = String
-type alias IncrementCount = Int
--- aliasing record shapes
-type alias Point2D = { x : Float, y : Float }
-origin2D : Point2D
-origin2D = { x = 0, y = 0 }
--- aliasing tuple shapes
-type alias Point3D = (Float, Float, Float)
-origin3D : Point3D
-origin3D = (0,0,0)
--- aliasing list shapes
-type alias Shape = List Point2D
-closedShape : Shape
-closedShape = [Point2D 0 1, Point2D 3 4, Point2D 6 9, Point2D 0 1]
-```
-
-See individual types for more examples: [Lists](03-list.md), [Tuples](04-tuples.md), [Records](05-record.md)
-
-### Compound Types
-
-Any good programming language will let us construct compound types from simple ones like these. Let’s examine some of these operations, which are called type constructors.
-
-See [Type Constructor](../type/08-type constructor.md)
-
 
 ### Further Reading
 

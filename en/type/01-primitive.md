@@ -1,8 +1,8 @@
-**Elm 0.17**, **shareable** 
+**Elm 0.17**, **shareable**
 
 ## Primitive types
 
-Primitive types are built into the language. They include `Bool`, `Int`, `Float`, `Char`, and `String`. 
+Primitive types are built into the language. They include `Bool`, `Int`, `Float`, `Char`, and `String`.
 
 ```elm
 True : Bool
@@ -33,7 +33,7 @@ False : Bool
 --------------------------------------------------
 ### Numeric Types
 
-Numeric types are `Int` and `Float`. 
+Numeric types are `Int` and `Float`.
 
 ```elm
 > 2.0
@@ -43,6 +43,8 @@ Numeric types are `Int` and `Float`.
 > truncate 1
 1 : Int
 ```
+
+Float is the type of floating-point numbers, things like 3.14159, and Int is the type of limited-precision integers, integers n that lie in a restricted range. 
 
 ### Int
 
@@ -106,6 +108,3 @@ Strings can be appended with `++`.
 
 * [learnyouanelm-03](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/03-types.md)
 * [learnyouanelm](https://github.com/learnyouanelm/learnyouanelm.github.io/blob/master/pages/02-starting-out.md)
-
-
-

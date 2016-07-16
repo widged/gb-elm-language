@@ -11,7 +11,7 @@
      * [Pattern Matching](program-flow/03-pattern matching.md)
      * [Conditional Branching](program-flow/04-conditional branching.md)
      * [Loops and Iterations](program-flow/05-loops and iterations.md)
-     * [Scope and let in](program-flow/05-scope.md)
+     * [Scope and let in](program-flow/06-scope.md)
   * [Types](type/cover.md)
      * [Primitive](type/01-primitive.md)
      * [Function](type/02-function.md)

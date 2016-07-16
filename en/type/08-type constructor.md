@@ -1,8 +1,10 @@
-**Elm 0.17**, **copied, please ignore** 
+**Elm 0.17**, **copied, please ignore**
 
 ## Type constructors
 
-*Type constructors* are base types for a new type shape. In `List a`, the type variable `a` can be replaced with a real type. They cannot really exist on its own. 
+*Type constructors* are base types for a new type shape. In `List a`, the type variable `a` can be replaced with a real type. They cannot really exist on its own.
+
+It should be noted that type constructors also behave as functions in any possible sense, but for the distinction in capitalization (remember that function names must start with a lowercase letter and type constructor with an uppercase one).
 
 ### simple tag constructor
 
@@ -64,7 +66,7 @@ Note that `posA` and `posB` do not have the same type. `posA` is of type `{ x : 
 ```elm
 $ open http://elm-lang.org/try
 import Html exposing (div, text, br, hr, h3)
-main = div [] 
+main = div []
   [ text ( launch vessel )
   , br [] []
   , text ( greet captain )
@@ -76,7 +78,7 @@ main = div []
 {-
 I name this ship HMS Splendid
 Hello there, Captain Robert Q. Peabody
--} 
+-}
 
 type Ship = Ship { name : String }
 type Person = Person { name : String }
@@ -103,7 +105,7 @@ greet p
 ```elm
 $ open http://elm-lang.org/try
 import Html exposing (div, text, br, hr, h3)
-main = div [] 
+main = div []
   [ text ( launchAlias vesselAlias )
   , br [] []
   , text ( greetAlias captainAlias )
@@ -120,7 +122,7 @@ Hello there, Captain Robert Q. Peabody
 (no type protection)
 I name this ship Captain Robert Q. Peabody
 Hello there, HMS Splendid
--} 
+-}
 
 type alias ShipAlias = { name : String }
 type alias PersonAlias = { name : String }
@@ -149,12 +151,12 @@ greetAlias p
 ```elm
 $ open http://elm-lang.org/try
 import Html exposing (div, text, br, hr, h3)
-main = div [] 
+main = div []
   [ text ( describe n37 )
   ]
 {-
 Number thirty seven looks like 37
--} 
+-}
 
 type NamedInt = NamedInt String Int
 
@@ -198,7 +200,7 @@ listOfStringsInABox = MiscHolder ["Once", "upon", "a", "time"]
 
 #### Container Type
 
-With collections like lists, tuples, records, annotations take a slightly different form. They specify both the type of the collection and the type of value held in the collection. 
+With collections like lists, tuples, records, annotations take a slightly different form. They specify both the type of the collection and the type of value held in the collection.
 
 List:
 ```elm
@@ -220,7 +222,7 @@ startPosition : { x : Float, y : Float }
 startPosition =
     { x = 0,
       y = 0
-    }    
+    }
 ```
 
 
@@ -281,7 +283,3 @@ True : Bool
 ```
 
 (source: [elm-explained](https://github.com/niksilver/elm-explained))
-
-
-
-

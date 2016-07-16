@@ -12,6 +12,10 @@
      * [Conditional Branching](program-flow/04-conditional branching.md)
      * [Loops and Iterations](program-flow/05-loops and iterations.md)
      * [Scope and let in](program-flow/06-scope.md)
+     * <!--
+     * [Raising Errors](program-flow/07-raising errors.md)
+     * [Eager Evaluation](program-flow/08-eager evaluation.md)
+     * -->
   * [Types](type/cover.md)
      * [Primitive](type/01-primitive.md)
      * [Function](type/02-function.md)
@@ -23,33 +27,8 @@
      * [Type Constructor](type/08-type constructor.md)
      * [Maybe and Result](type/09-maybe and result.md)
 
-  Coming Up
-
-  * [Thinking Functionally](thinking functionally/cover.md)
-     * [Recursion](thinking functionally/02-recursion.md)
-     * [Higher Order Functions](thinking functionally/03-higher order functions.md)
-  * [Data Structures](data-structure/cover.md)
-    * [Ordered Array](data-structure/01-array.md)
-    * [Set](data-structure/02-set.md)
-    * [Dict](data-structure/03-dict.md)
-    * [Tree](data-structure/04-tree.md)
 
 <!--
-# Summary
-
-  * [Control Flow](program-flow/cover.md)
-     * [Eager execution](program-flow/07-eager execution.md)
-  * [Types](type/cover.md)
-     * [Primitive](type/01-primitive.md)
-     * [Function](type/02-function.md)
-     * [List](type/03-list.md)
-     * [Tuple](type/04-tuple.md)
-     * [Unit Type](type/05-unit type.md)
-     * [Record](type/06-record.md)
-     * [Union Type](type/07-union type.md)
-     * [Type Constructor](type/08-type constructor.md)
-     * [Maybe and Result](type/09-maybe and result.md)
-
   Coming Up
 
   * [Thinking Functionally](thinking functionally/cover.md)

@@ -268,9 +268,9 @@ $ elm repl
 { name = "John" } : { name : String }
 ```
 
-Similarly, the List.map signature `(a -> b) -> List a -> List b` says that this function takes as frirst parameter a function that transforms values of type a into value of type b and as second parameter a List of elements of type a and returns a list of values of type b.
+Similarly, the List.map signature `(a -> b) -> List a -> List b` says that this function takes as first parameter a function that transforms values of type a into value of type b and as second parameter a List of elements of type a and returns a list of values of type b.
 
-Some functions can accept, as arguments, values of different types. The convention is to use single letters starting at the beginning of the alphabet, `a, b, c, d`, to mark each new value type. Another example is the `List.unzip` function, which decomposes a list of tuples into a tuple of lists.
+Another example is the `List.unzip` function, which decomposes a list of tuples into a tuple of lists.
 
 ```elm
 $ elm repl
@@ -279,7 +279,7 @@ $ elm repl
 List.unzip [(0, True), (17, False), (1337, True)] -- ([0,17,1337], [True,False,True])
 ```
 
-It is rare for functions to have more than 2 type variables. It however is not impossible.
+A new letter is used anytime a new argument is introduced that can hold a different type. The convention is to use single letters starting at the beginning of the alphabet, `a, b, c, d`, to mark each new value type.  It is rare for functions to have more than 2 type variables. It however is not impossible.
 
 ```elm
 $ elm repl
